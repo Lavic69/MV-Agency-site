@@ -1,0 +1,131 @@
+.section {
+  padding: 8rem 2rem;
+  width: 100%;
+}
+
+.neutralBg {
+  background-color: var(--bg-neutral);
+}
+
+.darkBg {
+  background-color: var(--bg-dark);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.headerTitle {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  text-align: center;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.headerDesc {
+  font-size: 1.25rem;
+  color: var(--accent);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.splitLayout {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.col60 {
+  flex: 1.5 1 500px;
+}
+
+.col40 {
+  flex: 1 1 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Illustration Placeholders */
+.mockupBox {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background-color: rgba(37, 99, 235, 0.05);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  font-size: 3rem;
+  box-shadow: inset 0 0 30px rgba(37, 99, 235, 0.1);
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.servicesList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.servicesList li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.15rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+.checkIcon {
+  color: var(--primary);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.pillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.pill {
+  padding: 0.5rem 1rem;
+  background-color: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+.highlightText {
+  color: var(--primary);
+  font-weight: 600;
+  margin-top: 2rem;
+  display: block;
+  font-size: 1.1rem;
+}
+
+.ctaActions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.ctaActions a {
+  text-decoration: none;
+}

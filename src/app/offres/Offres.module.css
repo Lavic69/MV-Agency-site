@@ -1,0 +1,285 @@
+.section {
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.darkBg {
+  background-color: var(--bg-dark);
+}
+
+.neutralBg {
+  background-color: var(--bg-neutral);
+}
+
+.headerTitle {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+  line-height: 1.1;
+  text-align: center;
+}
+
+.headerDesc {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: var(--text-light);
+  text-align: center;
+}
+
+/* ====================
+   PACK CARDS 
+   ==================== */
+.gridPacks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+  align-items: stretch;
+}
+
+.packCard {
+  background: #111827; /* Tailwind gray-900 equivalent */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.packCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.packCardHighlight {
+  background: linear-gradient(180deg, #1e3a8a, #111827);
+  border: 2px solid #3b82f6;
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+  z-index: 10;
+}
+.packCardHighlight:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 10px 40px rgba(59, 130, 246, 0.4);
+}
+
+/* Fix on mobile so it doesn't overlap weirdly */
+@media (max-width: 1024px) {
+  .packCardHighlight {
+    transform: none;
+    z-index: 1;
+  }
+  .packCardHighlight:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.packBadge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #3b82f6;
+  color: white;
+  padding: 0.3rem 1.5rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.packTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.packSubtitle {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  min-height: 3rem;
+  margin-bottom: 2rem;
+}
+
+.packDivider {
+  height: 1px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 2rem;
+}
+
+.packList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.packList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.checkIcon {
+  color: #3b82f6;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* ====================
+   TABLEAU COMPARATIF 
+   ==================== */
+.tableContainer {
+  margin-top: 6rem;
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: #111827;
+}
+
+.compareTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px; /* Forces scroll on mobile */
+  text-align: left;
+}
+
+.compareTable th,
+.compareTable td {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.compareTable th {
+  font-size: 1.1rem;
+  color: white;
+  background: rgba(0,0,0,0.2);
+}
+
+.compareTable td {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.95rem;
+}
+
+.compareTable td:not(:first-child), .compareTable th:not(:first-child) {
+  text-align: center;
+}
+
+.featureName {
+  font-weight: 500;
+  color: white;
+}
+
+.highlightCol {
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 1px solid rgba(59, 130, 246, 0.3);
+  border-right: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.highlightColHeader {
+  background: rgba(59, 130, 246, 0.2) !important;
+  color: #60a5fa !important;
+  border-top: 2px solid #3b82f6;
+  border-left: 1px solid rgba(59, 130, 246, 0.3);
+  border-right: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.iconCheck {
+  color: #22c55e;
+  font-size: 1.2rem;
+  margin: 0 auto;
+}
+.iconCheckAccent {
+  color: #3b82f6;
+  font-size: 1.2rem;
+  margin: 0 auto;
+}
+.iconCross {
+  color: rgba(255,255,255,0.2);
+  font-size: 1.2rem;
+  margin: 0 auto;
+}
+
+/* ====================
+   PROCESSUS 
+   ==================== */
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.processStep {
+  background: rgba(255,255,255,0.03);
+  padding: 2.5rem;
+  border-radius: 12px;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.processNumber {
+  position: absolute;
+  top: -20px;
+  left: 2rem;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.05);
+  line-height: 1;
+}
+
+.processTitle {
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.processDesc {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* CTA Footer section style inside container */
+.ctaActions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

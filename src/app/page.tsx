@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { NeonButton as Button } from "@/components/ui/NeonButton";
+import { Button } from "@/components/ui/Button";
 import LiquidEther from "@/components/ui/LiquidEther";
 import LogoLoop from "@/components/ui/LogoLoop";
 import CircularTestimonials from "@/components/ui/circular-testimonials";
@@ -21,22 +21,25 @@ const techLogos = [
 
 const realizations = [
   {
-    name: "Startup Fintech",
-    designation: "Acquisition B2B",
-    quote: "Interface moderne et acquisition B2B automatisée. Un vrai flux continu de leads.",
-    src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+    name: "Pharmacie Les Lataniers",
+    designation: "Site web santé",
+    quote: "Création d'un site web performant avec un système de prise de rendez-vous, dépôt d'ordonnance sécurisé, et un travail SEO en profondeur.",
+    link: "https://pharmacieleslataniers.fr",
+    src: "/projects/lataniers.png"
   },
   {
-    name: "Cabinet d'Avocats",
-    designation: "Site Vitrine Pro",
-    quote: "Identité de marque forte et génération de prises de contact ciblées.",
-    src: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80"
+    name: "Johnny App",
+    designation: "Application & Site Web",
+    quote: "Le site plus l'app : conception technique d'une application de coaching sportif et création de sa vitrine web dédiée.",
+    link: "https://johnny-site.vercel.app",
+    src: "/projects/johnny.png"
   },
   {
-    name: "Boutique Artisanale",
-    designation: "E-commerce & IA",
-    quote: "Boutique en ligne avec gestion des stocks et support client pré-câblé à l'IA.",
-    src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80"
+    name: "Marque Osan",
+    designation: "Landing Page Produit",
+    quote: "Développement d'une très belle landing page e-commerce conçue de A à Z pour mettre en avant la gamme de ces produits.",
+    link: "https://hosan-one.vercel.app",
+    src: "/projects/hosan.png"
   }
 ];
 
@@ -187,10 +190,14 @@ export default function Home() {
           </p>
           <div className={styles.heroActions}>
             <Link href="/offres" tabIndex={-1} style={{ textDecoration: 'none' }}>
-              <Button variant="solid">Découvrir nos offres</Button>
+              <Button variant="primary">
+                Découvrir nos offres
+              </Button>
             </Link>
             <Link href="/a-propos" tabIndex={-1} style={{ textDecoration: 'none' }}>
-              <Button variant="default">Voir comment on travaille</Button>
+              <Button variant="outline">
+                Voir comment on travaille
+              </Button>
             </Link>
           </div>
 
@@ -222,6 +229,7 @@ export default function Home() {
 
         {/* S2 — TECHNOLOGIES (Désormais sous le fond interactif) */}
         <section className={styles.marqueeSection} style={{ padding: '0 0 3rem 0', background: 'transparent', position: 'relative', zIndex: 1 }}>
+          {/* @ts-ignore - LogoLoop is a JSX component */}
           <LogoLoop
             logos={techLogos}
             speed={100}
@@ -236,7 +244,7 @@ export default function Home() {
       </div>
 
       {/* S3 — NOS RÉALISATIONS */}
-      <section className={styles.section} style={{ backgroundColor: '#000000', paddingLeft: 0, paddingRight: 0 }}>
+      <section className={styles.section} style={{ paddingLeft: 0, paddingRight: 0 }}>
         <h2 className={styles.sectionTitle}>Nos réalisations</h2>
         <div style={{ maxWidth: "1200px", margin: "0 auto", overflow: "hidden" }}>
            <CircularTestimonials
@@ -260,7 +268,7 @@ export default function Home() {
       </section>
 
       {/* S4 — NOS EXPERTISES */}
-      <section className={styles.section} style={{ backgroundColor: 'var(--bg-neutral)' }}>
+      <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Nos expertises</h2>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <FeaturesSection />
@@ -268,7 +276,7 @@ export default function Home() {
       </section>
 
       {/* S5 — TÉMOIGNAGES */}
-      <section className={styles.section} style={{ backgroundColor: '#000000', overflow: 'hidden' }}>
+      <section className={styles.section} style={{ overflow: 'hidden' }}>
         <h2 className={styles.sectionTitle}>Ce que nos clients disent de nous</h2>
         <div style={{
           display: "flex",
@@ -287,7 +295,7 @@ export default function Home() {
       </section>
 
       {/* S6 — POURQUOI CHOISIR MV AGENCY */}
-      <section className={styles.section} style={{ backgroundColor: 'var(--bg-neutral)' }}>
+      <section className={styles.section}>
         <h2 className={styles.sectionTitle} style={{ marginBottom: "2rem" }}>Pourquoi choisir MV Agency ?</h2>
         <MagicBento 
           textAutoHide={false}
@@ -305,20 +313,40 @@ export default function Home() {
       </section>
 
       {/* S7 — FAQ */}
-      <section className={styles.section} style={{ backgroundColor: '#000000' }}>
-        <h2 className={styles.sectionTitle}>Foire Aux Questions</h2>
+      <section className={styles.section} style={{ paddingBottom: '5rem' }}>
+        <h2 className={styles.sectionTitle}>FAQ</h2>
         <Accordion items={faqItems} />
       </section>
 
       {/* S8 — GRAND CTA FINAL */}
-      <section className={styles.finalCtaSection} style={{ backgroundColor: 'var(--bg-neutral)' }}>
-        <div className={styles.finalCtaGlow}></div>
-        <div className={styles.finalCtaContent}>
+      <section className={styles.finalCtaSection} style={{ position: 'relative', overflow: 'hidden', paddingTop: '5rem' }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }}>
+          <LiquidEther
+            colors={['#1A1F4B', '#2563EB', '#4F46E5']} 
+            mouseForce={20}
+            cursorSize={100}
+            isViscous
+            viscous={30}
+            iterationsViscous={32}
+            iterationsPoisson={32}
+            resolution={0.5}
+            isBounce={false}
+            autoDemo
+            autoSpeed={0.5}
+            autoIntensity={2.2}
+            takeoverDuration={0.25}
+            autoResumeDelay={3000}
+            autoRampDuration={0.6}
+            style={{ width: '100%', height: '100%' }}
+          />
+        </div>
+        <div className={styles.finalCtaGlow} style={{ zIndex: 1 }}></div>
+        <div className={styles.finalCtaContent} style={{ position: 'relative', zIndex: 2 }}>
           <h2 className={styles.finalCtaTitle}>Prêt à déléguer l'aspect technique tout en accélérant votre croissance ?</h2>
           <p className={styles.finalCtaSubtitle}>Optez pour un site web ultra performant et des processus quotidiens automatisés par l'IA. Prenez rendez-vous pour en discuter de vive voix : c'est 100% offert.</p>
           <div style={{ marginTop: '3rem' }}>
             <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none' }}>
-              <Button variant="solid" style={{ padding: '1.2rem 3rem', fontSize: '1.2rem', boxShadow: '0 0 30px rgba(37,99,235,0.4)' }}>
+              <Button variant="primary" style={{ boxShadow: '0 0 30px rgba(37,99,235,0.4)' }}>
                 Demander un devis
               </Button>
             </Link>

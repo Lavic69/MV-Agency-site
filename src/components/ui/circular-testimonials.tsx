@@ -8,6 +8,7 @@ export interface Testimonial {
   name: string;
   designation: string;
   src: string;
+  link?: string;
 }
 export interface Colors {
   name?: string;
@@ -118,26 +119,27 @@ export const CircularTestimonials = ({
       return {
         zIndex: 3, opacity: 1, pointerEvents: "auto",
         transform: `translateX(0px) translateY(0px) scale(1) rotateY(0deg)`,
-        transition: "all 0.8s cubic-bezier(.4,2,.3,1)",
+        transition: "transform 0.8s cubic-bezier(.4,2,.3,1), opacity 0.8s cubic-bezier(.4,2,.3,1)",
       };
     }
     if (isLeft) {
       return {
         zIndex: 2, opacity: 1, pointerEvents: "auto",
         transform: `translateX(-${gap}px) translateY(-${maxStickUp}px) scale(0.85) rotateY(15deg)`,
-        transition: "all 0.8s cubic-bezier(.4,2,.3,1)",
+        transition: "transform 0.8s cubic-bezier(.4,2,.3,1), opacity 0.8s cubic-bezier(.4,2,.3,1)",
       };
     }
     if (isRight) {
       return {
         zIndex: 2, opacity: 1, pointerEvents: "auto",
         transform: `translateX(${gap}px) translateY(-${maxStickUp}px) scale(0.85) rotateY(-15deg)`,
-        transition: "all 0.8s cubic-bezier(.4,2,.3,1)",
+        transition: "transform 0.8s cubic-bezier(.4,2,.3,1), opacity 0.8s cubic-bezier(.4,2,.3,1)",
       };
     }
     return {
       zIndex: 1, opacity: 0, pointerEvents: "none",
-      transition: "all 0.8s cubic-bezier(.4,2,.3,1)",
+      transform: `translateX(0px) translateY(0px) scale(0.7) rotateY(0deg)`,
+      transition: "transform 0.8s cubic-bezier(.4,2,.3,1), opacity 0.8s cubic-bezier(.4,2,.3,1)",
     };
   }
 
@@ -191,6 +193,18 @@ export const CircularTestimonials = ({
                   </motion.span>
                 ))}
               </motion.p>
+              {activeTestimonial.link && (
+                <a 
+                  href={activeTestimonial.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{ display: 'inline-flex', alignItems: 'center', marginTop: '1rem', color: colorArrowHoverBg, textDecoration: 'none', fontWeight: 'bold', fontSize: '1.1rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#fff'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = colorArrowHoverBg}
+                >
+                  Voir le projet <FaArrowRight style={{ marginLeft: '8px' }} size={16} />
+                </a>
+              )}
             </motion.div>
           </AnimatePresence>
           <div className="arrow-buttons">
@@ -239,8 +253,17 @@ export const CircularTestimonials = ({
           width: 100%;
           height: 100%;
           object-fit: cover;
+          object-position: top;
           border-radius: 1.5rem;
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+          /* Permet de faire redescendre lentement quand on arrête le survol */
+          transition: object-position 2s ease-out !important;
+        }
+        .testimonial-image:hover {
+          /* Descend tout en bas de la pleine page Screenshot quand on survole */
+          object-position: bottom;
+          /* Descend plus doucement (5s) pour simuler un scroll naturel */
+          transition: object-position 5s ease-in-out !important;
         }
         .testimonial-content {
           display: flex;

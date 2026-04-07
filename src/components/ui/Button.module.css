@@ -4,12 +4,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.85rem 2.5rem;
-  border-radius: 50px; /* Beaucoup plus ronds comme demandé */
+  padding: 1.1rem 2.5rem 1.25rem; /* Moins d'espace en haut, plus en bas pour centrer visuellement */
+  border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1.125rem;
+  font-size: 1.25rem; /* Texte plus gros */
   letter-spacing: 0.5px;
+  line-height: 1;
   border: none;
 }
 
@@ -29,16 +30,6 @@
   background-color: #050505;
 }
 
-.secondary {
-  background-color: var(--secondary);
-  color: var(--text-light);
-  border: 1px solid transparent;
-}
-
-.secondary:hover {
-  background-color: rgba(26, 31, 75, 0.8);
-  transform: translateY(-2px);
-}
 
 .outline {
   background-color: #000000;
