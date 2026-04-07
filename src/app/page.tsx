@@ -152,29 +152,8 @@ export default function Home() {
       {/* ======================================= */}
       {/* WRAPPER S1 & S2 POUR PARTAGEMENT DU FOND */}
       {/* ======================================= */}
+      {/* WRAPPER S1 & S2 POUR PARTAGEMENT DU FOND (FONDATEUR GLOABAL GÉRÉ PAR LAYOUT) */}
       <div style={{ position: 'relative', overflow: 'hidden' }}>
-        
-        {/* FOND INTERACTIF GLOABAL */}
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }}>
-          <LiquidEther
-            colors={['#1A1F4B', '#2563EB', '#4F46E5']} 
-            mouseForce={20}
-            cursorSize={100}
-            isViscous
-            viscous={30}
-            iterationsViscous={32}
-            iterationsPoisson={32}
-            resolution={0.5}
-            isBounce={false}
-            autoDemo
-            autoSpeed={0.5}
-            autoIntensity={2.2}
-            takeoverDuration={0.25}
-            autoResumeDelay={3000}
-            autoRampDuration={0.6}
-            style={{ width: '100%', height: '100%' }}
-          />
-        </div>
         <div className={styles.heroGlow} style={{ top: '45%' }}></div>
 
         {/* S1: HERO CONTENT */}
@@ -319,27 +298,7 @@ export default function Home() {
       </section>
 
       {/* S8 — GRAND CTA FINAL */}
-      <section className={styles.finalCtaSection} style={{ position: 'relative', overflow: 'hidden', paddingTop: '5rem' }}>
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }}>
-          <LiquidEther
-            colors={['#1A1F4B', '#2563EB', '#4F46E5']} 
-            mouseForce={20}
-            cursorSize={100}
-            isViscous
-            viscous={30}
-            iterationsViscous={32}
-            iterationsPoisson={32}
-            resolution={0.5}
-            isBounce={false}
-            autoDemo
-            autoSpeed={0.5}
-            autoIntensity={2.2}
-            takeoverDuration={0.25}
-            autoResumeDelay={3000}
-            autoRampDuration={0.6}
-            style={{ width: '100%', height: '100%' }}
-          />
-        </div>
+      <section className={styles.finalCtaSection} style={{ position: 'relative', overflow: 'hidden', paddingTop: '5rem', background: 'transparent' }}>
         <div className={styles.finalCtaGlow} style={{ zIndex: 1 }}></div>
         <div className={styles.finalCtaContent} style={{ position: 'relative', zIndex: 2 }}>
           <h2 className={styles.finalCtaTitle}>Prêt à déléguer l'aspect technique tout en accélérant votre croissance ?</h2>

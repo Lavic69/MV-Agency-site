@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { Button } from '@/components/ui/Button';
 import styles from './Offres.module.css';
-import LiquidEther from '@/components/ui/LiquidEther';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { FaCheckCircle, FaTimes, FaCheck } from 'react-icons/fa';
 import { Accordion } from '@/components/ui/accordion';
@@ -37,27 +36,7 @@ export default function OffresPage() {
   return (
     <main style={{ paddingBottom: "0" }}>
       {/* S1: HERO OFFRES */}
-      <section className={`${styles.section} ${styles.darkBg}`} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }}>
-          <LiquidEther
-            colors={['#1A1F4B', '#2563EB', '#4F46E5']} 
-            mouseForce={20}
-            cursorSize={100}
-            isViscous
-            viscous={30}
-            iterationsViscous={32}
-            iterationsPoisson={32}
-            resolution={0.5}
-            isBounce={false}
-            autoDemo
-            autoSpeed={0.5}
-            autoIntensity={2.2}
-            takeoverDuration={0.25}
-            autoResumeDelay={3000}
-            autoRampDuration={0.6}
-            style={{ width: '100%', height: '100%' }}
-          />
-        </div>
+      <section className={`${styles.section}`} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', background: 'transparent' }}>
         <div className={styles.container} style={{ position: 'relative', zIndex: 1, marginTop: '5rem' }}>
           <FadeIn direction="up">
             <h1 className={styles.headerTitle}>
@@ -254,27 +233,7 @@ export default function OffresPage() {
       </section>
 
       {/* S6: CTA FINAL */}
-      <section className={`${styles.section} ${styles.darkBg}`} style={{ textAlign: "center", padding: "8rem 2rem 4rem 2rem", position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }}>
-          <LiquidEther
-            colors={['#1A1F4B', '#2563EB', '#4F46E5']} 
-            mouseForce={20}
-            cursorSize={100}
-            isViscous
-            viscous={30}
-            iterationsViscous={32}
-            iterationsPoisson={32}
-            resolution={0.5}
-            isBounce={false}
-            autoDemo
-            autoSpeed={0.5}
-            autoIntensity={2.2}
-            takeoverDuration={0.25}
-            autoResumeDelay={3000}
-            autoRampDuration={0.6}
-            style={{ width: '100%', height: '100%' }}
-          />
-        </div>
+      <section className={`${styles.section}`} style={{ textAlign: "center", padding: "8rem 2rem 4rem 2rem", position: 'relative', overflow: 'hidden', background: 'transparent' }}>
         <div className={styles.container} style={{ position: 'relative', zIndex: 1 }}>
           <FadeIn direction="up">
             <h2 className={styles.sectionTitle} style={{ marginBottom: "1rem" }}>Prêt à passer à l'étape supérieure ?</h2>
