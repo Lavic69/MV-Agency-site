@@ -151,7 +151,8 @@
 
 .projectCard {
   flex: 1 1 350px;
-  background-color: var(--secondary);
+  background: rgba(10, 10, 10, 0.5);
+  backdrop-filter: blur(10px);
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -165,7 +166,7 @@
 
 .projectMockup {
   height: 220px;
-  background-color: #2A2A2A;
+  background-color: transparent;
   position: relative;
   border-bottom: 1px solid rgba(255,255,255,0.05);
 }
@@ -174,7 +175,7 @@
   display: flex;
   gap: 6px;
   padding: 10px;
-  background-color: #1A1A1A;
+  background-color: rgba(10, 10, 10, 0.5);
 }
 
 .dot {
@@ -222,7 +223,8 @@
 
 .testiCard {
   flex: 1 1 320px;
-  background-color: #0A0A0A;
+  background: rgba(10, 10, 10, 0.5);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.05);
   border-radius: 12px;
   padding: 2.5rem;
@@ -240,7 +242,8 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: var(--secondary);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .testiName {
@@ -331,7 +334,8 @@
 }
 
 .expertiseCard {
-  background-color: #0A0A0A;
+  background: rgba(10, 10, 10, 0.5);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.05);
   border-radius: 12px;
   padding: 2.5rem 2rem;

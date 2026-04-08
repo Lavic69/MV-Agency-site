@@ -4,11 +4,11 @@
 }
 
 .neutralBg {
-  background-color: var(--bg-neutral);
+  background-color: transparent;
 }
 
 .darkBg {
-  background-color: var(--bg-dark);
+  background-color: transparent;
 }
 
 .container {

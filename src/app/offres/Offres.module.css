@@ -9,11 +9,11 @@
 }
 
 .darkBg {
-  background-color: var(--bg-dark);
+  background-color: transparent;
 }
 
 .neutralBg {
-  background-color: var(--bg-neutral);
+  background-color: transparent;
 }
 
 .headerTitle {
@@ -54,7 +54,8 @@
 }
 
 .packCard {
-  background: #111827; /* Tailwind gray-900 equivalent */
+  background: rgba(10, 10, 10, 0.5);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 3rem 2rem;
@@ -70,7 +71,8 @@
 }
 
 .packCardHighlight {
-  background: linear-gradient(180deg, #1e3a8a, #111827);
+  background: linear-gradient(180deg, rgba(30, 58, 138, 0.6), rgba(17, 24, 39, 0.5));
+  backdrop-filter: blur(10px);
   border: 2px solid #3b82f6;
   transform: scale(1.05);
   box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
@@ -165,7 +167,8 @@
   overflow-x: auto;
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.1);
-  background: #111827;
+  background: rgba(10, 10, 10, 0.5);
+  backdrop-filter: blur(10px);
 }
 
 .compareTable {

@@ -54,7 +54,7 @@
 .sectionDark {
   padding: 8rem 2rem;
   position: relative;
-  background-color: var(--background);
+  background-color: transparent;
 }
 
 .container {
