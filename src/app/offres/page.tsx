@@ -40,8 +40,14 @@ export default function OffresPage() {
         <div className={styles.container} style={{ position: 'relative', zIndex: 1, marginTop: '5rem' }}>
           <FadeIn direction="up">
             <h1 className={styles.headerTitle}>
-              Investissez dans une infrastructure digitale qui <br/>
-              <span style={{ color: '#3b82f6' }}>génère du chiffre d'affaires</span>.
+              Des solutions web sur-mesure propulsées par <br/>
+              <span style={{ 
+                background: "linear-gradient(90deg, #2563eb 0%, #93c5fd 60%, #ffffff 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                color: "transparent"
+              }}>l'intelligence artificielle</span>.
             </h1>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
@@ -135,7 +141,7 @@ export default function OffresPage() {
       <section className={`${styles.section} ${styles.darkBg}`}>
         <div className={styles.container}>
           <FadeIn direction="up">
-            <h2 className={styles.sectionTitle}>Comparatif détaillé</h2>
+            <h2 className={styles.sectionTitle}>Entrons dans les détails</h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <div className={styles.tableContainer}>
@@ -214,7 +220,7 @@ export default function OffresPage() {
       <section className={`${styles.section} ${styles.neutralBg}`}>
         <div className={styles.container}>
           <FadeIn direction="up">
-            <h2 className={styles.sectionTitle}>Comment nous travaillons</h2>
+            <h2 className={styles.sectionTitle}>Notre méthode, pas à pas</h2>
           </FadeIn>
           <Timeline steps={defaultOffresSteps} />
         </div>
@@ -224,7 +230,7 @@ export default function OffresPage() {
       <section className={`${styles.section} ${styles.darkBg}`}>
         <div className={styles.container} style={{ maxWidth: '800px' }}>
           <FadeIn direction="up">
-            <h2 className={styles.sectionTitle}>Questions Fréquentes</h2>
+            <h2 className={styles.sectionTitle}>Vous avez des questions ? On y répond.</h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <Accordion items={faqItems} />
@@ -233,14 +239,16 @@ export default function OffresPage() {
       </section>
 
       {/* S6: CTA FINAL */}
-      <section className={`${styles.section}`} style={{ textAlign: "center", padding: "8rem 2rem 4rem 2rem", position: 'relative', overflow: 'hidden', background: 'transparent' }}>
+      <section className={`${styles.section}`} style={{ textAlign: "center", padding: "clamp(4rem, 10vw, 8rem) clamp(1rem, 5vw, 2rem) 4rem clamp(1rem, 5vw, 2rem)", position: 'relative', overflow: 'hidden', background: 'transparent' }}>
         <div className={styles.container} style={{ position: 'relative', zIndex: 1 }}>
           <FadeIn direction="up">
-            <h2 className={styles.sectionTitle} style={{ marginBottom: "1rem" }}>Prêt à passer à l'étape supérieure ?</h2>
+            <h2 className={styles.sectionTitle} style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1, marginBottom: "1.5rem" }}>
+              Prêt à passer à <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent' }}>l'étape supérieure</span> ?
+            </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <p className={styles.headerDesc} style={{ marginBottom: "3rem" }}>
-              Évitons de perdre du temps. Réservez un appel gratuit de 30 min pour auditer vos besoins et trouver l'architecture digitale parfaite pour vous.
+              Prenons le temps d'échanger sur votre projet lors d'un appel offert de 30 min. Nous vous aiderons à définir avec bienveillance l'architecture qui vous fera vraiment avancer.
             </p>
           </FadeIn>
           <FadeIn direction="up" delay={0.3}>

@@ -257,14 +257,18 @@ export const Timeline = ({ steps }: TimelineProps) => {
         }
 
         .card-number {
-          font-size: 4rem;
+          font-size: 5rem;
           font-weight: 900;
-          color: rgba(255, 255, 255, 0.05);
+          color: transparent;
+          -webkit-text-stroke: 1px rgba(37, 99, 235, 0.5);
+          background: linear-gradient(180deg, rgba(37, 99, 235, 0.8) 0%, rgba(37, 99, 235, 0.1) 100%);
+          -webkit-background-clip: text;
           line-height: 1;
           margin-bottom: 1rem;
           position: absolute;
-          top: -20px;
-          left: 2rem;
+          top: -30px;
+          left: 1.5rem;
+          filter: drop-shadow(0 4px 10px rgba(37, 99, 235, 0.3));
         }
         
         .timeline-right .card-number {
@@ -274,7 +278,7 @@ export const Timeline = ({ steps }: TimelineProps) => {
 
         .card-title {
           font-size: 1.3rem;
-          color: white;
+          color: var(--text-light);
           margin-bottom: 1rem;
           font-weight: 700;
           position: relative;

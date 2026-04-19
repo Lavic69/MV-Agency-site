@@ -7,41 +7,34 @@ import { Accordion } from "@/components/ui/accordion";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
 import FeaturesSection from "@/components/ui/Features";
 import MagicBento from "@/components/ui/MagicBento";
+import { TextReveal } from "@/components/ui/TextReveal";
+import { FadeIn } from "@/components/ui/FadeIn";
 import styles from "./Home.module.css";
-import { SiWordpress, SiWebflow, SiNotion, SiShopify, SiOpenai, SiAnthropic } from 'react-icons/si';
+import { realizations } from "@/data/projects";
+import { SiWordpress, SiWebflow, SiNotion, SiShopify, SiOpenai, SiAnthropic, SiReact, SiNextdotjs, SiFigma, SiN8N, SiStripe, SiVercel, SiOdoo, SiJira, SiAsana, SiFramer } from 'react-icons/si';
 
 const techLogos = [
-  { node: <SiWordpress size={40} color="rgba(255,255,255,0.7)" />, title: "WordPress" },
-  { node: <SiWebflow size={40} color="rgba(255,255,255,0.7)" />, title: "Webflow" },
-  { node: <SiNotion size={40} color="rgba(255,255,255,0.7)" />, title: "Notion" },
-  { node: <SiAnthropic size={40} color="rgba(255,255,255,0.7)" />, title: "Claude AI" },
-  { node: <SiShopify size={40} color="rgba(255,255,255,0.7)" />, title: "Shopify" },
-  { node: <SiOpenai size={40} color="rgba(255,255,255,0.7)" />, title: "ChatGPT" },
+  { node: <SiWordpress size={40} color="#21759b" />, title: "WordPress" },
+  { node: <SiWebflow size={40} color="#4353FF" />, title: "Webflow" },
+  { node: <SiReact size={40} color="#61DAFB" />, title: "React" },
+  { node: <SiNextdotjs size={40} color="var(--text-light)" />, title: "Next.js" },
+  { node: <SiNotion size={40} color="var(--text-light)" />, title: "Notion" },
+  { node: <SiAnthropic size={40} color="#d97757" />, title: "Claude AI" },
+  { node: <img src="https://svgl.app/library/shopify.svg" style={{ height: 40, width: 'auto' }} alt="Shopify" />, title: "Shopify" },
+  { node: <SiOpenai size={40} color="var(--text-light)" />, title: "ChatGPT" },
+  { node: <img src="https://svgl.app/library/n8n.svg" style={{ height: 35, width: 'auto' }} alt="n8n" />, title: "n8n" },
+  { node: <SiStripe size={40} color="#635BFF" />, title: "Stripe" },
+  { node: <img src="https://svgl.app/library/figma.svg" style={{ height: 40, width: 'auto' }} alt="Figma" />, title: "Figma" },
+  { node: <SiVercel size={40} color="var(--text-light)" />, title: "Vercel" },
+  { node: <SiOdoo size={55} color="#714B67" />, title: "Odoo" },
+  { node: <SiJira size={40} color="#0052CC" />, title: "Jira" },
+  { node: <SiAsana size={40} color="#F06A6A" />, title: "Asana" },
+  { node: <SiFramer size={40} color="#0055FF" />, title: "Framer" },
+  { node: <img src="https://svgl.app/library/canva.svg" style={{ height: 40, width: 'auto' }} alt="Canva" />, title: "Canva" },
+  { node: <img src="/ollama.svg" style={{ height: 40, width: 'auto' }} alt="Ollama" />, title: "Ollama" },
 ];
 
-const realizations = [
-  {
-    name: "Pharmacie Les Lataniers",
-    designation: "Site web santé",
-    quote: "Création d'un site web performant avec un système de prise de rendez-vous, dépôt d'ordonnance sécurisé, et un travail SEO en profondeur.",
-    link: "https://pharmacieleslataniers.fr",
-    src: "/projects/lataniers.png"
-  },
-  {
-    name: "Johnny App",
-    designation: "Application & Site Web",
-    quote: "Le site plus l'app : conception technique d'une application de coaching sportif et création de sa vitrine web dédiée.",
-    link: "https://johnny-site.vercel.app",
-    src: "/projects/johnny.png"
-  },
-  {
-    name: "Marque Osan",
-    designation: "Landing Page Produit",
-    quote: "Développement d'une très belle landing page e-commerce conçue de A à Z pour mettre en avant la gamme de ces produits.",
-    link: "https://hosan-one.vercel.app",
-    src: "/projects/hosan.png"
-  }
-];
+
 
 const expertises = [
   {
@@ -68,58 +61,58 @@ const expertises = [
 
 const testimonials = [
   {
-    text: "MV Agency a complètement transformé notre présence en ligne. L'équipe est très pédagogue et le rendu est juste parfait.",
+    text: "Grâce à MV Agency, nos patients prennent rendez-vous et déposent leurs ordonnances en ligne en toute sécurité. Un gain de temps inestimable au comptoir.",
     image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80",
-    name: "Marie L.",
-    role: "Gérante TPE"
+    name: "Olivier G.",
+    role: "Titulaire, Pharmacie Les Lataniers"
   },
   {
-    text: "L'intégration de notre nouveau CRM automatisé a changé la donne. L'équipe a su vulgariser l'outil et nous former de A à Z.",
+    text: "Une architecture sans faille. MV Agency a construit la structure technique de notre app de coaching sportif et notre magnifique site vitrine. Le rendu final est bluffant.",
     image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80",
-    name: "Julien D.",
-    role: "Consultant Indépendant"
+    name: "Johnny M.",
+    role: "Fondateur, Johnny App"
   },
   {
-    text: "Des délais respectés et une qualité incroyable. Le site nous rapporte enfin des clients qualifiés en automatique. Merci !",
+    text: "Notre nouvelle landing page e-commerce convertit incroyablement bien. Le design est ultra premium, fluide, et valorise parfaitement notre nouvelle gamme de produits.",
     image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=80",
-    name: "Sarah T.",
-    role: "Entrepreneuse"
+    name: "Léa C.",
+    role: "Fondatrice, Osan"
   },
   {
-    text: "Cette approche de l'automatisation a révolutionné nos opérations. La plateforme intégrée nous garde productifs, même à distance.",
+    text: "Nous perdions des heures en saisie manuelle. Ils ont automatisé toute la création de nos contrats et la synchronisation CRM. Mon équipe commerciale revit complètement !",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80",
     name: "Thomas V.",
     role: "Directeur Commercial"
   },
   {
-    text: "Une collaboration partenariale véritablement unique. On se sent écoutés. Et le chatbot IA répond 24/7 à nos clients !",
+    text: "L'agent IA qu'ils ont entraîné sur nos données internes répond à 80% des requêtes clients, 24/7. Notre délai de réponse a fondu et la satisfaction client a explosé.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
     name: "Camille P.",
-    role: "Fondatrice Startup"
+    role: "CEO E-commerce"
   },
   {
-    text: "Excellent travail sur la refonte de notre site. Une navigation beaucoup plus fluide et des ventes en hausse dès le premier mois.",
+    text: "Création d'un portail interne sur mesure connecté à tous nos flux de données via n8n. Tout est centralisé en temps réel. Un travail de backend chirurgical.",
     image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&q=80",
     name: "Antoine M.",
-    role: "Gérant Boutique"
+    role: "Gérant Agence Immo"
   },
   {
-    text: "L'équipe est exceptionnelle et réactive. Ils nous ont parfaitement guidés à travers toute la mise en place de la solution.",
+    text: "La solution de génération de contenu optimisée pour le SEO, que l'équipe a propulsée par IA pour notre blog, nous permet de ranker sans sacrifier notre temps.",
     image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&q=80",
     name: "Sophie K.",
-    role: "Avocate"
+    role: "Responsable Marketing"
   },
   {
-    text: "En intégrant cette touche d'Intelligence Artificielle à nos processus internes, notre entreprise a pu scaler de manière efficace.",
+    text: "L'automatisation complète de notre process d'onboarding RH a éliminé toutes nos frictions. Du formulaire initial à la création des accès mails, l'IA pilote tout.",
     image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=100&q=80",
     name: "Nicolas B.",
-    role: "Directeur Marketing"
+    role: "Directeur des Opérations"
   },
   {
-    text: "Leur formation pédagogique claire a permis à toute mon équipe de prendre en main le nouveau site web sans aucune friction.",
+    text: "Plus qu'une agence, de vrais architectes tech. Ils ont mis en place des automatisations complexes, tout en formant nos équipes pour nous rendre 100% autonomes.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
     name: "Élodie F.",
-    role: "Responsable RH"
+    role: "Fondatrice Cabinet Conseil"
   }
 ];
 
@@ -129,20 +122,28 @@ const thirdColumn = testimonials.slice(6, 9);
 
 const faqItems = [
   {
-    question: "À qui s'adressent vos services ?",
-    answer: "Principalement aux TPE, PME, indépendants et professions libérales qui souhaitent professionnaliser leur présence en ligne et gagner du temps grâce à l'automatisation et l'IA, sans se perdre dans le jargon technique."
+    question: "À quels types d'entreprises s'adressent vos services ?",
+    answer: "Nous accompagnons un spectre très varié : les **TPE/PME locales** (comme des pharmacies ou cabinets voulant digitaliser leurs processus), les **boutiques E-commerce** cherchant à scaler, les **solopreneurs** voulant multiplier leur productivité via l'IA, et les **Startups** (SaaS, plateformes sur-mesure)."
   },
   {
-    question: "Je n'y connais rien en intelligence artificielle, est-ce grave ?",
-    answer: "Absolument pas ! C'est justement la force de MV Agency : la pédagogie. Nous nous occupons de l'intégration technique complexe et nous vous expliquons pas-à-pas comment utiliser vos nouveaux outils de manière autonome."
+    question: "Je n'y connais rien en Intelligence Artificielle ou en code, est-ce grave ?",
+    answer: "Absolument pas ! L'objectif de MV Agency est de traduire l'innovation technique en valeur ajoutée concrète pour vous. Nous construisons des systèmes complexes, mais nous concevons des interfaces extrêmement simples à utiliser, et nous incluons toujours une formation pédagogique approfondie avec nos clients."
   },
   {
-    question: "Quels sont vos tarifs ?",
-    answer: "Contrairement aux agences traditionnelles qui fonctionnent sur devis opaques, nous proposons 3 packages progressifs clairs : Fondation, Croissance (le plus populaire) et Performance IA. Le budget s'adapte à vos besoins réels et non l'inverse."
+    question: "J'ai déjà un site web. Pouvez-vous uniquement y greffer des automatisations ?",
+    answer: "Tout à fait. Si vous disposez déjà d'une base saine (WordPress, Shopify, Webflow, etc.), nous pouvons intervenir uniquement pour y déployer un Assistant IA, automatiser votre gestion de devis/facturation vers votre CRM, ou optimiser l'UI pour booster vos conversions."
+  },
+  {
+    question: "Combien de temps prend généralement un projet avec MV Agency ?",
+    answer: "La rapidité dépend de la complexité. Un site vitrine 'conversion' combiné à une automatisation de base prend en moyenne **3 à 4 semaines**. Pour un écosystème IA complet ou une plateforme e-commerce complexe, comptez de **6 à 8 semaines**. Un rétroplanning structuré vous est fourni dès le lancement."
+  },
+  {
+    question: "Comment fonctionnent vos tarifs ?",
+    answer: "La transparence est primordiale pour nous. Dès notre appel d'audit offert, nous évaluons vos besoins : nous vous orientons soit vers nos **Packs clairs et fixes**, soit nous vous établissons un devis sur-mesure si vous nécessitez des architectures serveurs et backend hyper complexes."
   },
   {
     question: "Suis-je totalement propriétaire de mon site et de mes outils ?",
-    answer: "Oui, à 100 %. Dès la livraison du projet, nous vous remettons tous vos accès administrateurs. Vous n'êtes lié à nous par aucun abonnement caché ou contraignant."
+    answer: "Oui, à 100 %. Nous facturons notre expertise à la prestation. À la livraison, nous vous remettons les clés et mots de passe administrateurs de votre site web, de vos automatisations logicielle (n8n, Make) et des bases de données. Pas de frais cachés, aucun abonnement 'otage'."
   }
 ];
 
@@ -160,25 +161,39 @@ export default function Home() {
         <section className={styles.hero} style={{ background: 'transparent', borderBottom: 'none', minHeight: '85vh' }}>
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>
-            Votre site web.<br />
-            Notre expertise.<br />
-            <span className="neon-text" style={{ color: "var(--primary)" }}>L'IA en plus.</span>
-          </h1>
-          <p className={styles.heroSubtitle}>
-            Agence digitale spécialisée en création web et intelligence artificielle. On conçoit, on explique, on propulse. Pour TPE, PME et indépendants.
-          </p>
-          <div className={styles.heroActions}>
-            <Link href="/offres" tabIndex={-1} style={{ textDecoration: 'none' }}>
-              <Button variant="primary">
-                Découvrir nos offres
-              </Button>
-            </Link>
-            <Link href="/a-propos" tabIndex={-1} style={{ textDecoration: 'none' }}>
-              <Button variant="outline">
-                Voir comment on travaille
-              </Button>
-            </Link>
-          </div>
+              <TextReveal delay={0.1}>Votre site web.</TextReveal>
+              <TextReveal delay={0.2}>Notre expertise.</TextReveal>
+              <TextReveal delay={0.3}>
+                <span style={{ 
+                  background: "linear-gradient(90deg, var(--text-light) 0%, var(--primary) 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  color: "transparent",
+                  paddingBottom: "0.1em",
+                  display: "inline-block"
+                }}>L'IA en plus.</span>
+              </TextReveal>
+            </h1>
+            <FadeIn direction="up" delay={0.5}>
+              <p className={styles.heroSubtitle}>
+                Agence digitale spécialisée en création web et intelligence artificielle. On conçoit, on explique, on propulse. Pour TPE, PME et indépendants.
+              </p>
+            </FadeIn>
+            <FadeIn direction="up" delay={0.6}>
+              <div className={styles.heroActions}>
+                <Link href="/offres" tabIndex={-1} style={{ textDecoration: 'none' }}>
+                  <Button variant="primary">
+                    Découvrir nos offres
+                  </Button>
+                </Link>
+                <Link href="/a-propos" tabIndex={-1} style={{ textDecoration: 'none' }}>
+                  <Button variant="outline">
+                    Voir comment on travaille
+                  </Button>
+                </Link>
+              </div>
+            </FadeIn>
 
           {/* Social Proof Pill */}
           <div style={{ 
@@ -199,32 +214,54 @@ export default function Home() {
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client 3" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 2, marginLeft: '-10px', objectFit: 'cover' }} />
               <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Client 4" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 1, marginLeft: '-10px', objectFit: 'cover' }} />
             </div>
-            <p style={{ margin: 0, fontSize: '0.9rem', color: '#B3B3B3', letterSpacing: '0.3px', fontFamily: 'var(--font-body)' }}>
-              Rejoint par <strong style={{ color: '#fff', fontWeight: '500' }}>+50</strong> entrepreneurs.
+            <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)', letterSpacing: '0.3px', fontFamily: 'var(--font-body)' }}>
+              Rejoint par <strong style={{ color: 'var(--text-light)', fontWeight: '500' }}>+50</strong> entrepreneurs.
             </p>
           </div>
           </div>
         </section>
 
         {/* S2 — TECHNOLOGIES (Désormais sous le fond interactif) */}
-        <section className={styles.marqueeSection} style={{ padding: '0 0 3rem 0', background: 'transparent', position: 'relative', zIndex: 1 }}>
-          {/* @ts-ignore - LogoLoop is a JSX component */}
-          <LogoLoop
-            logos={techLogos}
-            speed={100}
-            direction="left"
-            logoHeight={50}
-            gap={80}
-            hoverSpeed={0}
-            fadeOut
-            fadeOutColor="transparent"
-          />
+        <section className={styles.marqueeSection} style={{ padding: '8rem 0 6rem 0', background: 'transparent', position: 'relative', zIndex: 1, flexDirection: 'column', alignItems: 'center' }}>
+          <div style={{ textAlign: "center", marginBottom: "4rem", padding: "0 2rem" }}>
+            <FadeIn direction="up">
+              <h3 style={{ 
+                fontSize: "clamp(1.8rem, 4vw, 2.6rem)", 
+                fontWeight: 600, 
+                fontFamily: "var(--font-heading), sans-serif",
+                letterSpacing: "-0.03em",
+                background: "linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                color: "transparent",
+                margin: 0
+              }}>
+                Les technologies que nous maîtrisons
+              </h3>
+            </FadeIn>
+          </div>
+          <div style={{ width: '100%' }}>
+            {/* @ts-ignore - LogoLoop is a JSX component */}
+            <LogoLoop
+              logos={techLogos}
+              speed={100}
+              direction="left"
+              logoHeight={50}
+              gap={80}
+              hoverSpeed={0}
+              fadeOut
+              fadeOutColor="transparent"
+            />
+          </div>
         </section>
       </div>
 
       {/* S3 — NOS RÉALISATIONS */}
       <section className={styles.section} style={{ paddingLeft: 0, paddingRight: 0 }}>
-        <h2 className={styles.sectionTitle}>Nos réalisations</h2>
+        <FadeIn direction="up">
+          <h2 className={styles.sectionTitle}>Découvrez nos dernières collaborations</h2>
+        </FadeIn>
         <div style={{ maxWidth: "1200px", margin: "0 auto", overflow: "hidden" }}>
            <CircularTestimonials
             testimonials={realizations}
@@ -248,7 +285,9 @@ export default function Home() {
 
       {/* S4 — NOS EXPERTISES */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Nos expertises</h2>
+        <FadeIn direction="up">
+          <h2 className={styles.sectionTitle}>Notre savoir-faire, à votre service</h2>
+        </FadeIn>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <FeaturesSection />
         </div>
@@ -256,7 +295,9 @@ export default function Home() {
 
       {/* S5 — TÉMOIGNAGES */}
       <section className={styles.section} style={{ overflow: 'hidden' }}>
-        <h2 className={styles.sectionTitle}>Ce que nos clients disent de nous</h2>
+        <FadeIn direction="up">
+          <h2 className={styles.sectionTitle}>Ils travaillent avec nous au quotidien</h2>
+        </FadeIn>
         <div style={{
           display: "flex",
           justifyContent: "center",
@@ -275,7 +316,9 @@ export default function Home() {
 
       {/* S6 — POURQUOI CHOISIR MV AGENCY */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle} style={{ marginBottom: "2rem" }}>Pourquoi choisir MV Agency ?</h2>
+        <FadeIn direction="up">
+          <h2 className={styles.sectionTitle} style={{ marginBottom: "2rem" }}>Pourquoi faire appel à nous ?</h2>
+        </FadeIn>
         <MagicBento 
           textAutoHide={false}
           enableStars={true}
@@ -293,7 +336,9 @@ export default function Home() {
 
       {/* S7 — FAQ */}
       <section className={styles.section} style={{ paddingBottom: '5rem' }}>
-        <h2 className={styles.sectionTitle}>FAQ</h2>
+        <FadeIn direction="up">
+          <h2 className={styles.sectionTitle}>Vous avez des questions ? On y répond.</h2>
+        </FadeIn>
         <Accordion items={faqItems} />
       </section>
 
@@ -301,15 +346,33 @@ export default function Home() {
       <section className={styles.finalCtaSection} style={{ position: 'relative', overflow: 'hidden', paddingTop: '5rem', background: 'transparent' }}>
         <div className={styles.finalCtaGlow} style={{ zIndex: 1 }}></div>
         <div className={styles.finalCtaContent} style={{ position: 'relative', zIndex: 2 }}>
-          <h2 className={styles.finalCtaTitle}>Prêt à déléguer l'aspect technique tout en accélérant votre croissance ?</h2>
-          <p className={styles.finalCtaSubtitle}>Optez pour un site web ultra performant et des processus quotidiens automatisés par l'IA. Prenez rendez-vous pour en discuter de vive voix : c'est 100% offert.</p>
-          <div style={{ marginTop: '3rem' }}>
-            <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none' }}>
-              <Button variant="primary" style={{ boxShadow: '0 0 30px rgba(37,99,235,0.4)' }}>
-                Demander un devis
-              </Button>
-            </Link>
-          </div>
+          <FadeIn direction="up">
+            <h2 className={styles.finalCtaTitle}>
+              Prêt à allier l'excellence du web à la puissance de <br className={styles.hideOnMobile} />
+              <span style={{ 
+                fontStyle: 'italic',
+                background: "linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                color: "transparent"
+              }}>l'intelligence artificielle</span> ?
+            </h2>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.2}>
+            <p className={styles.finalCtaSubtitle}>
+              Discutons ensemble de vos envies et imaginons les solutions idéales pour vous faire gagner un temps précieux. Prenez un moment pour échanger de vive voix, c'est offert et sans engagement.
+            </p>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.4}>
+            <div style={{ marginTop: '3rem' }}>
+              <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none' }}>
+                <Button variant="primary" style={{ boxShadow: '0 0 30px rgba(37,99,235,0.4)' }}>
+                  Demander un devis
+                </Button>
+              </Link>
+            </div>
+          </FadeIn>
         </div>
       </section>
 

@@ -40,10 +40,10 @@ export const MockupTree = () => {
         {/* Step 1 */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
           <div style={{ width: '50px', height: '50px', borderRadius: '50%', backgroundColor: '#1e3a8a', border: '2px solid #3b82f6', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)' }}>
-            <FaPlay color="white" size={16} style={{ marginLeft: '4px' }} />
+            <FaPlay color="var(--text-light)" size={16} style={{ marginLeft: '4px' }} />
           </div>
           <div>
-            <div style={{ color: 'white', fontWeight: 'bold' }}>Vidéos Loom</div>
+            <div style={{ color: 'var(--text-light)', fontWeight: 'bold' }}>Vidéos Loom</div>
             <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem' }}>Guides étape par étape</div>
           </div>
         </div>
@@ -51,10 +51,10 @@ export const MockupTree = () => {
         {/* Step 2 */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', opacity: 0.8 }} className="step-2">
           <div style={{ width: '50px', height: '50px', borderRadius: '50%', backgroundColor: '#111827', border: '2px solid rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <FaCheck color="white" size={20} />
+            <FaCheck color="var(--text-light)" size={20} />
           </div>
           <div>
-            <div style={{ color: 'white', fontWeight: 'bold' }}>Espace Notion</div>
+            <div style={{ color: 'var(--text-light)', fontWeight: 'bold' }}>Espace Notion</div>
             <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem' }}>Ressources partagées</div>
           </div>
         </div>
@@ -62,10 +62,10 @@ export const MockupTree = () => {
         {/* Step 3 */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', opacity: 0.5 }} className="step-3">
           <div style={{ width: '50px', height: '50px', borderRadius: '50%', backgroundColor: '#111827', border: '2px solid rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <FaGraduationCap color="white" size={24} />
+            <FaGraduationCap color="var(--text-light)" size={24} />
           </div>
           <div>
-            <div style={{ color: 'white', fontWeight: 'bold' }}>Autonomie</div>
+            <div style={{ color: 'var(--text-light)', fontWeight: 'bold' }}>Autonomie</div>
             <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem' }}>Vous gérez votre site</div>
           </div>
         </div>

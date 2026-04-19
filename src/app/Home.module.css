@@ -410,3 +410,40 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 8rem 1.5rem 3rem 1.5rem !important;
+    min-height: 75vh !important;
+  }
+  .section {
+    padding: 4rem 1.5rem !important;
+  }
+  .finalCtaSection {
+    padding: 4rem 1.5rem !important;
+  }
+  .heroTitle {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+  }
+  .heroActions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .heroActions a, .heroActions button {
+    width: 100%;
+  }
+  .sectionTitle {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+  }
+  .marqueeContent {
+    gap: 3rem;
+  }
+  .marqueeItem {
+    font-size: 1.5rem;
+  }
+  .testiCard {
+    padding: 1.5rem;
+  }
+}
+

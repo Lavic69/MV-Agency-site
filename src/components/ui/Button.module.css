@@ -4,40 +4,117 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1.1rem 2.5rem 1.25rem; /* Moins d'espace en haut, plus en bas pour centrer visuellement */
+  padding: 1.1rem 2.5rem; /* Centrage visuel */
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 1.25rem; /* Texte plus gros */
   letter-spacing: 0.5px;
-  line-height: 1;
   border: none;
 }
 
 .primary {
-  background-color: #000000; /* Full black */
-  color: var(--text-light);
-  /* Effet de lueur (glow) néon bleu en arrière-plan */
-  box-shadow: 0 0 20px rgba(37, 99, 235, 0.6), 0 0 40px rgba(37, 99, 235, 0.3);
-  /* Très subtile bordure pour bien délimiter la forme noire du fond de la page si besoin */
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+  border: none;
+}
+
+.primary::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500%;
+  aspect-ratio: 1 / 1;
+  /* Glowing white streak to contrast with the blue background */
+  background: conic-gradient(from 0deg, transparent 70%, #ffffff 100%);
+  transform: translate(-50%, -50%);
+  animation: spinLight 3s linear infinite;
+  z-index: 0;
+}
+
+.primary::after {
+  content: "";
+  position: absolute;
+  inset: 1.5px; /* Determines the border thickness */
+  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%); /* Solid vibrant blue */
+  border-radius: 50px; /* matches the button default */
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.primaryContent {
+  position: relative;
+  z-index: 2;
+  color: var(--text-light); /* Explicit white for contrast */
+  background: transparent;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.primary:hover::before {
+  animation-duration: 1.5s; /* Speeds up on hover to feel reactive */
+}
+
+.primary:hover::after {
+  background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 100%); /* Lighter on hover */
 }
 
 .primary:hover {
-  /* Le néon bleu s'intensifie au survol */
-  box-shadow: 0 0 25px rgba(37, 99, 235, 0.8), 0 0 50px rgba(37, 99, 235, 0.5);
   transform: translateY(-2px);
-  background-color: #050505;
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.5); /* Extended glow on hover */
 }
 
-
 .outline {
-  background-color: #000000;
+  background: linear-gradient(180deg, rgba(30, 30, 35, 0.8) 0%, rgba(15, 15, 15, 0.8) 100%);
   color: var(--text-light);
-  border: 1px solid var(--accent);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
 .outline:hover {
-  border-color: var(--text-light);
+  border-color: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(180deg, rgba(40, 40, 45, 0.9) 0%, rgba(20, 20, 20, 0.9) 100%);
   transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+@keyframes spinLight {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Animated "torpedo" text logic */
+.rollupWrapper {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.charWrapper {
+  position: relative;
+  display: inline-flex;
+  transition: transform 0.6s cubic-bezier(0.5, 0, 0.2, 1);
+}
+
+.charVisible {
+  display: inline-flex;
+  align-items: center;
+}
+
+.charHidden {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+}
+
+/* We trigger the transform when the PARENT button is hovered */
+.button:hover .charWrapper {
+  transform: translateY(-100%);
 }

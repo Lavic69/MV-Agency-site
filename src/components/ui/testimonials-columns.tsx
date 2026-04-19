@@ -53,7 +53,7 @@ export const TestimonialsColumn = (props: {
                       style={{ height: "40px", width: "40px", borderRadius: "50%", objectFit: "cover" }}
                     />
                     <div style={{ display: "flex", flexDirection: "column" }}>
-                      <div style={{ fontWeight: 600, letterSpacing: "-0.01em", lineHeight: 1.25, color: "#fff", fontSize: "1rem" }}>{name}</div>
+                      <div style={{ fontWeight: 600, letterSpacing: "-0.01em", lineHeight: 1.25, color: 'var(--text-light)', fontSize: "1rem" }}>{name}</div>
                       <div style={{ lineHeight: 1.25, opacity: 0.6, letterSpacing: "-0.01em", fontSize: "0.85rem", color: "var(--accent)", marginTop: "0.25rem" }}>{role}</div>
                     </div>
                   </div>

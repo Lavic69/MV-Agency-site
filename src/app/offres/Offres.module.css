@@ -100,7 +100,7 @@
   left: 50%;
   transform: translateX(-50%);
   background: #3b82f6;
-  color: white;
+  color: var(--text-light);
   padding: 0.3rem 1.5rem;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -112,7 +112,7 @@
 .packTitle {
   font-size: 1.8rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-light);
   margin-bottom: 0.5rem;
   text-align: center;
 }
@@ -186,7 +186,7 @@
 
 .compareTable th {
   font-size: 1.1rem;
-  color: white;
+  color: var(--text-light);
   background: rgba(0,0,0,0.2);
 }
 
@@ -201,7 +201,7 @@
 
 .featureName {
   font-weight: 500;
-  color: white;
+  color: var(--text-light);
 }
 
 .highlightCol {
@@ -264,7 +264,7 @@
 
 .processTitle {
   font-size: 1.3rem;
-  color: white;
+  color: var(--text-light);
   margin-bottom: 1rem;
   font-weight: 700;
   position: relative;

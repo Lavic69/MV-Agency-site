@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MV Agency - Site Web Officiel
 
-## Getting Started
+## 📁 À propos du projet
+MV Agency est une agence digitale fondée par Victor Marchetti, spécialisée dans la création de sites web performants, l'intégration d'intelligence artificielle et l'automatisation. Ce projet correspond au code source du site vitrine de l'agence.
 
-First, run the development server:
+Le site a pour but de mettre en avant les différentes expertises de MV Agency, son approche pédagogique ainsi que ses 3 packs évolutifs, dans un écrin graphique reprenant les codes d'un positionnement "Dark Mode, Premium, Minimaliste".
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Stack Technique Principale :**
+- **Framework** : Next.js (App Router)
+- **Langage** : TypeScript / React
+- **Styling** : Vanilla CSS Modules (approches variables CSS globales)
+- **Animations & Interactif** : Framer Motion, GSAP, Radix UI et de nombreux composants customisés (Three.js/LiquidEther)
+- **Prise de rendez-vous** : Cal.com (Embed React)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Design System et Identité Visuelle
+Afin de préserver la cohérence visuelle, le projet suit de très près les directives définies dans le fichier `design_system.md` :
+- **Fond principal** : Noir Absolu (`#0A0A0A`)
+- **Accentuation (Glow/Neon)** : Bleu Néon (`#2563EB`) et Bleu Indigo Sombre (`#1A1F4B`)
+- **Polices Principales** : `Darker Grotesque` (pour l'impact visuel Tech de tous les titres) et `DM Sans` (pour la lisibilité du corps de texte).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🗺️ Arborescence des Pages (Routing)
+Le projet se sert de l'App Router de Next.js (dossier `src/app`). Voici les différentes pages implémentées :
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Accueil (`/`)** ➔ `src/app/page.tsx` : La page principale avec la mise en avant des partenaires (`LogoLoop`), les services via un système Bento (`MagicBento`) et l'ambiance globale du site animée par `LiquidEther`.
+- **À propos (`/a-propos`)** ➔ `src/app/a-propos/page.tsx` : Présentation du founder, des fondations et des valeurs de l'agence.
+- **Services (`/services`)** ➔ `src/app/services/page.tsx` : Exploration des expertises web et IA.
+- **Offres & Packs (`/offres`)** ➔ `src/app/offres/page.tsx` : Détails tarifaires et inclusions des 3 packs (Fondation, Croissance, Performance IA).
+- **Cas Clients / Réalisations (`/cas-clients`)** ➔ `src/app/cas-clients/page.tsx` : Témoignages et cas d'usage.
+- **Contact (`/contact`)** ➔ `src/app/contact/page.tsx` : Formulaires et Call-To-Action pour convertir ou réserver avec l'agence.
+- **Blog (`/blog`)** ➔ `src/app/blog/page.tsx` : Le centre d'informations et d'articles SEO pour le trafic inbound.
 
-## Learn More
+## 🧱 Architecture des Composants (`src/components/`)
+La majeure partie des composants réutilisables se trouve dans `src/components/ui/` :
 
-To learn more about Next.js, take a look at the following resources:
+- **Effets premium** : `LiquidEther.jsx` (Ciel étoilé / fluide en fond), `MagicBento.tsx` (Grille interactive style Bento avec effets de hover lumineux), `TextReveal.tsx` et `glow-card.tsx`.
+- **Preuve sociale & Data UX** : `LogoLoop.jsx` (carrousel infini de marques), `circular-testimonials.tsx` et `testimonials-columns.tsx`, `Timeline.tsx` (pour la roadmap du process client).
+- **Basiques Ultrasignifiés** : `Button.tsx` (Boutons aux effets glow), `Features.tsx` et `FeaturesGrid.tsx` pour lister un grand nombre de bénéfices.
+- Les Layouts transverses que sont `Header.tsx` (navigation principale) et `Footer.tsx` (liens en pied de page) se situent à la racine de `components`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Référencement (SEO) et Performances
+Le socle Next.js a été optimisé pour maximiser le rendu pour les moteurs de recherche :
+- Les métadonnées de page (`title`, `description`) sont configurées via l'API interne dans le `layout.tsx` et modifiées indépendamment pour chaque route.
+- **Fichiers Automatisés de Crawler** : 
+  - `sitemap.ts` (`src/app/sitemap.ts`) : Conçu pour générer dynamiquement l'arborescence destinée à Google.
+  - `robots.ts` (`src/app/robots.ts`) : Orientations pour l'indexation.
+- Une structure de balises de contenu ultra-optimisée pour l'accessibilité via l'adoption de polices Google traitées en local (`next/font`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ⚙️ Contexte Développeur & Lancement
+Si vous récupérez la main sur ce projet (Getting Started) :
 
-## Deploy on Vercel
+1. **Installation des dépendances :**
+   ```bash
+   npm install
+   ```
+2. **Lancement du serveur de test en local :**
+   ```bash
+   npm run dev
+   ```
+   *Accès disponible sur [http://localhost:3000](http://localhost:3000)*
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Build de production :**
+   ```bash
+   npm run build
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Astuce aux contributeurs : Avant d'entamer de nouvelles pages ou une grande refonte stratégique, merci de consulter impérativement les fichiers sources `InfoMVAgency.md`, `Brainstorming_MV_Agency.md` et `tracking_du_projet.md` situés à la racine pour bien saisir l'état d'esprit et l'approche commerciale historique de ce projet.*

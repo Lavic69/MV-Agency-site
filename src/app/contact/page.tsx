@@ -1,26 +1,27 @@
-import { Metadata } from 'next';
+import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/seo";
+import ContactClient from "./ContactClient";
 
 export const metadata: Metadata = {
-  title: 'Contact | MV Agency',
-  description: 'Planifions un échange pour votre projet.',
+  title: "Contact — Parlons de votre projet",
+  description:
+    "Prenez rendez-vous avec Victor Marchetti, fondateur de MV Agency. Échange de 30 minutes gratuit pour discuter de votre projet web ou IA. Réponse sous 24h ouvrées.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    type: "website",
+    title: "Contact MV Agency — Réservez un appel découverte",
+    description:
+      "Discutons de votre projet digital ou IA. Rendez-vous de 30 minutes sans engagement.",
+    url: `${SITE_URL}/contact`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact MV Agency",
+    description:
+      "Réservez un appel découverte de 30 minutes pour votre projet web ou IA.",
+  },
 };
 
 export default function ContactPage() {
-  return (
-    <main className="container" style={{ padding: "6rem 2rem", minHeight: "80vh", textAlign: "center" }}>
-      <h1 className="neon-text" style={{ fontSize: "3.5rem", marginBottom: "1rem" }}>Contactez-nous</h1>
-      <p style={{ fontSize: "1.2rem", color: "var(--accent)", maxWidth: "600px", margin: "0 auto", marginBottom: "3rem" }}>
-        Prêt à propulser votre présence digitale ? Réservez un appel gratuit pour auditer votre besoin.
-      </p>
-      
-      <div style={{ maxWidth: "600px", margin: "0 auto", backgroundColor: "var(--secondary)", padding: "3rem", borderRadius: "8px", border: "1px solid var(--accent)" }}>
-         <h3 style={{ marginBottom: "2rem", fontSize: "1.5rem" }}>Planifions un échange</h3>
-         <div style={{ border: "2px dashed var(--accent)", padding: "4rem 2rem", borderRadius: "8px" }}>
-            <p style={{ color: "var(--accent)", marginBottom: "1rem" }}>[Intégration Calendly / Formulaire]</p>
-            <p style={{ fontSize: "0.9rem", color: "var(--text-light)" }}>En attendant, écrivez à : <strong style={{ color: "var(--primary)" }}>contact@mvagency.fr</strong></p>
-            <p style={{ fontSize: "0.9rem", color: "var(--text-light)", marginTop: "0.5rem" }}>Tel : <strong>04 70 63 64 52</strong></p>
-         </div>
-      </div>
-    </main>
-  );
+  return <ContactClient />;
 }

@@ -1,0 +1,20 @@
+# MV Agency - AI Knowledge File
+
+## Introduction
+MV Agency est une agence digitale spécialisée dans la création de sites web premium et l'intégration de solutions d'intelligence artificielle sur-mesure pour les PME.
+L'objectif de MV Agency est d'allier une direction artistique de haut vol avec une ingénierie de pointe pour accélérer la croissance des entreprises.
+
+## Services Clés
+1. Création de Sites Web & Plateformes (Next.js, React, Design Premium)
+2. Développement d'Applications SaaS
+3. Intégration et Déploiement d'Agents IA Souverains (Architecture sécurisée pour garantir la confidentialité des données)
+4. Stratégie Digitale & UX/UI Design
+
+## Réalisations Phares
+- Stark AI : Application Web IA garantissant la souveraineté des données.
+- Johnny App : Application de coaching sportif et sa vitrine web.
+- Pharmacie Les Lataniers : Site e-santé performant avec système de rendez-vous IA.
+
+## Contact & Offres
+Le site propose des packs "One-Off" transparents (sans abonnement caché), allant du site vitrine optimisé jusqu'au déploiement de cocons IA avancés.
+Pour collaborer avec MV Agency, les entreprises sont invitées à réserver un appel de découverte stratégique depuis la page Contact du site.

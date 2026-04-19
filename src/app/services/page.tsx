@@ -21,7 +21,7 @@ export default function ServicesPage() {
       <section className={`${styles.section}`} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', background: 'transparent' }}>
         <div className={styles.container} style={{ position: 'relative', zIndex: 1 }}>
           <FadeIn direction="up">
-            <h1 className={styles.headerTitle}>Nos Services</h1>
+            <h1 className={styles.headerTitle}>Comment nous vous accompagnons</h1>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <p className={styles.headerDesc}>
@@ -44,7 +44,7 @@ export default function ServicesPage() {
           <div className={styles.splitLayout}>
             <div className={styles.col60}>
               <FadeIn direction="left">
-                <h2 className={styles.sectionTitle}>Création Web & Présence Digitale</h2>
+                <h2 className={styles.sectionTitle}>Une présence digitale qui marque les esprits</h2>
                 <ul className={styles.servicesList}>
                   <li><FaCheck className={styles.checkIcon} /> Sites vitrines ultra-rapides en Next.js, e-commerce, refontes et landing pages de conversion</li>
                    <li><FaCheck className={styles.checkIcon} /> SEO et référencement naturel optimisé à la racine</li>
@@ -75,7 +75,7 @@ export default function ServicesPage() {
           <div className={styles.splitLayout} style={{ flexDirection: 'row-reverse' }}>
             <div className={styles.col60}>
               <FadeIn direction="right">
-                <h2 className={styles.sectionTitle}>Intelligence Artificielle & Automatisation</h2>
+                <h2 className={styles.sectionTitle}>L'IA au service de votre productivité</h2>
                 <ul className={styles.servicesList}>
                   <li><FaCheck className={styles.checkIcon} /> Chatbots intelligents & agents IA personnalisés</li>
                   <li><FaCheck className={styles.checkIcon} /> Automatisation CRM, emails dynamiques, gestions de formulaires</li>
@@ -102,7 +102,7 @@ export default function ServicesPage() {
           <div className={styles.splitLayout}>
             <div className={styles.col60}>
               <FadeIn direction="left">
-                <h2 className={styles.sectionTitle}>Formation & Accompagnement</h2>
+                <h2 className={styles.sectionTitle}>Vous rendre 100% autonome</h2>
                 <ul className={styles.servicesList}>
                   <li><FaCheck className={styles.checkIcon} /> <span style={{ color: "var(--text-light)"}}>Formation incluse de base dans tous nos packs</span></li>
                   <li><FaCheck className={styles.checkIcon} /> Vidéos Loom explicatives et archivées pour chaque livrable</li>
@@ -123,14 +123,16 @@ export default function ServicesPage() {
       </section>
 
       {/* S5 — CTA FINAL */}
-      <section className={`${styles.section}`} style={{ textAlign: "center", padding: "8rem 2rem 4rem 2rem", position: 'relative', overflow: 'hidden', background: 'transparent' }}>
+      <section className={`${styles.section}`} style={{ textAlign: "center", padding: "clamp(4rem, 10vw, 8rem) clamp(1rem, 5vw, 2rem) 4rem clamp(1rem, 5vw, 2rem)", position: 'relative', overflow: 'hidden', background: 'transparent' }}>
         <div className={styles.container} style={{ position: 'relative', zIndex: 1 }}>
           <FadeIn direction="up">
-            <h2 className={styles.sectionTitle} style={{ marginBottom: "1rem" }}>Prêt à booster votre activité ?</h2>
+            <h2 className={styles.sectionTitle} style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1, marginBottom: "1.5rem" }}>
+              Prêt à <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent' }}>booster votre activité</span> ?
+            </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <p className={styles.headerDesc} style={{ marginBottom: "3rem" }}>
-              Parlons de vos objectifs et voyons comment nos process techniques peuvent vous faire gagner de l'argent et du temps libre.
+              Prenons un moment pour discuter de votre activité. Nous serons ravis de vous conseiller et de voir comment la tech peut vous libérer l'esprit au quotidien.
             </p>
           </FadeIn>
           <FadeIn direction="up" delay={0.3}>

@@ -30,10 +30,10 @@ export const MockupWorkflow = () => {
       {/* Node 1: Webhook */}
       <div className="node" style={{ top: '65px', left: '20px' }}>
         <div style={{ backgroundColor: '#8b5cf6', padding: '12px', borderRadius: '12px 0 0 12px', display: 'flex', alignItems: 'center' }}>
-          <FaGlobe color="white" size={20} />
+          <FaGlobe color="var(--text-light)" size={20} />
         </div>
         <div style={{ padding: '0 15px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <span style={{ fontSize: '13px', fontWeight: 'bold', color: 'white' }}>Webhook</span>
+          <span style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--text-light)' }}>Webhook</span>
           <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)' }}>Trigger</span>
         </div>
       </div>
@@ -41,10 +41,10 @@ export const MockupWorkflow = () => {
       {/* Node 2: AI */}
       <div className="node floating" style={{ top: '145px', left: '200px' }}>
         <div style={{ backgroundColor: '#2563eb', padding: '12px', borderRadius: '12px 0 0 12px', display: 'flex', alignItems: 'center' }}>
-          <FaBrain color="white" size={20} />
+          <FaBrain color="var(--text-light)" size={20} />
         </div>
         <div style={{ padding: '0 15px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <span style={{ fontSize: '13px', fontWeight: 'bold', color: 'white' }}>OpenAI</span>
+          <span style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--text-light)' }}>OpenAI</span>
           <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)' }}>Process Data</span>
         </div>
       </div>
@@ -52,10 +52,10 @@ export const MockupWorkflow = () => {
       {/* Node 3: Email */}
       <div className="node" style={{ top: '45px', left: '380px' }}>
         <div style={{ backgroundColor: '#22c55e', padding: '12px', borderRadius: '12px 0 0 12px', display: 'flex', alignItems: 'center' }}>
-          <FaEnvelope color="white" size={20} />
+          <FaEnvelope color="var(--text-light)" size={20} />
         </div>
         <div style={{ padding: '0 15px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <span style={{ fontSize: '13px', fontWeight: 'bold', color: 'white' }}>Email</span>
+          <span style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--text-light)' }}>Email</span>
           <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)' }}>Send Result</span>
         </div>
       </div>

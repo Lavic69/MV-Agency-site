@@ -3,6 +3,7 @@
 import React from "react";
 import styles from "./Features.module.css";
 import { Globe, Sparkles, Plus, ArrowUp, Target, CalendarCheck } from "lucide-react";
+import { MockupWeb } from "@/components/ui/mockups/MockupWeb";
 
 export default function FeaturesSection() {
     return (
@@ -50,20 +51,9 @@ export default function FeaturesSection() {
 
 const BrowserIllustration = () => {
     return (
-        <div className={`${styles.illustrationCard} ${styles.translateTarget}`} aria-hidden>
-            {/* Browser top bar */}
-            <div style={{ display: 'flex', gap: '5px', marginBottom: '14px' }}>
-                <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#ef4444' }}></div>
-                <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#eab308' }}></div>
-                <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#22c55e' }}></div>
-            </div>
-            {/* Browser content wireframe */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <div style={{ width: '100%', height: '35px', backgroundColor: 'rgba(255,255,255,0.06)', borderRadius: '6px' }}></div>
-                <div style={{ display: 'flex', gap: '8px' }}>
-                    <div style={{ flex: 2, height: '45px', backgroundColor: 'rgba(255,255,255,0.03)', borderRadius: '6px' }}></div>
-                    <div style={{ flex: 1, height: '45px', backgroundColor: 'rgba(255,255,255,0.03)', borderRadius: '6px' }}></div>
-                </div>
+        <div className={`${styles.illustrationCard} ${styles.translateTarget}`} style={{ padding: 0, overflow: 'hidden', height: '240px' }} aria-hidden>
+            <div style={{ transform: 'scale(0.58)', transformOrigin: 'top left', width: '172%', height: '172%' }}>
+                <MockupWeb />
             </div>
         </div>
     );
@@ -90,7 +80,7 @@ const AIAssistantIllustration = () => {
                         </div>
                     </div>
                     <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
-                        <ArrowUp size={16} color="#fff" strokeWidth={3} />
+                        <ArrowUp size={16} color="var(--text-light)" strokeWidth={3} />
                     </div>
                 </div>
             </div>
@@ -107,7 +97,7 @@ const MeetingIllustration = () => {
         <div className={`${styles.illustrationCard} ${styles.translateTarget}`} aria-hidden>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <div>
-                   <div style={{ marginBottom: '4px', fontSize: '0.9rem', fontWeight: 600, color: '#fff' }}>Formation IA & Outils</div>
+                   <div style={{ marginBottom: '4px', fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-light)' }}>Formation IA & Outils</div>
                    <div style={{ display: 'flex', gap: '8px', fontSize: '0.8rem' }}>
                        <span style={{ color: '#9ca3af' }}>14:30 - 15:45</span>
                    </div>

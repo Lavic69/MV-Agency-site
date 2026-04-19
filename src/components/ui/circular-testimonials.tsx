@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState, useMemo, useCallback } from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "./Button";
 import { motion, AnimatePresence } from "framer-motion";
 
 export interface Testimonial {
@@ -82,7 +83,7 @@ export const CircularTestimonials = ({
     if (autoplay) {
       autoplayIntervalRef.current = setInterval(() => {
         setActiveIndex((prev) => (prev + 1) % testimonialsLength);
-      }, 5000);
+      }, 20000);
     }
     return () => {
       if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current);
@@ -193,41 +194,56 @@ export const CircularTestimonials = ({
                   </motion.span>
                 ))}
               </motion.p>
-              {activeTestimonial.link && (
-                <a 
-                  href={activeTestimonial.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{ display: 'inline-flex', alignItems: 'center', marginTop: '1rem', color: colorArrowHoverBg, textDecoration: 'none', fontWeight: 'bold', fontSize: '1.1rem', transition: 'color 0.3s ease' }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#fff'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = colorArrowHoverBg}
-                >
-                  Voir le projet <FaArrowRight style={{ marginLeft: '8px' }} size={16} />
-                </a>
-              )}
             </motion.div>
           </AnimatePresence>
-          <div className="arrow-buttons">
-            <button
-              className="arrow-button prev-button"
-              onClick={handlePrev}
-              style={{ backgroundColor: hoverPrev ? colorArrowHoverBg : colorArrowBg }}
-              onMouseEnter={() => setHoverPrev(true)}
-              onMouseLeave={() => setHoverPrev(false)}
-              aria-label="Previous testimonial"
-            >
-              <FaArrowLeft size={28} color={colorArrowFg} />
-            </button>
-            <button
-              className="arrow-button next-button"
-              onClick={handleNext}
-              style={{ backgroundColor: hoverNext ? colorArrowHoverBg : colorArrowBg }}
-              onMouseEnter={() => setHoverNext(true)}
-              onMouseLeave={() => setHoverNext(false)}
-              aria-label="Next testimonial"
-            >
-              <FaArrowRight size={28} color={colorArrowFg} />
-            </button>
+
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', paddingTop: '1.5rem' }}>
+            <AnimatePresence mode="wait">
+              {activeTestimonial.link ? (
+                <motion.div
+                  key={activeIndex + "-link"}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <a 
+                    href={activeTestimonial.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: 'none' }}
+                    tabIndex={-1}
+                  >
+                    <Button variant="outline" style={{ padding: '0.6rem 1.75rem', fontSize: '0.95rem' }}>
+                      Voir le projet
+                    </Button>
+                  </a>
+                </motion.div>
+              ) : <div key="placeholder" />}
+            </AnimatePresence>
+
+            <div className="arrow-buttons" style={{ display: 'flex', gap: '0.5rem', margin: 0, padding: 0 }}>
+              <button
+                className="arrow-button prev-button"
+                onClick={handlePrev}
+                onMouseEnter={() => setHoverPrev(true)}
+                onMouseLeave={() => setHoverPrev(false)}
+                aria-label="Previous project"
+                style={{ background: 'transparent', padding: '10px' }}
+              >
+                <ChevronLeft size={42} color={hoverPrev ? '#ffffff' : 'rgba(255,255,255,0.4)'} strokeWidth={1} style={{ transition: 'color 0.3s ease' }} />
+              </button>
+              <button
+                className="arrow-button next-button"
+                onClick={handleNext}
+                onMouseEnter={() => setHoverNext(true)}
+                onMouseLeave={() => setHoverNext(false)}
+                aria-label="Next project"
+                style={{ background: 'transparent', padding: '10px' }}
+              >
+                <ChevronRight size={42} color={hoverNext ? '#ffffff' : 'rgba(255,255,255,0.4)'} strokeWidth={1} style={{ transition: 'color 0.3s ease' }} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -282,18 +298,19 @@ export const CircularTestimonials = ({
         }
         .arrow-buttons {
           display: flex;
-          gap: 1.5rem;
-          padding-top: 3rem;
+          gap: 0.5rem;
+          padding-top: 3.5rem;
+          margin-left: -10px; /* Align arrows visually with the text edge */
         }
         .arrow-button {
-          width: 3.5rem;
-          height: 3.5rem;
-          border-radius: 50%;
+          width: auto;
+          height: auto;
+          border-radius: 0;
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          transition: background-color 0.3s;
+          background: transparent;
           border: none;
         }
         @media (min-width: 768px) {

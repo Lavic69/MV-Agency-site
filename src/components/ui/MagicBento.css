@@ -82,7 +82,7 @@
   font-weight: 600;
   font-size: 20px;
   margin: 0 0 0.5em;
-  color: #ffffff;
+  color: var(--text-light);
 }
 
 .magic-bento-card__description {

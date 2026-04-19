@@ -15,7 +15,7 @@ const OwnershipIllustration = () => (
         <div style={{ padding: '1rem', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
              <span style={{ fontSize: '0.95rem', color: '#e5e7eb' }}>Accès Administrateur</span>
              <div style={{ width: '40px', height: '22px', backgroundColor: '#22c55e', borderRadius: '12px', display: 'flex', alignItems: 'center', padding: '2px', justifyContent: 'flex-end' }}>
-                 <div style={{ width: '18px', height: '18px', backgroundColor: '#fff', borderRadius: '50%' }}></div>
+                 <div style={{ width: '18px', height: '18px', backgroundcolor: 'var(--text-light)', borderRadius: '50%' }}></div>
              </div>
         </div>
         <div style={{ padding: '1rem', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
