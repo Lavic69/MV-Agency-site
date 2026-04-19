@@ -40,7 +40,7 @@ export const organizationSchema = {
   url: SITE_URL,
   logo: {
     "@type": "ImageObject",
-    url: `${SITE_URL}/logo.svg`,
+    url: `${SITE_URL}/Logo_Rond_MV_V2.svg`,
     width: 512,
     height: 512,
   },
@@ -76,7 +76,7 @@ export const localBusinessSchema = {
   "@id": `${SITE_URL}/#localbusiness`,
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.svg`,
+  logo: `${SITE_URL}/Logo_Rond_MV_V2.svg`,
   image: `${SITE_URL}/opengraph-image`,
   description: SITE_DESCRIPTION,
   priceRange: "€€",

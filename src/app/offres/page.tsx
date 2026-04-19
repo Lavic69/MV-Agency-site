@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { Button } from '@/components/ui/Button';
 import styles from './Offres.module.css';
 import { FadeIn } from '@/components/ui/FadeIn';
+import { ShieldCheck, Scale, User } from 'lucide-react';
 import { FaCheckCircle, FaTimes, FaCheck } from 'react-icons/fa';
 import { Accordion } from '@/components/ui/accordion';
 import { Timeline, defaultOffresSteps } from '@/components/ui/Timeline';
@@ -24,43 +25,47 @@ const faqItems = [
   },
   {
     question: "Pourquoi n'indiquez-vous pas de prix exacts ?",
-    answer: "Chaque activité est unique. Un dentiste n'a pas les mêmes besoins d'automatisation et de contenu qu'une boutique e-commerce naissante. Nous discutons de votre vision lors de l'appel pour vous proposer un devis transparent, fixe et sans surprise, basé sur l'architecture du pack choisi."
+    answer: "Parce qu'un site pour un dentiste n'a pas le même périmètre qu'un site e-commerce — et qu'on refuse de vous vendre un pack sur catalogue qui ne correspond pas à votre réalité. En 30 minutes d'appel offert, on cadre ensemble le périmètre et le budget. Pas de devis surprise, pas de coûts cachés, pas d'engagement."
   },
   {
     question: "Fournissez-vous les textes et les images ?",
     answer: "Cela dépend de vos besoins ! Nos packs Croissance et Performance IA incluent la génération assistée par IA pour vous aider à structurer un copywriting percutant. Pour la base, vos images de marque sont utilisées, mais nous pouvons vous accompagner sur la recherche de visuels premium."
+  },
+  {
+    question: "Le site m'appartient-il vraiment à la fin ?",
+    answer: "Oui, à 100%. Dès la livraison finale, nous vous remettons tous les accès administrateurs (nom de domaine, hébergement, CMS, identifiants). Vous ne payez pas de 'licence d'utilisation' comme chez certaines agences."
+  },
+  {
+    question: "Travaillez-vous avec des clients hors de La Réunion ?",
+    answer: "Absolument. Si MV Agency est basée à La Réunion (avec un point d'ancrage en Belgique), nous travaillons activement avec des entreprises en France métropolitaine via des workflows asynchrones pertinents (visios, Loom, Notion). En revanche, nous ne disposons pas de locaux physiques en France pour des rencontres présentielles."
+  },
+  {
+    question: "Faites-vous uniquement du 'No-Code' ?",
+    answer: "Non. Bien que nous soyons experts en solutions d'automatisation (Make, n8n, Webflow) pour aller vite, nous maîtrisons le développement pur (React, Next.js, bases de données quantitatives) pour concevoir des architectures sur-mesure que le no-code standard serait incapable de gérer."
   }
 ];
 
 export default function OffresPage() {
   return (
     <main style={{ paddingBottom: "0" }}>
-      {/* S1: HERO OFFRES */}
-      <section className={`${styles.section}`} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', background: 'transparent' }}>
-        <div className={styles.container} style={{ position: 'relative', zIndex: 1, marginTop: '5rem' }}>
-          <FadeIn direction="up">
-            <h1 className={styles.headerTitle}>
-              Des solutions web sur-mesure propulsées par <br/>
-              <span style={{ 
-                background: "linear-gradient(90deg, #2563eb 0%, #93c5fd 60%, #ffffff 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                color: "transparent"
-              }}>l'intelligence artificielle</span>.
-            </h1>
-          </FadeIn>
-          <FadeIn direction="up" delay={0.2}>
-            <p className={styles.headerDesc}>
-              Construisez des fondations solides et accélérez votre croissance avec nos trois architectures d'accompagnement. Des solutions transparentes et puissantes pour dominer votre marché.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* S2: LES 3 PACKS */}
-      <section id="packs" className={`${styles.section} ${styles.neutralBg}`}>
+      {/* S2: LES 3 PACKS (Promu en H1) */}
+      <section id="packs" className={`${styles.section} ${styles.neutralBg}`} style={{ paddingTop: '12rem' }}>
         <div className={styles.container}>
+          <FadeIn direction="up">
+            <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+              <h1 className={styles.sectionTitle} style={{ 
+                marginBottom: "1.5rem", 
+                fontSize: "clamp(2.5rem, 5vw, 4rem)", 
+                lineHeight: 1.1,
+                color: "var(--text-light)"
+              }}>
+                3 packs pour <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent', paddingRight: '0.1em' }}>3 ambitions</span>.
+              </h1>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto' }}>
+                Du site vitrine au business propulsé par l'IA. On cadre le périmètre et le budget ensemble.
+              </p>
+            </div>
+          </FadeIn>
           <div className={styles.gridPacks}>
             
             {/* PACK 1 */}
@@ -79,15 +84,15 @@ export default function OffresPage() {
                   <li><FaCheckCircle className={styles.checkIcon} /> Support technique de lancement</li>
                 </ul>
                 <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none', width: '100%' }}>
-                  <Button variant="outline" style={{ width: '100%' }}>Réserver un appel</Button>
+                  <Button variant="outline" style={{ width: '100%' }}>Choisir ce pack</Button>
                 </Link>
               </div>
             </FadeIn>
 
             {/* PACK 2 (Mise en avant) */}
             <FadeIn delay={0.3}>
-              <div className={`${styles.packCard} ${styles.packCardHighlight}`}>
-                <div className={styles.packBadge}>Le plus choisi</div>
+              <div className={`${styles.packCard} ${styles.packCardHighlight}`} style={{ transform: 'scale(1.05)', border: '2px solid #60A5FA', boxShadow: '0 0 40px rgba(96, 165, 250, 0.3)', zIndex: 10 }}>
+                <div className={styles.packBadge} style={{ background: '#60A5FA', color: '#000', fontWeight: 'bold' }}>⭐ Le plus choisi</div>
                 <h3 className={styles.packTitle}>Croissance digitale</h3>
                 <p className={styles.packSubtitle}>Générer des clients et structurer votre acquisition de A à Z.</p>
                 <div className={styles.packDivider} />
@@ -103,7 +108,7 @@ export default function OffresPage() {
                   <li><FaCheckCircle className={styles.checkIcon} /> 1 session de suivi stratégique</li>
                 </ul>
                 <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none', width: '100%' }}>
-                  <Button variant="primary" style={{ width: '100%' }}>Réserver un appel</Button>
+                  <Button variant="primary" style={{ width: '100%' }}>Choisir ce pack</Button>
                 </Link>
                 <p style={{ textAlign: "center", fontSize: "0.8rem", color: "rgba(255,255,255,0.6)", marginTop: "1rem", marginBottom: 0 }}>
                   Le choix idéal pour générer vos premiers clients
@@ -128,12 +133,58 @@ export default function OffresPage() {
                   <li><FaCheckCircle className={styles.checkIcon} /> Accompagnement Premium sur 3 mois</li>
                 </ul>
                 <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none', width: '100%' }}>
-                  <Button variant="outline" style={{ width: '100%' }}>Réserver un appel</Button>
+                  <Button variant="outline" style={{ width: '100%' }}>Choisir ce pack</Button>
                 </Link>
               </div>
             </FadeIn>
 
           </div>
+          <FadeIn direction="up" delay={0.6}>
+            <p style={{ textAlign: 'center', marginTop: '3rem', color: 'var(--text-muted)', fontSize: '0.9rem', fontStyle: 'italic' }}>
+              Un projet vraiment atypique qui ne rentre pas dans ces cases ? <br className={styles.hideOnMobile} />
+              Ce n'est pas un problème, nous pouvons construire ensemble un accompagnement sur-mesure.
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* BADGES GARANTIE */}
+      <section className={styles.section} style={{ paddingBottom: '3rem', paddingTop: '2rem' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '2rem',
+          maxWidth: '1000px',
+          margin: '0 auto',
+          textAlign: 'center'
+        }}>
+          <FadeIn direction="up" delay={0.1}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
+              <div style={{ color: '#60A5FA', padding: '12px', background: 'rgba(96, 165, 250, 0.1)', borderRadius: '12px' }}>
+                <ShieldCheck size={32} />
+              </div>
+              <h4 style={{ margin: 0, fontSize: '1.2rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)' }}>Satisfait ou remanié</h4>
+              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)' }}>Rendu initial pas conforme ? On itère gratuitement.</p>
+            </div>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.2}>
+             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
+              <div style={{ color: '#60A5FA', padding: '12px', background: 'rgba(96, 165, 250, 0.1)', borderRadius: '12px' }}>
+                <Scale size={32} />
+              </div>
+              <h4 style={{ margin: 0, fontSize: '1.2rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)' }}>Pas d'engagement</h4>
+              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)' }}>Aucun abonnement caché. Vous êtes libres.</p>
+            </div>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.3}>
+             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
+              <div style={{ color: '#60A5FA', padding: '12px', background: 'rgba(96, 165, 250, 0.1)', borderRadius: '12px' }}>
+                <User size={32} />
+              </div>
+              <h4 style={{ margin: 0, fontSize: '1.2rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)' }}>Un seul interlocuteur</h4>
+              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)' }}>Du premier appel à la livraison finale.</p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -162,28 +213,10 @@ export default function OffresPage() {
                     <td>E-commerce / Sur-mesure</td>
                   </tr>
                   <tr>
-                    <td className={styles.featureName}>Nombre de pages</td>
-                    <td>Jusqu'à 5 pages</td>
-                    <td className={styles.highlightCol}>Jusqu'à 10 pages</td>
-                    <td>Illimité / Dynamique</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.featureName}>Design Responsive & Premium</td>
-                    <td><FaCheck className={styles.iconCheck} /></td>
-                    <td className={styles.highlightCol}><FaCheck className={styles.iconCheckAccent} /></td>
-                    <td><FaCheck className={styles.iconCheck} /></td>
-                  </tr>
-                  <tr>
                     <td className={styles.featureName}>Optimisation SEO</td>
                     <td>Fondations techniques</td>
                     <td className={styles.highlightCol}>Avancée + Contenu IA</td>
                     <td>Audit profond & Stratégie</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.featureName}>Landing Page Conversion</td>
-                    <td><FaTimes className={styles.iconCross} /></td>
-                    <td className={styles.highlightCol}><FaCheck className={styles.iconCheckAccent} /></td>
-                    <td>Multiples</td>
                   </tr>
                   <tr>
                     <td className={styles.featureName}>Automatisations Métier</td>
@@ -192,10 +225,10 @@ export default function OffresPage() {
                     <td>Workflows IA ultra-complexes</td>
                   </tr>
                   <tr>
-                    <td className={styles.featureName}>Chatbot IA & Assistants virtuels</td>
+                    <td className={styles.featureName}>Intelligence Artificielle</td>
                     <td><FaTimes className={styles.iconCross} /></td>
-                    <td className={styles.highlightCol}><FaCheck className={styles.iconCheckAccent} /></td>
-                    <td>Agents IA personnalisés (LLM)</td>
+                    <td className={styles.highlightCol}>Chatbot & Génération texte</td>
+                    <td>Agents IA autonomes (LLM)</td>
                   </tr>
                   <tr>
                     <td className={styles.featureName}>Formation & Autonomie</td>

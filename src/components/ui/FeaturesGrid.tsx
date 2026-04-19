@@ -1,43 +1,43 @@
 import React from 'react';
 import styles from './FeaturesGrid.module.css';
-import { FaDesktop, FaPenNib, FaChartLine, FaBolt, FaSitemap, FaShieldAlt, FaCheckCircle } from 'react-icons/fa';
+import { FaDesktop, FaPenNib, FaChartLine, FaBolt, FaSitemap, FaShieldAlt, FaCheckCircle, FaRobot } from 'react-icons/fa';
 
 const features = [
   {
     icon: <FaDesktop />,
-    title: "Développement Web High-End",
-    description: "Sites vitrines et plateformes SaaS développées avec les technologies web les plus puissantes (Next.js) pour une rapidité fulgurante.",
-    points: ["Performance Core Web Vitals", "Architecture évolutive"]
-  },
-  {
-    icon: <FaPenNib />,
-    title: "UI/UX Design Éditorial",
-    description: "Conception d'interfaces minimalistes et immersives, basées sur une hiérarchie visuelle forte et une psychologie utilisateur éprouvée.",
-    points: ["Design System sur mesure", "Prototypage Haute Fidélité"]
-  },
-  {
-    icon: <FaChartLine />,
-    title: "Stratégie & SEO",
-    description: "Positionnement de marque et optimisation technique pour garantir une visibilité pérenne et maximale sur les moteurs de recherche.",
-    points: ["Audit Sémantique Profond", "Netlinking Premium"]
+    title: "Création Web",
+    description: "Sites vitrines et plateformes sur-mesure développées avec les technologies web les plus puissantes (Next.js) pour une rapidité fulgurante.",
+    points: ["Performance ultra-rapide", "Design sur-mesure"]
   },
   {
     icon: <FaBolt />,
-    title: "Automatisation Workflow",
-    description: "Libérez votre temps en automatisant vos processus métiers critiques grâce à des intégrations d'API robustes et intelligentes.",
-    points: ["Intégration CRM / ERP", "Pipelines de données"]
+    title: "Automatisation",
+    description: "Libérez votre temps en automatisant vos processus métiers critiques grâce à des intégrations logicielles (Make, n8n) intelligentes.",
+    points: ["Intégration CRM / Emails", "Pipelines de données"]
   },
   {
-    icon: <FaSitemap />,
-    title: "Écosystèmes E-commerce",
-    description: "Déploiement de boutiques en ligne haute performance maximisant le panier moyen et la fidélisation client.",
-    points: ["Shopify / Headless Commerce", "Optimisation CRO"]
+    icon: <FaRobot />,
+    title: "Intégrations IA",
+    description: "Connecter Claude, GPT et vos outils métier dans un workflow cohérent. Agents IA, LLM sur-mesure, automatisation intelligente.",
+    points: ["Agents IA autonomes", "Génération de contenu"]
   },
   {
-    icon: <FaShieldAlt />,
-    title: "Maintenance & Sécurité",
-    description: "Surveillance 24/7 et mises à jour continues pour garantir l'intégrité et la disponibilité de votre infrastructure numérique.",
-    points: ["Backups Sécurisés Quotidiens", "Protection Avancée"]
+    icon: <FaCheckCircle />,
+    title: "Formation",
+    description: "Un accompagnement humain et pédagogique continu pour vous rendre totalement autonome sur vos nouveaux outils digitaux.",
+    points: ["Vidéos Loom archivées", "Portail Notion privé"]
+  },
+  {
+    icon: <FaChartLine />,
+    title: "SEO / Performance",
+    description: "Positionnement de marque et optimisation technique pour garantir une visibilité pérenne et maximale sur les moteurs de recherche.",
+    points: ["Audit Sémantique", "Netlinking Premium"]
+  },
+  {
+    icon: <FaPenNib />,
+    title: "Conseil Stratégique",
+    description: "Un vrai partenaire tech. Nous analysons vos besoins en profondeur pour vous proposer l'architecture la plus rentable.",
+    points: ["Audit de l'existant", "Feuille de route technique"]
   }
 ];
 

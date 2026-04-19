@@ -9,7 +9,9 @@ import FeaturesSection from "@/components/ui/Features";
 import MagicBento from "@/components/ui/MagicBento";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { ShieldCheck, Scale, User } from 'lucide-react';
 import styles from "./Home.module.css";
+import { AvailabilityPill } from "@/components/ui/AvailabilityPill";
 import { realizations } from "@/data/projects";
 import { SiWordpress, SiWebflow, SiNotion, SiShopify, SiOpenai, SiAnthropic, SiReact, SiNextdotjs, SiFigma, SiN8N, SiStripe, SiVercel, SiOdoo, SiJira, SiAsana, SiFramer } from 'react-icons/si';
 
@@ -158,12 +160,12 @@ export default function Home() {
         <div className={styles.heroGlow} style={{ top: '45%' }}></div>
 
         {/* S1: HERO CONTENT */}
-        <section className={styles.hero} style={{ background: 'transparent', borderBottom: 'none', minHeight: '85vh' }}>
-          <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>
-              <TextReveal delay={0.1}>Votre site web.</TextReveal>
-              <TextReveal delay={0.2}>Notre expertise.</TextReveal>
-              <TextReveal delay={0.3}>
+        <section className={styles.hero} style={{ background: 'transparent', borderBottom: 'none', minHeight: '85vh', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+          <div className={styles.heroContent} style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <AvailabilityPill />
+            <h1 className={styles.heroTitle} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+              <TextReveal delay={0.1}>Un site qui convertit.</TextReveal>
+              <TextReveal delay={0.2}>
                 <span style={{ 
                   background: "linear-gradient(90deg, var(--text-light) 0%, var(--primary) 100%)",
                   WebkitBackgroundClip: "text",
@@ -171,25 +173,26 @@ export default function Home() {
                   backgroundClip: "text",
                   color: "transparent",
                   paddingBottom: "0.1em",
+                  paddingRight: "0.1em",
                   display: "inline-block"
-                }}>L'IA en plus.</span>
+                }}>Une IA qui vous fait gagner du temps.</span>
               </TextReveal>
             </h1>
-            <FadeIn direction="up" delay={0.5}>
-              <p className={styles.heroSubtitle}>
-                Agence digitale spécialisée en création web et intelligence artificielle. On conçoit, on explique, on propulse. Pour TPE, PME et indépendants.
+            <FadeIn direction="up" delay={0.4}>
+              <p className={styles.heroSubtitle} style={{ textAlign: "center", maxWidth: "600px", margin: "1.5rem auto" }}>
+                Agence web + IA pour les TPE, PME et indépendants qui veulent comprendre, pas juste déléguer. On conçoit, on explique, on propulse.
               </p>
             </FadeIn>
-            <FadeIn direction="up" delay={0.6}>
-              <div className={styles.heroActions}>
-                <Link href="/offres" tabIndex={-1} style={{ textDecoration: 'none' }}>
+            <FadeIn direction="up" delay={0.5}>
+              <div className={styles.heroActions} style={{ justifyContent: 'center' }}>
+                <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none' }}>
                   <Button variant="primary">
-                    Découvrir nos offres
+                    Réserver un appel offert
                   </Button>
                 </Link>
-                <Link href="/a-propos" tabIndex={-1} style={{ textDecoration: 'none' }}>
+                <Link href="/offres" tabIndex={-1} style={{ textDecoration: 'none' }}>
                   <Button variant="outline">
-                    Voir comment on travaille
+                    Voir nos packs
                   </Button>
                 </Link>
               </div>
@@ -206,16 +209,17 @@ export default function Home() {
             border: '1px solid rgba(255,255,255,0.15)', 
             backgroundColor: 'rgba(10, 10, 10, 0.65)', 
             backdropFilter: 'blur(8px)',
-            boxShadow: '0 4px 15px rgba(0,0,0,0.3)'
+            boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+            alignSelf: 'center'
           }}>
             <div style={{ display: 'flex', marginLeft: '4px' }}>
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Client 1" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 4, objectFit: 'cover' }} />
-              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80" alt="Client 2" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 3, marginLeft: '-10px', objectFit: 'cover' }} />
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client 3" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 2, marginLeft: '-10px', objectFit: 'cover' }} />
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Client 4" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 1, marginLeft: '-10px', objectFit: 'cover' }} />
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Client 1" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 4, objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80" alt="Client 2" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 3, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client 3" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 2, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Client 4" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 1, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
             </div>
             <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)', letterSpacing: '0.3px', fontFamily: 'var(--font-body)' }}>
-              Rejoint par <strong style={{ color: 'var(--text-light)', fontWeight: '500' }}>+50</strong> entrepreneurs.
+              <strong style={{ color: 'var(--text-light)', fontWeight: '500' }}>10+ projets livrés</strong> · Web & IA
             </p>
           </div>
           </div>
@@ -237,7 +241,7 @@ export default function Home() {
                 color: "transparent",
                 margin: 0
               }}>
-                Les technologies que nous maîtrisons
+                Partenaires techniques certifiés
               </h3>
             </FadeIn>
           </div>
@@ -335,15 +339,55 @@ export default function Home() {
       </section>
 
       {/* S7 — FAQ */}
-      <section className={styles.section} style={{ paddingBottom: '5rem' }}>
+      <section className={styles.section} style={{ paddingBottom: '3rem' }}>
         <FadeIn direction="up">
           <h2 className={styles.sectionTitle}>Vous avez des questions ? On y répond.</h2>
         </FadeIn>
         <Accordion items={faqItems} />
       </section>
 
+      {/* BADGES GARANTIE */}
+      <section className={styles.section} style={{ paddingBottom: '6rem', paddingTop: '4rem' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '2rem',
+          maxWidth: '1000px',
+          margin: '0 auto',
+          textAlign: 'center'
+        }}>
+          <FadeIn direction="up" delay={0.1}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
+              <div style={{ color: '#60A5FA', padding: '12px', background: 'rgba(96, 165, 250, 0.1)', borderRadius: '12px' }}>
+                <ShieldCheck size={32} />
+              </div>
+              <h4 style={{ margin: 0, fontSize: '1.2rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)' }}>Satisfait ou remanié</h4>
+              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)' }}>Rendu initial pas conforme ? On itère gratuitement.</p>
+            </div>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.2}>
+             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
+              <div style={{ color: '#60A5FA', padding: '12px', background: 'rgba(96, 165, 250, 0.1)', borderRadius: '12px' }}>
+                <Scale size={32} />
+              </div>
+              <h4 style={{ margin: 0, fontSize: '1.2rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)' }}>Pas d'engagement</h4>
+              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)' }}>Aucun abonnement caché. Vous êtes libres.</p>
+            </div>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.3}>
+             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
+              <div style={{ color: '#60A5FA', padding: '12px', background: 'rgba(96, 165, 250, 0.1)', borderRadius: '12px' }}>
+                <User size={32} />
+              </div>
+              <h4 style={{ margin: 0, fontSize: '1.2rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)' }}>Un seul interlocuteur</h4>
+              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)' }}>Du premier appel à la livraison finale.</p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* S8 — GRAND CTA FINAL */}
-      <section className={styles.finalCtaSection} style={{ position: 'relative', overflow: 'hidden', paddingTop: '5rem', background: 'transparent' }}>
+      <section className={styles.finalCtaSection} style={{ position: 'relative', overflow: 'hidden', paddingTop: '3rem', background: 'transparent' }}>
         <div className={styles.finalCtaGlow} style={{ zIndex: 1 }}></div>
         <div className={styles.finalCtaContent} style={{ position: 'relative', zIndex: 2 }}>
           <FadeIn direction="up">
@@ -368,7 +412,7 @@ export default function Home() {
             <div style={{ marginTop: '3rem' }}>
               <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none' }}>
                 <Button variant="primary" style={{ boxShadow: '0 0 30px rgba(37,99,235,0.4)' }}>
-                  Demander un devis
+                  Réserver un appel offert
                 </Button>
               </Link>
             </div>

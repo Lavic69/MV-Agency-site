@@ -30,7 +30,7 @@ export const Header = () => {
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href="/" className={styles.logoLink}>
-            <Image src="/icon-logo.svg" alt="MV Agency Logo" width={36} height={36} className={styles.logoImage} />
+            <Image src="/Logo_Rond_MV_V2.svg" alt="MV Agency Logo" width={36} height={36} className={styles.logoImage} />
             <span>MV Agency</span>
           </Link>
         </div>

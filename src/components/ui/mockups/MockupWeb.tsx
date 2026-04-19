@@ -45,14 +45,14 @@ export const MockupWeb = () => {
         {/* Center Canvas */}
         <div style={{ flex: 1, backgroundColor: '#f5f5f5', position: 'relative', overflow: 'hidden' }}>
            {/* Canvas Header */}
-           <div style={{ height: '40px', backgroundcolor: 'var(--text-light)', borderBottom: '1px solid #eaeaea', display: 'flex', alignItems: 'center', padding: '0 20px', justifyContent: 'space-between' }}>
+           <div style={{ height: '40px', backgroundColor: 'var(--text-light)', borderBottom: '1px solid #eaeaea', display: 'flex', alignItems: 'center', padding: '0 20px', justifyContent: 'space-between' }}>
              <div style={{ width: '60px', height: '12px', backgroundColor: '#e0e0e0', borderRadius: '4px' }} />
              <div style={{ width: '100px', height: '12px', backgroundColor: '#f0f0f0', borderRadius: '4px' }} />
            </div>
            
            {/* Canvas Content */}
            <div style={{ padding: '20px' }}>
-             <div style={{ width: '100%', height: '80px', backgroundcolor: 'var(--text-light)', borderRadius: '8px', border: '1px solid #eaeaea', marginBottom: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
+             <div style={{ width: '100%', height: '80px', backgroundColor: 'var(--text-light)', borderRadius: '8px', border: '1px solid #eaeaea', marginBottom: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
                 <div style={{ width: '40%', height: '14px', backgroundColor: '#e0e0e0', borderRadius: '4px' }} />
                 <div style={{ width: '20%', height: '10px', backgroundColor: '#f0f0f0', borderRadius: '4px' }} />
              </div>

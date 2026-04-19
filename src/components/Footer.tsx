@@ -11,13 +11,13 @@ export const Footer = () => {
         <div className={styles.mainContent}>
           <div className={styles.brandPanel}>
             <Link href="/" className={styles.logoLink}>
-              <Image src="/icon-logo.svg" alt="MV Agency Logo" width={48} height={48} className={styles.logoImage} />
+              <Image src="/Logo_Rond_MV_V2.svg" alt="MV Agency Logo" width={48} height={48} className={styles.logoImage} />
               <span className={styles.logoText}>MV Agency</span>
             </Link>
             <p className={styles.slogan}>Concevoir, expliquer, propulser votre présence digitale.<br /><strong>L'IA en plus.</strong></p>
             <div className={styles.contactInfo}>
               <a href="mailto:contact@mv-agency.com">contact@mv-agency.com</a>
-              <p>Saint-Denis, La Réunion &bull; Belgique</p>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Basé à La Réunion · Intervention France & Belgique</p>
             </div>
           </div>
 

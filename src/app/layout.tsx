@@ -93,8 +93,8 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: "/Logo_Rond_MV_V2.svg",
+    shortcut: "/Logo_Rond_MV_V2.svg",
     // TODO: ajouter public/apple-icon.png (180×180) puis décommenter
     // apple: "/apple-icon.png",
   },

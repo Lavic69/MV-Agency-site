@@ -3,7 +3,9 @@
 import React from 'react';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { Timeline, TimelineStep } from '@/components/ui/Timeline';
-import { Eye, Sparkles, Users, Award, ArrowRight, RefreshCcw } from 'lucide-react';
+import { Eye, Sparkles, Users, Award, ArrowRight, RefreshCcw, Quote } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/Button';
 import styles from './APropos.module.css';
 
 const aproposSteps: TimelineStep[] = [
@@ -53,22 +55,22 @@ const values = [
   {
     icon: <Eye size={24} />,
     title: "Clarté",
-    text: "Fini le jargon technique. Nous expliquons avec des mots simples chaque choix et chaque outil mis en place."
+    text: "Pas de jargon. Si on parle technique, on explique d'abord."
   },
   {
     icon: <Sparkles size={24} />,
     title: "Innovation",
-    text: "Nous restons à la pointe de l'intelligence artificielle pour vous donner un avantage concurrentiel tangible."
+    text: "On teste chaque nouvelle IA avant de vous la proposer."
   },
   {
     icon: <Users size={24} />,
     title: "Proximité",
-    text: "Vous n'êtes pas un numéro de ticket. On s'implique dans votre business comme si c'était le nôtre."
+    text: "Un seul interlocuteur, du kick-off au lancement. Réponse sous 24h."
   },
   {
     icon: <Award size={24} />,
     title: "Excellence",
-    text: "Le 'à peu près' n'existe pas. Design ultra poussé, code propre, performances chirurgicales."
+    text: "Code propre et design sur-mesure. Zéro site 'template'."
   }
 ];
 
@@ -77,19 +79,65 @@ export default function AProposClient() {
     <main style={{ width: '100%' }}>
       {/* GLOBAL LIQUID ETHER IS IN LAYOUT NOW */}
 
-      {/* S1: HERO */}
-      <section className={styles.hero} style={{ background: 'transparent', borderBottom: 'none' }}>
-          <div className={styles.heroContent} style={{ zIndex: 2, marginTop: '8rem' }}>
-          <FadeIn direction="up">
-            <h1 className={styles.title}>
-              Derrière MV Agency
-            </h1>
-          </FadeIn>
-          <FadeIn direction="up" delay={0.2}>
-            <p className={styles.subtitle}>
-              Une agence née d'un constat simple : le digital devrait être accessible, compréhensible et humain.
-            </p>
-          </FadeIn>
+      {/* S1: HERO ÉDITORIAL LUXE */}
+      <section className={styles.heroEditorial} style={{ background: 'transparent', borderBottom: 'none', display: 'flex', justifyContent: 'center', paddingTop: '10rem', paddingBottom: '3rem' }}>
+        <div className={styles.container} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+          
+          <div style={{
+            position: 'relative',
+            width: '100%',
+            maxWidth: '1000px',
+            backgroundColor: 'rgba(10, 10, 12, 0.6)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            borderRadius: '24px',
+            border: '1px solid rgba(255, 255, 255, 0.05)',
+            padding: 'clamp(3rem, 6vw, 6rem)',
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+            overflow: 'hidden'
+          }}>
+            {/* Glowing orbs behind the text */}
+            <div style={{ position: 'absolute', top: '-30%', left: '-10%', width: '60%', height: '60%', background: 'radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, rgba(0,0,0,0) 70%)', filter: 'blur(50px)', zIndex: 0, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', bottom: '-20%', right: '-10%', width: '50%', height: '50%', background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(0,0,0,0) 70%)', filter: 'blur(50px)', zIndex: 0, pointerEvents: 'none' }} />
+
+            <div style={{ position: 'absolute', top: '2rem', left: '2rem', opacity: 0.1, zIndex: 0 }}>
+              <Quote size={100} style={{ transform: 'rotate(180deg)' }} />
+            </div>
+
+            <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+              <FadeIn direction="up">
+                <h1 style={{ 
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+                  lineHeight: 1.1,
+                  fontWeight: 700,
+                  color: 'var(--text-light)',
+                  margin: 0,
+                  textAlign: 'left',
+                  letterSpacing: '-0.02em',
+                  paddingLeft: '1rem'
+                }}>
+                  On ne vend pas du code.<br/>
+                  On vend <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent', paddingRight: '0.1em' }}>l'autonomie</span>.
+                </h1>
+              </FadeIn>
+              
+              <FadeIn direction="up" delay={0.2} style={{ alignSelf: 'flex-end', marginTop: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', paddingRight: '1rem' }}>
+                  <img 
+                    src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=80" 
+                    alt="Victor Marchetti, Fondateur de MV Agency" 
+                    style={{ width: '64px', height: '64px', borderRadius: '50%', border: '2px solid rgba(255,255,255,0.1)', objectFit: 'cover' }}
+                  />
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                    <span style={{ color: 'var(--text-light)', fontWeight: 600, fontSize: '1.1rem', lineHeight: 1.2 }}>Victor Marchetti</span>
+                    <span style={{ color: 'var(--text-muted)', fontSize: '0.95rem', fontStyle: 'italic' }}>Fondateur de MV Agency</span>
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -228,8 +276,8 @@ export default function AProposClient() {
                     e.currentTarget.style.setProperty('--glow-intensity', '0');
                   }}
                 >
-                  <div className={styles.bentoStatTitle}>98%</div>
-                  <div className={styles.bentoStatSubtitle}>Taux de satisfaction</div>
+                  <div className={styles.bentoStatTitle} style={{ fontSize: '4rem', fontWeight: 900 }}>100%</div>
+                  <div className={styles.bentoStatSubtitle}>des clients repartent formés et autonomes</div>
                 </div>
 
               </div>
@@ -254,7 +302,7 @@ export default function AProposClient() {
                 >
                   <RefreshCcw size={32} className={styles.bentoIconTop} />
                   <h3 className={styles.bentoTitle} style={{ fontSize: '1.8rem' }}>Transparence absolue</h3>
-                  <p className={styles.bentoText}>Aucune zone d'ombre. Un suivi clair, régulier et un accès permanent à l'avancée concrète de votre projet.</p>
+                  <p className={styles.bentoText}>Pas de surprise. On cadre le périmètre et le budget ensemble, par écrit, avant tout engagement.</p>
                 </div>
 
                 <div 
@@ -278,9 +326,11 @@ export default function AProposClient() {
                       </h3>
                       <p className={styles.bentoText}>Rejoignez les dizaines d'entreprises et d'indépendants locaux qui ont confié leur croissance à MV Agency.</p>
                     </div>
-                    <button className={styles.bentoButton} aria-label="Passer à l'action">
-                      <ArrowRight size={24} />
-                    </button>
+                    <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none' }}>
+                      <Button variant="primary" style={{ borderRadius: '999px', fontSize: '1.2rem', padding: '1rem 2rem', fontWeight: 600 }}>
+                        Prendre rendez-vous
+                      </Button>
+                    </Link>
                   </div>
                 </div>
 
