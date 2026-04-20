@@ -41,24 +41,28 @@ const features = [
   }
 ];
 
+import { StaggerContainer, StaggerItem } from './StaggerContainer';
+
 export const FeaturesGrid = () => {
   return (
-    <div className={styles.gridContainer}>
+    <StaggerContainer className={styles.gridContainer}>
       {features.map((feat, index) => (
-        <div key={index} className={styles.card}>
-          <div className={styles.iconWrapper}>{feat.icon}</div>
-          <h3 className={styles.title}>{feat.title}</h3>
-          <p className={styles.description}>{feat.description}</p>
-          <ul className={styles.pointsList}>
-            {feat.points.map((point, idx) => (
-              <li key={idx}>
-                <FaCheckCircle className={styles.checkIcon} />
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <StaggerItem key={index}>
+          <div className={styles.card}>
+            <div className={styles.iconWrapper}>{feat.icon}</div>
+            <h3 className={styles.title}>{feat.title}</h3>
+            <p className={styles.description}>{feat.description}</p>
+            <ul className={styles.pointsList}>
+              {feat.points.map((point, idx) => (
+                <li key={idx}>
+                  <FaCheckCircle className={styles.checkIcon} />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </StaggerItem>
       ))}
-    </div>
+    </StaggerContainer>
   );
 };

@@ -2,15 +2,13 @@
 
 import React, { useEffect } from 'react';
 import { FadeIn } from '@/components/ui/FadeIn';
+import { TextReveal } from '@/components/ui/TextReveal';
 import { Mail, Zap } from 'lucide-react';
 import { CONTACT_EMAIL } from '@/lib/seo';
 import styles from './Contact.module.css';
 import { AvailabilityPill } from '@/components/ui/AvailabilityPill';
 
-// Cal.com inline embed — snippet officiel vanilla JS (zéro package npm pour
-// éviter le conflit @types/react 18 vs React 19 qui bloquait tsc).
-// Le loader fait le handshake postMessage nécessaire pour que le thème
-// "dark" et les brand colors s'appliquent réellement (un iframe nu reste blanc).
+// Cal.com inline embed — snippet officiel vanilla JS
 declare global {
   interface Window {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -75,15 +73,19 @@ export default function ContactClient() {
         <div className={styles.leftCol}>
           <AvailabilityPill isContactPage={true} />
           
-          <FadeIn direction="up" delay={0.1}>
+          <FadeIn direction="up">
             <h1 className={styles.title}>
-              Construisons le <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent', paddingRight: '0.1em' }}>futur</span> ensemble.
+              <TextReveal delay={0.1} inline>Construisons le</TextReveal>{' '}
+              <TextReveal delay={0.4} inline>
+                <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent', paddingRight: '0.1em' }}>futur</span>
+              </TextReveal>{' '}
+              <TextReveal delay={0.6} inline>ensemble.</TextReveal>
             </h1>
           </FadeIn>
 
           <FadeIn direction="up" delay={0.2}>
             <p className={styles.subtitle}>
-              Nous accompagnons les professionnels et les fondateurs avec sincérité, pour concevoir des solutions digitales intuitives, performantes et qui vous ressemblent vraiment.
+              <TextReveal delay={0.8} inline justify="flex-start">Nous accompagnons les professionnels et les fondateurs avec sincérité, pour concevoir des solutions digitales intuitives, performantes et qui vous ressemblent vraiment.</TextReveal>
             </p>
           </FadeIn>
 

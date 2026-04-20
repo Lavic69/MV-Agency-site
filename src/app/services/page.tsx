@@ -10,6 +10,7 @@ import { MockupTree } from '@/components/ui/mockups/MockupTree';
 import { MockupIA } from '@/components/ui/mockups/MockupIA';
 import { MockupEcosystem } from '@/components/ui/mockups/MockupEcosystem';
 import { FadeIn } from '@/components/ui/FadeIn';
+import { TextReveal } from '@/components/ui/TextReveal';
 import { AnimatedTestimonials } from '@/components/ui/AnimatedTestimonials';
 
 export const metadata: Metadata = {
@@ -27,12 +28,13 @@ export default function ServicesPage() {
             <div className={styles.col60}>
               <FadeIn direction="up">
                 <h1 className={styles.headerTitle} style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1, textAlign: 'left' }}>
-                  Les 4 piliers qui feront passer votre activité à la <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent', paddingRight: '0.1em' }}>vitesse supérieure</span>.
+                  <TextReveal inline>Les 4 piliers qui feront passer votre activité à la</TextReveal>{' '}
+                  <TextReveal delay={1.35} inline wordClassName="globalGradientWordItalic">vitesse supérieure</TextReveal>.
                 </h1>
               </FadeIn>
               <FadeIn direction="up" delay={0.2}>
                 <p className={styles.headerDesc} style={{ margin: '1.5rem 0 0', textAlign: 'left' }}>
-                  Une agence qui conçoit, explique et propulse. Pour les professionnels qui veulent des résultats mesurables, pas des slides.
+                  <TextReveal delay={1.8} inline justify="flex-start">Une agence qui conçoit, explique et propulse. Pour les professionnels qui veulent des résultats mesurables, pas des slides.</TextReveal>
                 </p>
               </FadeIn>
               <FadeIn direction="up" delay={0.3}>
@@ -59,8 +61,9 @@ export default function ServicesPage() {
       <section className={`${styles.section} ${styles.darkBg}`} style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
         <div className={styles.container}>
           <FadeIn direction="up">
+            <span className="eyebrow" style={{ textAlign: "center" }}>Notre Écosystème</span>
             <h3 style={{ textAlign: 'center', fontSize: '1.8rem', color: 'var(--text-light)', marginBottom: '3rem' }}>
-              6 leviers pour accélérer votre croissance
+              <TextReveal>6 leviers pour accélérer votre croissance</TextReveal>
             </h3>
             <FeaturesGrid />
           </FadeIn>
@@ -73,7 +76,10 @@ export default function ServicesPage() {
           <div className={styles.splitLayout}>
             <div className={styles.col60}>
               <FadeIn direction="left">
-                <h2 className={styles.sectionTitle}>Une présence digitale qui marque les esprits</h2>
+                <span className="eyebrow" style={{ textAlign: "center" }}>Création Web</span>
+                <h2 className={styles.sectionTitle}>
+                  <TextReveal>Une présence digitale qui marque les esprits</TextReveal>
+                </h2>
                 <ul className={styles.servicesList}>
                   <li><FaCheck className={styles.checkIcon} /> Sites vitrines ultra-rapides en Next.js, e-commerce, refontes et landing pages de conversion</li>
                    <li><FaCheck className={styles.checkIcon} /> SEO et référencement naturel optimisé à la racine</li>
@@ -104,7 +110,10 @@ export default function ServicesPage() {
           <div className={styles.splitLayout} style={{ flexDirection: 'row-reverse' }}>
             <div className={styles.col60}>
               <FadeIn direction="right">
-                <h2 className={styles.sectionTitle}>L'automatisation au service de votre productivité</h2>
+                <span className="eyebrow" style={{ textAlign: "center" }}>Automatisation</span>
+                <h2 className={styles.sectionTitle}>
+                  <TextReveal>L'automatisation au service de votre productivité</TextReveal>
+                </h2>
                 <ul className={styles.servicesList}>
                   <li><FaCheck className={styles.checkIcon} /> Connexion directe et secrète entre tous vos outils via n8n & Make</li>
                   <li><FaCheck className={styles.checkIcon} /> Automatisation complète de votre CRM et processus de vente</li>
@@ -130,7 +139,10 @@ export default function ServicesPage() {
           <div className={styles.splitLayout}>
             <div className={styles.col60}>
               <FadeIn direction="left">
-                <h2 className={styles.sectionTitle}>L'Intelligence Artificielle intégrée à votre métier</h2>
+                <span className="eyebrow" style={{ textAlign: "center" }}>Agents IA</span>
+                <h2 className={styles.sectionTitle}>
+                  <TextReveal>L'Intelligence Artificielle intégrée à votre métier</TextReveal>
+                </h2>
                 <ul className={styles.servicesList}>
                   <li><FaCheck className={styles.checkIcon} /> Déploiement d'agents IA autonomes ultra-spécifiques</li>
                   <li><FaCheck className={styles.checkIcon} /> Connexion aux modèles de langage (LLM, Claude, GPT) sur vos propres données</li>
@@ -157,7 +169,10 @@ export default function ServicesPage() {
           <div className={styles.splitLayout} style={{ flexDirection: 'row-reverse' }}>
             <div className={styles.col60}>
               <FadeIn direction="right">
-                <h2 className={styles.sectionTitle}>Vous rendre 100% autonome</h2>
+                <span className="eyebrow" style={{ textAlign: "center" }}>Formation & Accompagnement</span>
+                <h2 className={styles.sectionTitle}>
+                  <TextReveal>Vous rendre 100% autonome</TextReveal>
+                </h2>
                 <ul className={styles.servicesList}>
                   <li><FaCheck className={styles.checkIcon} /> <span style={{ color: "var(--text-light)"}}>Formation incluse de base dans tous nos packs</span></li>
                   <li><FaCheck className={styles.checkIcon} /> Vidéos Loom explicatives et archivées pour chaque livrable</li>
@@ -178,6 +193,11 @@ export default function ServicesPage() {
       </section>
 
       {/* NOUVEAU CARROUSEL TÉMOIGNAGES ICI (Entre Autonomie et CTA) */}
+      <FadeIn direction="up">
+        <div style={{ textAlign: "center", marginBottom: "-4rem", position: "relative", zIndex: 2 }}>
+          <span className="eyebrow" style={{ display: "inline-block" }}>Avis Clients</span>
+        </div>
+      </FadeIn>
       <AnimatedTestimonials
         title="Approuvé par nos clients"
         subtitle="Découvrez comment nous avons accéléré leur croissance."
@@ -217,15 +237,16 @@ export default function ServicesPage() {
 
       {/* S5 — CTA FINAL */}
       <section className={`${styles.section}`} style={{ textAlign: "center", padding: "clamp(4rem, 10vw, 8rem) clamp(1rem, 5vw, 2rem) 4rem clamp(1rem, 5vw, 2rem)", position: 'relative', overflow: 'hidden', background: 'transparent' }}>
-        <div className={styles.container} style={{ position: 'relative', zIndex: 1 }}>
+        <div className={styles.container} style={{ maxWidth: '900px', margin: '0 auto', padding: 'clamp(3rem, 5vw, 5rem) clamp(1.5rem, 5vw, 3rem)', backgroundColor: 'rgba(10, 10, 10, 0.4)', borderRadius: '2rem', border: '1px solid rgba(255, 255, 255, 0.05)', position: 'relative', zIndex: 1, backdropFilter: 'blur(12px)' }}>
           <FadeIn direction="up">
             <h2 className={styles.sectionTitle} style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1, marginBottom: "1.5rem" }}>
-              Prêt à <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent', paddingRight: '0.1em' }}>booster votre activité</span> ?
+              <TextReveal inline>Prêt à</TextReveal>{' '}
+              <TextReveal delay={0.3} inline wordClassName="globalGradientWordItalic">booster votre activité</TextReveal> ?
             </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <p className={styles.headerDesc} style={{ marginBottom: "3rem" }}>
-              Prenons un moment pour discuter de votre activité. Nous serons ravis de vous conseiller et de voir comment la tech peut vous libérer l'esprit au quotidien.
+              <TextReveal inline justify="center">Prenons un moment pour discuter de votre activité. Nous serons ravis de vous conseiller et de voir comment la tech peut vous libérer l'esprit au quotidien.</TextReveal>
             </p>
           </FadeIn>
           <FadeIn direction="up" delay={0.3}>

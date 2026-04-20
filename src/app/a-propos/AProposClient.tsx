@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { FadeIn } from '@/components/ui/FadeIn';
+import { TextReveal } from '@/components/ui/TextReveal';
 import { Timeline, TimelineStep } from '@/components/ui/Timeline';
 import { Eye, Sparkles, Users, Award, ArrowRight, RefreshCcw, Quote } from 'lucide-react';
 import Link from 'next/link';
@@ -113,17 +114,30 @@ export default function AProposClient() {
                   fontWeight: 700,
                   color: 'var(--text-light)',
                   margin: 0,
-                  textAlign: 'left',
-                  letterSpacing: '-0.02em',
-                  paddingLeft: '1rem'
+                  textAlign: 'center',
+                  letterSpacing: '-0.02em'
                 }}>
-                  On ne vend pas du code.<br/>
-                  On vend <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent', paddingRight: '0.1em' }}>l'autonomie</span>.
+                  <TextReveal delay={0.1} inline>On ne vend pas du code.</TextReveal><br/>
+                  <TextReveal delay={1.0} inline>On vend</TextReveal>{' '}
+                  <TextReveal delay={1.3} inline>
+                    <span style={{ 
+                      fontStyle: 'italic',
+                      background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      color: 'transparent',
+                      paddingRight: '0.1em'
+                    }}>
+                      l'autonomie
+                    </span>
+                    <span style={{ color: 'var(--text-light)', fontStyle: 'normal' }}>.</span>
+                  </TextReveal>
                 </h1>
               </FadeIn>
               
-              <FadeIn direction="up" delay={0.2} style={{ alignSelf: 'flex-end', marginTop: '1rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', paddingRight: '1rem' }}>
+              <FadeIn direction="up" delay={0.8} style={{ alignSelf: 'center', marginTop: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
                   <img 
                     src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=80" 
                     alt="Victor Marchetti, Fondateur de MV Agency" 
@@ -145,7 +159,10 @@ export default function AProposClient() {
       <section className={styles.section} style={{ background: 'transparent' }}>
         <div className={styles.container}>
           <FadeIn direction="up">
-            <span className={styles.sectionLabel}>D'où vient MV Agency</span>
+            <span className="eyebrow" style={{ textAlign: "center" }}>D'où vient MV Agency</span>
+            <h2 className={styles.sectionTitleCenter} style={{ marginBottom: "4rem" }}>
+              <TextReveal>La genèse de notre approche</TextReveal>
+            </h2>
           </FadeIn>
           <div className={styles.historyGrid}>
             <FadeIn direction="left" delay={0.2}>
@@ -179,11 +196,11 @@ export default function AProposClient() {
       <section className={styles.section}>
         <div className={styles.container}>
           <FadeIn direction="up">
-            <span className={styles.sectionLabel} style={{ textAlign: 'center' }}>Notre Mission</span>
+            <span className="eyebrow" style={{ textAlign: 'center' }}>Notre Mission</span>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <h2 className={styles.missionPhrase}>
-              Concevoir, expliquer, propulser.
+              <TextReveal>Concevoir, expliquer, propulser.</TextReveal>
             </h2>
           </FadeIn>
 
@@ -218,11 +235,11 @@ export default function AProposClient() {
       <section className={styles.section} style={{ paddingBottom: '8rem' }}>
         <div className={styles.container} style={{ maxWidth: '1000px' }}>
           <FadeIn direction="up">
-            <span className={styles.sectionLabel} style={{ textAlign: 'center' }}>Le Processus J0 à J30</span>
+            <span className="eyebrow" style={{ textAlign: 'center' }}>Le Processus J0 à J30</span>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <h2 className={styles.sectionTitleCenter}>
-              Comment on travaille avec vous
+              <TextReveal>Comment on travaille avec vous</TextReveal>
             </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.3}>
@@ -322,7 +339,20 @@ export default function AProposClient() {
                   <div className={styles.bentoFlexRow}>
                     <div style={{ maxWidth: '75%' }}>
                       <h3 className={styles.bentoActionTitle} style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1 }}>
-                        Prêt à <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent' }}>transformer votre présence</span> ?
+                        <TextReveal delay={0.1} inline>Prêt à transformer</TextReveal><br/>
+                        <TextReveal delay={0.4} inline>
+                          <span style={{ 
+                            fontStyle: 'italic',
+                            background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                            color: 'transparent',
+                            paddingRight: '0.1em'
+                          }}>
+                            votre présence
+                          </span>
+                        </TextReveal> ?
                       </h3>
                       <p className={styles.bentoText}>Rejoignez les dizaines d'entreprises et d'indépendants locaux qui ont confié leur croissance à MV Agency.</p>
                     </div>

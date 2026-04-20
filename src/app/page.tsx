@@ -9,6 +9,7 @@ import FeaturesSection from "@/components/ui/Features";
 import MagicBento from "@/components/ui/MagicBento";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerContainer";
 import { ShieldCheck, Scale, User } from 'lucide-react';
 import styles from "./Home.module.css";
 import { AvailabilityPill } from "@/components/ui/AvailabilityPill";
@@ -161,29 +162,28 @@ export default function Home() {
 
         {/* S1: HERO CONTENT */}
         <section className={styles.hero} style={{ background: 'transparent', borderBottom: 'none', minHeight: '85vh', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-          <div className={styles.heroContent} style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <AvailabilityPill />
-            <h1 className={styles.heroTitle} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
-              <TextReveal delay={0.1}>Un site qui convertit.</TextReveal>
-              <TextReveal delay={0.2}>
+          <StaggerContainer className={styles.heroContent} style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <StaggerItem>
+              <AvailabilityPill />
+            </StaggerItem>
+            <StaggerItem>
+              <h1 className={styles.heroTitle} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+                <TextReveal delay={0.1}>Un site qui convertit.</TextReveal>
                 <span style={{ 
-                  background: "linear-gradient(90deg, var(--text-light) 0%, var(--primary) 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  color: "transparent",
+                  display: "inline-block",
                   paddingBottom: "0.1em",
-                  paddingRight: "0.1em",
-                  display: "inline-block"
-                }}>Une IA qui vous fait gagner du temps.</span>
-              </TextReveal>
-            </h1>
-            <FadeIn direction="up" delay={0.4}>
+                  paddingRight: "0.1em"
+                }}>
+                  <TextReveal delay={0.8} inline wordClassName={styles.heroGradientWord}>Une IA qui vous fait gagner du temps.</TextReveal>
+                </span>
+              </h1>
+            </StaggerItem>
+            <StaggerItem>
               <p className={styles.heroSubtitle} style={{ textAlign: "center", maxWidth: "600px", margin: "1.5rem auto" }}>
-                Agence web + IA pour les TPE, PME et indépendants qui veulent comprendre, pas juste déléguer. On conçoit, on explique, on propulse.
+                <TextReveal delay={1.4} inline justify="center">Agence web + IA pour les TPE, PME et indépendants qui veulent comprendre, pas juste déléguer. On conçoit, on explique, on propulse.</TextReveal>
               </p>
-            </FadeIn>
-            <FadeIn direction="up" delay={0.5}>
+            </StaggerItem>
+            <StaggerItem>
               <div className={styles.heroActions} style={{ justifyContent: 'center' }}>
                 <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none' }}>
                   <Button variant="primary">
@@ -196,54 +196,50 @@ export default function Home() {
                   </Button>
                 </Link>
               </div>
-            </FadeIn>
+            </StaggerItem>
 
           {/* Social Proof Pill */}
-          <div style={{ 
-            display: 'inline-flex', 
-            alignItems: 'center', 
-            gap: '12px', 
-            marginTop: '3.5rem', 
-            padding: '6px 20px 6px 8px', 
-            borderRadius: '999px', 
-            border: '1px solid rgba(255,255,255,0.15)', 
-            backgroundColor: 'rgba(10, 10, 10, 0.65)', 
-            backdropFilter: 'blur(8px)',
-            boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
-            alignSelf: 'center'
-          }}>
-            <div style={{ display: 'flex', marginLeft: '4px' }}>
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Client 1" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 4, objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
-              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80" alt="Client 2" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 3, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client 3" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 2, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Client 4" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 1, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+          <StaggerItem>
+            <div style={{ 
+              display: 'inline-flex', 
+              alignItems: 'center', 
+              gap: '12px', 
+              marginTop: '3.5rem', 
+              padding: '6px 20px 6px 8px', 
+              borderRadius: '999px', 
+              border: '1px solid rgba(255,255,255,0.15)', 
+              backgroundColor: 'rgba(10, 10, 10, 0.65)', 
+              backdropFilter: 'blur(8px)',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+              alignSelf: 'center'
+            }}>
+              <div style={{ display: 'flex', marginLeft: '4px' }}>
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Client 1" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 4, objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80" alt="Client 2" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 3, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client 3" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 2, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Client 4" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 1, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+              </div>
+              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)', letterSpacing: '0.3px', fontFamily: 'var(--font-body)' }}>
+                <strong style={{ color: 'var(--text-light)', fontWeight: '500' }}>10+ projets livrés</strong> · Web & IA
+              </p>
             </div>
-            <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)', letterSpacing: '0.3px', fontFamily: 'var(--font-body)' }}>
-              <strong style={{ color: 'var(--text-light)', fontWeight: '500' }}>10+ projets livrés</strong> · Web & IA
-            </p>
-          </div>
-          </div>
+          </StaggerItem>
+          </StaggerContainer>
         </section>
 
         {/* S2 — TECHNOLOGIES (Désormais sous le fond interactif) */}
         <section className={styles.marqueeSection} style={{ padding: '8rem 0 6rem 0', background: 'transparent', position: 'relative', zIndex: 1, flexDirection: 'column', alignItems: 'center' }}>
           <div style={{ textAlign: "center", marginBottom: "4rem", padding: "0 2rem" }}>
-            <FadeIn direction="up">
               <h3 style={{ 
                 fontSize: "clamp(1.8rem, 4vw, 2.6rem)", 
                 fontWeight: 600, 
                 fontFamily: "var(--font-heading), sans-serif",
                 letterSpacing: "-0.03em",
-                background: "linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                color: "transparent",
+                color: "var(--text-light)",
                 margin: 0
               }}>
-                Partenaires techniques certifiés
+                <TextReveal>Partenaires techniques certifiés</TextReveal>
               </h3>
-            </FadeIn>
           </div>
           <div style={{ width: '100%' }}>
             {/* @ts-ignore - LogoLoop is a JSX component */}
@@ -264,8 +260,11 @@ export default function Home() {
       {/* S3 — NOS RÉALISATIONS */}
       <section className={styles.section} style={{ paddingLeft: 0, paddingRight: 0 }}>
         <FadeIn direction="up">
-          <h2 className={styles.sectionTitle}>Découvrez nos dernières collaborations</h2>
+          <span className="eyebrow" style={{ textAlign: "center" }}>Portfolio</span>
         </FadeIn>
+        <h2 className={styles.sectionTitle}>
+          <TextReveal>Découvrez nos dernières collaborations</TextReveal>
+        </h2>
         <div style={{ maxWidth: "1200px", margin: "0 auto", overflow: "hidden" }}>
            <CircularTestimonials
             testimonials={realizations}
@@ -290,8 +289,11 @@ export default function Home() {
       {/* S4 — NOS EXPERTISES */}
       <section className={styles.section}>
         <FadeIn direction="up">
-          <h2 className={styles.sectionTitle}>Notre savoir-faire, à votre service</h2>
+          <span className="eyebrow" style={{ textAlign: "center" }}>Nos Expertises</span>
         </FadeIn>
+        <h2 className={styles.sectionTitle}>
+          <TextReveal>Notre savoir-faire, à votre service</TextReveal>
+        </h2>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <FeaturesSection />
         </div>
@@ -300,8 +302,11 @@ export default function Home() {
       {/* S5 — TÉMOIGNAGES */}
       <section className={styles.section} style={{ overflow: 'hidden' }}>
         <FadeIn direction="up">
-          <h2 className={styles.sectionTitle}>Ils travaillent avec nous au quotidien</h2>
+          <span className="eyebrow" style={{ textAlign: "center" }}>Avis Clients</span>
         </FadeIn>
+        <h2 className={styles.sectionTitle}>
+          <TextReveal>Ils travaillent avec nous au quotidien</TextReveal>
+        </h2>
         <div style={{
           display: "flex",
           justifyContent: "center",
@@ -321,8 +326,11 @@ export default function Home() {
       {/* S6 — POURQUOI CHOISIR MV AGENCY */}
       <section className={styles.section}>
         <FadeIn direction="up">
-          <h2 className={styles.sectionTitle} style={{ marginBottom: "2rem" }}>Pourquoi faire appel à nous ?</h2>
+          <span className="eyebrow" style={{ textAlign: "center" }}>Pourquoi nous ?</span>
         </FadeIn>
+        <h2 className={styles.sectionTitle} style={{ marginBottom: "2rem" }}>
+          <TextReveal>Pourquoi faire appel à nous ?</TextReveal>
+        </h2>
         <MagicBento 
           textAutoHide={false}
           enableStars={true}
@@ -341,8 +349,11 @@ export default function Home() {
       {/* S7 — FAQ */}
       <section className={styles.section} style={{ paddingBottom: '3rem' }}>
         <FadeIn direction="up">
-          <h2 className={styles.sectionTitle}>Vous avez des questions ? On y répond.</h2>
+          <span className="eyebrow" style={{ textAlign: "center" }}>Foire aux questions</span>
         </FadeIn>
+        <h2 className={styles.sectionTitle}>
+          <TextReveal>Vous avez des questions ? On y répond.</TextReveal>
+        </h2>
         <Accordion items={faqItems} />
       </section>
 
@@ -389,18 +400,11 @@ export default function Home() {
       {/* S8 — GRAND CTA FINAL */}
       <section className={styles.finalCtaSection} style={{ position: 'relative', overflow: 'hidden', paddingTop: '3rem', background: 'transparent' }}>
         <div className={styles.finalCtaGlow} style={{ zIndex: 1 }}></div>
-        <div className={styles.finalCtaContent} style={{ position: 'relative', zIndex: 2 }}>
+        <div className={styles.finalCtaContent} style={{ maxWidth: '900px', margin: '0 auto', padding: 'clamp(3rem, 5vw, 5rem) clamp(1.5rem, 5vw, 3rem)', backgroundColor: 'rgba(10, 10, 10, 0.4)', borderRadius: '2rem', border: '1px solid rgba(255, 255, 255, 0.05)', textAlign: 'center', position: 'relative', zIndex: 2, backdropFilter: 'blur(12px)' }}>
           <FadeIn direction="up">
             <h2 className={styles.finalCtaTitle}>
-              Prêt à allier l'excellence du web à la puissance de <br className={styles.hideOnMobile} />
-              <span style={{ 
-                fontStyle: 'italic',
-                background: "linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                color: "transparent"
-              }}>l'intelligence artificielle</span> ?
+              <TextReveal inline>Prêt à allier l'excellence du web à la puissance de</TextReveal> <br className={styles.hideOnMobile} />
+              <TextReveal delay={1.5} inline wordClassName={styles.ctaGradientWord}>l'intelligence artificielle</TextReveal> ?
             </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>

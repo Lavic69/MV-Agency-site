@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { Button } from '@/components/ui/Button';
 import styles from './Offres.module.css';
 import { FadeIn } from '@/components/ui/FadeIn';
+import { TextReveal } from '@/components/ui/TextReveal';
 import { ShieldCheck, Scale, User } from 'lucide-react';
 import { FaCheckCircle, FaTimes, FaCheck } from 'react-icons/fa';
 import { Accordion } from '@/components/ui/accordion';
@@ -53,16 +54,18 @@ export default function OffresPage() {
         <div className={styles.container}>
           <FadeIn direction="up">
             <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+              <span className="eyebrow" style={{ textAlign: "center" }}>Nos Offres</span>
               <h1 className={styles.sectionTitle} style={{ 
                 marginBottom: "1.5rem", 
                 fontSize: "clamp(2.5rem, 5vw, 4rem)", 
                 lineHeight: 1.1,
                 color: "var(--text-light)"
               }}>
-                3 packs pour <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent', paddingRight: '0.1em' }}>3 ambitions</span>.
+                <TextReveal inline>3 packs pour</TextReveal>{' '}
+                <TextReveal delay={0.45} inline wordClassName="globalGradientWordItalic">3 ambitions</TextReveal>.
               </h1>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto' }}>
-                Du site vitrine au business propulsé par l'IA. On cadre le périmètre et le budget ensemble.
+                <TextReveal delay={0.8} inline justify="center">Du site vitrine au business propulsé par l'IA. On cadre le périmètre et le budget ensemble.</TextReveal>
               </p>
             </div>
           </FadeIn>
@@ -192,7 +195,10 @@ export default function OffresPage() {
       <section className={`${styles.section} ${styles.darkBg}`}>
         <div className={styles.container}>
           <FadeIn direction="up">
-            <h2 className={styles.sectionTitle}>Entrons dans les détails</h2>
+            <span className="eyebrow" style={{ textAlign: "center" }}>Comparatif détaillé</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>Entrons dans les détails</TextReveal>
+            </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <div className={styles.tableContainer}>
@@ -253,7 +259,10 @@ export default function OffresPage() {
       <section className={`${styles.section} ${styles.neutralBg}`}>
         <div className={styles.container}>
           <FadeIn direction="up">
-            <h2 className={styles.sectionTitle}>Notre méthode, pas à pas</h2>
+            <span className="eyebrow" style={{ textAlign: "center" }}>Déroulement client</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>Notre méthode, pas à pas</TextReveal>
+            </h2>
           </FadeIn>
           <Timeline steps={defaultOffresSteps} />
         </div>
@@ -263,7 +272,10 @@ export default function OffresPage() {
       <section className={`${styles.section} ${styles.darkBg}`}>
         <div className={styles.container} style={{ maxWidth: '800px' }}>
           <FadeIn direction="up">
-            <h2 className={styles.sectionTitle}>Vous avez des questions ? On y répond.</h2>
+            <span className="eyebrow" style={{ textAlign: "center" }}>Foire aux questions</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>Vous avez des questions ? On y répond.</TextReveal>
+            </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <Accordion items={faqItems} />
@@ -273,15 +285,16 @@ export default function OffresPage() {
 
       {/* S6: CTA FINAL */}
       <section className={`${styles.section}`} style={{ textAlign: "center", padding: "clamp(4rem, 10vw, 8rem) clamp(1rem, 5vw, 2rem) 4rem clamp(1rem, 5vw, 2rem)", position: 'relative', overflow: 'hidden', background: 'transparent' }}>
-        <div className={styles.container} style={{ position: 'relative', zIndex: 1 }}>
+        <div className={styles.container} style={{ maxWidth: '900px', margin: '0 auto', padding: 'clamp(3rem, 5vw, 5rem) clamp(1.5rem, 5vw, 3rem)', backgroundColor: 'rgba(10, 10, 10, 0.4)', borderRadius: '2rem', border: '1px solid rgba(255, 255, 255, 0.05)', position: 'relative', zIndex: 1, backdropFilter: 'blur(12px)' }}>
           <FadeIn direction="up">
             <h2 className={styles.sectionTitle} style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1, marginBottom: "1.5rem" }}>
-              Prêt à passer à <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent' }}>l'étape supérieure</span> ?
+              <TextReveal inline>Prêt à passer à</TextReveal>{' '}
+              <TextReveal delay={0.6} inline wordClassName="globalGradientWordItalic">l'étape supérieure</TextReveal> ?
             </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <p className={styles.headerDesc} style={{ marginBottom: "3rem" }}>
-              Prenons le temps d'échanger sur votre projet lors d'un appel offert de 30 min. Nous vous aiderons à définir avec bienveillance l'architecture qui vous fera vraiment avancer.
+              <TextReveal inline justify="center">Prenons le temps d'échanger sur votre projet lors d'un appel offert de 30 min. Nous vous aiderons à définir avec bienveillance l'architecture qui vous fera vraiment avancer.</TextReveal>
             </p>
           </FadeIn>
           <FadeIn direction="up" delay={0.3}>

@@ -58,3 +58,44 @@ a {
   padding: 0 2rem;
 }
 
+/* Highlight text used to emphasize important parts of headings. */
+.highlight-text {
+  color: var(--primary);
+  font-style: italic;
+  display: inline-block;
+  padding-right: 0.1em;
+}
+
+/* Eyebrow / Surtitres for section hierarchy */
+.eyebrow {
+  display: block;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.globalGradientWord {
+  background: linear-gradient(90deg, #60a5fa 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  background-attachment: fixed;
+  background-size: 100vw 100vh;
+}
+
+.globalGradientWordItalic {
+  background: linear-gradient(90deg, #60a5fa 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  font-style: italic;
+  padding-right: 0.15em;
+  background-attachment: fixed;
+  background-size: 100vw 100vh;
+}

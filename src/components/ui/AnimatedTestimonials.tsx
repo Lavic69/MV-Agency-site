@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react'
 import { motion, useAnimation, useInView } from "framer-motion"
+import { TextReveal } from "./TextReveal"
 import styles from "./AnimatedTestimonials.module.css"
 
 export interface Testimonial {
@@ -101,10 +102,10 @@ export function AnimatedTestimonials({
           className={styles.header}
         >
           <motion.h2 variants={itemVariants} className={styles.title}>
-            {title}
+            <TextReveal>{title}</TextReveal>
           </motion.h2>
           <motion.p variants={itemVariants} className={styles.subtitle}>
-            {subtitle}
+            <TextReveal delay={0.4}>{subtitle}</TextReveal>
           </motion.p>
         </motion.div>
 

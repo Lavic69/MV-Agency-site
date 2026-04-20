@@ -14,7 +14,7 @@ export const realizations = [
     link: "https://johnny-site.vercel.app",
     src: "/projects/johnny.png",
     hasMobile: true,
-    mobileSrc: "/projects/johnny.png"
+    mobileSrc: "/projects/image-johnny.png"
   },
   {
     name: "Marque Osan",
@@ -32,6 +32,7 @@ export const realizations = [
     src: "/projects/stark-nine.png",
     hasMobile: false,
     hasWebApp: true,
-    mobileSrc: "/projects/stark-nine.png"
+    mobileSrc: "/projects/stark-nine.png",
+    webAppSrc: "/projects/image-starkai.png"
   }
 ];

@@ -6,10 +6,11 @@ interface ProjectMockupProps {
   hasMobile?: boolean;
   hasWebApp?: boolean;
   mobileSrc?: string;
+  webAppSrc?: string;
   projectName: string;
 }
 
-export const ProjectMockup: React.FC<ProjectMockupProps> = ({ desktopSrc, hasMobile, hasWebApp, mobileSrc, projectName }) => {
+export const ProjectMockup: React.FC<ProjectMockupProps> = ({ desktopSrc, hasMobile, hasWebApp, mobileSrc, webAppSrc, projectName }) => {
   return (
     <div className={styles.mockupContainer}>
       <div className={styles.desktopFrame} style={{ transform: (!hasMobile && !hasWebApp) ? 'rotateY(-8deg) rotateX(2deg)' : 'rotateY(-12deg) rotateX(4deg)' }}>
@@ -38,7 +39,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ desktopSrc, hasMob
             <div className={`${styles.dot} ${styles.dotGreen}`}></div>
           </div>
           <div className={styles.screenContent}>
-            <img src={desktopSrc} alt={`${projectName} SaaS Area`} className={styles.screenImage} style={{ objectPosition: 'center bottom' }} />
+            <img src={webAppSrc || desktopSrc} alt={`${projectName} SaaS Area`} className={styles.screenImage} style={{ objectFit: 'contain', objectPosition: 'center top' }} />
           </div>
         </div>
       )}

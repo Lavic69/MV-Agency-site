@@ -48,9 +48,8 @@
 .primaryContent {
   position: relative;
   z-index: 2;
-  color: var(--text-light); /* Explicit white for contrast */
-  background: transparent;
   text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  color: var(--text-light);
 }
 
 .primary:hover::before {
@@ -62,8 +61,14 @@
 }
 
 .primary:hover {
+  background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 100%);
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(37, 99, 235, 0.5); /* Extended glow on hover */
+}
+
+@keyframes spinLight {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .outline {
@@ -82,10 +87,7 @@
   box-shadow: 0 8px 25px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-@keyframes spinLight {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
+
 
 /* Animated "torpedo" text logic */
 .rollupWrapper {

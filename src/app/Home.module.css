@@ -447,3 +447,39 @@
   }
 }
 
+.heroGradientWord {
+  background: linear-gradient(90deg, #60a5fa 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  background-attachment: fixed;
+  background-size: 100vw 100vh;
+}
+
+.ctaGradientWord {
+  background: linear-gradient(90deg, #60a5fa 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  font-style: italic;
+  padding-right: 0.15em;
+  background-attachment: fixed;
+  background-size: 100vw 100vh;
+}
+
+.inlineGradient {
+  background: linear-gradient(90deg, #FFFFFF 15%, var(--primary) 50%, #FFFFFF 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  padding-right: 0.1em;
+  background-attachment: fixed;
+  background-size: 100vw 100vh;
+}
+

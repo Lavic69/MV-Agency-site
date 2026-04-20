@@ -19,7 +19,7 @@ export const FadeIn = ({ children, delay = 0, direction = "up", className = "", 
       className={className}
       initial={{ opacity: 0, y, x }}
       whileInView={{ opacity: 1, y: 0, x: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, amount: 0.15, margin: "0px" }}
       transition={{ duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
       style={{ width: '100%', ...style }}
     >

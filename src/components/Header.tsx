@@ -36,6 +36,7 @@ export const Header = () => {
         </div>
         <nav className={styles.nav}>
           <Link href="/services" className={styles.navLink}>Services</Link>
+          <Link href="/cas-clients" className={styles.navLink}>Cas Clients</Link>
           <Link href="/offres" className={styles.navLink}>Offres & Packs</Link>
           <Link href="/a-propos" className={styles.navLink}>À propos</Link>
           <Link href="/contact" className={styles.navLink}>Contact</Link>
@@ -63,6 +64,7 @@ export const Header = () => {
         <nav className={styles.mobileNav}>
           <Link href="/" className={styles.mobileNavLink} onClick={closeMenu}>Accueil</Link>
           <Link href="/services" className={styles.mobileNavLink} onClick={closeMenu}>Services</Link>
+          <Link href="/cas-clients" className={styles.mobileNavLink} onClick={closeMenu}>Cas Clients</Link>
           <Link href="/offres" className={styles.mobileNavLink} onClick={closeMenu}>Offres & Packs</Link>
           <Link href="/a-propos" className={styles.mobileNavLink} onClick={closeMenu}>À propos</Link>
           <Link href="/blog" className={styles.mobileNavLink} onClick={closeMenu}>Ressources</Link>
