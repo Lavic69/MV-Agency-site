@@ -49,14 +49,23 @@ export const PILLAR_LABEL: Record<ArticlePillar, string> = {
 
 /**
  * Liste des articles en production. Ordre = du plus récent au plus ancien
- * (le tri est preservé tel quel sur /blog).
- *
- * ⚠️ Tant qu'aucun article réel n'est publié, garder ce tableau VIDE.
- * Les anciens articles "mock" (claude-skills-guide, etc.) ont été retirés —
- * ils n'avaient pas de page de détail, ce qui produisait des liens 404
- * cliquables depuis /blog.
+ * (le tri est préservé tel quel sur /blog).
  */
-export const articles: ReadonlyArray<ArticleMeta> = [];
+export const articles: ReadonlyArray<ArticleMeta> = [
+  {
+    slug: "combien-coute-un-site-internet",
+    title: "Combien coûte un site internet en 2026 ?",
+    description:
+      "Le prix d'un site internet en 2026 varie de 1 500 € à 8 000 €. Détail des fourchettes par type de projet et des 5 facteurs qui font varier le coût.",
+    publishedAt: "2026-05-07",
+    updatedAt: "2026-05-07",
+    pillar: "creation-site-web",
+    category: "Création de site web",
+    cover: "/og/combien-coute-un-site-internet.png",
+    primaryKeyword: "prix site internet",
+    status: "published",
+  },
+];
 
 /* ------------------------------------------------------------------ */
 /*  Helpers de lecture                                                 */

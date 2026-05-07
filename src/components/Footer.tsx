@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Footer.module.css';
-import { Button } from './ui/Button';
+import { CONTACT_EMAIL } from '@/lib/seo';
 
 export const Footer = () => {
   return (
@@ -16,8 +16,8 @@ export const Footer = () => {
             </Link>
             <p className={styles.slogan}>Concevoir, expliquer, propulser votre présence digitale.<br /><strong>L'IA en plus.</strong></p>
             <div className={styles.contactInfo}>
-              <a href="mailto:contact@mv-agency.com">contact@mv-agency.com</a>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Basé à La Réunion · Intervention France & Belgique</p>
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Basé à La Réunion · Intervention France &amp; Belgique</p>
             </div>
           </div>
 
@@ -25,14 +25,15 @@ export const Footer = () => {
             <div className={styles.column}>
               <h4 className={styles.colTitle}>Agence</h4>
               <Link href="/services" className={styles.link}>Services</Link>
-              <Link href="/offres" className={styles.link}>Offres & Packs</Link>
+              <Link href="/offres" className={styles.link}>Offres &amp; Packs</Link>
               <Link href="/a-propos" className={styles.link}>À propos</Link>
               <Link href="/contact" className={styles.link}>Contact</Link>
             </div>
             <div className={styles.column}>
               <h4 className={styles.colTitle}>Ressources</h4>
               <Link href="/cas-clients" className={styles.link}>Cas clients</Link>
-              <Link href="/blog" className={styles.link}>Blog & Actualités</Link>
+              <Link href="/blog" className={styles.link}>Blog &amp; Actualités</Link>
+              <Link href="/plan-du-site" className={styles.link}>Plan du site</Link>
             </div>
             <div className={styles.column}>
               <h4 className={styles.colTitle}>Légal</h4>

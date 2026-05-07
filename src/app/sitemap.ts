@@ -29,6 +29,8 @@ const STATIC_ROUTES: ReadonlyArray<{
   { path: "/blog", changeFrequency: "weekly", priority: 0.7 },
   { path: "/a-propos", changeFrequency: "yearly", priority: 0.6 },
   { path: "/contact", changeFrequency: "yearly", priority: 0.7 },
+  { path: "/agence-web-la-reunion", changeFrequency: "monthly", priority: 0.95 },
+  { path: "/plan-du-site", changeFrequency: "monthly", priority: 0.4 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
