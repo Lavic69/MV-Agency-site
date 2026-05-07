@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react"
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react'
-import { motion, useAnimation, useInView } from "framer-motion"
+import { motion, useAnimation, useInView, type Variants } from "framer-motion"
 import { TextReveal } from "./TextReveal"
 import styles from "./AnimatedTestimonials.module.css"
 
@@ -65,7 +65,7 @@ export function AnimatedTestimonials({
     setActiveIndex((prev) => (prev + 1) % testimonials.length)
   }
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -76,7 +76,7 @@ export function AnimatedTestimonials({
     },
   }
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,

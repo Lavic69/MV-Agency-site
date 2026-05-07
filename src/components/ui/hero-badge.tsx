@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { motion, useAnimation, type Variants } from "framer-motion";
+import { motion, useAnimation, cubicBezier, type Variants } from "framer-motion";
 import Link from "next/link";
 
 interface HeroBadgeProps {
@@ -14,7 +14,7 @@ interface HeroBadgeProps {
   onClick?: () => void;
 }
 
-const ease = [0.16, 1, 0.3, 1];
+const ease = cubicBezier(0.16, 1, 0.3, 1);
 
 const iconAnimationVariants: Variants = {
   initial: { rotate: 0 },

@@ -23,7 +23,13 @@ export default function manifest(): MetadataRoute.Manifest {
         src: "/Logo_Rond_MV_V2.svg",
         sizes: "any",
         type: "image/svg+xml",
-        purpose: "any maskable",
+        purpose: "any",
+      },
+      {
+        src: "/Logo_Rond_MV_V2.svg",
+        sizes: "any",
+        type: "image/svg+xml",
+        purpose: "maskable",
       },
     ],
   };
