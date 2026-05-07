@@ -9,10 +9,18 @@ import { ShieldCheck, Scale, User } from 'lucide-react';
 import { FaCheckCircle, FaTimes, FaCheck } from 'react-icons/fa';
 import { Accordion } from '@/components/ui/accordion';
 import { Timeline, defaultOffresSteps } from '@/components/ui/Timeline';
+import { JsonLd } from '@/components/JsonLd';
+import {
+  SITE_URL,
+  offerCatalogSchema,
+  buildFaqPageSchema,
+  buildBreadcrumbSchema,
+} from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Nos Offres & Packs | MV Agency',
   description: 'Découvrez nos packs sur-mesure combinant un design web high-end et toute la puissance de l\'intelligence artificielle pour votre croissance.',
+  alternates: { canonical: '/offres' },
 };
 
 const faqItems = [
@@ -46,9 +54,18 @@ const faqItems = [
   }
 ];
 
+const offresFaqSchema = buildFaqPageSchema(faqItems, `${SITE_URL}/offres`);
+const offresBreadcrumbSchema = buildBreadcrumbSchema([
+  { name: 'Accueil', url: SITE_URL },
+  { name: 'Offres', url: `${SITE_URL}/offres` },
+]);
+
 export default function OffresPage() {
   return (
     <main style={{ paddingBottom: "0" }}>
+      <JsonLd data={offerCatalogSchema} />
+      <JsonLd data={offresFaqSchema} />
+      <JsonLd data={offresBreadcrumbSchema} />
       {/* S2: LES 3 PACKS (Promu en H1) */}
       <section id="packs" className={`${styles.section} ${styles.neutralBg}`} style={{ paddingTop: '12rem' }}>
         <div className={styles.container}>

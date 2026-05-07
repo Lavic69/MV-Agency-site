@@ -15,6 +15,8 @@ import styles from "./Home.module.css";
 import { AvailabilityPill } from "@/components/ui/AvailabilityPill";
 import { realizations } from "@/data/projects";
 import { SiWordpress, SiWebflow, SiNotion, SiShopify, SiOpenai, SiAnthropic, SiReact, SiNextdotjs, SiFigma, SiN8N, SiStripe, SiVercel, SiOdoo, SiJira, SiAsana, SiFramer } from 'react-icons/si';
+import { JsonLd } from "@/components/JsonLd";
+import { SITE_URL, buildFaqPageSchema } from "@/lib/seo";
 
 const techLogos = [
   { node: <SiWordpress size={40} color="#21759b" />, title: "WordPress" },
@@ -150,9 +152,12 @@ const faqItems = [
   }
 ];
 
+const homeFaqSchema = buildFaqPageSchema(faqItems, SITE_URL);
+
 export default function Home() {
   return (
     <main className={styles.main}>
+      <JsonLd data={homeFaqSchema} />
       {/* ======================================= */}
       {/* WRAPPER S1 & S2 POUR PARTAGEMENT DU FOND */}
       {/* ======================================= */}

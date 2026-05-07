@@ -185,3 +185,175 @@ export const founderPersonSchema = {
   ],
   nationality: { "@type": "Country", name: "France" },
 } as const;
+
+/* -------------------------------------------------------------------------- */
+/*  Schémas par page : Service / Offer / FAQ / Breadcrumb                     */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Catalogue des 4 services exposés sur /services.
+ * Chaque entrée devient un Schema.org `Service` distinct, rattaché à
+ * `provider` = Organization. Les types `serviceType` aident les AI Overviews
+ * à classer correctement l'offre.
+ */
+export const SERVICES: ReadonlyArray<{
+  name: string;
+  serviceType: string;
+  description: string;
+  url: string;
+}> = [
+  {
+    name: "Création de site web",
+    serviceType: "Web Design and Development",
+    description:
+      "Sites vitrines premium en Next.js, e-commerce, refontes et landing pages de conversion. SEO optimisé à la racine, design responsive, identité visuelle sur-mesure.",
+    url: `${SITE_URL}/services#creation-web`,
+  },
+  {
+    name: "Automatisation",
+    serviceType: "Business Process Automation",
+    description:
+      "Connexion entre vos outils via n8n et Make, automatisation CRM et processus de vente, emailing dynamique, déclencheurs d'événements pour libérer du temps opérationnel.",
+    url: `${SITE_URL}/services#automatisation`,
+  },
+  {
+    name: "Intégration d'intelligence artificielle",
+    serviceType: "Artificial Intelligence Consulting",
+    description:
+      "Déploiement d'agents IA et de chatbots souverains, automatisation augmentée par l'IA, génération de contenu assistée. Architecture sécurisée pour garantir la confidentialité.",
+    url: `${SITE_URL}/services#ia`,
+  },
+  {
+    name: "Formation et accompagnement",
+    serviceType: "Professional Training",
+    description:
+      "Formation à l'utilisation de votre site, aux outils d'automatisation et aux usages de l'IA en entreprise. Sessions pédagogiques pour rendre vos équipes autonomes.",
+    url: `${SITE_URL}/services#formation`,
+  },
+];
+
+/**
+ * Liste des 3 packs commerciaux exposés sur /offres.
+ * Pas de prix affiché — `Offer.price` est volontairement omis (cf. FAQ "Pourquoi
+ * pas de prix ?"). On utilise `priceSpecification.priceCurrency: EUR` + `availability`
+ * pour garder un Offer sémantiquement valide sans engager un prix public.
+ */
+export const PACKS: ReadonlyArray<{
+  name: string;
+  description: string;
+  highlight: boolean;
+}> = [
+  {
+    name: "Fondation digitale",
+    description:
+      "Créer votre présence en ligne professionnelle et performante : site vitrine premium jusqu'à 5 pages, design responsive, SEO de base, formulaire de contact, analytics, formation et support technique de lancement.",
+    highlight: false,
+  },
+  {
+    name: "Croissance digitale",
+    description:
+      "Générer des clients et structurer votre acquisition : site avancé jusqu'à 10 pages, SEO profond, landing page conversion, automatisations clés (emailing, CRM), chatbot IA, contenu assisté par IA, formation marketing et 1 session de suivi stratégique.",
+    highlight: true,
+  },
+  {
+    name: "Performance IA",
+    description:
+      "Automatiser et optimiser chaque processus : e-commerce ou plateforme sur-mesure, écosystème IA complet, automatisations avancées, formation et accompagnement renforcé.",
+    highlight: false,
+  },
+];
+
+/**
+ * Construit un tableau de schémas `Service` Schema.org pour /services.
+ */
+export const servicesSchemas = SERVICES.map((service) => ({
+  "@context": "https://schema.org" as const,
+  "@type": "Service" as const,
+  "@id": service.url,
+  name: service.name,
+  serviceType: service.serviceType,
+  description: service.description,
+  url: service.url,
+  provider: { "@id": `${SITE_URL}/#organization` },
+  areaServed: AREAS_SERVED.map((area) => ({
+    "@type": area.type,
+    name: area.name,
+  })),
+}));
+
+/**
+ * Catalogue d'offres exposé sur /offres — `OfferCatalog` agrégeant 3 `Offer`.
+ * Chaque Offer renvoie vers la page contact comme `url` (point d'entrée
+ * commercial unique tant qu'il n'y a pas de page produit dédiée).
+ */
+export const offerCatalogSchema = {
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  "@id": `${SITE_URL}/offres#catalog`,
+  name: "Packs MV Agency",
+  url: `${SITE_URL}/offres`,
+  itemListElement: PACKS.map((pack, index) => ({
+    "@type": "Offer",
+    "@id": `${SITE_URL}/offres#${pack.name.toLowerCase().replace(/\s+/g, "-")}`,
+    position: index + 1,
+    name: pack.name,
+    description: pack.description,
+    url: `${SITE_URL}/contact`,
+    seller: { "@id": `${SITE_URL}/#organization` },
+    availability: "https://schema.org/InStock",
+    priceCurrency: "EUR",
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      priceCurrency: "EUR",
+      description: "Prix sur devis — périmètre cadré lors d'un appel de découverte de 30 minutes.",
+    },
+    areaServed: AREAS_SERVED.map((area) => ({
+      "@type": area.type,
+      name: area.name,
+    })),
+  })),
+} as const;
+
+export type FaqItem = { question: string; answer: string };
+
+/**
+ * Construit un schéma FAQPage à partir d'une liste de questions/réponses.
+ * Strip les marqueurs Markdown gras (**texte**) qui peuvent apparaître dans
+ * les `answer` côté UI mais qui n'ont rien à faire dans le JSON-LD.
+ */
+export function buildFaqPageSchema(items: ReadonlyArray<FaqItem>, pageUrl: string) {
+  const stripMarkdown = (s: string) => s.replace(/\*\*(.+?)\*\*/g, "$1");
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${pageUrl}#faq`,
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: stripMarkdown(item.answer),
+      },
+    })),
+  } as const;
+}
+
+export type BreadcrumbItem = { name: string; url: string };
+
+/**
+ * Construit un schéma BreadcrumbList. Toujours commencer par l'entrée Accueil
+ * pour signaler la hiérarchie complète.
+ */
+export function buildBreadcrumbSchema(items: ReadonlyArray<BreadcrumbItem>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  } as const;
+}

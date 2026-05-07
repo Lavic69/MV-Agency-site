@@ -12,15 +12,27 @@ import { MockupEcosystem } from '@/components/ui/mockups/MockupEcosystem';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { TextReveal } from '@/components/ui/TextReveal';
 import { AnimatedTestimonials } from '@/components/ui/AnimatedTestimonials';
+import { JsonLd } from '@/components/JsonLd';
+import { SITE_URL, servicesSchemas, buildBreadcrumbSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Services | MV Agency',
   description: 'Découvrez comment nous propulsons les PME avec le digital et l\'IA.',
+  alternates: { canonical: '/services' },
 };
+
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: 'Accueil', url: SITE_URL },
+  { name: 'Services', url: `${SITE_URL}/services` },
+]);
 
 export default function ServicesPage() {
   return (
     <main style={{ paddingBottom: "4rem" }}>
+      {servicesSchemas.map((schema) => (
+        <JsonLd key={schema['@id']} data={schema} />
+      ))}
+      <JsonLd data={breadcrumbSchema} />
       {/* S1 — HEADER / HERO SERVICES */}
       <section className={`${styles.section}`} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', background: 'transparent', marginTop: '6rem' }}>
         <div className={styles.container} style={{ position: 'relative', zIndex: 1, width: '100%' }}>

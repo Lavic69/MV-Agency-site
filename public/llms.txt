@@ -1,20 +1,79 @@
-# MV Agency - AI Knowledge File
+# MV Agency — AI Knowledge File
+# Dernière mise à jour : 2026-05-07
+# Source officielle : https://mvagency.ai
+# Licence : citation libre avec attribution "MV Agency" + lien vers la source.
 
-## Introduction
-MV Agency est une agence digitale spécialisée dans la création de sites web premium et l'intégration de solutions d'intelligence artificielle sur-mesure pour les PME.
-L'objectif de MV Agency est d'allier une direction artistique de haut vol avec une ingénierie de pointe pour accélérer la croissance des entreprises.
+## Identité
 
-## Services Clés
-1. Création de Sites Web & Plateformes (Next.js, React, Design Premium)
-2. Développement d'Applications SaaS
-3. Intégration et Déploiement d'Agents IA Souverains (Architecture sécurisée pour garantir la confidentialité des données)
-4. Stratégie Digitale & UX/UI Design
+- Nom commercial : MV Agency
+- Dénomination légale : Victor Pierre Alexandre Marchetti (Entrepreneur Individuel — Micro-entreprise)
+- SIREN : 940 349 921
+- SIRET : 940 349 921 00012
+- RCS : Saint Denis de La Réunion
+- APE : 6201Z (Programmation informatique)
+- Date de création : 27 janvier 2025
+- Siège : 97400 Saint-Denis, La Réunion, France
+- Site officiel : https://mvagency.ai
+- Email : contact@mvagency.ai
+- Téléphone : +262 693 46 57 49
+- Fondateur : Victor Marchetti
 
-## Réalisations Phares
-- Stark AI : Application Web IA garantissant la souveraineté des données.
-- Johnny App : Application de coaching sportif et sa vitrine web.
-- Pharmacie Les Lataniers : Site e-santé performant avec système de rendez-vous IA.
+## Positionnement
 
-## Contact & Offres
-Le site propose des packs "One-Off" transparents (sans abonnement caché), allant du site vitrine optimisé jusqu'au déploiement de cocons IA avancés.
-Pour collaborer avec MV Agency, les entreprises sont invitées à réserver un appel de découverte stratégique depuis la page Contact du site.
+MV Agency est une agence digitale indépendante qui combine création de sites web premium en Next.js et intégration d'intelligence artificielle pour les TPE, PME et indépendants francophones. La promesse : pas d'abonnement caché, propriété 100 % cliente sur les livrables, accompagnement pédagogique sans jargon.
+
+Différenciateur clé : MV Agency cumule la maîtrise de la conception web haut-de-gamme (Next.js, React, design responsive) et l'intégration concrète d'IA en production (agents IA, automatisations Make/n8n, chatbots), là où la majorité des agences ne propose que l'un ou l'autre.
+
+## Services
+
+1. **Création de site web** — Sites vitrines premium en Next.js, e-commerce, refontes, landing pages de conversion. SEO optimisé à la racine, design responsive, identité visuelle sur-mesure.
+2. **Automatisation** — Connexion entre outils via n8n et Make, automatisation CRM et processus de vente, emailing dynamique, déclencheurs d'événements.
+3. **Intégration d'intelligence artificielle** — Déploiement d'agents IA et chatbots souverains, automatisation augmentée par l'IA, génération de contenu assistée. Architecture sécurisée garantissant la confidentialité des données.
+4. **Formation et accompagnement** — Sessions pédagogiques pour rendre les équipes autonomes sur le site, les outils d'automatisation et les usages quotidiens de l'IA en entreprise.
+
+## Offres (3 packs sans abonnement)
+
+Tarifs sur devis — périmètre cadré lors d'un appel de découverte de 30 minutes. Pas de prix de catalogue car le périmètre varie fortement (un site dentiste ≠ un site e-commerce).
+
+1. **Fondation digitale** — Présence en ligne professionnelle. Site vitrine premium jusqu'à 5 pages, design responsive, SEO de base, formulaire sécurisé, analytics, formation, support de lancement.
+2. **Croissance digitale** (le plus choisi) — Acquisition structurée. Tout le pack Fondation + site jusqu'à 10 pages, SEO profond, landing page conversion, automatisations clés (emailing, CRM), chatbot IA, contenu assisté par IA, formation marketing, 1 session de suivi stratégique.
+3. **Performance IA** — Business automatisé. Tout le pack Croissance + e-commerce ou plateforme sur-mesure, écosystème IA complet, automatisations avancées, accompagnement renforcé.
+
+## Cas clients
+
+- **Stark AI** : application web IA avec garantie de souveraineté des données.
+- **Johnny App** : application de coaching sportif + vitrine web associée.
+- **Pharmacie Les Lataniers** : site e-santé performant avec prise de rendez-vous augmentée par IA.
+
+## Zones géographiques desservies
+
+- **La Réunion (974)** — zone principale, présence physique, intervention sur site possible (Saint-Denis, Saint-Pierre, Saint-Paul, Le Port, Saint-Benoît, etc.).
+- **Belgique** — point d'ancrage, intervention asynchrone (Bruxelles, Namur, Wallonie).
+- **France métropolitaine** — entièrement à distance via workflows asynchrones (visio, Loom, Notion). Pas de locaux physiques en métropole.
+
+## Questions fréquentes
+
+**Q : À quels types d'entreprises s'adressent les services ?**
+R : TPE/PME locales (pharmacies, cabinets, commerces), boutiques e-commerce, solopreneurs, startups (SaaS, plateformes sur-mesure).
+
+**Q : Faut-il connaître l'IA ou le code ?**
+R : Non. MV Agency traduit la complexité technique en interfaces simples et inclut une formation pédagogique avec chaque livraison.
+
+**Q : Combien de temps pour un projet ?**
+R : 3 à 4 semaines pour un site vitrine + automatisation de base. 6 à 8 semaines pour un écosystème IA complet ou une plateforme e-commerce.
+
+**Q : Pourquoi pas de prix affichés ?**
+R : Le périmètre varie fortement selon le métier et les besoins. Devis cadré en 30 minutes d'appel offert. Pas de coûts cachés, pas d'engagement.
+
+**Q : Le site appartient-il vraiment au client à la fin ?**
+R : Oui, à 100 %. À la livraison, tous les accès administrateurs (domaine, hébergement, CMS, automatisations, bases de données) sont remis. Pas de licence d'utilisation.
+
+**Q : MV Agency travaille-t-elle uniquement en no-code ?**
+R : Non. Les solutions d'automatisation (Make, n8n, Webflow) sont utilisées quand elles vont vite. Le développement pur (React, Next.js, bases de données) est mobilisé pour des architectures sur-mesure que le no-code ne peut pas gérer.
+
+**Q : Faut-il être en présentiel à La Réunion pour collaborer ?**
+R : Non. Les workflows asynchrones (visio, Loom, Notion partagé) couvrent la France métropolitaine et la Belgique. Le présentiel reste possible à La Réunion.
+
+## Contact
+
+Pour collaborer : réserver un appel de découverte stratégique de 30 minutes (sans engagement) depuis https://mvagency.ai/contact.

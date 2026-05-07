@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { founderPersonSchema, SITE_URL } from "@/lib/seo";
+import { founderPersonSchema, SITE_URL, buildBreadcrumbSchema } from "@/lib/seo";
 import AProposClient from "./AProposClient";
+
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: "Accueil", url: SITE_URL },
+  { name: "À propos", url: `${SITE_URL}/a-propos` },
+]);
 
 export const metadata: Metadata = {
   title: "À propos — Qui est derrière MV Agency",
@@ -27,6 +32,7 @@ export default function AProposPage() {
   return (
     <>
       <JsonLd data={founderPersonSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <AProposClient />
     </>
   );

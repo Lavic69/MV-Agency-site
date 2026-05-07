@@ -9,15 +9,24 @@ import { realizations } from '@/data/projects';
 import { ProjectMockup } from './ProjectMockup';
 import styles from './CasClients.module.css';
 import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';
+import { JsonLd } from '@/components/JsonLd';
+import { SITE_URL, buildBreadcrumbSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Nos Cas Clients | MV Agency',
   description: 'Découvrez nos réalisations, sites vitrines, applications web IA et le ROI généré pour nos clients.',
+  alternates: { canonical: '/cas-clients' },
 };
+
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: 'Accueil', url: SITE_URL },
+  { name: 'Cas clients', url: `${SITE_URL}/cas-clients` },
+]);
 
 export default function CasClientsPage() {
   return (
     <main style={{ paddingBottom: '5rem', minHeight: '100vh', position: 'relative', overflowX: 'hidden' }}>
+      <JsonLd data={breadcrumbSchema} />
       
       {/* SECTION HERO */}
       <section style={{ minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: 'clamp(6rem, 15vw, 12rem) clamp(1rem, 5vw, 2rem) 4rem clamp(1rem, 5vw, 2rem)' }}>

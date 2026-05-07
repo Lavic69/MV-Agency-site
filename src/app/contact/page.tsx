@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
+import { SITE_URL, buildBreadcrumbSchema } from "@/lib/seo";
 import ContactClient from "./ContactClient";
+
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: "Accueil", url: SITE_URL },
+  { name: "Contact", url: `${SITE_URL}/contact` },
+]);
 
 export const metadata: Metadata = {
   title: "Contact — Parlons de votre projet",
@@ -23,5 +29,10 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  return <ContactClient />;
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <ContactClient />
+    </>
+  );
 }
