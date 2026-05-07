@@ -4,7 +4,8 @@ import React from 'react';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { TextReveal } from '@/components/ui/TextReveal';
 import { Timeline, TimelineStep } from '@/components/ui/Timeline';
-import { Eye, Sparkles, Users, Award, ArrowRight, RefreshCcw, Quote } from 'lucide-react';
+import { Eye, Sparkles, Users, Award, ArrowRight, RefreshCcw, Quote, TrendingUp, Link2, Gift, FolderOpen, Receipt, ShieldCheck } from 'lucide-react';
+import { MockupHub } from '@/components/ui/mockups/MockupHub';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import styles from './APropos.module.css';
@@ -249,6 +250,67 @@ export default function AProposClient() {
           </FadeIn>
           
           <Timeline steps={aproposSteps} />
+        </div>
+      </section>
+
+      {/* S4.5 — MV HUB */}
+      <section className={styles.section} style={{ paddingTop: '2rem', paddingBottom: '6rem' }}>
+        <div className={styles.container} style={{ maxWidth: '1100px' }}>
+          <div style={{ display: 'flex', gap: 'clamp(3rem, 6vw, 6rem)', alignItems: 'center', flexWrap: 'wrap' }}>
+
+            {/* Left — Text */}
+            <div style={{ flex: '1 1 320px', minWidth: 0 }}>
+              <FadeIn direction="left">
+                <span className="eyebrow">MV Hub</span>
+                <h2 className={styles.sectionTitleCenter} style={{ textAlign: 'left', marginBottom: '1.5rem' }}>
+                  <TextReveal justify="flex-start">Votre espace client dédié</TextReveal>
+                </h2>
+                <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: '480px' }}>
+                  Fini les échanges email à rallonge. Dès la signature, vous accédez à un portail privé centralisé où tout votre projet est visible, en temps réel.
+                </p>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  {[
+                    { icon: <TrendingUp size={16} />, title: 'Suivi de projet en direct', desc: 'Avancement par étape, jalons et livrables.' },
+                    { icon: <Link2 size={16} />, title: 'Connexions sécurisées', desc: 'Partagez vos accès (Analytics, CRM…) en toute sécurité.' },
+                    { icon: <Gift size={16} />, title: 'Welcome Pack & ressources', desc: 'Guides, vidéos Loom, bibliothèque de formation.' },
+                    { icon: <Receipt size={16} />, title: 'Factures & contrats', desc: 'Retrouvez tous vos documents en un clic.' },
+                    { icon: <ShieldCheck size={16} />, title: 'Compte client sécurisé', desc: 'Accès privatif, uniquement pour vous.' },
+                  ].map((item, i) => (
+                    <div key={i} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                      <div style={{
+                        width: '34px', height: '34px', borderRadius: '8px', flexShrink: 0,
+                        background: 'rgba(37,99,235,0.12)', border: '1px solid rgba(37,99,235,0.25)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        color: '#60a5fa',
+                      }}>
+                        {item.icon}
+                      </div>
+                      <div>
+                        <div style={{ color: 'var(--text-light)', fontWeight: 600, fontSize: '0.95rem', lineHeight: 1.3 }}>{item.title}</div>
+                        <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '2px', lineHeight: 1.5 }}>{item.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Right — Mockup */}
+            <div style={{ flex: '1 1 400px', minWidth: 0, display: 'flex', justifyContent: 'center' }}>
+              <FadeIn direction="right" delay={0.2}>
+                <div style={{
+                  position: 'relative',
+                  padding: '2px',
+                  borderRadius: '18px',
+                  background: 'linear-gradient(135deg, rgba(37,99,235,0.4) 0%, rgba(37,99,235,0.05) 60%)',
+                }}>
+                  <MockupHub />
+                </div>
+              </FadeIn>
+            </div>
+
+          </div>
         </div>
       </section>
 
