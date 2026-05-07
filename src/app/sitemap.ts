@@ -1,11 +1,16 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
+import { getPublishedArticles } from "./blog/_articles";
 
 /**
- * Sitemap dynamique. Chaque entrée est typée et la structure permet d'ajouter
- * facilement les futures sources :
- *   - Articles MDX sous `content/blog/**` (à brancher quand la stack contenu existe)
- *   - Pages géo (`/agence-web-la-reunion`, etc.) — à ajouter dès création
+ * Sitemap dynamique.
+ *
+ * Sources :
+ *  - Routes statiques principales (table ci-dessous)
+ *  - Articles de blog : itération sur le registre `_articles.ts`
+ *
+ * À ajouter dès création :
+ *  - Pages géo (`/agence-web-la-reunion`, etc.)
  *
  * Les pages légales restent en `noindex` côté metadata et n'apparaissent donc pas ici.
  */
@@ -36,9 +41,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route.priority,
   }));
 
-  // Sources dynamiques — à brancher quand disponibles :
-  // const blogEntries = await getBlogPosts().then(posts => posts.map(...));
+  const blogEntries: MetadataRoute.Sitemap = getPublishedArticles().map((article) => ({
+    url: `${SITE_URL}/blog/${article.slug}`,
+    lastModified: new Date(article.updatedAt),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  // Pages géo — à brancher quand les premières pages seront créées :
   // const geoEntries = GEO_PAGES.map(...);
 
-  return [...staticEntries];
+  return [...staticEntries, ...blogEntries];
 }

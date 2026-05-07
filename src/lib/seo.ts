@@ -357,3 +357,44 @@ export function buildBreadcrumbSchema(items: ReadonlyArray<BreadcrumbItem>) {
     })),
   } as const;
 }
+
+export type ArticleSchemaInput = {
+  /** URL canonique complète de l'article (ex: `${SITE_URL}/blog/<slug>`) */
+  url: string;
+  /** Titre H1 de l'article */
+  title: string;
+  /** Description courte / chapeau */
+  description: string;
+  /** ISO date YYYY-MM-DD */
+  publishedAt: string;
+  /** ISO date YYYY-MM-DD — peut être identique à publishedAt */
+  updatedAt: string;
+  /** URL absolue de l'image cover / OG */
+  imageUrl: string;
+  /** Mots-clés (tableau ou string CSV) — optionnel */
+  keywords?: ReadonlyArray<string>;
+};
+
+/**
+ * Construit un schéma Article Schema.org pour un article de blog.
+ * `author` et `publisher` pointent par référence (`@id`) vers Person Victor
+ * et Organization MV Agency déjà déclarés globalement, pour préserver
+ * l'unité du knowledge graph.
+ */
+export function buildArticleSchema(input: ArticleSchemaInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${input.url}#article`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": input.url },
+    headline: input.title,
+    description: input.description,
+    image: input.imageUrl,
+    datePublished: input.publishedAt,
+    dateModified: input.updatedAt,
+    inLanguage: "fr-FR",
+    author: { "@id": `${SITE_URL}/a-propos#person` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    ...(input.keywords?.length ? { keywords: input.keywords.join(", ") } : {}),
+  } as const;
+}

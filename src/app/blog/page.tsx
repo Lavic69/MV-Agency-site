@@ -1,48 +1,45 @@
 import React from 'react';
 import { Metadata } from 'next';
-import Link from 'next/link';
 import { FadeIn } from '@/components/ui/FadeIn';
+import { JsonLd } from '@/components/JsonLd';
+import { SITE_URL, buildBreadcrumbSchema } from '@/lib/seo';
 import { BlogClient } from './BlogClient';
-import styles from './Blog.module.css';
+import { getPublishedArticles, PILLAR_LABEL } from './_articles';
 
 export const metadata: Metadata = {
   title: 'Blog & Actualités | MV Agency',
-  description: 'Découvrez nos derniers articles, conseils en stratégie digitale, et nos analyses sur les IA génératives.',
+  description:
+    "Articles approfondis sur la création de sites web, l'intelligence artificielle pour PME, le SEO et le marketing digital — par Victor Marchetti.",
+  alternates: { canonical: '/blog' },
 };
 
-// Tableau de test pour le "CMS IA".
-// Vous n'aurez qu'à me donner un texte et une image, je l'ajouterai ici.
-const posts = [
-  {
-    slug: 'claude-skills-guide',
-    title: 'Claude Skills Guide',
-    excerpt: 'Chargez des dossiers complets d\'instructions à la demande pour donner à Claude les bons workflows et règles métiers selon la tâche.',
-    date: 'Apr 11, 2026',
-    cover: '/projects/stark-nine.png',
-    category: 'Intelligence Artificielle'
-  },
-  {
-    slug: 'idea-to-saas',
-    title: 'Idea to SaaS in 48 Hours',
-    excerpt: 'Un guide étape par étape expliquant comment utiliser nos agents IA pour abstraire toute la logique technique de votre MVP SaaS.',
-    date: 'Apr 03, 2026',
-    cover: '/projects/hosan.png',
-    category: 'SaaS'
-  },
-  {
-    slug: 'pourquoi-integrer-ia-pme',
-    title: 'Pourquoi intégrer l\'IA en 2026 ?',
-    excerpt: 'Découvrez les cas d\'usage les plus rentables pour automatiser vos tâches rébarbatives et vous concentrer sur la vraie valeur ajoutée.',
-    date: 'Mar 28, 2026',
-    cover: '/projects/lataniers.png',
-    category: 'Intelligence Artificielle'
-  }
-];
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: 'Accueil', url: SITE_URL },
+  { name: 'Blog', url: `${SITE_URL}/blog` },
+]);
+
+const formatDate = (iso: string) =>
+  new Date(iso).toLocaleDateString('fr-FR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  });
 
 export default function BlogPage() {
+  // Le registre est statique côté server — on le mappe au format attendu par BlogClient.
+  const posts = getPublishedArticles().map((article) => ({
+    slug: article.slug,
+    title: article.title,
+    excerpt: article.description,
+    date: formatDate(article.publishedAt),
+    cover: article.cover,
+    category: PILLAR_LABEL[article.pillar],
+  }));
+
   return (
     <main style={{ paddingBottom: '5rem', minHeight: '100vh', position: 'relative' }}>
-      
+      <JsonLd data={breadcrumbSchema} />
+
       {/* SECTION HERO */}
       <section style={{ minHeight: '40vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: '10rem', paddingBottom: '3rem', textAlign: 'center', padding: '10rem 2rem 3rem 2rem' }}>
         <FadeIn delay={0.1} direction="up">
@@ -60,7 +57,6 @@ export default function BlogPage() {
 
       {/* COMPOSANT INTERACTIF : RECHERCHE + FILTRES + GRILLE */}
       <BlogClient posts={posts} />
-
     </main>
   );
 }
