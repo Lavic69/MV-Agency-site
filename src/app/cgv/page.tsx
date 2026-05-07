@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE_NAME, CONTACT_EMAIL } from "@/lib/seo";
+import { SITE_NAME, CONTACT_EMAIL, LEGAL, LEGAL_LAST_UPDATED } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Conditions Générales de Vente",
@@ -8,26 +8,14 @@ export const metadata: Metadata = {
   robots: { index: true, follow: false },
 };
 
-/**
- * ⚠️ IMPORTANT — SQUELETTE À FINALISER AVANT MISE EN LIGNE PRODUCTION
- *
- * Ce document est un canevas générique pour une activité de prestations de services
- * digitaux B2B (TPE/PME). Il DOIT être :
- *  1. Relu et ajusté selon ta réalité commerciale exacte (délais, acomptes, livrables, etc.)
- *  2. Idéalement validé par un avocat / expert-comptable avant mise en ligne
- *  3. Accepté explicitement par chaque client (signature devis + case cochée sur portail)
- *
- * Clauses incontournables pour une prestation digitale :
- *  - Objet et périmètre précis
- *  - Prix, modalités de paiement, acompte
- *  - Délais d'exécution et retards
- *  - Cession / licence des droits sur les livrables
- *  - Obligations de chaque partie
- *  - Résiliation et conséquences
- *  - Responsabilité et garanties
- *  - Confidentialité
- *  - Droit applicable et juridiction
- */
+const LAST_UPDATED_FR = new Date(LEGAL_LAST_UPDATED).toLocaleDateString("fr-FR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
+const CGV_VERSION = "v1.0";
+
 export default function CgvPage() {
   return (
     <main className="container" style={{ padding: "6rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
@@ -35,8 +23,10 @@ export default function CgvPage() {
 
       <p style={{ marginBottom: "2rem", fontStyle: "italic", color: "var(--accent)" }}>
         Les présentes Conditions Générales de Vente (ci-après « CGV ») régissent les relations
-        contractuelles entre {SITE_NAME} (ci-après « le Prestataire ») et ses clients professionnels
-        (ci-après « le Client ») pour toute prestation de services digitaux.
+        contractuelles entre {LEGAL.legalName}, exerçant sous le nom commercial {SITE_NAME}, {LEGAL.legalForm.toLowerCase()},
+        immatriculée au {LEGAL.rcs} sous le n° {LEGAL.siren} (SIRET {LEGAL.siret}), dont le siège est situé à {LEGAL.publicAddress}
+        (ci-après « le Prestataire »), et ses clients professionnels (ci-après « le Client »)
+        pour toute prestation de services digitaux.
       </p>
 
       <section style={{ marginBottom: "2.5rem" }}>
@@ -52,17 +42,16 @@ export default function CgvPage() {
         <h2 style={{ fontSize: "1.4rem", marginBottom: "1rem" }}>Article 2 — Devis et commande</h2>
         <p>
           Toute prestation fait l'objet d'un devis écrit précisant la nature, le périmètre, les
-          livrables, le planning et le prix. Le devis est valable [À COMPLÉTER — ex. 30 jours] à
-          compter de sa date d'émission. La commande est réputée ferme dès signature du devis par le
-          Client et encaissement de l'acompte prévu à l'article 4.
+          livrables, le planning et le prix. Le devis est valable 30 jours à compter de sa date
+          d'émission. La commande est réputée ferme dès signature du devis par le Client et
+          encaissement de l'acompte prévu à l'article 4.
         </p>
       </section>
 
       <section style={{ marginBottom: "2.5rem" }}>
         <h2 style={{ fontSize: "1.4rem", marginBottom: "1rem" }}>Article 3 — Prix</h2>
         <p>
-          Les prix sont indiqués en euros, [À COMPLÉTER : « HT » si assujetti TVA / « net, TVA non
-          applicable – art. 293 B du CGI » pour micro-entreprise].
+          Les prix sont indiqués en euros, nets de taxes : <strong>{LEGAL.vatNotice}</strong>.
         </p>
         <p style={{ marginTop: "0.5rem" }}>
           Les prix ne comprennent pas les coûts tiers (noms de domaine, hébergement, licences
@@ -73,9 +62,9 @@ export default function CgvPage() {
 
       <section style={{ marginBottom: "2.5rem" }}>
         <h2 style={{ fontSize: "1.4rem", marginBottom: "1rem" }}>Article 4 — Modalités de paiement</h2>
-        <p>Sauf accord particulier :</p>
+        <p>Sauf accord particulier mentionné au devis :</p>
         <ul style={{ marginLeft: "1.5rem", marginTop: "0.5rem" }}>
-          <li>Acompte de [À COMPLÉTER — ex. 30 ou 40] % à la commande.</li>
+          <li>Acompte de 30 % à la commande, déclenchant le démarrage des travaux.</li>
           <li>Solde à la livraison ou selon échéancier convenu au devis.</li>
           <li>Paiement par virement bancaire sous 15 jours à réception de facture.</li>
         </ul>
@@ -153,8 +142,8 @@ export default function CgvPage() {
         <h2 style={{ fontSize: "1.4rem", marginBottom: "1rem" }}>Article 11 — Droit applicable et juridiction</h2>
         <p>
           Les présentes CGV sont soumises au droit français. En cas de litige, et après échec d'une
-          tentative de résolution amiable, compétence exclusive est attribuée aux tribunaux du
-          ressort du siège du Prestataire.
+          tentative de résolution amiable, compétence exclusive est attribuée au Tribunal Mixte de
+          Commerce de Saint-Denis de La Réunion.
         </p>
       </section>
 
@@ -167,7 +156,7 @@ export default function CgvPage() {
       </section>
 
       <p style={{ marginTop: "3rem", fontSize: "0.9rem", color: "var(--accent)" }}>
-        Version [À COMPLÉTER] · Dernière mise à jour : [À COMPLÉTER]
+        Version {CGV_VERSION} · Dernière mise à jour : {LAST_UPDATED_FR}
       </p>
     </main>
   );

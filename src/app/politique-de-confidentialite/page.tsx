@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { SITE_NAME, SITE_URL, CONTACT_EMAIL } from "@/lib/seo";
+import {
+  SITE_NAME,
+  SITE_URL,
+  CONTACT_EMAIL,
+  LEGAL,
+  LEGAL_LAST_UPDATED,
+} from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité",
@@ -8,18 +14,12 @@ export const metadata: Metadata = {
   robots: { index: true, follow: false },
 };
 
-/**
- * ⚠️ IMPORTANT — À FINALISER AVANT MISE EN LIGNE PRODUCTION
- *
- * Vérifier / compléter :
- *  - Liste exacte des outils tiers utilisés (analytics, formulaires, embed Cal.com, etc.)
- *  - Cookies réellement posés (ouvrir DevTools sur le site live pour auditer)
- *  - Durée de conservation des données selon le type de traitement
- *  - Base légale de chaque traitement (consentement, contrat, intérêt légitime)
- *  - Coordonnées du DPO si désigné
- *
- * Obligations RGPD (Règlement UE 2016/679) + LIL 78-17 modifiée.
- */
+const LAST_UPDATED_FR = new Date(LEGAL_LAST_UPDATED).toLocaleDateString("fr-FR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
 export default function PolitiqueConfidentialitePage() {
   return (
     <main className="container" style={{ padding: "6rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
@@ -34,7 +34,21 @@ export default function PolitiqueConfidentialitePage() {
 
       <section style={{ marginBottom: "2.5rem" }}>
         <h2 style={{ fontSize: "1.4rem", marginBottom: "1rem" }}>1. Responsable du traitement</h2>
-        <p>{SITE_NAME} — contact : <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
+        <p>
+          <strong>{LEGAL.legalName}</strong>, exerçant sous le nom commercial {SITE_NAME},
+          {" "}{LEGAL.legalForm.toLowerCase()}, immatriculée au {LEGAL.rcs} sous le n° {LEGAL.siren}.
+        </p>
+        <p style={{ marginTop: "0.5rem" }}>
+          Siège : {LEGAL.publicAddress}
+          <br />
+          Contact RGPD : <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+          <br />
+          Téléphone : <a href={`tel:${LEGAL.phone}`}>{LEGAL.phoneDisplay}</a>
+        </p>
+        <p style={{ marginTop: "0.5rem", fontSize: "0.9rem", fontStyle: "italic" }}>
+          Aucun délégué à la protection des données (DPO) n'est désigné, le traitement ne le rendant
+          pas obligatoire (art. 37 RGPD).
+        </p>
       </section>
 
       <section style={{ marginBottom: "2.5rem" }}>
@@ -88,8 +102,9 @@ export default function PolitiqueConfidentialitePage() {
           cookie publicitaire ou de tracking tiers n'est déposé sans votre consentement explicite.
         </p>
         <p style={{ marginTop: "0.5rem" }}>
-          [À COMPLÉTER : lister les cookies effectivement posés — session, préférences, analytics
-          éventuels (Plausible / Vercel Analytics)]
+          Si une solution de mesure d'audience est ajoutée ultérieurement (Plausible, Vercel
+          Analytics ou équivalent), la liste exacte sera mise à jour ici et le consentement requis
+          sera sollicité conformément à la recommandation CNIL « cookies et autres traceurs ».
         </p>
       </section>
 
@@ -119,7 +134,7 @@ export default function PolitiqueConfidentialitePage() {
       </section>
 
       <p style={{ marginTop: "3rem", fontSize: "0.9rem", color: "var(--accent)" }}>
-        Dernière mise à jour : [À COMPLÉTER]
+        Dernière mise à jour : {LAST_UPDATED_FR}
       </p>
     </main>
   );

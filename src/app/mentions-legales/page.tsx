@@ -1,29 +1,26 @@
 import type { Metadata } from "next";
-import { SITE_NAME, SITE_URL, CONTACT_EMAIL, FOUNDER_NAME } from "@/lib/seo";
+import {
+  SITE_NAME,
+  SITE_URL,
+  CONTACT_EMAIL,
+  LEGAL,
+  HOST,
+  LEGAL_LAST_UPDATED,
+} from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Mentions légales",
   description: `Mentions légales de ${SITE_NAME}. Éditeur, hébergeur, propriété intellectuelle.`,
   alternates: { canonical: "/mentions-legales" },
-  robots: { index: true, follow: false }, // pas de valeur SEO, crawl OK mais pas d'index
+  robots: { index: true, follow: false },
 };
 
-/**
- * ⚠️ IMPORTANT — À FINALISER AVANT MISE EN LIGNE PRODUCTION
- *
- * Les champs marqués [À COMPLÉTER] doivent être remplis avec les données réelles
- * dès l'immatriculation de l'entreprise (micro-entreprise / SASU / autre).
- *
- * Obligations légales FR (LCEN 2004-575) :
- *  - Nom / raison sociale de l'éditeur
- *  - Adresse du siège
- *  - Numéro de téléphone
- *  - Email de contact
- *  - SIRET / SIREN
- *  - Numéro TVA intracommunautaire (si applicable)
- *  - Directeur de la publication
- *  - Coordonnées complètes de l'hébergeur
- */
+const LAST_UPDATED_FR = new Date(LEGAL_LAST_UPDATED).toLocaleDateString("fr-FR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
 export default function MentionsLegalesPage() {
   return (
     <main className="container" style={{ padding: "6rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
@@ -31,24 +28,33 @@ export default function MentionsLegalesPage() {
 
       <section style={{ marginBottom: "2.5rem" }}>
         <h2 style={{ fontSize: "1.4rem", marginBottom: "1rem" }}>1. Éditeur du site</h2>
-        <p><strong>Dénomination :</strong> {SITE_NAME}</p>
-        <p><strong>Forme juridique :</strong> [À COMPLÉTER — ex. Entreprise individuelle / SASU]</p>
-        <p><strong>SIRET :</strong> [À COMPLÉTER]</p>
-        <p><strong>Numéro TVA intracommunautaire :</strong> [À COMPLÉTER ou « Non assujetti – Art. 293 B du CGI » pour micro-entreprise]</p>
-        <p><strong>Siège social :</strong> [À COMPLÉTER — adresse complète, La Réunion]</p>
+        <p><strong>Nom commercial :</strong> {LEGAL.commercialName}</p>
+        <p><strong>Dénomination légale :</strong> {LEGAL.legalName}</p>
+        <p><strong>Forme juridique :</strong> {LEGAL.legalForm}</p>
+        <p><strong>SIREN :</strong> {LEGAL.siren}</p>
+        <p><strong>SIRET (établissement principal) :</strong> {LEGAL.siret}</p>
+        <p><strong>Code APE / NAF :</strong> {LEGAL.ape} — {LEGAL.apeLabel}</p>
+        <p><strong>Immatriculation :</strong> {LEGAL.rcs} — n° de gestion {LEGAL.rcsManagementNumber}</p>
+        <p><strong>TVA :</strong> {LEGAL.vatNotice}</p>
+        <p><strong>Siège social :</strong> {LEGAL.publicAddress}</p>
+        <p><strong>Téléphone :</strong> <a href={`tel:${LEGAL.phone}`}>{LEGAL.phoneDisplay}</a></p>
         <p>
           <strong>Email :</strong>{" "}
           <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
         </p>
-        <p><strong>Téléphone :</strong> [À COMPLÉTER]</p>
-        <p><strong>Directeur de la publication :</strong> {FOUNDER_NAME}</p>
+        <p><strong>Directeur de la publication :</strong> {LEGAL.publicationDirector}</p>
       </section>
 
       <section style={{ marginBottom: "2.5rem" }}>
         <h2 style={{ fontSize: "1.4rem", marginBottom: "1rem" }}>2. Hébergeur</h2>
-        <p><strong>Vercel Inc.</strong></p>
-        <p>340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis</p>
-        <p>Site : <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">vercel.com</a></p>
+        <p><strong>{HOST.name}</strong></p>
+        <p>{HOST.address}</p>
+        <p>
+          Site :{" "}
+          <a href={HOST.url} target="_blank" rel="noopener noreferrer">
+            {HOST.url.replace(/^https?:\/\//, "")}
+          </a>
+        </p>
       </section>
 
       <section style={{ marginBottom: "2.5rem" }}>
@@ -88,7 +94,7 @@ export default function MentionsLegalesPage() {
       </section>
 
       <p style={{ marginTop: "3rem", fontSize: "0.9rem", color: "var(--accent)" }}>
-        Dernière mise à jour : [À COMPLÉTER]
+        Dernière mise à jour : {LAST_UPDATED_FR}
       </p>
     </main>
   );

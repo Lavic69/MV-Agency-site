@@ -1,10 +1,11 @@
 /**
  * Constantes SEO centralisées + schémas Schema.org réutilisables.
- * Source unique de vérité pour : URL site, email, branding, données structurées.
+ * Source unique de vérité pour : URL site, email, branding, données structurées,
+ * mentions légales, CGV, politique de confidentialité.
  *
  * ⚠️ Mettre à jour ce fichier en cas de :
- *   - Changement de domaine
- *   - Ajout du SIRET / forme juridique (après immatriculation définitive)
+ *   - Changement de domaine ou d'adresse
+ *   - Modification de la forme juridique (passage micro → SASU)
  *   - Ajout de profils sociaux (LinkedIn, Clutch, etc.)
  */
 
@@ -16,9 +17,57 @@ export const SITE_DESCRIPTION =
 
 export const CONTACT_EMAIL = "contact@mvagency.ai";
 export const FOUNDER_NAME = "Victor Marchetti";
+export const FOUNDER_FULL_NAME = "Victor Pierre Alexandre Marchetti";
 export const FOUNDER_ROLE = "Fondateur";
 
 export const LOCALE = "fr_FR";
+
+/**
+ * Données légales — micro-entreprise immatriculée au RCS Saint-Denis de La Réunion.
+ * Sources : extrait Kbis 2025A00241, Synthèse Guichet Unique J00120928718 (validée 31/01/2025).
+ * Adresse publique volontairement réduite à la commune (siège = domicile de l'entrepreneur).
+ * L'adresse complète reste consultable au RCS conformément à l'obligation de publicité légale.
+ */
+export const LEGAL = {
+  legalName: `${FOUNDER_FULL_NAME}`,
+  commercialName: SITE_NAME,
+  legalForm: "Entrepreneur Individuel — Micro-entreprise",
+  siren: "940 349 921",
+  siret: "940 349 921 00012",
+  ape: "6201Z",
+  apeLabel: "Programmation informatique",
+  rcs: "RCS Saint Denis de La Réunion",
+  rcsManagementNumber: "2025A00241",
+  registrationDate: "2025-01-31",
+  activityStartDate: "2025-01-27",
+  // Adresse publique (commune uniquement) — domicile du dirigeant non divulgué
+  addressLocality: "Saint-Denis",
+  postalCode: "97400",
+  addressRegion: "La Réunion",
+  addressCountry: "FR",
+  publicAddress: "97400 Saint-Denis, La Réunion, France",
+  phone: "+262693465749",
+  phoneDisplay: "+262 693 46 57 49",
+  vatNotice: "TVA non applicable, art. 293 B du CGI",
+  vatNumber: null, // franchise en base
+  taxRegime: "Régime spécial BNC",
+  publicationDirector: FOUNDER_FULL_NAME,
+} as const;
+
+/**
+ * Hébergeur — déclaration LCEN (loi 2004-575).
+ */
+export const HOST = {
+  name: "Vercel Inc.",
+  address: "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis",
+  url: "https://vercel.com",
+} as const;
+
+/**
+ * Date de la dernière révision des documents légaux affichée en pied de page.
+ * Format ISO ; affichage formaté côté composant.
+ */
+export const LEGAL_LAST_UPDATED = "2026-05-07";
 
 // Zones d'activité pour LocalBusiness / Service.areaServed
 export const AREAS_SERVED = [
@@ -36,7 +85,10 @@ export const organizationSchema = {
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
-  legalName: "MV Agency", // TODO: remplacer par la dénomination officielle après immatriculation
+  legalName: LEGAL.legalName,
+  alternateName: LEGAL.commercialName,
+  taxID: LEGAL.siren,
+  vatID: LEGAL.vatNumber ?? undefined,
   url: SITE_URL,
   logo: {
     "@type": "ImageObject",
@@ -51,10 +103,11 @@ export const organizationSchema = {
     jobTitle: FOUNDER_ROLE,
     url: `${SITE_URL}/a-propos`,
   },
-  foundingDate: "2024",
+  foundingDate: LEGAL.registrationDate,
   contactPoint: {
     "@type": "ContactPoint",
     email: CONTACT_EMAIL,
+    telephone: LEGAL.phone,
     contactType: "customer service",
     availableLanguage: ["French"],
     areaServed: ["FR", "BE", "RE"],
@@ -79,12 +132,15 @@ export const localBusinessSchema = {
   logo: `${SITE_URL}/Logo_Rond_MV_V2.svg`,
   image: `${SITE_URL}/opengraph-image`,
   description: SITE_DESCRIPTION,
+  telephone: LEGAL.phone,
+  email: CONTACT_EMAIL,
   priceRange: "€€",
   address: {
     "@type": "PostalAddress",
-    addressCountry: "FR",
-    addressRegion: "La Réunion",
-    // TODO: préciser ville + code postal si adresse pro dédiée
+    addressLocality: LEGAL.addressLocality,
+    postalCode: LEGAL.postalCode,
+    addressRegion: LEGAL.addressRegion,
+    addressCountry: LEGAL.addressCountry,
   },
   areaServed: AREAS_SERVED.map((area) => ({
     "@type": area.type,
