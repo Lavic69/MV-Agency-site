@@ -7,10 +7,12 @@ import { Accordion } from "@/components/ui/accordion";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
 import FeaturesSection from "@/components/ui/Features";
 import MagicBento from "@/components/ui/MagicBento";
+import { MockupHub } from "@/components/ui/mockups/MockupHub";
+import { TiltCard } from "@/components/ui/TiltCard";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerContainer";
-import { ShieldCheck, Scale, User } from 'lucide-react';
+import { ShieldCheck, Scale, User, Phone, LayoutDashboard, Code2, Rocket, ArrowRight } from 'lucide-react';
 import styles from "./Home.module.css";
 import { AvailabilityPill } from "@/components/ui/AvailabilityPill";
 import { realizations } from "@/data/projects";
@@ -333,7 +335,7 @@ export default function Home() {
       </section>
 
       {/* S6 — POURQUOI CHOISIR MV AGENCY */}
-      <section className={styles.section}>
+      <section className={styles.section} style={{ paddingBottom: '1rem' }}>
         <FadeIn direction="up">
           <span className="eyebrow" style={{ textAlign: "center" }}>Pourquoi nous ?</span>
         </FadeIn>
@@ -355,6 +357,155 @@ export default function Home() {
         />
       </section>
 
+      {/* BADGES GARANTIE — BANDE DIAGONALE */}
+      <div style={{ position: 'relative', margin: '0', zIndex: 1 }}>
+        <div style={{
+          transform: 'skewY(-3deg)',
+          background: 'radial-gradient(ellipse 90% 100% at 50% 50%, rgba(37,99,235,0.12) 0%, transparent 70%), linear-gradient(105deg, #080e1f 0%, #0a1228 50%, #080e1f 100%)',
+          padding: '9rem 0',
+          position: 'relative',
+          overflow: 'hidden',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 32%, black 68%, transparent 100%)',
+          maskImage: 'linear-gradient(to bottom, transparent 0%, black 32%, black 68%, transparent 100%)',
+        }}>
+          {/* Dot grid — style Figma/Linear */}
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(37,99,235,0.28) 1px, transparent 1px)', backgroundSize: '24px 24px', pointerEvents: 'none' }} />
+
+          {/* Contenu counter-skewé */}
+          <div style={{ transform: 'skewY(3deg)', position: 'relative', zIndex: 2 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2.5rem', maxWidth: '1000px', margin: '0 auto', padding: '0 2rem', textAlign: 'center' }}>
+              <FadeIn direction="up" delay={0.1}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                  <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}>
+                    <ShieldCheck size={36} />
+                  </div>
+                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Satisfait ou remanié</h4>
+                  <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}>Rendu initial pas conforme ? <strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>On itère gratuitement</strong>, sans discussion.</p>
+                </div>
+              </FadeIn>
+              <FadeIn direction="up" delay={0.2}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                  <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}>
+                    <Scale size={36} />
+                  </div>
+                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Pas d&apos;engagement</h4>
+                  <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}><strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>Aucun abonnement caché.</strong> Vous restez libres à tout moment.</p>
+                </div>
+              </FadeIn>
+              <FadeIn direction="up" delay={0.3}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                  <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}>
+                    <User size={36} />
+                  </div>
+                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Un seul interlocuteur</h4>
+                  <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}>Du premier appel à la livraison finale, <strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>une seule personne</strong> pilote votre projet.</p>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {/* S6.5 — COMMENT ÇA MARCHE */}
+      <section className={styles.section} style={{ paddingTop: '4rem', paddingBottom: '6rem' }}>
+        <FadeIn direction="up">
+          <span className="eyebrow" style={{ textAlign: "center" }}>Notre Processus</span>
+        </FadeIn>
+        <h2 className={styles.sectionTitle}>
+          <TextReveal>Comment on travaille avec vous</TextReveal>
+        </h2>
+        <FadeIn direction="up" delay={0.1}>
+          <p style={{ textAlign: 'center', color: 'var(--text-muted)', maxWidth: '580px', margin: '-2rem auto 4rem', fontSize: '1.05rem', lineHeight: 1.7 }}>
+            De l&apos;appel découverte à la livraison, chaque étape est cadrée, transparente et centralisée dans votre espace client <strong style={{ color: 'var(--text-light)' }}>MV Hub</strong>.
+          </p>
+        </FadeIn>
+
+        <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '1.5rem' }}>
+          {[
+            {
+              num: '01',
+              icon: <Phone size={20} />,
+              title: 'Appel découverte offert',
+              desc: '30 minutes pour comprendre votre activité, vos objectifs et voir si on est le bon fit. Sans engagement.',
+              color: '#2563EB',
+              highlight: false,
+            },
+            {
+              num: '02',
+              icon: <LayoutDashboard size={20} />,
+              title: 'Signature & MV Hub',
+              desc: 'Dès la signature, votre espace client MV Hub est créé : brief, welcome pack, suivi en direct.',
+              color: '#2563EB',
+              highlight: true,
+            },
+            {
+              num: '03',
+              icon: <Code2 size={20} />,
+              title: 'Conception J0–J30',
+              desc: 'Design, développement, IA et automatisations. Chaque avancement est visible dans votre Hub.',
+              color: '#2563EB',
+              highlight: false,
+            },
+            {
+              num: '04',
+              icon: <Rocket size={20} />,
+              title: 'Livraison & Autonomie',
+              desc: 'Formation incluse. Vous repartez 100% propriétaire de vos outils, sans dépendance à l\'agence.',
+              color: '#2563EB',
+              highlight: false,
+            },
+          ].map((step, i) => (
+            <FadeIn key={i} direction="up" delay={0.1 * i}>
+              <TiltCard
+                maxTilt={10}
+                style={{
+                  background: step.highlight ? 'rgba(37,99,235,0.1)' : 'rgba(37,99,235,0.04)',
+                  border: `1px solid ${step.highlight ? 'rgba(37,99,235,0.45)' : 'rgba(37,99,235,0.2)'}`,
+                  borderRadius: '16px',
+                  padding: '2rem',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1rem',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
+                {step.highlight && (
+                  <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(37,99,235,0.2)', border: '1px solid rgba(37,99,235,0.45)', borderRadius: '999px', padding: '2px 10px', fontSize: '0.65rem', fontWeight: 700, color: '#93c5fd', textTransform: 'uppercase', letterSpacing: '0.08em' }}>MV Hub</div>
+                )}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                  <span style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: 900, color: 'rgba(255,255,255,0.07)', lineHeight: 1, letterSpacing: '-0.03em' }}>{step.num}</span>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: `${step.color}22`, border: `1px solid ${step.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: step.color, flexShrink: 0 }}>
+                    {step.icon}
+                  </div>
+                </div>
+                <div style={{ color: 'var(--text-light)', fontWeight: 700, fontSize: '1.05rem', lineHeight: 1.3, fontFamily: 'var(--font-heading)' }}>{step.title}</div>
+                <div style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.65, flex: 1 }}>{step.desc}</div>
+              </TiltCard>
+            </FadeIn>
+          ))}
+        </div>
+
+        {/* MockupHub sous les étapes */}
+        <FadeIn direction="up" delay={0.4}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3.5rem' }}>
+            <div style={{ padding: '2px', borderRadius: '18px', background: 'linear-gradient(135deg, rgba(37,99,235,0.3) 0%, rgba(139,92,246,0.2) 100%)' }}>
+              <MockupHub />
+            </div>
+          </div>
+        </FadeIn>
+
+        <FadeIn direction="up" delay={0.6}>
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <Link href="/a-propos" tabIndex={-1} style={{ textDecoration: 'none' }}>
+              <Button variant="outline">Découvrir notre méthode complète</Button>
+            </Link>
+          </div>
+        </FadeIn>
+      </section>
+
       {/* S7 — FAQ */}
       <section className={styles.section} style={{ paddingBottom: '3rem' }}>
         <FadeIn direction="up">
@@ -366,45 +517,7 @@ export default function Home() {
         <Accordion items={faqItems} />
       </section>
 
-      {/* BADGES GARANTIE */}
-      <section className={styles.section} style={{ paddingBottom: '6rem', paddingTop: '4rem' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '2rem',
-          maxWidth: '1000px',
-          margin: '0 auto',
-          textAlign: 'center'
-        }}>
-          <FadeIn direction="up" delay={0.1}>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
-              <div style={{ color: '#60A5FA', padding: '12px', background: 'rgba(96, 165, 250, 0.1)', borderRadius: '12px' }}>
-                <ShieldCheck size={32} />
-              </div>
-              <h4 style={{ margin: 0, fontSize: '1.2rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)' }}>Satisfait ou remanié</h4>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)' }}>Rendu initial pas conforme ? On itère gratuitement.</p>
-            </div>
-          </FadeIn>
-          <FadeIn direction="up" delay={0.2}>
-             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
-              <div style={{ color: '#60A5FA', padding: '12px', background: 'rgba(96, 165, 250, 0.1)', borderRadius: '12px' }}>
-                <Scale size={32} />
-              </div>
-              <h4 style={{ margin: 0, fontSize: '1.2rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)' }}>Pas d'engagement</h4>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)' }}>Aucun abonnement caché. Vous êtes libres.</p>
-            </div>
-          </FadeIn>
-          <FadeIn direction="up" delay={0.3}>
-             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
-              <div style={{ color: '#60A5FA', padding: '12px', background: 'rgba(96, 165, 250, 0.1)', borderRadius: '12px' }}>
-                <User size={32} />
-              </div>
-              <h4 style={{ margin: 0, fontSize: '1.2rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)' }}>Un seul interlocuteur</h4>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)' }}>Du premier appel à la livraison finale.</p>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+      {/* BADGES GARANTIE — déplacés avant le processus */}
 
       {/* S8 — GRAND CTA FINAL */}
       <section className={styles.finalCtaSection} style={{ position: 'relative', overflow: 'hidden', paddingTop: '3rem', background: 'transparent' }}>

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   LayoutDashboard,
   TrendingUp,
@@ -22,26 +22,49 @@ const navItems = [
 ];
 
 const invoices = [
-  { label: "Pack Starter — Site Web", amount: "1 200 €", status: "Payée" },
-  { label: "Module IA Chatbot", amount: "800 €", status: "Payée" },
-  { label: "Formation & Autonomie", amount: "350 €", status: "En cours" },
+  { label: "Livraison maquettes UI", amount: "", status: "Validée" },
+  { label: "Intégration formulaire contact", amount: "", status: "En cours" },
+  { label: "Rédaction contenus SEO", amount: "", status: "En attente" },
 ];
 
 export function MockupHub() {
+  const [tilt, setTilt] = useState({ x: 0, y: 0, active: false });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    setTilt({
+      x: -(y - 0.5) * 10,
+      y: (x - 0.5) * 14,
+      active: true,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ x: 0, y: 0, active: false });
+  };
+
   return (
     <div
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       style={{
         width: "100%",
-        maxWidth: "560px",
+        maxWidth: "800px",
         borderRadius: "16px",
         overflow: "hidden",
         border: "1px solid rgba(255,255,255,0.08)",
-        boxShadow:
-          "0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(37,99,235,0.15)",
+        boxShadow: tilt.active
+          ? "0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(37,99,235,0.25)"
+          : "0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(37,99,235,0.15)",
         display: "flex",
         fontFamily: "var(--font-body), Inter, sans-serif",
         fontSize: "13px",
         userSelect: "none",
+        transform: `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${tilt.active ? 1.02 : 1})`,
+        transition: tilt.active ? "transform 0.1s ease-out, box-shadow 0.2s ease" : "transform 0.5s ease, box-shadow 0.4s ease",
+        willChange: "transform",
       }}
     >
       {/* ── SIDEBAR ── */}
@@ -223,7 +246,7 @@ export function MockupHub() {
             <div style={{ display: "flex", gap: "6px", marginTop: "10px", flexWrap: "wrap" }}>
               {[
                 { name: "Analytics", color: "#f97316", letter: "GA" },
-                { name: "Stripe", color: "#635bff", letter: "St" },
+                { name: "Facebook Ads", color: "#1877F2", letter: "fb" },
                 { name: "Notion", color: "#fff", letter: "N" },
               ].map((c, i) => (
                 <div
@@ -266,7 +289,7 @@ export function MockupHub() {
 
           {/* Card 3 — Factures */}
           <div style={cardStyle}>
-            <div style={cardLabelStyle}>Factures récentes</div>
+            <div style={cardLabelStyle}>Tâches du projet</div>
             <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "8px" }}>
               {invoices.map((inv, i) => (
                 <div
@@ -287,8 +310,8 @@ export function MockupHub() {
                       fontWeight: 600,
                       padding: "2px 6px",
                       borderRadius: "99px",
-                      background: inv.status === "Payée" ? "rgba(16,185,129,0.15)" : "rgba(251,191,36,0.15)",
-                      color: inv.status === "Payée" ? "#34d399" : "#fbbf24",
+                      background: inv.status === "Validée" ? "rgba(16,185,129,0.15)" : inv.status === "En cours" ? "rgba(37,99,235,0.15)" : "rgba(251,191,36,0.15)",
+                      color: inv.status === "Validée" ? "#34d399" : inv.status === "En cours" ? "#60a5fa" : "#fbbf24",
                       whiteSpace: "nowrap",
                     }}
                   >

@@ -168,45 +168,46 @@ export default function OffresPage() {
         </div>
       </section>
 
-      {/* BADGES GARANTIE */}
-      <section className={styles.section} style={{ paddingBottom: '3rem', paddingTop: '2rem' }}>
+      {/* BANDE GARANTIE — diagonal dot grid */}
+      <div style={{ position: 'relative', margin: '0', zIndex: 1 }}>
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '2rem',
-          maxWidth: '1000px',
-          margin: '0 auto',
-          textAlign: 'center'
+          transform: 'skewY(-3deg)',
+          background: 'radial-gradient(ellipse 90% 100% at 50% 50%, rgba(37,99,235,0.12) 0%, transparent 70%), linear-gradient(105deg, #080e1f 0%, #0a1228 50%, #080e1f 100%)',
+          padding: '9rem 0',
+          position: 'relative',
+          overflow: 'hidden',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 32%, black 68%, transparent 100%)',
+          maskImage: 'linear-gradient(to bottom, transparent 0%, black 32%, black 68%, transparent 100%)',
         }}>
-          <FadeIn direction="up" delay={0.1}>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
-              <div style={{ color: '#60A5FA', padding: '12px', background: 'rgba(96, 165, 250, 0.1)', borderRadius: '12px' }}>
-                <ShieldCheck size={32} />
-              </div>
-              <h4 style={{ margin: 0, fontSize: '1.2rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)' }}>Satisfait ou remanié</h4>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)' }}>Rendu initial pas conforme ? On itère gratuitement.</p>
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(37,99,235,0.28) 1px, transparent 1px)', backgroundSize: '24px 24px', pointerEvents: 'none' }} />
+          <div style={{ transform: 'skewY(3deg)', position: 'relative', zIndex: 2 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2.5rem', maxWidth: '1000px', margin: '0 auto', padding: '0 2rem', textAlign: 'center' }}>
+              <FadeIn direction="up" delay={0.1}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                  <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}><ShieldCheck size={36} /></div>
+                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Satisfait ou remanié</h4>
+                  <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}>Rendu initial pas conforme ? <strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>On itère gratuitement</strong>, sans discussion.</p>
+                </div>
+              </FadeIn>
+              <FadeIn direction="up" delay={0.2}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                  <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}><Scale size={36} /></div>
+                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Pas d&apos;engagement</h4>
+                  <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}><strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>Aucun abonnement caché.</strong> Vous restez libres à tout moment.</p>
+                </div>
+              </FadeIn>
+              <FadeIn direction="up" delay={0.3}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                  <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}><User size={36} /></div>
+                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Un seul interlocuteur</h4>
+                  <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}>Du premier appel à la livraison finale, <strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>une seule personne</strong> pilote votre projet.</p>
+                </div>
+              </FadeIn>
             </div>
-          </FadeIn>
-          <FadeIn direction="up" delay={0.2}>
-             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
-              <div style={{ color: '#60A5FA', padding: '12px', background: 'rgba(96, 165, 250, 0.1)', borderRadius: '12px' }}>
-                <Scale size={32} />
-              </div>
-              <h4 style={{ margin: 0, fontSize: '1.2rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)' }}>Pas d'engagement</h4>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)' }}>Aucun abonnement caché. Vous êtes libres.</p>
-            </div>
-          </FadeIn>
-          <FadeIn direction="up" delay={0.3}>
-             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
-              <div style={{ color: '#60A5FA', padding: '12px', background: 'rgba(96, 165, 250, 0.1)', borderRadius: '12px' }}>
-                <User size={32} />
-              </div>
-              <h4 style={{ margin: 0, fontSize: '1.2rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)' }}>Un seul interlocuteur</h4>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)' }}>Du premier appel à la livraison finale.</p>
-            </div>
-          </FadeIn>
+          </div>
         </div>
-      </section>
+      </div>
+
 
       {/* S3: TABLEAU COMPARATIF */}
       <section className={`${styles.section} ${styles.darkBg}`}>
