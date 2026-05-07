@@ -326,9 +326,9 @@ export default function Home() {
           maxHeight: "680px",
           overflow: "hidden",
         }}>
-          <TestimonialsColumn testimonials={firstColumn} duration={25} />
-          <TestimonialsColumn testimonials={secondColumn} duration={32} className={styles.hideOnMobile} />
-          <TestimonialsColumn testimonials={thirdColumn} duration={28} className={styles.hideOnTablet} />
+          <TestimonialsColumn testimonials={firstColumn} duration={15} />
+          <TestimonialsColumn testimonials={secondColumn} duration={20} className={styles.hideOnMobile} />
+          <TestimonialsColumn testimonials={thirdColumn} duration={17} className={styles.hideOnTablet} />
         </div>
       </section>
 

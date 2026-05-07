@@ -40,8 +40,8 @@ export default function ServicesPage() {
             <div className={styles.col60}>
               <FadeIn direction="up">
                 <h1 className={styles.headerTitle} style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1, textAlign: 'left' }}>
-                  <TextReveal inline>Les 4 piliers qui feront passer votre activité à la</TextReveal>{' '}
-                  <TextReveal delay={1.35} inline wordClassName="globalGradientWordItalic">vitesse supérieure</TextReveal>.
+                  <TextReveal inline justify="flex-start">Les 4 piliers qui feront passer votre activité à la</TextReveal>{' '}
+                  <TextReveal delay={1.35} inline justify="flex-start" wordClassName="globalGradientWordItalic">vitesse supérieure</TextReveal>
                 </h1>
               </FadeIn>
               <FadeIn direction="up" delay={0.2}>
