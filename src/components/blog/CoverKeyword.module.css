@@ -47,6 +47,8 @@
   gap: 0.4em;
   line-height: 1;
   padding-bottom: 4px;
+  pointer-events: none;
+  user-select: none;
 }
 .logo {
   width: 1em;

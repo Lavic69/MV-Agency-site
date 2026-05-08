@@ -25,16 +25,23 @@ const LOGO_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
  */
 function splitOnOperators(value: string): Array<{ kind: "text" | "op"; value: string }> {
   // Ordre du regex : opérateurs spaced first (` vs `, ` × `, ` + `, ` / `, ` — `)
-  const regex = /(\s+vs\s+|\s+[×+/—]\s+)/gi;
+  const regex = /(\s+vs\s+|\s+[×+/—]\s+)/i;
   const tokens = value.split(regex).filter((s) => s.length > 0);
   return tokens.map((tok) => {
-    if (regex.test(tok) || /^\s+(vs|[×+/—])\s+$/i.test(tok)) {
+    if (/^\s+(vs|[×+/—])\s+$/i.test(tok)) {
       return { kind: "op" as const, value: tok.trim() };
     }
     return { kind: "text" as const, value: tok };
   });
 }
 
+/**
+ * Tailles supportées pour le rendu du mot-clé géant.
+ * - `xl` : hero d'article (cover 320px)
+ * - `md` : carte de liste (cover 160px)
+ * - `sm` : BlogPreview featured (cover 180px)
+ * - `xs` : réservé pour usages futurs (mini-vignettes) — non utilisé en V1.
+ */
 export type CoverKeywordSize = "xl" | "md" | "sm" | "xs";
 
 interface CoverKeywordProps {
@@ -55,7 +62,7 @@ export const CoverKeyword: React.FC<CoverKeywordProps> = ({ keyword, size = "xl"
       // Fallback texte si un logo n'est pas mappé — on affiche le slug en majuscules.
       const fallbackText = `${a.toUpperCase()} VS ${b.toUpperCase()}`;
       return (
-        <div className={`${styles.root} ${sizeClass} ${className ?? ""}`} aria-label={fallbackText}>
+        <div className={`${styles.root} ${sizeClass} ${className ?? ""}`} aria-hidden={true}>
           {fallbackText}
         </div>
       );
@@ -64,7 +71,7 @@ export const CoverKeyword: React.FC<CoverKeywordProps> = ({ keyword, size = "xl"
     return (
       <div
         className={`${styles.versus} ${sizeClass} ${className ?? ""}`}
-        aria-label={`${a} vs ${b}`}
+        aria-hidden={true}
       >
         <span className={styles.logo}>
           <LogoA />
@@ -82,7 +89,7 @@ export const CoverKeyword: React.FC<CoverKeywordProps> = ({ keyword, size = "xl"
   return (
     <div
       className={`${styles.root} ${sizeClass} ${className ?? ""}`}
-      aria-label={keyword.value}
+      aria-hidden={true}
     >
       {parts.map((part, i) =>
         part.kind === "op" ? (
