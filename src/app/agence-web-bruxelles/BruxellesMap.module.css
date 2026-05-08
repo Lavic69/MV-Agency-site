@@ -36,21 +36,25 @@
   }
 }
 
-/* ----- Center : visuel Bruxelles-Capitale ----- */
+/* ----- Center : carte SVG des 19 communes ----- */
 .mapCenter {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 2rem 1.5rem;
   min-height: 320px;
+  /* Le SVG utilise currentColor → définition de la teinte ici */
+  color: #2563EB;
 }
 
 .mapSvg {
   width: 100%;
   height: auto;
-  max-width: 360px;
-  filter: drop-shadow(0 12px 28px rgba(37, 99, 235, 0.35));
+  max-width: 320px;
+  max-height: 360px;
+  filter: drop-shadow(0 14px 28px rgba(37, 99, 235, 0.4));
+  opacity: 0.95;
 }
 
 .mapBadge {

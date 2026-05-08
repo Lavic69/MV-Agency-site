@@ -41,22 +41,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  min-height: 360px;
-  /* La carte utilise `currentColor` → on définit la couleur ici (gradient) */
+  padding: 2rem 1.5rem;
+  min-height: 320px;
+  /* La carte utilise `currentColor` → on définit la couleur ici */
   color: #2563EB;
 }
 
 .mapSvg {
   width: 100%;
   height: auto;
-  max-width: 420px;
+  /* Dézoomer : taille plus modeste pour laisser respirer les cards satellites */
+  max-width: 280px;
+  max-height: 320px;
   filter: drop-shadow(0 14px 28px rgba(37, 99, 235, 0.35));
   opacity: 0.95;
-}
-
-.mapSvg :global(.bxl-country) {
-  /* Override fill via CSS pour laisser la place au currentColor du parent */
 }
 
 .mapBadge {

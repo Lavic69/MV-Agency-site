@@ -1,20 +1,13 @@
 import { ArrowUp, ArrowDown, ArrowLeft, ArrowRight } from "lucide-react";
+import { BRUXELLES_SVG_INNER, BRUXELLES_SVG_VIEWBOX } from "./bruxelles-svg-content";
 import styles from "./BruxellesMap.module.css";
 
 /**
  * Layout cards-par-cardinaux pour les 19 communes de Bruxelles-Capitale.
  *
- * Même pattern que /agence-web-la-reunion/ReunionMap : 4 cards satellites
- * autour d'un visuel central (badge Région-Capitale 1000), chaque card
- * regroupe les communes par orientation géographique.
- *
- * Groupes :
- *  - Nord : Schaerbeek, Evere, Jette, Koekelberg, Ganshoren, Berchem
- *  - Est  : Saint-Josse, Etterbeek, Woluwe-Saint-Lambert, Woluwe-Saint-Pierre,
- *           Auderghem, Watermael-Boitsfort
- *  - Sud  : Ixelles, Saint-Gilles, Uccle, Forest
- *  - Ouest : Anderlecht, Molenbeek-Saint-Jean
- *  - Centre : Ville de Bruxelles
+ * Même pattern que /agence-web-la-reunion/ReunionMap : carte SVG centrée
+ * (Wikimedia Commons "Brussels-Capital Region blank.svg", CC-BY-SA) +
+ * 4 cards satellites (Nord/Est/Sud/Ouest) regroupant les 19 communes.
  */
 
 type ZoneKey = "nord" | "est" | "sud" | "ouest";
@@ -44,7 +37,7 @@ const ZONES: Record<ZoneKey, { label: string; primary: string; others: ReadonlyA
   ouest: {
     label: "Ouest",
     primary: "Anderlecht",
-    others: ["Molenbeek-Saint-Jean"],
+    others: ["Molenbeek-Saint-Jean", "Ville de Bruxelles"],
   },
 };
 
@@ -82,83 +75,14 @@ export function BruxellesMap() {
           );
         })}
 
-        {/* Centre : pastille Ville de Bruxelles */}
         <div className={styles.mapCenter} style={{ gridArea: "center" }}>
           <svg
-            viewBox="0 0 240 240"
+            viewBox={BRUXELLES_SVG_VIEWBOX}
             xmlns="http://www.w3.org/2000/svg"
             className={styles.mapSvg}
-            aria-label="Région de Bruxelles-Capitale"
-          >
-            <defs>
-              <radialGradient id="bxl-glow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#60A5FA" stopOpacity="0.5" />
-                <stop offset="60%" stopColor="#2563EB" stopOpacity="0.18" />
-                <stop offset="100%" stopColor="#1A1F4B" stopOpacity="0" />
-              </radialGradient>
-              <linearGradient id="bxl-region-fill" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#1A1F4B" stopOpacity="0.95" />
-                <stop offset="100%" stopColor="#2563EB" stopOpacity="0.85" />
-              </linearGradient>
-            </defs>
-
-            {/* Glow extérieur */}
-            <circle cx="120" cy="120" r="115" fill="url(#bxl-glow)" />
-
-            {/* Forme stylisée de la Région-Capitale (hexagone irrégulier) */}
-            <path
-              d="M 80 50
-                 L 165 45
-                 L 200 95
-                 L 195 165
-                 L 145 205
-                 L 75 200
-                 L 45 145
-                 L 50 90
-                 Z"
-              fill="url(#bxl-region-fill)"
-              stroke="rgba(96, 165, 250, 0.7)"
-              strokeWidth="2"
-              strokeLinejoin="round"
-            />
-
-            {/* Pin Ville de Bruxelles (centre) */}
-            <g>
-              <circle
-                cx="120"
-                cy="120"
-                r="22"
-                fill="none"
-                stroke="#60A5FA"
-                strokeWidth="1.5"
-                opacity="0.45"
-              />
-              <circle cx="120" cy="120" r="10" fill="#60A5FA" stroke="#FFFFFF" strokeWidth="2.5" />
-              <text
-                x="120"
-                y="155"
-                fontSize="14"
-                fontWeight="700"
-                fill="#FFFFFF"
-                textAnchor="middle"
-                fontFamily="system-ui, sans-serif"
-              >
-                Ville de Bruxelles
-              </text>
-              <text
-                x="120"
-                y="172"
-                fontSize="10"
-                fontWeight="500"
-                fill="#9CA3AF"
-                textAnchor="middle"
-                fontFamily="system-ui, sans-serif"
-              >
-                centre historique
-              </text>
-            </g>
-          </svg>
-
+            aria-label="Carte des 19 communes de la Région de Bruxelles-Capitale"
+            dangerouslySetInnerHTML={{ __html: BRUXELLES_SVG_INNER }}
+          />
           <div className={styles.mapBadge}>
             <span className={styles.mapBadgeCode}>1000</span>
             <span className={styles.mapBadgeRegion}>Bruxelles-Capitale</span>
