@@ -310,3 +310,74 @@
   .pullQuoteMark { font-size: 4.5rem; top: 0.7rem; left: 0.4rem; }
   .pullQuoteText { font-size: 1.15rem; }
 }
+
+/* ----- StatHighlight (chiffre clé en surbrillance) ----- */
+.stat {
+  display: flex;
+  align-items: stretch;
+  margin: 3.5rem 0;
+  padding: 1.75rem 1.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(96, 165, 250, 0.18);
+}
+
+.statNum {
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(3.5rem, 8vw, 5.25rem);
+  font-weight: 900;
+  color: #60A5FA;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  padding-right: 1.75rem;
+  border-right: 1px solid rgba(96, 165, 250, 0.25);
+  flex-shrink: 0;
+}
+
+.statText {
+  padding-left: 1.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.statLabel {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.625rem;
+  color: #60A5FA;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.statDesc {
+  font-size: 0.95rem;
+  color: rgba(229, 231, 235, 0.9);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.statSource {
+  font-size: 0.75rem;
+  color: #6B7280;
+  font-style: italic;
+  margin-top: 0.625rem;
+}
+
+@media (max-width: 700px) {
+  .stat {
+    flex-direction: column;
+    padding: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .statNum {
+    border-right: none;
+    border-bottom: 1px solid rgba(96, 165, 250, 0.25);
+    padding-right: 0;
+    padding-bottom: 0.875rem;
+    margin-bottom: 0.875rem;
+  }
+  .statText { padding-left: 0; }
+}
