@@ -51,6 +51,11 @@ const sections: Section[] = [
         label: "Agence web & IA à La Réunion (974)",
         description: "Saint-Denis, Saint-Pierre, Saint-Paul, Le Port — toute l'île",
       },
+      {
+        href: "/agence-web-belgique",
+        label: "Agence web & IA en Belgique",
+        description: "Bruxelles, Wallonie, Liège, Namur, Charleroi — collaboration asynchrone",
+      },
     ],
   },
   {

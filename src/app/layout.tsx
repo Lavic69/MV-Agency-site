@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Darker_Grotesque, DM_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import { Clarity } from "@/components/analytics/Clarity";
 import LiquidEther from "@/components/ui/LiquidEther";
 import {
   SITE_URL,
@@ -92,17 +95,28 @@ export const metadata: Metadata = {
     },
   },
 
+  // Note : icônes générées dynamiquement par src/app/icon.tsx + src/app/apple-icon.tsx
+  // (Next 16 file-based metadata) — aucune référence manuelle nécessaire ici.
   icons: {
     icon: "/Logo_Rond_MV_V2.svg",
     shortcut: "/Logo_Rond_MV_V2.svg",
-    // TODO: ajouter public/apple-icon.png (180×180) puis décommenter
-    // apple: "/apple-icon.png",
   },
 
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
+  },
+
+  // Vérifications de propriété — à remplir dans .env Vercel après création des comptes
+  // (Google Search Console + Bing Webmaster Tools, tous deux gratuits).
+  verification: {
+    ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
+      ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
+      : {}),
+    ...(process.env.NEXT_PUBLIC_BING_VERIFICATION
+      ? { other: { "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION } }
+      : {}),
   },
 };
 
@@ -153,6 +167,16 @@ export default function RootLayout({
         <Header />
         <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>{children}</div>
         <Footer />
+
+        {/* Mesure d'audience — Vercel Analytics & Speed Insights : sans cookies,
+            sans bandeau de consentement, gratuits jusqu'à 50k events/mois. */}
+        <Analytics />
+        <SpeedInsights />
+
+        {/* Microsoft Clarity — chargé uniquement si NEXT_PUBLIC_CLARITY_ID est défini
+            ET si l'utilisateur a accepté les cookies (cf. ConsentBanner). Désactivé
+            par défaut tant qu'aucun bandeau de consentement n'est en place. */}
+        <Clarity />
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FadeIn } from '@/components/ui/FadeIn';
 import styles from './Blog.module.css';
 
@@ -116,8 +117,14 @@ export const BlogClient: React.FC<BlogClientProps> = ({ posts }) => {
                 <Link href={`/blog/${post.slug}`} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
                   <div className={styles.postCard}>
                     <div className={styles.imageWrapper}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={post.cover} alt={post.title} className={styles.cardImage} />
+                      <Image
+                        src={post.cover}
+                        alt={post.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
+                        className={styles.cardImage}
+                        priority={idx === 0}
+                      />
                     </div>
                     <div className={styles.cardContent}>
                       <h2 className={styles.cardTitle}>{post.title}</h2>

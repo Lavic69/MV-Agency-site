@@ -86,6 +86,7 @@ export default function PolitiqueConfidentialitePage() {
         <p>Vos données peuvent être transmises aux sous-traitants techniques suivants :</p>
         <ul style={{ marginLeft: "1.5rem", marginTop: "0.5rem" }}>
           <li><strong>Vercel Inc.</strong> (hébergement du site, USA — garanties : Data Processing Addendum + SCCs européennes).</li>
+          <li><strong>Vercel Web Analytics & Speed Insights</strong> (mesure d'audience anonymisée et performance — sans cookies, hashage IP côté serveur, conservation 90 jours, conforme RGPD sans consentement requis).</li>
           <li><strong>Cloudflare, Inc.</strong> (DNS, domaine).</li>
           <li><strong>Infomaniak SA</strong> (email professionnel, Suisse — pays à protection adéquate).</li>
           <li><strong>Cal.com</strong> (prise de rendez-vous — si intégré).</li>
@@ -96,15 +97,24 @@ export default function PolitiqueConfidentialitePage() {
       </section>
 
       <section style={{ marginBottom: "2.5rem" }}>
-        <h2 style={{ fontSize: "1.4rem", marginBottom: "1rem" }}>6. Cookies</h2>
+        <h2 style={{ fontSize: "1.4rem", marginBottom: "1rem" }}>6. Cookies & mesure d'audience</h2>
         <p>
           Le site utilise uniquement des cookies strictement nécessaires à son fonctionnement. Aucun
           cookie publicitaire ou de tracking tiers n'est déposé sans votre consentement explicite.
         </p>
         <p style={{ marginTop: "0.5rem" }}>
-          Si une solution de mesure d'audience est ajoutée ultérieurement (Plausible, Vercel
-          Analytics ou équivalent), la liste exacte sera mise à jour ici et le consentement requis
-          sera sollicité conformément à la recommandation CNIL « cookies et autres traceurs ».
+          La mesure d'audience est assurée par <strong>Vercel Web Analytics</strong> et{" "}
+          <strong>Vercel Speed Insights</strong>, qui fonctionnent <strong>sans cookies</strong> :
+          aucun identifiant n'est stocké côté navigateur, l'adresse IP est anonymisée par hashage
+          côté serveur, et seuls des indicateurs agrégés (pages vues, sources, temps de chargement)
+          sont conservés pendant 90 jours. Cette configuration est exemptée de consentement au sens
+          de la délibération CNIL 2020-091 (mesure d'audience anonymisée à finalité unique).
+        </p>
+        <p style={{ marginTop: "0.5rem" }}>
+          Si une solution de mesure plus complète (Google Analytics, heatmap Microsoft Clarity ou
+          équivalent) est ajoutée ultérieurement, un bandeau de consentement sera posé conformément
+          à la recommandation CNIL « cookies et autres traceurs » et la liste exacte des traceurs
+          sera mise à jour ici.
         </p>
       </section>
 

@@ -1,5 +1,5 @@
 # MV Agency — AI Knowledge File
-# Dernière mise à jour : 2026-05-07
+# Dernière mise à jour : 2026-05-08
 # Source officielle : https://mvagency.ai
 # Licence : citation libre avec attribution "MV Agency" + lien vers la source.
 

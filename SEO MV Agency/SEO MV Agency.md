@@ -493,3 +493,54 @@ Scoring opportunité : `log10(volume) * 100 - (competition/100)*120 + intent_bon
 13. 🟢 Ajouter `alternates.canonical` sur `/services`, `/offres`, `/cas-clients`
 14. 🟢 Créer `<CalEmbed />` client-component quand Cal.com sera configuré
 15. 🟢 Audit Lighthouse post-déploiement (CWV, accessibilité, SEO)
+
+---
+
+### 2026-05-08 — Session J3 : audit complet + infra mesure & analytics
+
+**Statut Track A après cette session — 13 tâches terminées sur 15 (87 %).**
+
+| # | Action | Avant | Maintenant |
+|---|---|---|---|
+| 1 | sitemap.ts dynamique | 🔴 statique | ✅ itère sur `_articles.ts` + ajout `/agence-web-belgique` |
+| 2 | robots.ts enrichi (bots IA) | 🔴 basique | ✅ 14 bots IA explicites (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot, Applebot-Extended, cohere-ai, Bytespider…) |
+| 3 | /blog + /blog/[slug] avec Article schema + BreadcrumbList | 🔴 | ✅ `/blog`, `/blog/combien-coute-un-site-internet`, helpers `buildArticleSchema` + `buildBreadcrumbSchema` |
+| 4 | JSON-LD Service ×3 sur /services | 🟡 | ✅ `servicesSchemas` dans `lib/seo.ts` |
+| 5 | JSON-LD Offer + FAQPage sur /offres | 🟡 | ✅ `offerCatalogSchema` + FAQPage builder utilisé |
+| 6 | Enrichir llms.txt | 🟡 | ✅ 80 lignes (identité + positionnement + services + offres + cas + zones + FAQ + contact) |
+| 7 | Pages géo (Réunion priorité) | 🟡 | ✅ `/agence-web-la-reunion` + ✅ `/agence-web-belgique` (nouvelle) |
+| 8 | manifest.ts (PWA) | 🟢 absent | ✅ créé + référence les nouveaux PNG dynamiques |
+| 9 | apple-icon.png (180×180) | 🟢 absent | ✅ `src/app/apple-icon.tsx` (généré dynamiquement via `next/og`) |
+| 10 | twitter-image.tsx dédié | 🟢 optionnel | 🟢 reste optionnel (fallback OG suffit) |
+| 11 | `<img>` → `next/image` sur LCP critiques | 🟢 | ✅ ProjectMockup, AProposClient (photo Victor), BlogClient (covers) — Unsplash & svgl.app whitelisted dans `next.config.ts` |
+| 12 | GSC + Bing Webmaster Tools verification | 🟢 | ✅ `metadata.verification` câblé sur env vars `NEXT_PUBLIC_GSC_VERIFICATION` + `NEXT_PUBLIC_BING_VERIFICATION` (à remplir post-déploiement) |
+| 13 | `alternates.canonical` sur toutes pages | 🟢 | ✅ déjà fait sur toutes les pages publiques |
+| 14 | `<CalEmbed />` client-component | 🟢 | ✅ Cal.com inline embed natif sur /contact (sans dépendance npm) |
+| 15 | Audit Lighthouse post-déploiement | 🟢 | ⏳ à faire après mise en ligne mvagency.ai |
+
+**Restant Track A : 2 tâches** — `twitter-image.tsx` (optionnel, on peut skip) + audit Lighthouse (post-déploiement).
+
+#### Bonus ajoutés hors Track A initial — infrastructure mesure & analytics
+
+| Élément | Statut | Détail |
+|---|---|---|
+| **Vercel Web Analytics** | ✅ | `<Analytics />` câblé dans layout, sans cookies, sans bandeau RGPD. Activation Vercel Dashboard 1 clic. 50k events/mois gratuits. |
+| **Vercel Speed Insights** | ✅ | `<SpeedInsights />` câblé pour mesurer CWV (LCP, INP, CLS) en réel. |
+| **Helper `trackEvent`** | ✅ | `src/lib/analytics.ts` — facade qui pousse vers Vercel + Clarity. Constantes `EVENTS` listées. À hooker sur les CTAs (Cal.com, packs, contact) en prochaine session. |
+| **Microsoft Clarity** | ⏸️ dormant | Composant créé, gated par `NEXT_PUBLIC_CLARITY_ID` + consent localStorage. À activer quand un ConsentBanner RGPD sera posé. |
+| **`.env.example`** | ✅ | Documentation pas-à-pas pour GSC, Bing, Clarity. |
+| **Page `/agence-web-belgique`** | ✅ | Mirror Réunion adaptée Belgique (TVA autoliquidation, méthode async, fuseau UTC+1, RGPD européen, FAQ 8 Q/R). 8 sections. |
+| **Plan-du-site mis à jour** | ✅ | Lien Belgique ajouté dans la section Zones d'intervention. |
+
+#### À faire post-déploiement Vercel (Victor, gratuit, ~30 min)
+
+1. Créer compte **Google Search Console** → propriété `https://mvagency.ai` → balise HTML → coller la valeur dans Vercel env `NEXT_PUBLIC_GSC_VERIFICATION`.
+2. **Bing Webmaster Tools** → import depuis GSC (1 clic) → coller dans `NEXT_PUBLIC_BING_VERIFICATION`.
+3. **Vercel Analytics** → Dashboard → Project → Analytics → Enable.
+4. **(Optionnel)** Compte Clarity + ConsentBanner si besoin de heatmap (recommandé seulement après ≥ 100 visites/jour).
+
+#### Décisions actées
+
+- **Pas de GA4** pour l'instant. Trop de friction (bandeau cookies obligatoire) pour le ratio valeur/effort au stade 0 trafic. Vercel Analytics couvre les besoins.
+- **Pas de Plausible** (€9/mois) — gratuit suffit.
+- **Pas de pixels Meta / LinkedIn Insight Tag** — pas de campagnes ads prévues court terme.

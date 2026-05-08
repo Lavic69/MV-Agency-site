@@ -1,10 +1,17 @@
 import type { MetadataRoute } from "next";
-import { SITE_NAME, SITE_TAGLINE, SITE_DESCRIPTION } from "@/lib/seo";
+import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/seo";
 
 /**
- * Web App Manifest. Référence le logo SVG existant pour les icônes — les PNGs
- * dédiés (192x192, 512x512, apple-touch-icon 180x180) devront être ajoutés
- * dans /public/icons/ pour une prise en charge complète Android / iOS.
+ * Web App Manifest — déclare les icônes PWA et les couleurs d'app.
+ *
+ * Les icônes sont générées dynamiquement par `src/app/icon.tsx`
+ * (Next 16 file-based metadata + generateImageMetadata) :
+ *   - /icon/favicon      → 32×32  (favicon navigateur)
+ *   - /icon/android-192  → 192×192 (Android home screen)
+ *   - /icon/android-512  → 512×512 (Android splash + app drawer)
+ *
+ * Le pendant iOS est `src/app/apple-icon.tsx` (180×180), référencé
+ * automatiquement par Next via `<link rel="apple-touch-icon">`.
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
@@ -13,22 +20,28 @@ export default function manifest(): MetadataRoute.Manifest {
     description: SITE_DESCRIPTION,
     start_url: "/",
     display: "standalone",
-    background_color: "#000000",
-    theme_color: "#000000",
+    background_color: "#0b0b0f",
+    theme_color: "#1A1F4B",
     orientation: "portrait-primary",
     categories: ["business", "productivity", "design"],
     lang: "fr-FR",
     icons: [
       {
-        src: "/Logo_Rond_MV_V2.svg",
-        sizes: "any",
-        type: "image/svg+xml",
+        src: "/icon/android-192",
+        sizes: "192x192",
+        type: "image/png",
         purpose: "any",
       },
       {
-        src: "/Logo_Rond_MV_V2.svg",
-        sizes: "any",
-        type: "image/svg+xml",
+        src: "/icon/android-512",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/icon/android-512",
+        sizes: "512x512",
+        type: "image/png",
         purpose: "maskable",
       },
     ],
