@@ -32,7 +32,7 @@ export default function BlogPage() {
     title: article.title,
     excerpt: article.description,
     date: formatDate(article.publishedAt),
-    cover: article.cover,
+    cover: `/og/${article.slug}.png`,
     category: PILLAR_LABEL[article.pillar],
   }));
 
