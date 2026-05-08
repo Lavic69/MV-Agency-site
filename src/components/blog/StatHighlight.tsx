@@ -10,13 +10,13 @@ interface StatHighlightProps {
 
 export const StatHighlight: React.FC<StatHighlightProps> = ({ value, label, description, source }) => {
   return (
-    <aside className={styles.stat} role="figure" aria-label={`${label}: ${description}`}>
+    <figure className={styles.stat}>
       <div className={styles.statNum}>{value}</div>
       <div className={styles.statText}>
         <div className={styles.statLabel}>— {label}</div>
         <p className={styles.statDesc}>{description}</p>
         {source && <div className={styles.statSource}>Source : {source}</div>}
       </div>
-    </aside>
+    </figure>
   );
 };
