@@ -109,6 +109,11 @@
   color: #6B7280;
 }
 
+/* Tablet (700-899px) — hero un peu plus court */
+@media (max-width: 899px) {
+  .heroBox { height: 280px; }
+}
+
 @media (max-width: 700px) {
   .header { padding: 4rem 0 2rem; }
   .heroBox { height: 260px; }
