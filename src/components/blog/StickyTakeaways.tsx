@@ -7,6 +7,10 @@ interface StickyTakeawaysProps {
    * Si vrai (par défaut), le composant est rendu en sidebar sticky sur desktop.
    * Sur mobile (< 900px), il bascule automatiquement en bloc statique
    * via la media query CSS.
+   *
+   * Mettre à `false` uniquement si le composant est rendu hors d'une colonne
+   * sidebar (ex: rendu inline en pleine largeur), où la transition responsive
+   * n'a pas de sens.
    */
   asSidebar?: boolean;
 }
@@ -23,6 +27,7 @@ export const StickyTakeaways: React.FC<StickyTakeawaysProps> = ({ takeaways, asS
         {takeaways.map((item, i) => (
           <li className={styles.takeawayItem} key={i}>
             <span className={styles.takeawayBullet} aria-hidden="true">{i + 1}</span>
+            {/* Safe: takeaways come from the trusted internal registry _articles.ts (no user input). */}
             <span dangerouslySetInnerHTML={{ __html: item }} />
           </li>
         ))}
