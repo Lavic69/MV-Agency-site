@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  Code2,
   Sparkles,
-  Brain,
-  Globe2,
-  GraduationCap,
   ShieldCheck,
   Quote,
-  MapPin,
   Building2,
-  Users,
 } from "lucide-react";
 import {
   SiNextdotjs,
@@ -32,6 +26,10 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { Accordion } from "@/components/ui/accordion";
 import LogoLoop from "@/components/ui/LogoLoop";
+import { MockupWeb } from "@/components/ui/mockups/MockupWeb";
+import { MockupIA } from "@/components/ui/mockups/MockupIA";
+import { MockupWorkflow } from "@/components/ui/mockups/MockupWorkflow";
+import { MockupTree } from "@/components/ui/mockups/MockupTree";
 import {
   SITE_URL,
   CONTACT_EMAIL,
@@ -41,6 +39,7 @@ import {
   type FaqItem,
 } from "@/lib/seo";
 import styles from "../agence-web-la-reunion/AgenceReunion.module.css";
+import { BruxellesMap } from "./BruxellesMap";
 
 /* -------------------------------------------------------------------------- */
 /*  Metadata                                                                  */
@@ -151,30 +150,47 @@ const faqItems: FaqItem[] = [
 
 const faqPageSchema = buildFaqPageSchema(faqItems, PAGE_URL);
 
-const SERVICES = [
+/** 4 services pour PME, ASBL & indépendants bruxellois — avec mockups. */
+const services = [
   {
-    icon: Code2,
+    Mockup: MockupWeb,
     title: "Création de site web premium",
-    description:
-      "Sites vitrines en Next.js, e-commerce Shopify ou sur-mesure pour PME, ASBL et indépendants bruxellois. Multilingue FR/NL/EN selon cible, SEO optimisé à la racine, accessibilité WCAG 2.1.",
+    desc: "Sites vitrines Next.js, e-commerce Shopify ou sur-mesure pour PME, ASBL et indépendants bruxellois. Multilingue FR/NL/EN selon cible, SEO racine, accessibilité WCAG 2.1.",
+    bullets: [
+      "Vitrines, e-commerce, refontes",
+      "Multilingue FR/NL/EN + hreflang",
+      "Accessibilité WCAG 2.1 AA",
+    ],
   },
   {
-    icon: Brain,
+    Mockup: MockupIA,
     title: "Intégration d'IA conforme RGPD",
-    description:
-      "Agents IA, chatbots souverains, automatisations augmentées. Choix du fournisseur (Anthropic, OpenAI, modèles européens, auto-hébergement) selon la sensibilité des données — important pour les structures liées aux institutions UE.",
+    desc: "Agents IA et chatbots souverains. Choix du fournisseur (Anthropic, OpenAI, modèles européens, auto-hébergement) selon sensibilité — clé pour structures liées aux institutions UE.",
+    bullets: [
+      "Agents IA propriétaires (Claude, GPT)",
+      "Modèles européens ou auto-hébergement",
+      "Documentation conformité fournie",
+    ],
   },
   {
-    icon: Sparkles,
+    Mockup: MockupWorkflow,
     title: "Automatisation & connecteurs",
-    description:
-      "Make, n8n, Zapier. Connexion CRM (HubSpot, Pipedrive), comptabilité (Odoo), emailing, gestion adhérents pour ASBL. L'IA branchée sur vos workflows existants.",
+    desc: "Make, n8n, Zapier. Connexion CRM (HubSpot, Pipedrive), comptabilité (Odoo), emailing, gestion adhérents pour ASBL. L'IA branchée sur vos workflows existants.",
+    bullets: [
+      "Connecteurs CRM + comptables",
+      "Gestion adhérents ASBL",
+      "L'IA branchée sur vos workflows",
+    ],
   },
   {
-    icon: GraduationCap,
+    Mockup: MockupTree,
     title: "Formation & accompagnement",
-    description:
-      "Sessions pédagogiques en présentiel à Bruxelles ou en visio. Documentation Notion fournie. Pas de dépendance technique : à la livraison, votre équipe est autonome.",
+    desc: "Sessions pédagogiques en présentiel à Bruxelles ou en visio. Documentation Notion fournie. Pas de dépendance technique : à la livraison, votre équipe est autonome.",
+    bullets: [
+      "Présentiel Bruxelles ou visio",
+      "Documentation Notion personnalisée",
+      "Autonomie complète à la livraison",
+    ],
   },
 ];
 
@@ -199,50 +215,22 @@ const DIFF_CARDS = [
   },
 ];
 
-const COMMUNES = [
-  {
-    name: "Centre — Ville de Bruxelles",
-    description: "Quartier européen, Grand-Place, Sainte-Catherine. PME, sièges, associations.",
-  },
-  {
-    name: "Ixelles & Etterbeek",
-    description: "Cabinets, professions libérales, consultants, startups. Forte densité d'indépendants.",
-  },
-  {
-    name: "Schaerbeek & Saint-Josse",
-    description: "Tissu PME diversifié, commerces, ASBL, services aux entreprises.",
-  },
-  {
-    name: "Uccle, Forest, Saint-Gilles",
-    description: "Cabinets, retail premium, écoles, professions libérales.",
-  },
-  {
-    name: "Woluwe-Saint-Lambert & Saint-Pierre",
-    description: "Sièges régionaux, multinationales, PME B2B.",
-  },
-  {
-    name: "Anderlecht & Molenbeek",
-    description: "Logistique, industrie légère, e-commerce, startups en croissance.",
-  },
-  {
-    name: "Brabant wallon (extension)",
-    description: "Wavre, Louvain-la-Neuve, Nivelles. Pôles tech, universités, sièges B2B.",
-  },
-];
-
-const STACK_LOGOS = [
-  { node: <SiNextdotjs />, title: "Next.js" },
-  { node: <SiReact />, title: "React" },
-  { node: <SiVercel />, title: "Vercel" },
-  { node: <SiFigma />, title: "Figma" },
-  { node: <SiFramer />, title: "Framer" },
-  { node: <SiWebflow />, title: "Webflow" },
-  { node: <SiWordpress />, title: "WordPress" },
-  { node: <SiStripe />, title: "Stripe" },
-  { node: <SiOdoo />, title: "Odoo" },
-  { node: <SiNotion />, title: "Notion" },
-  { node: <SiOpenai />, title: "OpenAI" },
-  { node: <SiAnthropic />, title: "Anthropic" },
+/** Logos tech pour LogoLoop — alignés couleurs avec /agence-web-la-reunion. */
+const techLogos = [
+  { node: <SiNextdotjs size={40} color="var(--text-light)" />, title: "Next.js" },
+  { node: <SiReact size={40} color="#61DAFB" />, title: "React" },
+  { node: <SiAnthropic size={40} color="#d97757" />, title: "Claude AI" },
+  { node: <SiOpenai size={40} color="var(--text-light)" />, title: "ChatGPT" },
+  { node: <SiNotion size={40} color="var(--text-light)" />, title: "Notion" },
+  { node: <SiVercel size={40} color="var(--text-light)" />, title: "Vercel" },
+  { node: <SiStripe size={40} color="#635BFF" />, title: "Stripe" },
+  { node: <SiWebflow size={40} color="#4353FF" />, title: "Webflow" },
+  { node: <SiWordpress size={40} color="#21759b" />, title: "WordPress" },
+  { node: <SiFramer size={40} color="#0055FF" />, title: "Framer" },
+  { node: <SiOdoo size={55} color="#714B67" />, title: "Odoo" },
+  { node: <SiFigma size={40} color="var(--text-light)" />, title: "Figma" },
+  // eslint-disable-next-line @next/next/no-img-element
+  { node: <img src="https://svgl.app/library/n8n.svg" style={{ height: 35, width: "auto" }} alt="n8n" />, title: "n8n" },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -322,29 +310,38 @@ export default function AgenceWebBruxellesPage() {
         </div>
       </section>
 
-      {/* Services */}
+      {/* Services avec mockups */}
       <section className={styles.section}>
-        <div className={styles.containerNarrow}>
-          <span className={styles.sectionEyebrow}>Nos services à Bruxelles</span>
-          <h2 className={styles.sectionTitle}>
-            Quatre prestations, livrables clés en main
-          </h2>
-          <p className={styles.sectionSubtitle}>
-            Pas de SaaS d'abonnement caché, pas d'engagement de maintenance forcée. Vous êtes
-            propriétaire à 100 % à la livraison.
-          </p>
-
-          <div className={styles.diffGrid}>
-            {SERVICES.map((service) => {
-              const Icon = service.icon;
+        <div className={styles.container}>
+          <FadeIn direction="up">
+            <span className={styles.sectionEyebrow}>Nos services à Bruxelles</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>Quatre prestations, livrables clés en main</TextReveal>
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              <TextReveal delay={0.4}>
+                Pas d&apos;abonnement caché, pas d&apos;engagement de maintenance. Propriété 100&nbsp;% client à la livraison.
+              </TextReveal>
+            </p>
+          </FadeIn>
+          <div className={styles.servicesGrid}>
+            {services.map((s, i) => {
+              const Mockup = s.Mockup;
               return (
-                <FadeIn key={service.title}>
+                <FadeIn key={s.title} direction="up" delay={0.08 * i}>
                   <div className={styles.serviceCard}>
-                    <div className={styles.diffIcon}>
-                      <Icon size={28} strokeWidth={1.5} />
+                    <div className={styles.serviceMockupWrapper}>
+                      <Mockup />
                     </div>
-                    <h3 className={styles.diffTitle}>{service.title}</h3>
-                    <p className={styles.diffText}>{service.description}</p>
+                    <div className={styles.serviceCardBody}>
+                      <h3>{s.title}</h3>
+                      <p>{s.desc}</p>
+                      <ul>
+                        {s.bullets.map((b) => (
+                          <li key={b}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </FadeIn>
               );
@@ -383,49 +380,71 @@ export default function AgenceWebBruxellesPage() {
         </div>
       </section>
 
-      {/* Communes desservies */}
+      {/* Communes desservies — carte SVG des 19 communes */}
       <section className={styles.section}>
-        <div className={styles.containerNarrow}>
-          <span className={styles.sectionEyebrow}>Communes desservies</span>
-          <h2 className={styles.sectionTitle}>
-            Les 19 communes de Bruxelles-Capitale + Brabant wallon
-          </h2>
-          <p className={styles.sectionSubtitle}>
-            Couverture complète de la Région-Capitale et extension naturelle vers le Brabant
-            wallon (Wavre, Louvain-la-Neuve, Nivelles).
-          </p>
-
-          <div className={styles.diffGrid}>
-            {COMMUNES.map((commune) => (
-              <FadeIn key={commune.name}>
-                <div className={styles.diffCard}>
-                  <div className={styles.diffIcon}>
-                    <MapPin size={28} strokeWidth={1.5} />
-                  </div>
-                  <h3 className={styles.diffTitle}>{commune.name}</h3>
-                  <p className={styles.diffText}>{commune.description}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+        <div className={styles.container}>
+          <FadeIn direction="up">
+            <span className={styles.sectionEyebrow}>Communes desservies</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>Les 19 communes de Bruxelles-Capitale</TextReveal>
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              <TextReveal delay={0.4}>
+                Couverture complète de la Région-Capitale, plus le Brabant wallon en extension
+                naturelle.
+              </TextReveal>
+            </p>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.2}>
+            <BruxellesMap />
+          </FadeIn>
+          <FadeIn direction="up" delay={0.3}>
+            <div className={styles.zonesCta}>
+              <div className={styles.zonesCtaText}>
+                <span className={styles.zonesCtaTitle}>
+                  Vous êtes dans une autre commune&nbsp;?
+                </span>
+                <span className={styles.zonesCtaSubtitle}>
+                  Aucun frais de déplacement intra-Région. Présentiel possible selon vos
+                  disponibilités.
+                </span>
+              </div>
+              <Link href="/contact" tabIndex={-1}>
+                <Button variant="primary">Parlons-en</Button>
+              </Link>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
-      {/* Stack technique */}
+      {/* Stack technique — pleine largeur */}
       <section className={`${styles.section} ${styles.darkBg}`}>
-        <div className={styles.containerNarrow}>
-          <span className={styles.sectionEyebrow}>Stack technique</span>
-          <h2 className={styles.sectionTitle}>
-            Les outils déployés pour les projets bruxellois
-          </h2>
-          <p className={styles.sectionSubtitle}>
-            Une sélection éprouvée, choisie pour la maintenabilité, la performance et la
-            propriété client.
-          </p>
-
-          <div className={styles.logoLoopWrapper}>
-            <LogoLoop logos={STACK_LOGOS} speed={50} logoHeight={48} />
-          </div>
+        <div className={styles.container}>
+          <FadeIn direction="up">
+            <span className={styles.sectionEyebrow}>Stack technique</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>Avec quels outils travaillons-nous&nbsp;?</TextReveal>
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              <TextReveal delay={0.4}>
+                Une stack moderne, choisie pour la performance, la sécurité et la pérennité.
+              </TextReveal>
+            </p>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.2}>
+            <div className={styles.logoLoopWrapper}>
+              <LogoLoop
+                logos={techLogos}
+                speed={80}
+                direction="left"
+                logoHeight={50}
+                gap={64}
+                hoverSpeed={0}
+                fadeOut
+                fadeOutColor="transparent"
+              />
+            </div>
+          </FadeIn>
         </div>
       </section>
 

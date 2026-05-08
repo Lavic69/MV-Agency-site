@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  Code2,
-  Sparkles,
-  Brain,
   Globe2,
-  GraduationCap,
   ShieldCheck,
+  Sparkles,
   Quote,
-  MapPin,
 } from "lucide-react";
 import {
   SiWordpress,
@@ -30,6 +26,10 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { Accordion } from "@/components/ui/accordion";
 import LogoLoop from "@/components/ui/LogoLoop";
+import { MockupWeb } from "@/components/ui/mockups/MockupWeb";
+import { MockupIA } from "@/components/ui/mockups/MockupIA";
+import { MockupWorkflow } from "@/components/ui/mockups/MockupWorkflow";
+import { MockupTree } from "@/components/ui/mockups/MockupTree";
 import {
   SITE_URL,
   CONTACT_EMAIL,
@@ -39,6 +39,7 @@ import {
   type FaqItem,
 } from "@/lib/seo";
 import styles from "../agence-web-la-reunion/AgenceReunion.module.css";
+import { BelgiqueMap } from "./BelgiqueMap";
 
 /* -------------------------------------------------------------------------- */
 /*  Metadata                                                                  */
@@ -145,30 +146,47 @@ const faqItems: FaqItem[] = [
 
 const faqPageSchema = buildFaqPageSchema(faqItems, PAGE_URL);
 
-const SERVICES = [
+/** 4 services pour PME belges avec mockup visuel — même structure que /agence-web-la-reunion. */
+const services = [
   {
-    icon: Code2,
+    Mockup: MockupWeb,
     title: "Création de site web premium",
-    description:
-      "Sites vitrines en Next.js, e-commerce Shopify ou sur-mesure, refontes pour PME et startups belges. Design responsive, identité visuelle pensée pour le marché local, SEO optimisé à la racine.",
+    desc: "Sites vitrines en Next.js, e-commerce Shopify ou sur-mesure, refontes pour PME et startups belges. Multilingue FR/NL/EN, SEO optimisé à la racine, accessibilité WCAG 2.1.",
+    bullets: [
+      "Vitrines, e-commerce, refontes",
+      "Multilingue FR/NL/EN",
+      "Performance Core Web Vitals",
+    ],
   },
   {
-    icon: Brain,
-    title: "Intégration d'intelligence artificielle",
-    description:
-      "Déploiement d'agents IA, chatbots souverains, automatisation augmentée. Architectures conformes RGPD avec choix du fournisseur (Anthropic, OpenAI, modèles européens, auto-hébergement) selon votre sensibilité.",
+    Mockup: MockupIA,
+    title: "Intégration d'IA conforme RGPD",
+    desc: "Agents IA, chatbots souverains, automatisations augmentées. Architecture qui respecte le RGPD européen — fondamental pour les structures belges proches des institutions UE.",
+    bullets: [
+      "Agents IA propriétaires (Claude, GPT)",
+      "Modèles européens ou auto-hébergement",
+      "Cartographie RGPD fournie",
+    ],
   },
   {
-    icon: Sparkles,
+    Mockup: MockupWorkflow,
     title: "Automatisation des processus",
-    description:
-      "Connexion entre vos outils existants via Make et n8n, automatisation CRM, synchronisation comptable, déclencheurs marketing. L'objectif : libérer du temps opérationnel sans changer votre stack.",
+    desc: "Connexion entre vos outils via Make et n8n. Automatisation CRM, synchronisation comptable (Odoo, Sage), déclencheurs marketing. L'IA branchée sur vos workflows.",
+    bullets: [
+      "Automatisations Make et n8n",
+      "Connecteurs CRM + comptables",
+      "Emailing dynamique",
+    ],
   },
   {
-    icon: GraduationCap,
+    Mockup: MockupTree,
     title: "Formation & accompagnement",
-    description:
-      "Sessions pédagogiques en visio pour rendre votre équipe autonome sur le site, les automatisations et les usages quotidiens de l'IA en entreprise. Documentation Notion fournie.",
+    desc: "Sessions pédagogiques en visio pour rendre votre équipe autonome sur le site, les automatisations et les usages quotidiens de l'IA. Documentation Notion fournie.",
+    bullets: [
+      "Formation à l'utilisation",
+      "Prise en main des outils IA",
+      "Documentation Notion personnalisée",
+    ],
   },
 ];
 
@@ -193,46 +211,22 @@ const DIFF_CARDS = [
   },
 ];
 
-const ZONES = [
-  {
-    name: "Bruxelles",
-    description: "Région bilingue, capitale économique. PME, startups, professions libérales.",
-  },
-  {
-    name: "Wallonie",
-    description: "Tissu PME francophone : Liège, Namur, Charleroi, Mons, Tournai, Louvain-la-Neuve, Wavre.",
-  },
-  {
-    name: "Liège",
-    description: "Pôle universitaire et tech. Idéal pour SaaS, e-commerce, services B2B.",
-  },
-  {
-    name: "Namur",
-    description: "Capitale wallonne. Administrations, services aux entreprises, retail.",
-  },
-  {
-    name: "Charleroi",
-    description: "Reconversion industrielle, écosystème start-up en croissance.",
-  },
-  {
-    name: "Flandre francophone",
-    description: "Entreprises bilingues : livrables traduits en NL si besoin (coordination interne ou prestataire).",
-  },
-];
-
-const STACK_LOGOS = [
-  { node: <SiNextdotjs />, title: "Next.js" },
-  { node: <SiReact />, title: "React" },
-  { node: <SiVercel />, title: "Vercel" },
-  { node: <SiFigma />, title: "Figma" },
-  { node: <SiFramer />, title: "Framer" },
-  { node: <SiWebflow />, title: "Webflow" },
-  { node: <SiWordpress />, title: "WordPress" },
-  { node: <SiStripe />, title: "Stripe" },
-  { node: <SiOdoo />, title: "Odoo" },
-  { node: <SiNotion />, title: "Notion" },
-  { node: <SiOpenai />, title: "OpenAI" },
-  { node: <SiAnthropic />, title: "Anthropic" },
+/** Logos tech pour le LogoLoop — copie locale, mêmes couleurs que la home / Réunion. */
+const techLogos = [
+  { node: <SiNextdotjs size={40} color="var(--text-light)" />, title: "Next.js" },
+  { node: <SiReact size={40} color="#61DAFB" />, title: "React" },
+  { node: <SiAnthropic size={40} color="#d97757" />, title: "Claude AI" },
+  { node: <SiOpenai size={40} color="var(--text-light)" />, title: "ChatGPT" },
+  { node: <SiNotion size={40} color="var(--text-light)" />, title: "Notion" },
+  { node: <SiVercel size={40} color="var(--text-light)" />, title: "Vercel" },
+  { node: <SiStripe size={40} color="#635BFF" />, title: "Stripe" },
+  { node: <SiWebflow size={40} color="#4353FF" />, title: "Webflow" },
+  { node: <SiWordpress size={40} color="#21759b" />, title: "WordPress" },
+  { node: <SiFramer size={40} color="#0055FF" />, title: "Framer" },
+  { node: <SiOdoo size={55} color="#714B67" />, title: "Odoo" },
+  { node: <SiFigma size={40} color="var(--text-light)" />, title: "Figma" },
+  // eslint-disable-next-line @next/next/no-img-element
+  { node: <img src="https://svgl.app/library/n8n.svg" style={{ height: 35, width: "auto" }} alt="n8n" />, title: "n8n" },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -311,28 +305,38 @@ export default function AgenceWebBelgiquePage() {
         </div>
       </section>
 
-      {/* Services */}
+      {/* Services avec mockups (même structure que /agence-web-la-reunion) */}
       <section className={styles.section}>
-        <div className={styles.containerNarrow}>
-          <span className={styles.sectionEyebrow}>Nos services en Belgique</span>
-          <h2 className={styles.sectionTitle}>
-            Ce qu'on construit pour les PME belges
-          </h2>
-          <p className={styles.sectionSubtitle}>
-            Quatre prestations, livrables clés en main, propriété 100 % côté client.
-          </p>
-
-          <div className={styles.diffGrid}>
-            {SERVICES.map((service) => {
-              const Icon = service.icon;
+        <div className={styles.container}>
+          <FadeIn direction="up">
+            <span className={styles.sectionEyebrow}>Nos services en Belgique</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>Ce qu&apos;on construit pour les PME belges</TextReveal>
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              <TextReveal delay={0.4}>
+                Quatre piliers qui couvrent l&apos;intégralité de la chaîne digitale.
+              </TextReveal>
+            </p>
+          </FadeIn>
+          <div className={styles.servicesGrid}>
+            {services.map((s, i) => {
+              const Mockup = s.Mockup;
               return (
-                <FadeIn key={service.title}>
+                <FadeIn key={s.title} direction="up" delay={0.08 * i}>
                   <div className={styles.serviceCard}>
-                    <div className={styles.diffIcon}>
-                      <Icon size={28} strokeWidth={1.5} />
+                    <div className={styles.serviceMockupWrapper}>
+                      <Mockup />
                     </div>
-                    <h3 className={styles.diffTitle}>{service.title}</h3>
-                    <p className={styles.diffText}>{service.description}</p>
+                    <div className={styles.serviceCardBody}>
+                      <h3>{s.title}</h3>
+                      <p>{s.desc}</p>
+                      <ul>
+                        {s.bullets.map((b) => (
+                          <li key={b}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </FadeIn>
               );
@@ -369,49 +373,71 @@ export default function AgenceWebBelgiquePage() {
         </div>
       </section>
 
-      {/* Zones d'intervention */}
+      {/* Zones d'intervention — carte Belgique au centre + cards satellites */}
       <section className={`${styles.section} ${styles.darkBg}`}>
-        <div className={styles.containerNarrow}>
-          <span className={styles.sectionEyebrow}>Zones d'intervention</span>
-          <h2 className={styles.sectionTitle}>
-            Où on accompagne les PME belges
-          </h2>
-          <p className={styles.sectionSubtitle}>
-            Toute la Belgique, sans frais de déplacement. Le mode asynchrone élimine la
-            contrainte géographique.
-          </p>
-
-          <div className={styles.diffGrid}>
-            {ZONES.map((zone) => (
-              <FadeIn key={zone.name}>
-                <div className={styles.diffCard}>
-                  <div className={styles.diffIcon}>
-                    <MapPin size={28} strokeWidth={1.5} />
-                  </div>
-                  <h3 className={styles.diffTitle}>{zone.name}</h3>
-                  <p className={styles.diffText}>{zone.description}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+        <div className={styles.container}>
+          <FadeIn direction="up">
+            <span className={styles.sectionEyebrow}>Zones d&apos;intervention</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>Où accompagnons-nous les PME belges&nbsp;?</TextReveal>
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              <TextReveal delay={0.4}>
+                Toute la Belgique francophone et bilingue. Mode asynchrone éprouvé, sans frais
+                de déplacement.
+              </TextReveal>
+            </p>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.2}>
+            <BelgiqueMap />
+          </FadeIn>
+          <FadeIn direction="up" delay={0.3}>
+            <div className={styles.zonesCta}>
+              <div className={styles.zonesCtaText}>
+                <span className={styles.zonesCtaTitle}>
+                  Vous êtes basé ailleurs en Belgique&nbsp;?
+                </span>
+                <span className={styles.zonesCtaSubtitle}>
+                  Le mode async fonctionne partout. On s&apos;adapte à votre fuseau et à votre
+                  rythme.
+                </span>
+              </div>
+              <Link href="/contact" tabIndex={-1}>
+                <Button variant="primary">Parlons-en</Button>
+              </Link>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
-      {/* Stack technique */}
+      {/* Stack technique — pleine largeur */}
       <section className={styles.section}>
-        <div className={styles.containerNarrow}>
-          <span className={styles.sectionEyebrow}>Stack technique</span>
-          <h2 className={styles.sectionTitle}>
-            Les outils qu'on déploie en production
-          </h2>
-          <p className={styles.sectionSubtitle}>
-            Une sélection éprouvée, choisie pour la maintenabilité, la performance et la
-            propriété client.
-          </p>
-
-          <div className={styles.logoLoopWrapper}>
-            <LogoLoop logos={STACK_LOGOS} speed={50} logoHeight={48} />
-          </div>
+        <div className={styles.container}>
+          <FadeIn direction="up">
+            <span className={styles.sectionEyebrow}>Stack technique</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>Avec quels outils travaillons-nous&nbsp;?</TextReveal>
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              <TextReveal delay={0.4}>
+                Une stack moderne, choisie pour la performance, la sécurité et la pérennité.
+              </TextReveal>
+            </p>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.2}>
+            <div className={styles.logoLoopWrapper}>
+              <LogoLoop
+                logos={techLogos}
+                speed={80}
+                direction="left"
+                logoHeight={50}
+                gap={64}
+                hoverSpeed={0}
+                fadeOut
+                fadeOutColor="transparent"
+              />
+            </div>
+          </FadeIn>
         </div>
       </section>
 

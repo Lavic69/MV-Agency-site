@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  Code2,
-  Sparkles,
-  Brain,
-  GraduationCap,
-  ShieldCheck,
   Quote,
-  MapPin,
   Clock,
   Wallet,
   Workflow,
+  Video,
+  Loader2,
 } from "lucide-react";
 import {
   SiNextdotjs,
@@ -32,6 +28,10 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { Accordion } from "@/components/ui/accordion";
 import LogoLoop from "@/components/ui/LogoLoop";
+import { MockupWeb } from "@/components/ui/mockups/MockupWeb";
+import { MockupIA } from "@/components/ui/mockups/MockupIA";
+import { MockupWorkflow } from "@/components/ui/mockups/MockupWorkflow";
+import { MockupTree } from "@/components/ui/mockups/MockupTree";
 import {
   SITE_URL,
   CONTACT_EMAIL,
@@ -153,30 +153,47 @@ const faqItems: FaqItem[] = [
 
 const faqPageSchema = buildFaqPageSchema(faqItems, PAGE_URL);
 
-const SERVICES = [
+/** 4 services pour PME françaises distancielles — avec mockups. */
+const services = [
   {
-    icon: Code2,
+    Mockup: MockupWeb,
     title: "Création de site web premium",
-    description:
-      "Sites vitrines en Next.js, e-commerce Shopify ou sur-mesure, refontes pour PME et startups françaises. Design responsive, identité visuelle pensée, SEO optimisé à la racine.",
+    desc: "Sites vitrines Next.js, e-commerce Shopify ou sur-mesure, refontes pour PME et startups françaises. Design responsive, identité sur-mesure, SEO racine.",
+    bullets: [
+      "Vitrines, e-commerce, refontes",
+      "Identité visuelle sur-mesure",
+      "Performance Core Web Vitals",
+    ],
   },
   {
-    icon: Brain,
+    Mockup: MockupIA,
     title: "Intégration d'intelligence artificielle",
-    description:
-      "Agents IA, chatbots souverains, automatisation augmentée. Architectures conformes RGPD avec choix du fournisseur (modèles européens, US sous DPA, ou auto-hébergement) selon votre sensibilité.",
+    desc: "Agents IA, chatbots souverains, automatisations augmentées. Choix du fournisseur (modèles européens, US sous DPA, auto-hébergement) selon votre sensibilité RGPD.",
+    bullets: [
+      "Agents IA propriétaires (Claude, GPT)",
+      "Modèles européens ou auto-hébergement",
+      "Conformité RGPD by design",
+    ],
   },
   {
-    icon: Sparkles,
+    Mockup: MockupWorkflow,
     title: "Automatisation des processus",
-    description:
-      "Connexion entre vos outils via Make, n8n, Zapier. Automatisation CRM, synchronisation comptable (Pennylane, Sage), déclencheurs marketing. Libère du temps opérationnel sans changer votre stack.",
+    desc: "Connexion entre vos outils via Make, n8n, Zapier. Automatisation CRM, synchronisation comptable (Pennylane, Sage), déclencheurs marketing.",
+    bullets: [
+      "Make, n8n, Zapier",
+      "CRM + Pennylane / Sage",
+      "Emailing dynamique",
+    ],
   },
   {
-    icon: GraduationCap,
+    Mockup: MockupTree,
     title: "Formation & accompagnement",
-    description:
-      "Sessions pédagogiques en visio pour rendre votre équipe autonome sur le site, les automatisations et les usages de l'IA. Documentation Notion fournie en français.",
+    desc: "Sessions pédagogiques en visio pour rendre votre équipe autonome sur le site, les automatisations et les usages de l'IA. Documentation Notion en français.",
+    bullets: [
+      "Formation en visio",
+      "Prise en main des outils IA",
+      "Documentation Notion FR",
+    ],
   },
 ];
 
@@ -201,19 +218,22 @@ const DIFF_CARDS = [
   },
 ];
 
-const STACK_LOGOS = [
-  { node: <SiNextdotjs />, title: "Next.js" },
-  { node: <SiReact />, title: "React" },
-  { node: <SiVercel />, title: "Vercel" },
-  { node: <SiFigma />, title: "Figma" },
-  { node: <SiFramer />, title: "Framer" },
-  { node: <SiWebflow />, title: "Webflow" },
-  { node: <SiWordpress />, title: "WordPress" },
-  { node: <SiStripe />, title: "Stripe" },
-  { node: <SiOdoo />, title: "Odoo" },
-  { node: <SiNotion />, title: "Notion" },
-  { node: <SiOpenai />, title: "OpenAI" },
-  { node: <SiAnthropic />, title: "Anthropic" },
+/** Logos tech pour LogoLoop — alignés couleurs avec /agence-web-la-reunion. */
+const techLogos = [
+  { node: <SiNextdotjs size={40} color="var(--text-light)" />, title: "Next.js" },
+  { node: <SiReact size={40} color="#61DAFB" />, title: "React" },
+  { node: <SiAnthropic size={40} color="#d97757" />, title: "Claude AI" },
+  { node: <SiOpenai size={40} color="var(--text-light)" />, title: "ChatGPT" },
+  { node: <SiNotion size={40} color="var(--text-light)" />, title: "Notion" },
+  { node: <SiVercel size={40} color="var(--text-light)" />, title: "Vercel" },
+  { node: <SiStripe size={40} color="#635BFF" />, title: "Stripe" },
+  { node: <SiWebflow size={40} color="#4353FF" />, title: "Webflow" },
+  { node: <SiWordpress size={40} color="#21759b" />, title: "WordPress" },
+  { node: <SiFramer size={40} color="#0055FF" />, title: "Framer" },
+  { node: <SiOdoo size={55} color="#714B67" />, title: "Odoo" },
+  { node: <SiFigma size={40} color="var(--text-light)" />, title: "Figma" },
+  // eslint-disable-next-line @next/next/no-img-element
+  { node: <img src="https://svgl.app/library/n8n.svg" style={{ height: 35, width: "auto" }} alt="n8n" />, title: "n8n" },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -293,29 +313,38 @@ export default function AgenceWebFrancePage() {
         </div>
       </section>
 
-      {/* Services */}
+      {/* Services avec mockups */}
       <section className={styles.section}>
-        <div className={styles.containerNarrow}>
-          <span className={styles.sectionEyebrow}>Nos services en France</span>
-          <h2 className={styles.sectionTitle}>
-            Quatre prestations pour les PME françaises
-          </h2>
-          <p className={styles.sectionSubtitle}>
-            Pas d'abonnement caché, pas d'engagement de maintenance forcée. Propriété 100 %
-            client à la livraison.
-          </p>
-
-          <div className={styles.diffGrid}>
-            {SERVICES.map((service) => {
-              const Icon = service.icon;
+        <div className={styles.container}>
+          <FadeIn direction="up">
+            <span className={styles.sectionEyebrow}>Nos services en France</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>Quatre prestations pour les PME françaises</TextReveal>
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              <TextReveal delay={0.4}>
+                Pas d&apos;abonnement caché, pas d&apos;engagement de maintenance forcée. Propriété 100&nbsp;% client.
+              </TextReveal>
+            </p>
+          </FadeIn>
+          <div className={styles.servicesGrid}>
+            {services.map((s, i) => {
+              const Mockup = s.Mockup;
               return (
-                <FadeIn key={service.title}>
+                <FadeIn key={s.title} direction="up" delay={0.08 * i}>
                   <div className={styles.serviceCard}>
-                    <div className={styles.diffIcon}>
-                      <Icon size={28} strokeWidth={1.5} />
+                    <div className={styles.serviceMockupWrapper}>
+                      <Mockup />
                     </div>
-                    <h3 className={styles.diffTitle}>{service.title}</h3>
-                    <p className={styles.diffText}>{service.description}</p>
+                    <div className={styles.serviceCardBody}>
+                      <h3>{s.title}</h3>
+                      <p>{s.desc}</p>
+                      <ul>
+                        {s.bullets.map((b) => (
+                          <li key={b}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </FadeIn>
               );
@@ -353,65 +382,186 @@ export default function AgenceWebFrancePage() {
         </div>
       </section>
 
-      {/* Régions desservies */}
+      {/* Couverture géographique — message visio uniquement (pas de présentiel France) */}
       <section className={`${styles.section} ${styles.darkBg}`}>
-        <div className={styles.containerNarrow}>
-          <span className={styles.sectionEyebrow}>Couverture géographique</span>
-          <h2 className={styles.sectionTitle}>
-            Les 13 régions de France métropolitaine
-          </h2>
-          <p className={styles.sectionSubtitle}>
-            Couverture totale du territoire en distanciel. Aucune contrainte géographique :
-            le mode async fonctionne aussi bien à Paris qu'à Quimper, Strasbourg ou Bastia.
-          </p>
+        <div className={styles.container}>
+          <FadeIn direction="up">
+            <span className={styles.sectionEyebrow}>Couverture géographique</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>100&nbsp;% en visio, partout en France</TextReveal>
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              <TextReveal delay={0.4}>
+                Pas de présentiel — c&apos;est la condition pour pratiquer ces tarifs. La méthode
+                async est conçue pour fonctionner à 100&nbsp;% à distance.
+              </TextReveal>
+            </p>
+          </FadeIn>
 
-          <div className={styles.diffGrid}>
-            {[
-              "Île-de-France",
-              "Auvergne-Rhône-Alpes",
-              "Nouvelle-Aquitaine",
-              "Occitanie",
-              "Provence-Alpes-Côte d'Azur",
-              "Hauts-de-France",
-              "Grand Est",
-              "Bretagne",
-              "Pays de la Loire",
-              "Normandie",
-              "Centre-Val de Loire",
-              "Bourgogne-Franche-Comté",
-              "Corse",
-            ].map((region) => (
-              <FadeIn key={region}>
-                <div className={styles.diffCard}>
-                  <div className={styles.diffIcon}>
-                    <MapPin size={28} strokeWidth={1.5} />
+          <div className={styles.servicesGrid} style={{ marginTop: "2.5rem" }}>
+            <FadeIn direction="up">
+              <div className={styles.serviceCard}>
+                <div className={styles.serviceCardBody}>
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      width: 48,
+                      height: 48,
+                      borderRadius: "50%",
+                      background: "rgba(96, 165, 250, 0.15)",
+                      color: "#60A5FA",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    <Video size={24} strokeWidth={1.75} />
                   </div>
-                  <h3 className={styles.diffTitle}>{region}</h3>
-                  <p className={styles.diffText}>
-                    PME, indépendants, startups, e-commerce — couverture complète en distanciel.
+                  <h3>Cadrage en visio (Cal.com)</h3>
+                  <p>
+                    L&apos;appel découverte de 30 minutes se fait toujours en visio via Cal.com.
+                    Vous pouvez être à Paris, Lyon, Marseille, Lille, Bordeaux, Strasbourg,
+                    Quimper ou Bastia — la méthode est rigoureusement identique.
                   </p>
+                  <ul>
+                    <li>Réservation Cal.com en 30 secondes</li>
+                    <li>Visio avec caméra + partage d&apos;écran</li>
+                    <li>Compte rendu envoyé sous 24h</li>
+                  </ul>
                 </div>
-              </FadeIn>
-            ))}
+              </div>
+            </FadeIn>
+
+            <FadeIn direction="up" delay={0.1}>
+              <div className={styles.serviceCard}>
+                <div className={styles.serviceCardBody}>
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      width: 48,
+                      height: 48,
+                      borderRadius: "50%",
+                      background: "rgba(96, 165, 250, 0.15)",
+                      color: "#60A5FA",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    <Workflow size={24} strokeWidth={1.75} />
+                  </div>
+                  <h3>Suivi async sur Notion partagé</h3>
+                  <p>
+                    Pendant le projet, un Notion sert de tableau de bord 24/7. Vous voyez en
+                    temps réel ce qui est livré, ce qui est validé, ce qui est en cours. Pas
+                    besoin de bloquer votre agenda pour des réunions de suivi.
+                  </p>
+                  <ul>
+                    <li>Notion accessible 24/7</li>
+                    <li>Loom pour les explications</li>
+                    <li>Visio hebdo de 30 min en phase active</li>
+                  </ul>
+                </div>
+              </div>
+            </FadeIn>
+
+            <FadeIn direction="up" delay={0.2}>
+              <div className={styles.serviceCard}>
+                <div className={styles.serviceCardBody}>
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      width: 48,
+                      height: 48,
+                      borderRadius: "50%",
+                      background: "rgba(96, 165, 250, 0.15)",
+                      color: "#60A5FA",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    <Clock size={24} strokeWidth={1.75} />
+                  </div>
+                  <h3>Décalage horaire UTC+4 = effet « équipe nuit »</h3>
+                  <p>
+                    Vos retours envoyés à 18h-20h heure de Paris sont traités tôt le lendemain
+                    matin (déjà 22h-minuit côté Réunion). En phase critique (lancement, recette
+                    finale), c&apos;est un vrai accélérateur.
+                  </p>
+                  <ul>
+                    <li>2-3h d&apos;avance selon saison</li>
+                    <li>Retours nocturnes traités automatiquement</li>
+                    <li>Sans surcoût de prime de nuit</li>
+                  </ul>
+                </div>
+              </div>
+            </FadeIn>
+
+            <FadeIn direction="up" delay={0.3}>
+              <div className={styles.serviceCard}>
+                <div className={styles.serviceCardBody}>
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      width: 48,
+                      height: 48,
+                      borderRadius: "50%",
+                      background: "rgba(96, 165, 250, 0.15)",
+                      color: "#60A5FA",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    <Loader2 size={24} strokeWidth={1.75} />
+                  </div>
+                  <h3>Process éprouvé sur tout le territoire</h3>
+                  <p>
+                    La méthode fonctionne à l&apos;identique sur Paris, Lyon, Marseille, Bordeaux,
+                    Lille ou des villes plus petites. Aucune ville n&apos;est avantagée ou défavorisée
+                    par la méthode async — au contraire, ça lisse le terrain.
+                  </p>
+                  <ul>
+                    <li>Île-de-France · Auvergne-Rhône-Alpes</li>
+                    <li>Sud · Bretagne · Hauts-de-France</li>
+                    <li>Toutes régions métropole + Corse</li>
+                  </ul>
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* Stack technique */}
+      {/* Stack technique — pleine largeur */}
       <section className={styles.section}>
-        <div className={styles.containerNarrow}>
-          <span className={styles.sectionEyebrow}>Stack technique</span>
-          <h2 className={styles.sectionTitle}>
-            Les outils qu'on déploie en production
-          </h2>
-          <p className={styles.sectionSubtitle}>
-            Une sélection éprouvée, choisie pour la maintenabilité, la performance et la
-            propriété client.
-          </p>
-
-          <div className={styles.logoLoopWrapper}>
-            <LogoLoop logos={STACK_LOGOS} speed={50} logoHeight={48} />
-          </div>
+        <div className={styles.container}>
+          <FadeIn direction="up">
+            <span className={styles.sectionEyebrow}>Stack technique</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>Avec quels outils travaillons-nous&nbsp;?</TextReveal>
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              <TextReveal delay={0.4}>
+                Une stack moderne, choisie pour la performance, la sécurité et la pérennité.
+              </TextReveal>
+            </p>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.2}>
+            <div className={styles.logoLoopWrapper}>
+              <LogoLoop
+                logos={techLogos}
+                speed={80}
+                direction="left"
+                logoHeight={50}
+                gap={64}
+                hoverSpeed={0}
+                fadeOut
+                fadeOutColor="transparent"
+              />
+            </div>
+          </FadeIn>
         </div>
       </section>
 
