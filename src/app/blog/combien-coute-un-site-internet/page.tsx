@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import {
   ArticleHeader,
@@ -25,7 +24,11 @@ import { getArticleBySlug, getArticleNumber, PILLAR_LABEL } from "@/app/blog/_ar
 import styles from "@/components/blog/Article.module.css";
 
 const SLUG = "combien-coute-un-site-internet";
-const ARTICLE = getArticleBySlug(SLUG)!;
+const _ARTICLE = getArticleBySlug(SLUG);
+if (!_ARTICLE) {
+  throw new Error(`[blog] No article found for slug "${SLUG}". Check src/app/blog/_articles.ts.`);
+}
+const ARTICLE = _ARTICLE;
 const URL = `${SITE_URL}/blog/${SLUG}`;
 
 export const metadata: Metadata = {
@@ -209,7 +212,7 @@ export default function Page() {
               c'est le territoire du pack Croissance.
             </p>
 
-            <PullQuote attribution="Extrait de l'article">
+            <PullQuote>
               Sur 3 ans, les coûts récurrents totalisent souvent l'équivalent d'un tiers à
               la moitié du devis initial — un détail que les comparaisons rapides oublient.
             </PullQuote>
@@ -407,9 +410,7 @@ export default function Page() {
               30 minutes offertes pour échanger sur votre projet et obtenir une fourchette
               de prix précise. Sans engagement, sans devis surprise.
             </p>
-            <Link href="/contact">
-              <Button variant="primary">Réserver un appel offert</Button>
-            </Link>
+            <Button variant="primary" href="/contact">Réserver un appel offert</Button>
           </section>
         </div>
       </div>
