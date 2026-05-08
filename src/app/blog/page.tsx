@@ -45,12 +45,12 @@ export default function BlogPage() {
             — Ressources
           </span>
           <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 700, margin: "0 0 1.5rem 0", lineHeight: 1.1, fontFamily: "var(--font-heading)" }}>
-            Bibliothèque d'Actualités
+            Bibliothèque d’Actualités
           </h1>
         </FadeIn>
         <FadeIn delay={0.3} direction="up" style={{ maxWidth: "600px" }}>
           <p style={{ fontSize: "1.1rem", color: "var(--text-secondary, #B5B7BC)", lineHeight: 1.6, margin: 0 }}>
-            Plongez dans nos réflexions sur l'IA, le design d'interfaces, et l'écosystème digital qui bouscule les codes de demain.
+            Plongez dans nos réflexions sur l’IA, le design d’interfaces, et l’écosystème digital qui bouscule les codes de demain.
           </p>
         </FadeIn>
       </section>

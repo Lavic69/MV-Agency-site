@@ -149,7 +149,7 @@ export default function Page() {
             (template vs design sur-mesure) et la <strong>stack technique</strong>{" "}
             (WordPress vs Next.js). Une vitrine premium démarre à 1 900 €, un site avec
             automatisations à 4 000 €, un e-commerce sur-mesure à 6 000 €. Au-delà de
-            l'investissement initial, le vrai coût se mesure sur 3 ans : un site mal conçu
+            l’investissement initial, le vrai coût se mesure sur 3 ans : un site mal conçu
             coûte le double en maintenance et refonte. Cet article détaille les fourchettes
             par type de projet, les cinq variables qui font bouger le prix, et la fourchette
             de coûts récurrents (domaine, hébergement, maintenance) à anticiper.
@@ -158,10 +158,10 @@ export default function Page() {
           <article>
             <h2>De quoi parle-t-on quand on dit « site internet » ?</h2>
             <p>
-              Le mot « site » couvre des réalités très différentes, et c'est précisément
-              pour ça qu'il est difficile d'annoncer un prix unique. Un site vitrine de cinq
+              Le mot « site » couvre des réalités très différentes, et c’est précisément
+              pour ça qu’il est difficile d’annoncer un prix unique. Un site vitrine de cinq
               pages pour un cabinet dentaire, une boutique e-commerce avec deux mille
-              références, et une plateforme SaaS B2B sur-mesure n'ont rien à voir techniquement
+              références, et une plateforme SaaS B2B sur-mesure n’ont rien à voir techniquement
               — ni en délai, ni en prix.
             </p>
             <p>
@@ -171,8 +171,8 @@ export default function Page() {
             <ul>
               <li>
                 <strong>Site vitrine premium</strong> : 5 à 10 pages, présentation de
-                l'entreprise et des services, formulaire de contact, optimisation SEO de
-                base. Pas d'espace client, pas de paiement.
+                l’entreprise et des services, formulaire de contact, optimisation SEO de
+                base. Pas d’espace client, pas de paiement.
               </li>
               <li>
                 <strong>Site vitrine + automatisations</strong> : la même chose plus une
@@ -185,12 +185,12 @@ export default function Page() {
               </li>
               <li>
                 <strong>Plateforme sur-mesure</strong> : application web avec gestion
-                d'utilisateurs, base de données complexe, fonctionnalités métier
+                d’utilisateurs, base de données complexe, fonctionnalités métier
                 spécifiques (réservation, marketplace, SaaS).
               </li>
             </ul>
             <p>
-              Chaque famille a son propre intervalle de prix, qu'on détaille section après
+              Chaque famille a son propre intervalle de prix, qu’on détaille section après
               section.
             </p>
 
@@ -198,22 +198,22 @@ export default function Page() {
             <p>
               Pour un site vitrine professionnel, la fourchette réaliste en 2026 est de{" "}
               <strong>1 900 € à 4 000 €</strong>. En dessous de 1 500 €, on entre dans les
-              territoires des templates pré-faits avec personnalisation très limitée — c'est
+              territoires des templates pré-faits avec personnalisation très limitée — c’est
               parfois suffisant pour démarrer mais ça vieillit vite et la cohérence visuelle
-              n'est pas toujours au rendez-vous.
+              n’est pas toujours au rendez-vous.
             </p>
             <p>
               Le pack <strong>Fondation digitale</strong> de MV Agency démarre à 1 900 € et
-              inclut un site vitrine premium jusqu'à 5 pages, un design responsive
-              sur-mesure, l'optimisation SEO à la racine, un formulaire de contact sécurisé,
-              la mise en place de Google Analytics, ainsi qu'une formation à l'utilisation
+              inclut un site vitrine premium jusqu’à 5 pages, un design responsive
+              sur-mesure, l’optimisation SEO à la racine, un formulaire de contact sécurisé,
+              la mise en place de Google Analytics, ainsi qu’une formation à l’utilisation
               du site et un support technique de lancement. Au-dessus de 4 000 €, on
               commence à intégrer des automatisations qui changent réellement la donne —
-              c'est le territoire du pack Croissance.
+              c’est le territoire du pack Croissance.
             </p>
 
             <PullQuote>
-              Sur 3 ans, les coûts récurrents totalisent souvent l'équivalent d'un tiers à
+              Sur 3 ans, les coûts récurrents totalisent souvent l’équivalent d’un tiers à
               la moitié du devis initial — un détail que les comparaisons rapides oublient.
             </PullQuote>
 
@@ -223,16 +223,16 @@ export default function Page() {
               chatbot IA, contenu assisté par intelligence artificielle), la fourchette
               monte naturellement. Le pack <strong>Croissance digitale</strong> de MV Agency
               démarre à 4 000 € et structure votre acquisition de A à Z : site avancé
-              jusqu'à 10 pages, SEO profond, landing page de conversion, automatisations
+              jusqu’à 10 pages, SEO profond, landing page de conversion, automatisations
               clés en main, chatbot IA intelligent, génération de contenu assistée et
               formation marketing.
             </p>
             <p>
-              La différence avec une vitrine simple n'est pas seulement esthétique. Une
+              La différence avec une vitrine simple n’est pas seulement esthétique. Une
               automatisation bien conçue peut représenter <strong>4 à 8 heures gagnées
               chaque semaine</strong> sur des tâches répétitives — saisie de leads,
-              relances, qualification. Sur 12 mois, ce gain rentabilise l'investissement
-              plus rapidement qu'un site purement décoratif.
+              relances, qualification. Sur 12 mois, ce gain rentabilise l’investissement
+              plus rapidement qu’un site purement décoratif.
             </p>
 
             <StatHighlight
@@ -247,8 +247,8 @@ export default function Page() {
               Pour un e-commerce sur-mesure, la fourchette de départ est de <strong>6 000 €
               à 15 000 €</strong>, voire au-delà selon la complexité du catalogue, les
               intégrations CRM/ERP, les passerelles de paiement multiples ou les
-              fonctionnalités d'abonnement. Le pack <strong>Performance IA</strong> de
-              MV Agency, qui démarre à 6 000 €, couvre l'e-commerce ou la plateforme
+              fonctionnalités d’abonnement. Le pack <strong>Performance IA</strong> de
+              MV Agency, qui démarre à 6 000 €, couvre l’e-commerce ou la plateforme
               sur-mesure avec un écosystème IA complet et des automatisations avancées.
             </p>
             <p>
@@ -267,19 +267,19 @@ export default function Page() {
 
             <h2>Quels sont les 5 facteurs qui font varier le prix ?</h2>
             <p>
-              À périmètre fonctionnel équivalent, cinq variables expliquent l'essentiel des
+              À périmètre fonctionnel équivalent, cinq variables expliquent l’essentiel des
               écarts de prix entre devis :
             </p>
             <ol>
               <li>
                 <strong>Le nombre de pages</strong> — chaque page rédigée et designée prend
-                du temps. Passer de 5 à 15 pages double souvent l'effort sans doubler
+                du temps. Passer de 5 à 15 pages double souvent l’effort sans doubler
                 forcément la valeur.
               </li>
               <li>
                 <strong>Le degré de personnalisation visuelle</strong> — un design 100 %
                 sur-mesure (illustrations, micro-interactions, mockups) coûte
-                significativement plus qu'un thème adapté.
+                significativement plus qu’un thème adapté.
               </li>
               <li>
                 <strong>La stack technique choisie</strong> — Next.js demande plus de
@@ -288,29 +288,29 @@ export default function Page() {
               </li>
               <li>
                 <strong>Les intégrations tierces</strong> — connecter un CRM, un outil
-                d'emailing, un système de paiement, une API IA, chacune de ces
+                d’emailing, un système de paiement, une API IA, chacune de ces
                 intégrations ajoute du temps de développement et de tests.
               </li>
               <li>
                 <strong>La rédaction et la production de contenu</strong> — fournir vos
-                textes et images réduit le coût. Si l'agence doit les produire (copywriting,
+                textes et images réduit le coût. Si l’agence doit les produire (copywriting,
                 shooting photo, vidéo), comptez 500 à 3 000 € additionnels.
               </li>
             </ol>
 
             <h2>Quels sont les coûts récurrents à prévoir ?</h2>
             <p>
-              Au-delà du devis initial, votre site génère des frais récurrents annuels qu'il
+              Au-delà du devis initial, votre site génère des frais récurrents annuels qu’il
               faut intégrer dans votre plan financier :
             </p>
             <ul>
               <li>
                 <strong>Nom de domaine</strong> — entre 10 € et 50 € par an selon
-                l'extension et le registrar.
+                l’extension et le registrar.
               </li>
               <li>
                 <strong>Hébergement</strong> — 60 à 300 € par an pour un site vitrine
-                (Vercel, Netlify, OVH), bien plus pour de l'e-commerce avec trafic.
+                (Vercel, Netlify, OVH), bien plus pour de l’e-commerce avec trafic.
               </li>
               <li>
                 <strong>Licences logicielles</strong> — thèmes WordPress premium, plugins,
@@ -328,7 +328,7 @@ export default function Page() {
               </li>
             </ul>
             <p>
-              Sur trois ans, ces coûts récurrents totalisent souvent l'équivalent d'un tiers
+              Sur trois ans, ces coûts récurrents totalisent souvent l’équivalent d’un tiers
               à la moitié du devis initial. Un détail que les comparaisons rapides
               oublient.
             </p>
@@ -336,7 +336,7 @@ export default function Page() {
             <h2>Pourquoi le « moins cher » coûte souvent le plus cher ?</h2>
             <p>
               Le piège classique : choisir le devis le plus bas et payer la différence en
-              maintenance, refonte ou perte d'opportunité. Trois schémas reviennent
+              maintenance, refonte ou perte d’opportunité. Trois schémas reviennent
               régulièrement chez nos clients qui ont déjà eu une mauvaise expérience :
             </p>
             <ul>
@@ -345,11 +345,11 @@ export default function Page() {
                 que le développeur a copié-collé un thème sans tester.
               </li>
               <li>
-                La refonte intégrale après deux ans parce que le site n'est ni évolutif, ni
+                La refonte intégrale après deux ans parce que le site n’est ni évolutif, ni
                 référencé, ni optimisé pour la conversion.
               </li>
               <li>
-                La <em>licence d'utilisation</em> facturée chaque année par certaines
+                La <em>licence d’utilisation</em> facturée chaque année par certaines
                 agences sur leur propre code, qui transforme un investissement ponctuel en
                 abonnement déguisé.
               </li>
@@ -361,8 +361,8 @@ export default function Page() {
 
             <h2>Comment obtenir un devis fiable en 4 étapes ?</h2>
             <p>
-              La méthode qui fonctionne, peu importe l'agence, tient en quatre étapes.
-              Aucune ne demande d'expertise technique, mais toutes sont indispensables pour
+              La méthode qui fonctionne, peu importe l’agence, tient en quatre étapes.
+              Aucune ne demande d’expertise technique, mais toutes sont indispensables pour
               comparer des devis qui veulent dire la même chose.
             </p>
 
@@ -392,9 +392,9 @@ export default function Page() {
             />
 
             <p>
-              Chez MV Agency, l'appel découverte de 30 minutes sert exactement à ça : on
+              Chez MV Agency, l’appel découverte de 30 minutes sert exactement à ça : on
               cadre ensemble le périmètre, on identifie ce qui apporte de la valeur, on
-              écarte ce qui n'en apporte pas. Vous repartez avec une fourchette de prix
+              écarte ce qui n’en apporte pas. Vous repartez avec une fourchette de prix
               précise et un calendrier de livraison réaliste, sans avoir à signer quoi que
               ce soit.
             </p>
