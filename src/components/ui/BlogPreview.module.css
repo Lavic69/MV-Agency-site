@@ -191,10 +191,13 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  font-family: "SF Mono", Menlo, monospace;
   font-size: 0.8125rem;
   color: #60A5FA;
   font-weight: 600;
   text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   transition: gap 0.2s ease;
 }
 .ctaLink:hover { gap: 0.75rem; }

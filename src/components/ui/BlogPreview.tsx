@@ -32,7 +32,7 @@ export function BlogPreview() {
         <div className={styles.featuredCover}>
           <div className={styles.featuredPillar}>— {PILLAR_LABEL[featured.pillar]}</div>
           <div className={styles.featuredNum}>Nº {getArticleNumber(featured.slug)}</div>
-          <CoverKeyword keyword={featured.keyword} size="md" />
+          <CoverKeyword keyword={featured.keyword} size="sm" />
         </div>
         <div className={styles.featuredInfo}>
           <span className={styles.featuredTag}>{PILLAR_LABEL[featured.pillar]}</span>
