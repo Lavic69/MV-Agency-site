@@ -362,7 +362,7 @@ Le redesign est considéré "réussi" quand :
 
 ## 11. Dépendances externes
 
-- **`react-icons`** doit être ajouté en dépendance (`npm install react-icons`) pour le pattern `vs` du `<CoverKeyword>`. La sous-bibliothèque utilisée est `react-icons/si` (Simple Icons), qui contient `SiNextdotjs`, `SiWordpress`, `SiShopify`, `SiReact`, etc.
+- **`react-icons`** est déjà installé en dépendance (`5.6.0` dans `package.json`). La sous-bibliothèque utilisée est `react-icons/si` (Simple Icons), qui contient `SiNextdotjs`, `SiWordpress`, `SiShopify`, `SiReact`, etc. Aucune nouvelle install requise.
 
 ## 12. Suite logique
 
