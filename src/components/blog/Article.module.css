@@ -13,66 +13,108 @@
   z-index: 1;
 }
 
-/* ----- Header ----- */
+/* ----- Header / Hero d'article (langage magazine) ----- */
 .header {
-  padding: 8rem 0 3rem;
-  text-align: center;
+  padding: 5rem 0 3rem;
 }
 
-.eyebrow {
-  display: inline-block;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--primary);
-  margin-bottom: 1rem;
-}
-
-.title {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1.15;
-  margin: 0 0 1.5rem 0;
-  letter-spacing: -0.02em;
-}
-
-.metaRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.metaAuthor {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text-light);
-  font-weight: 500;
-}
-
-.metaSeparator {
-  opacity: 0.4;
-}
-
-.metaUpdated {
-  font-style: italic;
-  font-size: 0.85rem;
-}
-
-.coverImage {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1200 / 630;
+.heroBox {
+  position: relative;
+  height: 320px;
+  background: linear-gradient(160deg, #0f1638 0%, #0a0a0a 75%);
+  border: 1px solid rgba(96, 165, 250, 0.18);
   border-radius: 1rem;
-  object-fit: cover;
-  margin-top: 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.heroPillar {
+  position: absolute;
+  top: 1.625rem;
+  left: 2rem;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.75rem;
+  color: #60A5FA;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  z-index: 2;
+}
+
+.heroNum {
+  position: absolute;
+  top: 1.625rem;
+  right: 2rem;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.75rem;
+  color: #6B7280;
+  letter-spacing: 2px;
+  z-index: 2;
+}
+
+.heroBigword {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 0.5rem 0.25rem 0.5rem;
+  z-index: 1;
+}
+
+.heroTitleStack {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  z-index: 2;
+}
+
+.heroTitle {
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+  color: var(--text-light);
+  margin: 0 0 0.875rem 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 80%;
+}
+
+.heroSep {
+  width: 60px;
+  height: 2px;
+  background: var(--primary, #2563EB);
+  margin: 0 0 0.875rem 0;
+  border-radius: 2px;
+}
+
+.heroMeta {
+  font-size: 0.8125rem;
+  color: rgba(229, 231, 235, 0.7);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.125rem;
+  align-items: center;
+}
+
+.heroMetaAuthor strong { color: var(--text-light); }
+
+.heroMetaMono {
+  font-family: "SF Mono", Menlo, monospace;
+  color: #6B7280;
+}
+
+.heroMetaUpdated {
+  font-style: italic;
+  font-size: 0.75rem;
+  color: #6B7280;
+}
+
+@media (max-width: 700px) {
+  .header { padding: 4rem 0 2rem; }
+  .heroBox { height: 260px; }
+  .heroTitleStack { left: 1.25rem; right: 1.25rem; bottom: 1.25rem; }
+  .heroTitle { max-width: 90%; }
+  .heroPillar, .heroNum { font-size: 0.6875rem; }
 }
 
 /* ----- AnswerBlock (le bloc résumé GEO) ----- */
