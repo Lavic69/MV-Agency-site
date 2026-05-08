@@ -435,6 +435,7 @@
 }
 
 .stepTitle {
+  display: block;
   font-family: var(--font-heading), sans-serif;
   font-size: 1rem;
   font-weight: 700;

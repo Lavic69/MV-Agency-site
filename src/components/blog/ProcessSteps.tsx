@@ -12,14 +12,14 @@ interface ProcessStepsProps {
 
 export const ProcessSteps: React.FC<ProcessStepsProps> = ({ steps }) => {
   return (
-    <ol className={styles.steps} role="list">
+    <ol className={styles.steps}>
       {steps.map((step, i) => (
         <li className={styles.stepRow} key={i}>
           <div className={styles.stepNum} aria-hidden="true">
             {String(i + 1).padStart(2, "0")}
           </div>
           <div className={styles.stepContent}>
-            <h6 className={styles.stepTitle}>{step.title}</h6>
+            <strong className={styles.stepTitle}>{step.title}</strong>
             <p className={styles.stepDesc}>{step.description}</p>
           </div>
         </li>
