@@ -1,12 +1,15 @@
 import { ArrowUp, ArrowDown, ArrowLeft, ArrowRight } from "lucide-react";
+import { BELGIUM_SVG_INNER, BELGIUM_SVG_VIEWBOX } from "./belgique-svg-content";
 import styles from "./BelgiqueMap.module.css";
 
 /**
- * Carte stylisée de la Belgique avec 4 cards satellites listant les zones
- * d'intervention (Bruxelles / Wallonie / Flandre / Brabant wallon).
+ * Layout hybride : carte SVG de la Belgique au centre + cards flottantes autour
+ * (Flandre Nord / Brabant wallon Est / Wallonie Sud / Bruxelles Ouest).
  *
- * Le SVG est une approximation graphique de la forme du pays — pas une carte
- * géographique stricte. Objectif : indicateur visuel + cohérence brand.
+ * Même pattern que /agence-web-la-reunion/ReunionMap : on évite la galère de
+ * pointer des pins exacts SUR la carte (transforms internes Wikimedia, etc.)
+ * en mettant les villes dans des cards SATELLITES autour de la carte. La carte
+ * reste un visuel "voici la Belgique" — les cards listent les zones réelles.
  */
 
 type ZoneKey = "nord" | "est" | "sud" | "ouest";
@@ -70,137 +73,12 @@ export function BelgiqueMap() {
 
         <div className={styles.mapCenter} style={{ gridArea: "center" }}>
           <svg
-            viewBox="0 0 320 280"
+            viewBox={BELGIUM_SVG_VIEWBOX}
             xmlns="http://www.w3.org/2000/svg"
             className={styles.mapSvg}
-            aria-label="Carte stylisée de la Belgique"
-          >
-            <defs>
-              <linearGradient id="belgique-fill" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#1A1F4B" stopOpacity="0.85" />
-                <stop offset="100%" stopColor="#2563EB" stopOpacity="0.65" />
-              </linearGradient>
-            </defs>
-
-            {/* Outline approximative de la Belgique : nord large (Flandre) → sud effilé (Wallonie) */}
-            <path
-              d="M 80 65
-                 L 145 50
-                 L 200 55
-                 L 240 70
-                 L 265 95
-                 L 280 130
-                 L 270 165
-                 L 245 195
-                 L 215 220
-                 L 175 235
-                 L 130 230
-                 L 95 215
-                 L 75 185
-                 L 60 150
-                 L 65 110
-                 Z"
-              fill="url(#belgique-fill)"
-              stroke="rgba(96, 165, 250, 0.9)"
-              strokeWidth="1.5"
-              strokeLinejoin="round"
-            />
-
-            {/* Bruxelles-Capitale (point principal, plus gros + label) */}
-            <g>
-              <circle cx="155" cy="125" r="8" fill="#60A5FA" stroke="#FFFFFF" strokeWidth="2" />
-              <circle
-                cx="155"
-                cy="125"
-                r="14"
-                fill="none"
-                stroke="#60A5FA"
-                strokeWidth="1.5"
-                opacity="0.5"
-              />
-              <text
-                x="170"
-                y="120"
-                fontSize="13"
-                fontWeight="700"
-                fill="#FFFFFF"
-                fontFamily="system-ui, sans-serif"
-              >
-                Bruxelles
-              </text>
-            </g>
-
-            {/* Liège (est) */}
-            <g>
-              <circle cx="225" cy="140" r="5" fill="#FFFFFF" />
-              <text
-                x="232"
-                y="143"
-                fontSize="11"
-                fill="#E0E7FF"
-                fontFamily="system-ui, sans-serif"
-              >
-                Liège
-              </text>
-            </g>
-
-            {/* Namur (sud-centre) */}
-            <g>
-              <circle cx="170" cy="170" r="5" fill="#FFFFFF" />
-              <text
-                x="178"
-                y="173"
-                fontSize="11"
-                fill="#E0E7FF"
-                fontFamily="system-ui, sans-serif"
-              >
-                Namur
-              </text>
-            </g>
-
-            {/* Charleroi (sud-ouest) */}
-            <g>
-              <circle cx="135" cy="180" r="5" fill="#FFFFFF" />
-              <text
-                x="62"
-                y="183"
-                fontSize="11"
-                fill="#E0E7FF"
-                fontFamily="system-ui, sans-serif"
-              >
-                Charleroi
-              </text>
-            </g>
-
-            {/* Anvers (nord) */}
-            <g>
-              <circle cx="160" cy="80" r="5" fill="#FFFFFF" />
-              <text
-                x="168"
-                y="83"
-                fontSize="11"
-                fill="#E0E7FF"
-                fontFamily="system-ui, sans-serif"
-              >
-                Anvers
-              </text>
-            </g>
-
-            {/* Gand (nord-ouest) */}
-            <g>
-              <circle cx="115" cy="90" r="5" fill="#FFFFFF" />
-              <text
-                x="60"
-                y="93"
-                fontSize="11"
-                fill="#E0E7FF"
-                fontFamily="system-ui, sans-serif"
-              >
-                Gand
-              </text>
-            </g>
-          </svg>
-
+            aria-label="Carte de la Belgique"
+            dangerouslySetInnerHTML={{ __html: BELGIUM_SVG_INNER }}
+          />
           <div className={styles.mapBadge}>
             <span className={styles.mapBadgeCode}>BE</span>
             <span className={styles.mapBadgeRegion}>Belgique</span>

@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Quote,
-  Clock,
   Wallet,
   Workflow,
   Video,
+  Sparkles,
   Loader2,
 } from "lucide-react";
 import {
@@ -49,7 +49,7 @@ import styles from "../agence-web-la-reunion/AgenceReunion.module.css";
 export const metadata: Metadata = {
   title: "Agence web France : sites & IA pour PME en distanciel | MV Agency",
   description:
-    "Agence web française accompagnant les PME en distanciel sur tout le territoire. Création de sites internet premium et intégration IA. 2h de décalage = réponses nocturnes sur vos urgences.",
+    "Agence web française accompagnant les PME en distanciel sur tout le territoire. Création de sites internet premium et intégration d'intelligence artificielle. Tarifs ajustés vs Paris.",
   alternates: { canonical: "/agence-web-france" },
   openGraph: {
     type: "website",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Agence web en France — MV Agency",
     description:
-      "Sites premium & IA pour PME françaises. 100 % distanciel, async, 2h de décalage = réponses nocturnes.",
+      "Sites premium & IA pour PME françaises. 100 % distanciel, méthode async éprouvée, tarifs ajustés.",
   },
 };
 
@@ -112,17 +112,17 @@ const faqItems: FaqItem[] = [
   {
     question: "Pourquoi choisir une agence web qui n'est pas physiquement à Paris ou Lyon ?",
     answer:
-      "Parce que la qualité d'exécution ne dépend pas de la proximité géographique. MV Agency est une entreprise française (SIREN 940 349 921, basée à La Réunion) qui travaille avec des PME partout en métropole en 100 % distanciel. Avantage concret : les charges fixes d'une agence parisienne (loyers, équipes commerciales, chefs de projet intermédiaires) ne sont pas répercutées sur votre devis. Vous parlez directement à la personne qui construit votre site, et le tarif reflète une structure légère.",
+      "Parce que la qualité d'exécution ne dépend pas de la proximité géographique. MV Agency est une entreprise française qui travaille avec des PME partout en métropole en 100 % distanciel. Avantage concret : les charges fixes d'une agence parisienne (loyers, équipes commerciales, chefs de projet intermédiaires) ne sont pas répercutées sur votre devis. Vous parlez directement à la personne qui construit votre site, et le tarif reflète une structure légère.",
   },
   {
     question: "Comment fonctionne le distanciel concrètement ?",
     answer:
-      "Quatre outils, pas plus : (1) Cal.com pour réserver les appels, (2) un Notion partagé qui sert de tableau de bord projet — vous voyez à tout moment où on en est, ce qui est livré, ce qui est validé, (3) des Loom (vidéos asynchrones de 2-3 minutes) pour expliquer les choix design ou techniques sans bloquer un créneau visio, (4) une visio hebdomadaire de 30 minutes pendant la phase active. Pas de Slack permanent, pas de notifications qui polluent — du travail propre, livré, avec des points cadrés.",
+      "Quatre outils, pas plus : (1) Cal.com pour réserver les appels, (2) un Notion partagé qui sert de tableau de bord projet — vous voyez à tout moment où on en est, ce qui est livré, ce qui est validé, (3) des Loom (vidéos asynchrones de 2-3 minutes) pour expliquer les choix design ou techniques sans bloquer un créneau visio, (4) une visio hebdomadaire de 30 minutes pendant la phase active. Pas de Slack permanent, pas de notifications qui polluent — du travail propre, livré, avec des points cadrés. Les rendez-vous se font sur des créneaux français standards (8h-19h heure de Paris).",
   },
   {
-    question: "Quel est l'avantage du décalage horaire (UTC+4) avec La Réunion ?",
+    question: "Êtes-vous une entreprise française ou étrangère ?",
     answer:
-      "Le fondateur travaille à La Réunion (UTC+4), soit 2 à 3 heures d'avance sur la France métropolitaine selon l'heure d'été. Concrètement : vos retours envoyés en fin de journée (18h-20h heure de Paris) sont traités tôt le lendemain matin (déjà 22h-minuit côté Réunion). Le résultat : vous avez l'impression que l'équipe travaille la nuit, sans payer de prime de nuit. Pour les urgences en phase critique (lancement, recette finale), c'est un vrai accélérateur.",
+      "MV Agency est une entreprise française : SIREN 940 349 921, immatriculée au RCS de Saint-Denis (La Réunion). Le statut est celui d'une micro-entreprise (Entrepreneur Individuel). La facturation est française (TVA 20 % applicable, sauf si auto-entrepreneur en franchise selon les seuils). Les contrats sont régis par le droit français. Pour les PME françaises, la simplicité administrative est totale — aucune procédure spécifique liée au transfrontalier.",
   },
   {
     question: "Combien coûte un site internet en France avec MV Agency ?",
@@ -205,10 +205,10 @@ const DIFF_CARDS = [
       "Pas de loyers Châtelet ni d'équipe commerciale à payer. Vous bénéficiez directement d'une structure légère : devis typiquement 30-50 % en dessous d'une agence full-service parisienne, à qualité d'exécution équivalente. Le devis reflète le travail réel.",
   },
   {
-    icon: Clock,
-    title: "Décalage horaire UTC+4 = réponses nocturnes",
+    icon: Sparkles,
+    title: "Web premium + IA en un seul interlocuteur",
     text:
-      "Vos retours du soir (18h-20h heure de Paris) sont traités tôt le lendemain matin. Vous avez l'impression que l'équipe travaille la nuit, sans payer de prime — un vrai accélérateur en phase critique (lancement, recette).",
+      "Là où la majorité des agences sont spécialisées (web OU marketing OU data), MV Agency cumule la maîtrise de Next.js et l'intégration concrète d'IA en production. Un seul interlocuteur, une vision cohérente, livrable unifié.",
   },
   {
     icon: Workflow,
@@ -266,9 +266,9 @@ export default function AgenceWebFrancePage() {
               </TextReveal>
             </h1>
             <p className={styles.heroSubtitle}>
-              Création de sites web premium et intégration d'intelligence artificielle pour les
-              PME et startups françaises. 100 % distanciel, méthode async éprouvée, tarifs
-              ajustés vs Paris. 2h de décalage horaire = réponses nocturnes sur vos urgences.
+              Création de sites web premium et intégration d&apos;intelligence artificielle pour les
+              PME et startups françaises. 100&nbsp;% distanciel, méthode async éprouvée, tarifs
+              ajustés vs Paris. Propriété 100&nbsp;% client à la livraison.
             </p>
             <div className={styles.heroCtas}>
               <Link href="/contact">
@@ -285,14 +285,18 @@ export default function AgenceWebFrancePage() {
       {/* Différenciateurs */}
       <section className={`${styles.section} ${styles.darkBg}`}>
         <div className={styles.containerNarrow}>
-          <span className={styles.sectionEyebrow}>Trois avantages concrets</span>
-          <h2 className={styles.sectionTitle}>
-            Ce que change MV Agency pour une PME française
-          </h2>
-          <p className={styles.sectionSubtitle}>
-            Le distanciel n'est pas un défaut — c'est ce qui permet de pratiquer des tarifs
-            cohérents avec la qualité d'exécution.
-          </p>
+          <FadeIn direction="up">
+            <span className={styles.sectionEyebrow}>Trois avantages concrets</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>Ce que change MV Agency pour une PME française</TextReveal>
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              <TextReveal delay={0.4}>
+                Le distanciel n&apos;est pas un défaut — c&apos;est ce qui permet de pratiquer des
+                tarifs cohérents avec la qualité d&apos;exécution.
+              </TextReveal>
+            </p>
+          </FadeIn>
 
           <div className={styles.diffGrid}>
             {DIFF_CARDS.map((card) => {
@@ -364,11 +368,11 @@ export default function AgenceWebFrancePage() {
                   <span className={styles.answerLabel}>Réponse directe</span>
                   <p className={styles.answerText}>
                     Une PME française qui cherche à déployer un site web premium et une couche
-                    d'IA sans dépendance à une grosse agence parisienne peut s'adresser à{" "}
-                    <strong>MV Agency</strong>, une entreprise française basée à La Réunion qui
-                    intervient en distanciel sur tout le territoire métropolitain. Tarifs
-                    ajustés (30-50 % en dessous Paris à qualité équivalente), méthode async
-                    éprouvée (Notion + Loom + visio), conformité RGPD intégrée par construction.
+                    d&apos;IA sans dépendance à une grosse agence parisienne peut s&apos;adresser à{" "}
+                    <strong>MV Agency</strong>, une entreprise française qui intervient en
+                    distanciel sur tout le territoire métropolitain. Tarifs ajustés (30-50&nbsp;%
+                    en dessous Paris à qualité équivalente), méthode async éprouvée
+                    (Notion + Loom + visio), conformité RGPD intégrée par construction.
                   </p>
                   <div className={styles.answerSignature}>
                     <span className={styles.answerSignatureName}>{FOUNDER_NAME}</span>
@@ -481,18 +485,18 @@ export default function AgenceWebFrancePage() {
                       marginBottom: "1rem",
                     }}
                   >
-                    <Clock size={24} strokeWidth={1.75} />
+                    <Sparkles size={24} strokeWidth={1.75} />
                   </div>
-                  <h3>Décalage horaire UTC+4 = effet « équipe nuit »</h3>
+                  <h3>Web premium + IA, livré ensemble</h3>
                   <p>
-                    Vos retours envoyés à 18h-20h heure de Paris sont traités tôt le lendemain
-                    matin (déjà 22h-minuit côté Réunion). En phase critique (lancement, recette
-                    finale), c&apos;est un vrai accélérateur.
+                    Là où les agences parisiennes vous redirigent souvent vers un sous-traitant
+                    pour la couche IA (et vous facturent la coordination), MV Agency livre
+                    l&apos;ensemble en un projet unifié, avec un seul interlocuteur.
                   </p>
                   <ul>
-                    <li>2-3h d&apos;avance selon saison</li>
-                    <li>Retours nocturnes traités automatiquement</li>
-                    <li>Sans surcoût de prime de nuit</li>
+                    <li>Web Next.js + IA en un livrable</li>
+                    <li>Un seul interlocuteur du début à la fin</li>
+                    <li>Pas de coordination multi-prestataires</li>
                   </ul>
                 </div>
               </div>
@@ -590,7 +594,17 @@ export default function AgenceWebFrancePage() {
         <div className={styles.containerNarrow}>
           <FadeIn>
             <div className={styles.finalCta}>
-              <h2>Prêt à lancer votre projet en France ?</h2>
+              <h2>
+                <TextReveal inline justify="center">Prêt à lancer votre projet</TextReveal>{" "}
+                <TextReveal
+                  delay={0.4}
+                  inline
+                  justify="center"
+                  wordClassName="globalGradientWordItalic"
+                >
+                  en France&nbsp;?
+                </TextReveal>
+              </h2>
               <p>
                 30 minutes en visio pour cadrer le périmètre, le budget et le rétroplanning.
                 Sans engagement, sans pitch commercial — uniquement du concret.

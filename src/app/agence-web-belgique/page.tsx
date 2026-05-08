@@ -278,13 +278,17 @@ export default function AgenceWebBelgiquePage() {
       {/* Différenciateurs */}
       <section className={`${styles.section} ${styles.darkBg}`}>
         <div className={styles.containerNarrow}>
-          <span className={styles.sectionEyebrow}>Notre approche</span>
-          <h2 className={styles.sectionTitle}>
-            Pourquoi des PME belges nous choisissent
-          </h2>
-          <p className={styles.sectionSubtitle}>
-            Trois différenciateurs concrets qui changent l'expérience d'un projet web + IA.
-          </p>
+          <FadeIn direction="up">
+            <span className={styles.sectionEyebrow}>Notre approche</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>Pourquoi des PME belges nous choisissent</TextReveal>
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              <TextReveal delay={0.4}>
+                Trois différenciateurs concrets qui changent l&apos;expérience d&apos;un projet web&nbsp;+&nbsp;IA.
+              </TextReveal>
+            </p>
+          </FadeIn>
 
           <div className={styles.diffGrid}>
             {DIFF_CARDS.map((card) => {
@@ -467,7 +471,17 @@ export default function AgenceWebBelgiquePage() {
         <div className={styles.containerNarrow}>
           <FadeIn>
             <div className={styles.finalCta}>
-              <h2>Prêt à lancer votre projet web + IA depuis la Belgique ?</h2>
+              <h2>
+                <TextReveal inline justify="center">Prêt à lancer votre projet</TextReveal>{" "}
+                <TextReveal
+                  delay={0.4}
+                  inline
+                  justify="center"
+                  wordClassName="globalGradientWordItalic"
+                >
+                  web + IA en Belgique&nbsp;?
+                </TextReveal>
+              </h2>
               <p>
                 30 minutes en visio pour cadrer le périmètre, le budget et le rétroplanning.
                 Sans engagement, sans pitch commercial — uniquement du concret.

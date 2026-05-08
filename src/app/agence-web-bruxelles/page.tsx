@@ -282,14 +282,20 @@ export default function AgenceWebBruxellesPage() {
       {/* Différenciateurs */}
       <section className={`${styles.section} ${styles.darkBg}`}>
         <div className={styles.containerNarrow}>
-          <span className={styles.sectionEyebrow}>Pourquoi MV Agency à Bruxelles</span>
-          <h2 className={styles.sectionTitle}>
-            Trois différenciateurs concrets sur le marché bruxellois
-          </h2>
-          <p className={styles.sectionSubtitle}>
-            Ce qui change pour une PME, une ASBL ou un indépendant bruxellois quand on travaille
-            avec MV plutôt qu'une agence full-service classique.
-          </p>
+          <FadeIn direction="up">
+            <span className={styles.sectionEyebrow}>Pourquoi MV Agency à Bruxelles</span>
+            <h2 className={styles.sectionTitle}>
+              <TextReveal>
+                Trois différenciateurs concrets sur le marché bruxellois
+              </TextReveal>
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              <TextReveal delay={0.4}>
+                Ce qui change pour une PME, une ASBL ou un indépendant bruxellois quand on
+                travaille avec MV plutôt qu&apos;une agence full-service classique.
+              </TextReveal>
+            </p>
+          </FadeIn>
 
           <div className={styles.diffGrid}>
             {DIFF_CARDS.map((card) => {
@@ -474,7 +480,17 @@ export default function AgenceWebBruxellesPage() {
         <div className={styles.containerNarrow}>
           <FadeIn>
             <div className={styles.finalCta}>
-              <h2>Prêt à lancer votre projet à Bruxelles ?</h2>
+              <h2>
+                <TextReveal inline justify="center">Prêt à lancer votre projet</TextReveal>{" "}
+                <TextReveal
+                  delay={0.4}
+                  inline
+                  justify="center"
+                  wordClassName="globalGradientWordItalic"
+                >
+                  à Bruxelles&nbsp;?
+                </TextReveal>
+              </h2>
               <p>
                 30 minutes en visio ou en présentiel à Bruxelles pour cadrer le périmètre, le
                 budget et le rétroplanning. Sans engagement, sans pitch commercial.
