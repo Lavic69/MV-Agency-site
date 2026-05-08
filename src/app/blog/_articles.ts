@@ -93,6 +93,10 @@ export function getRelatedArticles(
  * 1-indexed. Stable dans le temps : un nouvel article ajouté reçoit le
  * prochain numéro, les articles existants gardent le leur.
  * Retourne "00" si le slug est inconnu (cas qui ne devrait pas arriver).
+ *
+ * **Important :** ne jamais retirer un article du registre — marquer le
+ * `status: "draft"` à la place. Supprimer une entrée décalerait les numéros
+ * de tous les articles publiés ensuite.
  */
 export function getArticleNumber(slug: string): string {
   const idx = articles.findIndex((a) => a.slug === slug);
@@ -100,11 +104,13 @@ export function getArticleNumber(slug: string): string {
   return String(idx + 1).padStart(2, "0");
 }
 
+const WORDS_PER_MINUTE = 200;
+
 /**
  * Calcule un temps de lecture en minutes à partir d'un texte brut.
  * Base : 200 mots / minute. Minimum 1 minute. Arrondi à l'entier supérieur.
  */
 export function calculateReadingTime(text: string): number {
   const words = text.trim().split(/\s+/).filter(Boolean).length;
-  return Math.max(1, Math.ceil(words / 200));
+  return Math.max(1, Math.ceil(words / WORDS_PER_MINUTE));
 }
