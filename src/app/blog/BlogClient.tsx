@@ -118,7 +118,7 @@ export const BlogClient: React.FC<BlogClientProps> = ({ posts }) => {
                 <Link href={`/blog/${post.slug}`} style={{ textDecoration: "none", display: "block", height: "100%" }}>
                   <article className={styles.postCard}>
                     <div className={styles.cardCover}>
-                      <div className={styles.cardPillar}>— {post.category.toUpperCase()}</div>
+                      <div className={styles.cardPillar}>— {post.category}</div>
                       <div className={styles.cardNum}>Nº {post.num}</div>
                       <CoverKeyword keyword={post.keyword} size="md" />
                     </div>
