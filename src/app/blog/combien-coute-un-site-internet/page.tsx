@@ -411,12 +411,16 @@ export default function Page() {
           <RelatedArticles currentSlug={SLUG} pillar={ARTICLE.pillar} />
 
           <section className={styles.ctaFinal}>
-            <h2 className={styles.ctaFinalTitle}>Prêt à cadrer votre projet ?</h2>
+            <h2 className={styles.ctaFinalTitle}>
+              Prêt à cadrer votre <span className="globalGradientWord">projet</span> ?
+            </h2>
             <p className={styles.ctaFinalText}>
               30 minutes offertes pour échanger sur votre projet et obtenir une fourchette
               de prix précise. Sans engagement, sans devis surprise.
             </p>
-            <Button variant="primary" href="/contact">Réserver un appel offert</Button>
+            <div className={styles.ctaFinalButtonWrap}>
+              <Button variant="primary" href="/contact">Réserver un appel offert</Button>
+            </div>
           </section>
         </div>
       </div>
