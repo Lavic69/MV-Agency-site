@@ -1,6 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { TextReveal } from "@/components/ui/TextReveal";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL, buildBreadcrumbSchema } from "@/lib/seo";
 import { formatDateMono } from "@/lib/formatDate";
@@ -44,11 +45,11 @@ export default function BlogPage() {
           <span style={{ fontFamily: "'SF Mono', Menlo, monospace", fontSize: "0.6875rem", color: "var(--primary)", letterSpacing: "3px", textTransform: "uppercase", fontWeight: 700, display: "block", marginBottom: "0.875rem" }}>
             — Ressources
           </span>
-          <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 700, margin: "0 0 1.5rem 0", lineHeight: 1.1, fontFamily: "var(--font-heading)" }}>
-            Bibliothèque d’Actualités
-          </h1>
         </FadeIn>
-        <FadeIn delay={0.3} direction="up" style={{ maxWidth: "600px" }}>
+        <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 700, margin: "0 0 1.5rem 0", lineHeight: 1.1, fontFamily: "var(--font-heading)" }}>
+          <TextReveal delay={0.3}>Bibliothèque d’Actualités</TextReveal>
+        </h1>
+        <FadeIn delay={1.0} direction="up" style={{ maxWidth: "600px" }}>
           <p style={{ fontSize: "1.1rem", color: "var(--text-secondary, #B5B7BC)", lineHeight: 1.6, margin: 0 }}>
             Plongez dans nos réflexions sur l’IA, le design d’interfaces, et l’écosystème digital qui bouscule les codes de demain.
           </p>
