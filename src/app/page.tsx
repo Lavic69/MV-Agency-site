@@ -212,7 +212,7 @@ export default function Home() {
               alignItems: 'center', 
               gap: '12px', 
               marginTop: '3.5rem', 
-              padding: '6px 20px 6px 8px', 
+              padding: '8px 20px 8px 8px',
               borderRadius: '999px', 
               border: '1px solid rgba(255,255,255,0.15)', 
               backgroundColor: 'rgba(10, 10, 10, 0.65)', 
@@ -225,10 +225,10 @@ export default function Home() {
                 role="img"
                 style={{ display: 'flex', marginLeft: '4px' }}
               >
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="" aria-hidden="true" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 4, objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80" alt="" aria-hidden="true" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 3, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="" aria-hidden="true" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 2, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="" aria-hidden="true" style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #222', position: 'relative', zIndex: 1, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="" aria-hidden="true" style={{ width: '28px', height: '28px', borderRadius: '8px', border: '1px solid #222', position: 'relative', zIndex: 4, objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80" alt="" aria-hidden="true" style={{ width: '28px', height: '28px', borderRadius: '8px', border: '1px solid #222', position: 'relative', zIndex: 3, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="" aria-hidden="true" style={{ width: '28px', height: '28px', borderRadius: '8px', border: '1px solid #222', position: 'relative', zIndex: 2, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="" aria-hidden="true" style={{ width: '28px', height: '28px', borderRadius: '8px', border: '1px solid #222', position: 'relative', zIndex: 1, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
               </div>
               <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)', letterSpacing: '0.3px', fontFamily: 'var(--font-body)' }}>
                 <strong style={{ color: 'var(--text-light)', fontWeight: '500' }}>10+ projets livrés</strong> · Web & IA
@@ -376,7 +376,7 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2.5rem', maxWidth: '1000px', margin: '0 auto', padding: '0 2rem', textAlign: 'center' }}>
               <FadeIn direction="up" delay={0.1}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                  <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}>
+                  <div style={{ color: '#60A5FA', padding: '16px', background: 'var(--bg-deep)', borderRadius: '16px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}>
                     <ShieldCheck size={36} />
                   </div>
                   <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Satisfait ou remanié</h4>
@@ -385,7 +385,7 @@ export default function Home() {
               </FadeIn>
               <FadeIn direction="up" delay={0.2}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                  <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}>
+                  <div style={{ color: '#60A5FA', padding: '16px', background: 'var(--bg-deep)', borderRadius: '16px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}>
                     <Scale size={36} />
                   </div>
                   <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Pas d&apos;engagement</h4>
@@ -394,7 +394,7 @@ export default function Home() {
               </FadeIn>
               <FadeIn direction="up" delay={0.3}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                  <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}>
+                  <div style={{ color: '#60A5FA', padding: '16px', background: 'var(--bg-deep)', borderRadius: '16px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}>
                     <User size={36} />
                   </div>
                   <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Un seul interlocuteur</h4>
@@ -473,11 +473,11 @@ export default function Home() {
                 }}
               >
                 {step.highlight && (
-                  <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(37,99,235,0.2)', border: '1px solid rgba(37,99,235,0.45)', borderRadius: '999px', padding: '2px 10px', fontSize: '0.65rem', fontWeight: 700, color: '#93c5fd', textTransform: 'uppercase', letterSpacing: '0.08em' }}>MV Hub</div>
+                  <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(37,99,235,0.2)', border: '1px solid rgba(37,99,235,0.45)', borderRadius: '9999px', padding: '2px 12px', fontSize: '0.65rem', fontWeight: 700, color: '#93c5fd', textTransform: 'uppercase', letterSpacing: '0.08em' }}>MV Hub</div>
                 )}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
                   <span style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: 900, color: 'rgba(255,255,255,0.07)', lineHeight: 1, letterSpacing: '-0.03em' }}>{step.num}</span>
-                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: `${step.color}22`, border: `1px solid ${step.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: step.color, flexShrink: 0 }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '12px', background: `${step.color}22`, border: `1px solid ${step.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: step.color, flexShrink: 0 }}>
                     {step.icon}
                   </div>
                 </div>
@@ -491,7 +491,7 @@ export default function Home() {
         {/* MockupHub sous les étapes */}
         <FadeIn direction="up" delay={0.4}>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3.5rem' }}>
-            <div style={{ padding: '2px', borderRadius: '18px', background: 'linear-gradient(135deg, rgba(37,99,235,0.3) 0%, rgba(139,92,246,0.2) 100%)' }}>
+            <div style={{ padding: '2px', borderRadius: '20px', background: 'linear-gradient(135deg, rgba(37,99,235,0.3) 0%, rgba(139,92,246,0.2) 100%)' }}>
               <MockupHub />
             </div>
           </div>

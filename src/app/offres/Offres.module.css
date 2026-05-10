@@ -96,7 +96,7 @@
 
 .packBadge {
   position: absolute;
-  top: -15px;
+  top: -16px;
   left: 50%;
   transform: translateX(-50%);
   background: #3b82f6;
@@ -156,7 +156,7 @@
   color: #3b82f6;
   font-size: 1.1rem;
   flex-shrink: 0;
-  margin-top: 3px;
+  margin-top: 4px;
 }
 
 /* ====================
