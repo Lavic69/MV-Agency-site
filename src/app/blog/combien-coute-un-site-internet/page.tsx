@@ -224,11 +224,6 @@ export default function Page() {
               caption="Comparatif des 3 packs MV Agency (2026)"
             />
 
-            <PullQuote>
-              Sur 3 ans, les coûts récurrents totalisent souvent l&apos;équivalent d&apos;un tiers à
-              la moitié du devis initial — un détail que les comparaisons rapides oublient.
-            </PullQuote>
-
             <h2 id="automatisations-ia">Combien coûte un site avec automatisations ou IA ?</h2>
             <p>
               Quand on ajoute des automatisations sérieuses (CRM, emailing déclenché,
@@ -339,11 +334,10 @@ export default function Page() {
                 rédaction.
               </li>
             </ul>
-            <p>
-              Sur trois ans, ces coûts récurrents totalisent souvent l&apos;équivalent d&apos;un tiers
-              à la moitié du devis initial. Un détail que les comparaisons rapides
-              oublient.
-            </p>
+            <PullQuote>
+              Sur 3 ans, les coûts récurrents totalisent souvent l&apos;équivalent d&apos;un tiers à
+              la moitié du devis initial — un détail que les comparaisons rapides oublient.
+            </PullQuote>
 
             <h2 id="moins-cher">Pourquoi le « moins cher » coûte souvent le plus cher ?</h2>
             <p>
