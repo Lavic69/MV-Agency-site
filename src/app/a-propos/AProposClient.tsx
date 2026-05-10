@@ -411,19 +411,7 @@ export default function AProposClient() {
                     <div style={{ maxWidth: '75%' }}>
                       <h3 className={styles.bentoActionTitle} style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1 }}>
                         <TextReveal delay={0.1} inline>Prêt à transformer</TextReveal><br/>
-                        <TextReveal delay={0.4} inline>
-                          <span style={{ 
-                            fontStyle: 'italic',
-                            background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            backgroundClip: 'text',
-                            color: 'transparent',
-                            paddingRight: '0.1em'
-                          }}>
-                            votre présence
-                          </span>
-                        </TextReveal> ?
+                        <TextReveal delay={0.4} inline wordClassName="globalGradientWordItalic">votre présence ?</TextReveal>
                       </h3>
                       <p className={styles.bentoText}>Rejoignez les dizaines d'entreprises et d'indépendants locaux qui ont confié leur croissance à MV Agency.</p>
                     </div>

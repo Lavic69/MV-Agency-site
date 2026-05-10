@@ -116,20 +116,7 @@ export default function CasClientsPage() {
         <FadeIn direction="up">
           <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', marginBottom: '1.5rem', fontFamily: 'var(--font-heading)' }}>
             <TextReveal inline>Prêt à rejoindre</TextReveal>{' '}
-            <TextReveal delay={0.4} inline>
-              <span style={{ 
-                fontStyle: 'italic',
-                background: "linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                color: "transparent",
-                display: "inline-block",
-                paddingRight: "0.1em"
-              }}>
-                l'excellence
-              </span>
-            </TextReveal>
+            <TextReveal delay={0.4} inline wordClassName="globalGradientWordItalic">l'excellence ?</TextReveal>
           </h2>
           <p style={{ color: 'var(--text-secondary)', margin: '0 auto 2rem auto', maxWidth: '500px', lineHeight: 1.6, fontSize: '1.1rem' }}>
             Découverte stratégique, maquettage haute-fidélité, développement next-gen et intégration IA. Lancez votre propre plateforme dès aujourd'hui.

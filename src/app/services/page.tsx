@@ -310,7 +310,7 @@ export default function ServicesPage() {
           <FadeIn direction="up">
             <h2 className={styles.sectionTitle} style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1, marginBottom: "1.5rem" }}>
               <TextReveal inline>Prêt à</TextReveal>{' '}
-              <TextReveal delay={0.3} inline wordClassName="globalGradientWordItalic">booster votre activité</TextReveal> ?
+              <TextReveal delay={0.3} inline wordClassName="globalGradientWordItalic">booster votre activité ?</TextReveal>
             </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>

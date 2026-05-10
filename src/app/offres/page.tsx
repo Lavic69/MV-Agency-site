@@ -79,7 +79,7 @@ export default function OffresPage() {
                 color: "var(--text-light)"
               }}>
                 <TextReveal inline>3 packs pour</TextReveal>{' '}
-                <TextReveal delay={0.45} inline wordClassName="globalGradientWordItalic">3 ambitions</TextReveal>.
+                <TextReveal delay={0.45} inline wordClassName="globalGradientWordItalic">3 ambitions</TextReveal>
               </h1>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto' }}>
                 <TextReveal delay={0.8} inline justify="center">Du site vitrine au business propulsé par l'IA. On cadre le périmètre et le budget ensemble.</TextReveal>
@@ -307,7 +307,7 @@ export default function OffresPage() {
           <FadeIn direction="up">
             <h2 className={styles.sectionTitle} style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1, marginBottom: "1.5rem" }}>
               <TextReveal inline>Prêt à passer à</TextReveal>{' '}
-              <TextReveal delay={0.6} inline wordClassName="globalGradientWordItalic">l'étape supérieure</TextReveal> ?
+              <TextReveal delay={0.6} inline wordClassName="globalGradientWordItalic">l'étape supérieure ?</TextReveal>
             </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>

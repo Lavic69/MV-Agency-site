@@ -526,7 +526,7 @@ export default function Home() {
           <FadeIn direction="up">
             <h2 className={styles.finalCtaTitle}>
               <TextReveal inline>Prêt à allier l'excellence du web à la puissance de</TextReveal> <br className={styles.hideOnMobile} />
-              <TextReveal delay={1.5} inline wordClassName={styles.ctaGradientWord}>l'intelligence artificielle</TextReveal> ?
+              <TextReveal delay={1.5} inline wordClassName={styles.ctaGradientWord}>l'intelligence artificielle ?</TextReveal>
             </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>

@@ -85,7 +85,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading), sans-serif;
   font-weight: 700;
   line-height: 1.2;
@@ -137,6 +142,7 @@ a {
   margin-bottom: 1rem;
   font-weight: 700;
 }
+
 .globalGradientWord {
   background: linear-gradient(90deg, var(--primary-400) 0%, #ffffff 100%);
   -webkit-background-clip: text;
