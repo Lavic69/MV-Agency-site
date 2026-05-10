@@ -20,16 +20,16 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({ columns, rows,
         <table className={styles.comparisonTable}>
           <thead>
             <tr>
-              <th></th>
+              <th scope="col" aria-label="Critère"></th>
               {columns.map((col, i) => (
-                <th key={i}>{col}</th>
+                <th key={i} scope="col">{col}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {rows.map((row, i) => (
               <tr key={i} className={row.highlight ? styles.comparisonHighlight : undefined}>
-                <td className={styles.comparisonFeature}>{row.feature}</td>
+                <th scope="row" className={styles.comparisonFeature}>{row.feature}</th>
                 {row.values.map((value, j) => (
                   <td key={j} className={typeof value === "boolean" ? (value ? styles.comparisonYes : styles.comparisonNo) : undefined}>
                     {typeof value === "boolean" ? (value ? "✓" : "—") : value}

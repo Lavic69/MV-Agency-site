@@ -664,6 +664,12 @@
   overflow-x: auto;
   border-radius: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
+  /* scroll shadow hint — fade gradient at right edge when content overflows */
+  background:
+    linear-gradient(to right, rgba(15, 15, 15, 0.6), transparent 20%) 0 0 / 100% 100% no-repeat local,
+    linear-gradient(to left, rgba(15, 15, 15, 0.6), transparent 20%) 100% 0 / 100% 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.3), transparent) 0 0 / 16px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.3), transparent) 100% 0 / 16px 100% no-repeat scroll;
 }
 
 .comparisonTable {
