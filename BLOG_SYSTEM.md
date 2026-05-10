@@ -411,19 +411,81 @@ Auto-pull 3 articles du même pillar. Pas d'action manuelle.
 
 ### Couleurs (depuis `globals.css`)
 
+**Source of truth** : `src/app/globals.css`. Toujours référencer via `var(--token)`.
+
 ```css
---bg-neutral: #0A0A0A           /* fond principal */
---primary: #2563EB              /* primary blue (CTA, séparateurs, accents) */
---secondary: #1A1F4B            /* indigo sombre (cartes alt, hero) */
---accent: #6B7280               /* gris acier (méta, captions) */
---text-light: #E5E7EB           /* texte principal */
+/* Backgrounds */
+--bg-neutral        /* #0A0A0A — fond principal */
+--bg-deep           /* #080e1f — cards à fond profond */
+--secondary         /* #1A1F4B — indigo sombre (cartes alt, hero) */
+--bg-card           /* glass card par défaut */
+--bg-card-hover     /* glass card hover */
+
+/* Palette bleue (gradient documenté) */
+--primary-400       /* #60a5fa — labels, eyebrows, glow, hover top */
+--primary-500       /* #3b82f6 — gradient haut, séparateurs colorés */
+--primary-600       /* #2563EB — primary canonique (CTA, focus) */
+--primary-700       /* #1e40af — gradient bas, états pressed */
+--primary           /* alias --primary-600 */
+
+/* Sémantique (Callout / feedback) */
+--color-warning         /* #f59e0b — Callout warning */
+--color-warning-bg      /* warning background fill */
+--color-warning-border  /* warning border */
+--color-success         /* #4ade80 — Callout tip, ComparisonTable yes */
+--color-success-bg
+--color-success-border
+--color-info            /* alias --primary-400 — Callout info */
+--color-info-bg
+--color-info-border
+
+/* Texte / neutres */
+--text-light        /* #E5E7EB — texte principal */
+--text-muted        /* #9ca3af — méta, captions, descriptions */
+--accent            /* #6B7280 — bordures neutres, disabled */
 ```
 
-Couleurs additionnelles utilisées dans le bestiary :
-- `#60A5FA` — primary clair (labels, eyebrows, glow)
-- `#F59E0B` — amber (Callout warning)
-- `#4ADE80` — green (Callout tip, ComparisonTable yes)
-- Opacités fréquentes : `rgba(96,165,250,0.18)`, `rgba(96,165,250,0.22)` pour glow subtle
+**Règle** : aucun hex literal hors `globals.css`. Si une nuance manque, ajouter le token plutôt que d'inline.
+
+### Spacing (grille 4px)
+
+```css
+--space-1    /* 4px */     --space-8     /* 32px */
+--space-2    /* 8px */     --space-10    /* 40px */
+--space-3    /* 12px */    --space-12    /* 48px */
+--space-4    /* 16px */    --space-16    /* 64px */
+--space-5    /* 20px */    --space-20    /* 80px */
+--space-6    /* 24px */    --space-24    /* 96px */
+                           --space-section /* 80px par défaut */
+```
+
+Valeurs interdites : `5px`, `6px`, `10px`, `14px`, `15px`, `30px`, `50px`.
+
+### Radius
+
+```css
+--radius-sm     /* 4px */     --radius-card  /* 20px — cards offres/services */
+--radius-md     /* 8px */     --radius-pill  /* 9999px — boutons + Header */
+--radius-lg     /* 16px */
+```
+
+### Shadows (mode quiet)
+
+```css
+--shadow-card        /* 0 12px 32px rgba(0,0,0,0.25) — cards repos */
+--shadow-card-hover  /* 0 16px 40px rgba(0,0,0,0.32) — cards hover */
+--shadow-header      /* 0 8px 32px rgba(0,0,0,0.35) — header pill */
+--shadow-soft        /* 0 4px 16px rgba(0,0,0,0.2) — formulaires, chips */
+--ring-subtle        /* 0 0 0 1px rgba(255,255,255,0.08) — bord intérieur */
+```
+
+### Glows
+
+```css
+--glow-primary         /* 0 0 30px rgba(37,99,235,0.4) — logo, CTA hover */
+--glow-primary-soft    /* 0 4px 15px rgba(37,99,235,0.3) — Button repos */
+--glow-primary-strong  /* 0 8px 30px rgba(37,99,235,0.5) — Button hover */
+```
 
 ### Typographies
 
