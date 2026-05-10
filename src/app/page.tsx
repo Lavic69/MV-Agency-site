@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import LiquidEther from "@/components/ui/LiquidEther";
 import LogoLoop from "@/components/ui/LogoLoop";
 import CircularTestimonials from "@/components/ui/circular-testimonials";
 import { Accordion } from "@/components/ui/accordion";

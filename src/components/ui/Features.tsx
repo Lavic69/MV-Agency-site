@@ -89,9 +89,9 @@ const AIAssistantIllustration = () => {
 }
 
 const MeetingIllustration = () => {
-    const MESCHAC_AVATAR = 'https://avatars.githubusercontent.com/u/47919550?v=4';
-    const BERNARD_AVATAR = 'https://avatars.githubusercontent.com/u/31113941?v=4';
-    const THEO_AVATAR = 'https://avatars.githubusercontent.com/u/68236786?v=4';
+    const MESCHAC_AVATAR = 'https://avatars.githubusercontent.com/u/47919550?v=4&s=84';
+    const BERNARD_AVATAR = 'https://avatars.githubusercontent.com/u/31113941?v=4&s=84';
+    const THEO_AVATAR = 'https://avatars.githubusercontent.com/u/68236786?v=4&s=84';
 
     return (
         <div className={`${styles.illustrationCard} ${styles.translateTarget}`} aria-hidden>

@@ -6,7 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { Clarity } from "@/components/analytics/Clarity";
-import LiquidEther from "@/components/ui/LiquidEther";
+import LiquidEther from "@/components/ui/LiquidEtherDesktopOnly";
 import {
   SITE_URL,
   SITE_NAME,
