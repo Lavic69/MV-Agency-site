@@ -1,4 +1,8 @@
-/* (Je vais recréer tout le fichier pour ajouter les styles des filtres en haut, et garder le grid en bas) */
+/* ==========================================================================
+   /blog — page liste, search bar, filters, et carte au langage magazine.
+   ========================================================================== */
+
+/* ----- Search + filters (inchangé) ----- */
 .searchWrapper {
   max-width: 600px;
   margin: 0 auto 3rem auto;
@@ -62,7 +66,7 @@
 .filterPill {
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-secondary);
+  color: var(--text-secondary, #B5B7BC);
   padding: 0.5rem 1.2rem;
   border-radius: 2rem;
   font-size: 0.9rem;
@@ -81,19 +85,31 @@
   color: var(--text-light);
 }
 
-/* GRILLE ET CARTES (Existant) */
+/* ----- Grille de cartes ----- */
 .postGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1099px) {
+  .postGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 699px) {
+  .postGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .postCard {
-  display: flex; 
+  display: flex;
   flex-direction: column;
-  background-color: rgba(15, 15, 15, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 1.5rem;
+  background-color: rgba(15, 15, 15, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
   overflow: hidden;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   cursor: pointer;
@@ -101,69 +117,105 @@
 }
 
 .postCard:hover {
-  transform: translateY(-8px);
-  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+  border-color: rgba(96, 165, 250, 0.3);
   box-shadow: var(--shadow-card-hover);
 }
 
-.imageWrapper {
-  width: 100%;
-  aspect-ratio: 16/10;
+/* ----- Cover XL avec mot-clé géant ----- */
+.cardCover {
   position: relative;
+  height: 160px;
+  background: linear-gradient(160deg, #0f1638 0%, #0a0a0a 75%);
+  border-bottom: 1px solid rgba(96, 165, 250, 0.18);
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 1rem 0.625rem 1rem;
 }
 
-.cardImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.cardPillar {
+  position: absolute;
+  top: 0.875rem;
+  left: 1rem;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.5625rem;
+  color: #60A5FA;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  font-weight: 700;
+  z-index: 2;
 }
 
-.postCard:hover .cardImage {
-  transform: scale(1.05);
+.cardNum {
+  position: absolute;
+  top: 0.875rem;
+  right: 1rem;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.5625rem;
+  color: #6B7280;
+  letter-spacing: 1.5px;
+  z-index: 2;
 }
 
-.cardContent {
-  padding: 2rem;
+.cardBody {
+  padding: 1.25rem 1.25rem 1.25rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
 .cardTitle {
-  font-size: 1.4rem;
-  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-family: var(--font-heading), sans-serif;
   font-weight: 700;
-  margin: 0;
+  margin: 0 0 0.625rem 0;
   color: var(--text-light);
   line-height: 1.3;
+  letter-spacing: -0.01em;
+  /* Clamp à 2 lignes pour homogénéité de la grille */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.titleSeparator {
-  width: 48px;
+.cardSep {
+  width: 36px;
   height: 2px;
-  background-color: var(--primary); /* Ligne colorée distinctive */
-  margin: 1rem 0;
+  background-color: var(--primary);
+  margin: 0 0 0.75rem 0;
   border-radius: 2px;
 }
 
 .cardExcerpt {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  margin: 0 0 2rem 0;
+  font-size: 0.78125rem;
+  line-height: 1.55;
+  color: rgba(229, 231, 235, 0.65);
+  margin: 0 0 1rem 0;
   flex-grow: 1;
+  /* Clamp à 2 lignes pour homogénéité */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.datePill {
-  align-self: flex-end;
-  background-color: rgba(255, 255, 255, 0.06);
-  color: var(--text-muted);
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+.cardMeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6875rem;
+  color: #6B7280;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cardMetaMono {
+  font-family: "SF Mono", Menlo, monospace;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 700px) {
+  .cardCover { height: 140px; }
 }

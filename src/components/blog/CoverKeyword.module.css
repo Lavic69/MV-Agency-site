@@ -1,0 +1,88 @@
+/* ==========================================================================
+   <CoverKeyword> — mot-clé géant en cover (hero, carte liste, featured).
+   4 patterns : text simple, composite avec opérateur, vs avec logos, chiffre.
+   ========================================================================== */
+
+.root {
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  color: rgba(96, 165, 250, 0.22);
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+  margin: 0;
+  padding-bottom: 4px; /* coussin minimal pour ne pas couper les jambages */
+}
+
+/* Sizes — calcul du font-size via clamp() pour rester lisible
+   sur la plus grande variété de longueurs de keyword. */
+.size-xl {
+  font-size: clamp(6rem, 22vw, 20rem); /* hero d'article (cover 320px) */
+}
+.size-md {
+  font-size: clamp(3.75rem, 12vw, 8.25rem); /* carte de liste (cover 160px) */
+}
+.size-sm {
+  font-size: clamp(3.5rem, 10vw, 6.875rem); /* BlogPreview featured (cover 180px) */
+}
+.size-xs {
+  font-size: clamp(1.5rem, 5vw, 2.25rem); /* mini-vignette (non utilisée pour V1, réservée) */
+}
+
+/* Opérateur (×, +, /, vs, —) — italique, opacité réduite, espacement */
+.op {
+  color: rgba(96, 165, 250, 0.4);
+  font-style: italic;
+  font-weight: 700;
+  margin: 0 0.06em;
+}
+
+/* === Pattern "vs" avec logos === */
+.versus {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.4em;
+  line-height: 1;
+  padding-bottom: 4px;
+  pointer-events: none;
+  user-select: none;
+}
+.logo {
+  width: 1em;
+  height: 1em;
+  color: rgba(229, 231, 235, 0.85);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.logoAlt {
+  color: rgba(96, 165, 250, 0.7);
+}
+.logo svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+.versusLabel {
+  font-family: var(--font-heading), sans-serif;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 0.45em; /* relatif à la taille du parent .versus.size-* */
+  color: rgba(96, 165, 250, 0.55);
+  line-height: 1;
+}
+
+/* Sizes spécifiques au versus (parce que le flex container définit la hauteur) */
+.versus.size-xl {
+  font-size: clamp(4rem, 14vw, 7rem);
+}
+.versus.size-md {
+  font-size: clamp(2.75rem, 9vw, 4.5rem);
+}
+.versus.size-sm {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+}
