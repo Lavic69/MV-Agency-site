@@ -43,6 +43,10 @@ next-env.d.ts
 # Claude Code (worktrees, tasks, local agent state)
 .claude/
 
+# Superpowers brainstorming artifacts (visual companion HTML previews)
+.superpowers/
+preview/
+
 # Temporary / local scripts
 fix_colors.js
 
