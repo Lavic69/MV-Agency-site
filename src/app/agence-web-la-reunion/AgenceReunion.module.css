@@ -96,7 +96,7 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 1.5rem;
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.4),
+    var(--shadow-card-hover),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
   overflow: hidden;
   backdrop-filter: blur(12px);
@@ -377,8 +377,8 @@
   position: absolute;
   left: 0;
   top: 0.55em;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--primary);
 }
