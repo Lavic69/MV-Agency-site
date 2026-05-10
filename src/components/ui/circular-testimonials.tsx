@@ -214,7 +214,7 @@ export const CircularTestimonials = ({
                     style={{ textDecoration: 'none' }}
                     tabIndex={-1}
                   >
-                    <Button variant="outline" style={{ padding: '0.6rem 1.75rem', fontSize: '0.95rem' }}>
+                    <Button variant="outline" size="sm">
                       Voir le projet
                     </Button>
                   </a>

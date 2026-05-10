@@ -99,7 +99,7 @@ export default function CasClientsPage() {
                       <TextReveal inline justify="flex-start">{project.quote}</TextReveal>
                     </p>
                     <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }} tabIndex={-1}>
-                      <Button variant="outline" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.8rem 2rem' }}>
+                      <Button variant="outline" size="sm" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
                         Voir le projet <ArrowRight size={18} style={{ strokeWidth: 2.5, transform: 'translateY(1px)' }} />
                       </Button>
                     </a>

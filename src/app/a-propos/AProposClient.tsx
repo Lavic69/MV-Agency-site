@@ -428,7 +428,7 @@ export default function AProposClient() {
                       <p className={styles.bentoText}>Rejoignez les dizaines d'entreprises et d'indépendants locaux qui ont confié leur croissance à MV Agency.</p>
                     </div>
                     <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none' }}>
-                      <Button variant="primary" style={{ borderRadius: '999px', fontSize: '1.2rem', padding: '1rem 2rem', fontWeight: 600 }}>
+                      <Button variant="primary" style={{ fontWeight: 600 }}>
                         Prendre rendez-vous
                       </Button>
                     </Link>
