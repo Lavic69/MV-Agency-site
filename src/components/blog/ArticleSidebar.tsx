@@ -49,7 +49,7 @@ export const ArticleSidebar: React.FC<ArticleSidebarProps> = ({ tocItems, takeaw
   if (tocItems.length === 0 && takeaways.length === 0) return null;
 
   const tocSection = tocItems.length > 0 && (
-    <div>
+    <nav aria-label="Sommaire de l'article">
       <div className={styles.sidebarLabel}>— Sommaire</div>
       <ul className={styles.tocList}>
         {tocItems.map((item) => (
@@ -57,13 +57,14 @@ export const ArticleSidebar: React.FC<ArticleSidebarProps> = ({ tocItems, takeaw
             <a
               href={`#${item.id}`}
               className={`${styles.tocItem} ${activeId === item.id ? styles.tocItemActive : ""}`}
+              aria-current={activeId === item.id ? "location" : undefined}
             >
               {item.label}
             </a>
           </li>
         ))}
       </ul>
-    </div>
+    </nav>
   );
 
   const takeawaysSection = takeaways.length > 0 && (
