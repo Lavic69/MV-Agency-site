@@ -9,21 +9,26 @@
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
   border: none;
+  line-height: 1;
 }
 
 /* === Sizes === */
+/* Padding vertical asymétrique (-0.1rem / +0.1rem) :
+   compense le décalage optique du centre visuel des glyphes
+   Darker Grotesque, qui sit ~1.6px sous le centre géométrique
+   de l'em-box (descender + métriques cap-height/x-height). */
 .sizeSm {
-  padding: 0.8rem 1.8rem;
+  padding: 0.7rem 1.8rem 0.9rem;
   font-size: 1rem;
 }
 
 .sizeMd {
-  padding: 1.1rem 2.5rem;
+  padding: 1rem 2.5rem 1.2rem;
   font-size: 1.25rem;
 }
 
 .sizeLg {
-  padding: 1.3rem 3rem;
+  padding: 1.2rem 3rem 1.4rem;
   font-size: 1.4rem;
 }
 
