@@ -46,7 +46,11 @@ type QuadrantDiagram = {
 };
 
 type DiagramProps = (LinearDiagram | CircularDiagram | HierarchyDiagram | FunnelDiagram | QuadrantDiagram) & {
-  showLabel?: boolean; // défaut: true
+  /**
+   * Si vrai, affiche un badge décoratif `— variant: "..."` au-dessus du diagramme
+   * (utile pour debug ou design review). Défaut : false (n'apparaît pas en prod).
+   */
+  showLabel?: boolean;
 };
 
 const FUNNEL_ROW_CLASSES = [
@@ -65,11 +69,15 @@ const CIRCULAR_POSITION_CLASSES = [
 ];
 
 export const Diagram: React.FC<DiagramProps> = (props) => {
-  const showLabel = props.showLabel !== false;
+  const showLabel = props.showLabel === true;
 
   return (
     <figure className={styles.wrap}>
-      {showLabel && <div className={styles.label}>— variant: &quot;{props.variant}&quot;</div>}
+      {showLabel && (
+        <div className={styles.label} aria-hidden="true">
+          — variant: &quot;{props.variant}&quot;
+        </div>
+      )}
 
       {props.variant === "linear" && (
         <div className={styles.linear}>
