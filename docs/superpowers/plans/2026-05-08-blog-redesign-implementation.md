@@ -1103,7 +1103,6 @@ Remplacer tout le contenu du fichier par :
 
 ```tsx
 import type { Metadata } from "next";
-import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import {
   ArticleHeader,
@@ -1511,9 +1510,7 @@ export default function Page() {
               30 minutes offertes pour échanger sur votre projet et obtenir une fourchette
               de prix précise. Sans engagement, sans devis surprise.
             </p>
-            <Link href="/contact">
-              <Button variant="primary">Réserver un appel offert</Button>
-            </Link>
+            <Button variant="primary" href="/contact">Réserver un appel offert</Button>
           </section>
         </div>
       </div>
