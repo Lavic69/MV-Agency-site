@@ -89,6 +89,15 @@ export const MockupWeb = () => {
         .animated-cursor {
           animation: mouseMove 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
+        /* Sur mobile, hide les cursors animés (l'effet "souris" n'a aucun sens
+           sur tactile et peut leaker visuellement hors mockup) */
+        @media (max-width: 767px) {
+          .animated-cursor,
+          .dragging-element,
+          .click-ripple {
+            display: none;
+          }
+        }
         @keyframes mouseMove {
           0%, 5% { transform: translate(0, 0); } 
           15% { transform: translate(-230px, -180px); } 

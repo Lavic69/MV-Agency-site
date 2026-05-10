@@ -83,6 +83,10 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Empêche les débordements horizontaux dûs aux animations FadeIn/StaggerItem
+     (transformX transitoires) ou aux mockups conçus desktop affichés sur mobile.
+     Le scroll vertical reste actif. */
+  overflow-x: hidden;
 }
 
 h1,
