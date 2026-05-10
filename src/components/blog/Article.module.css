@@ -808,6 +808,7 @@
   font-family: var(--font-heading), sans-serif;
   font-size: 1rem;
   font-weight: 700;
+  font-style: normal;
   color: var(--text-light);
   margin-bottom: 0.375rem;
 }

@@ -11,7 +11,7 @@ export const DefinitionBox: React.FC<DefinitionBoxProps> = ({ term, children, la
   return (
     <aside className={styles.defbox} aria-label={`Définition : ${term}`}>
       <div className={styles.defboxLabel}>— {label}</div>
-      <div className={styles.defboxTerm}>{term}</div>
+      <dfn className={styles.defboxTerm}>{term}</dfn>
       <div className={styles.defboxDesc}>{children}</div>
     </aside>
   );
