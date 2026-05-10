@@ -63,7 +63,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Quel est le prix moyen d'un site internet vitrine en 2026 ?",
     answer:
-      "Pour un site vitrine professionnel de 5 à 7 pages, comptez entre 1 900 € et 4 000 € selon le degré de personnalisation du design, le CMS choisi, et le niveau d'optimisation SEO à la racine. À partir de 500 €, on trouve des landing pages et templates pré-faits avec personnalisation limitée. Au-dessus de 4 000 €, on entre sur des architectures sur-mesure avec automatisations.",
+      "À partir de 500 €, on trouve des landing pages et templates pré-faits avec personnalisation limitée — ça peut suffire pour démarrer. Pour un site vitrine 100 % sur-mesure de 5 à 7 pages (design unique, CMS choisi, optimisation SEO à la racine), comptez entre 1 900 € et 4 000 €. Au-dessus de 4 000 €, on entre sur des architectures avec automatisations.",
   },
   {
     question: "Combien coûte un site e-commerce en 2026 ?",
@@ -146,12 +146,13 @@ export default function Page() {
 
         <div className={styles.articleContent}>
           <AnswerBlock>
-            Un site internet professionnel coûte entre <strong>500 € et 8 000 €</strong> en
+            Un site internet coûte entre <strong>500 € et 8 000 €</strong> en
             2026 selon trois facteurs principaux : le <strong>type de site</strong>{" "}
             (vitrine, automatisé, e-commerce), le <strong>degré de personnalisation</strong>{" "}
             (template vs design sur-mesure) et la <strong>stack technique</strong>{" "}
-            (WordPress vs Next.js). Une vitrine premium démarre à 1 900 €, un site avec
-            automatisations à 4 000 €, un e-commerce sur-mesure à 6 000 €. Au-delà de
+            (WordPress vs Next.js). Un site basé sur un template démarre à 500 €, une
+            vitrine <strong>100 % sur-mesure</strong> à 1 900 €, un site avec automatisations
+            à 4 000 €, un e-commerce sur-mesure à 6 000 €. Au-delà de
             l&apos;investissement initial, le vrai coût se mesure sur 3 ans : un site mal conçu
             coûte le double en maintenance et refonte. Cet article détaille les fourchettes
             par type de projet, les cinq variables qui font bouger le prix, et la fourchette
@@ -173,7 +174,7 @@ export default function Page() {
             </p>
             <ul>
               <li>
-                <strong>Site vitrine premium</strong> : 5 à 10 pages, présentation de
+                <strong>Site vitrine sur-mesure</strong> : 5 à 10 pages, présentation de
                 l&apos;entreprise et des services, formulaire de contact, optimisation SEO de
                 base. Pas d&apos;espace client, pas de paiement.
               </li>
@@ -199,11 +200,12 @@ export default function Page() {
 
             <h2 id="site-vitrine">Combien coûte un site vitrine en 2026 ?</h2>
             <p>
-              Pour un site vitrine professionnel, la fourchette réaliste en 2026 est de{" "}
-              <strong>1 900 € à 4 000 €</strong>. À partir de 500 €, on trouve des landing pages
-              et templates pré-faits avec personnalisation très limitée — c&apos;est parfois
-              suffisant pour démarrer mais ça vieillit vite et la cohérence visuelle
-              n&apos;est pas toujours au rendez-vous.
+              À partir de 500 €, on trouve des landing pages et templates pré-faits — c&apos;est
+              suffisant pour démarrer mais ça vieillit vite, la personnalisation est très
+              limitée, et la cohérence visuelle n&apos;est pas toujours au rendez-vous. Pour un
+              site vitrine <strong>100 % sur-mesure</strong> (design unique, choix du CMS,
+              SEO racine, contenus rédigés), la fourchette réaliste en 2026 est de{" "}
+              <strong>1 900 € à 4 000 €</strong>.
             </p>
             <p>
               Chez MV Agency, on propose trois packs avec des périmètres clairement définis.
