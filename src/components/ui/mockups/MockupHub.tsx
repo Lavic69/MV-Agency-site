@@ -46,6 +46,7 @@ export function MockupHub() {
   };
 
   return (
+    <div className="mockup-hub-scaler">
     <div
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -355,6 +356,30 @@ export function MockupHub() {
 
         </div>
       </div>
+    </div>
+    <style jsx>{`
+      .mockup-hub-scaler {
+        width: 100%;
+        max-width: 800px;
+        display: flex;
+        justify-content: center;
+      }
+      /* Le contenu interne (sidebar 180px + dashboard cards) exige ~700px.
+         Sur mobile, on scale tout le mockup pour qu'il rentre dans le viewport. */
+      @media (max-width: 767px) {
+        .mockup-hub-scaler {
+          transform-origin: top center;
+          transform: scale(0.55);
+          margin-bottom: -45%;
+        }
+      }
+      @media (max-width: 480px) {
+        .mockup-hub-scaler {
+          transform: scale(0.48);
+          margin-bottom: -52%;
+        }
+      }
+    `}</style>
     </div>
   );
 }
