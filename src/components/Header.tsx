@@ -43,7 +43,7 @@ export const Header = () => {
         </nav>
         <div className={styles.cta}>
           <Link href="/contact" tabIndex={-1}>
-            <Button variant="magic" className={styles.headerButton}>Réserver un appel</Button>
+            <Button variant="magic" size="sm">Réserver un appel</Button>
           </Link>
         </div>
 

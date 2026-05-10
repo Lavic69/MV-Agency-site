@@ -62,11 +62,6 @@
   text-decoration: none;
 }
 
-.headerButton {
-  padding: 0.8rem 1.8rem !important;
-  font-size: 1rem !important;
-}
-
 .mobileMenuButton {
   display: none;
   background: transparent;

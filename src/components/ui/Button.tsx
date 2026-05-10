@@ -3,6 +3,7 @@ import styles from './Button.module.css';
 
 type CommonButtonProps = {
   variant?: 'primary' | 'outline' | 'magic';
+  size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
   className?: string;
 };
@@ -17,9 +18,11 @@ type ButtonAsLink = CommonButtonProps & Omit<React.AnchorHTMLAttributes<HTMLAnch
 
 type ButtonProps = ButtonAsButton | ButtonAsLink;
 
-export const Button: React.FC<ButtonProps> = ({ variant = 'primary', children, className, ...rest }) => {
+export const Button: React.FC<ButtonProps> = ({ variant = 'primary', size = 'md', children, className, ...rest }) => {
   const variantClass = styles[variant] || styles.primary;
-  const buttonClass = `${styles.button} ${variantClass} ${className || ''}`;
+  const sizeKey = `size${size.charAt(0).toUpperCase()}${size.slice(1)}`;
+  const sizeClass = styles[sizeKey] || styles.sizeMd;
+  const buttonClass = `${styles.button} ${variantClass} ${sizeClass} ${className || ''}`;
 
   // Animated text structure (letter by letter wave)
   const animatedText = React.Children.map(children, (child) => {

@@ -4,13 +4,27 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1.1rem 2.5rem; /* Centrage visuel */
-  border-radius: 50px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1.25rem; /* Texte plus gros */
   letter-spacing: 0.5px;
   border: none;
+}
+
+/* === Sizes === */
+.sizeSm {
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+}
+
+.sizeMd {
+  padding: 1.1rem 2.5rem;
+  font-size: 1.25rem;
+}
+
+.sizeLg {
+  padding: 1.3rem 3rem;
+  font-size: 1.4rem;
 }
 
 .primary {

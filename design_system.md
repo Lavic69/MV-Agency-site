@@ -112,10 +112,28 @@ Toutes les ombres passent par tokens. Les valeurs sont **calibrées en mode Doux
 
 Composant canonique : `<Button>` (`src/components/ui/Button.tsx`).
 
+#### Variantes (`variant`)
+
 - **Primary** : pill (`--radius-pill`), gradient `--primary-500 → --primary-600`, sweep conic-gradient blanc en arrière-plan animé, glow `--glow-primary-soft` au repos / `--glow-primary-strong` au hover, lift 2px en hover.
 - **Outline** : pill, fond glass (linear-gradient sombre 80% opacity + backdrop-blur 12px), border 1px white/15%, hover border white/50%.
+- **Magic** : variante primary avec animations sweep renforcées (utilisée notamment dans le Header).
 
-⚠ Tout bouton ad-hoc en inline style est **non conforme**. Si une variante manque (taille différente, contexte spécifique), enrichir le composant `<Button>` avec une prop, ne pas dupliquer le style.
+#### Tailles (`size`)
+
+| Prop | Valeurs | Usage typique |
+| :--- | :--- | :--- |
+| `size="sm"` | padding `0.8rem 1.8rem` / font `1rem` | Header, boutons secondaires dans carrousels, CTA compacts |
+| `size="md"` *(défaut)* | padding `1.1rem 2.5rem` / font `1.25rem` | CTA hero, sections principales, contexte par défaut |
+| `size="lg"` | padding `1.3rem 3rem` / font `1.4rem` | CTA proéminents (landing pages, sections "Réserver un appel" majeures) |
+
+```tsx
+<Button variant="primary" size="md" href="/contact">Réserver un appel</Button>
+<Button variant="magic" size="sm">Header CTA</Button>
+<Button variant="outline" size="sm">Voir le projet</Button>
+```
+
+⚠ Tout bouton ad-hoc en inline style `padding`/`font-size` est **non conforme**. Si une variante manque (taille intermédiaire, contexte spécifique), enrichir le composant `<Button>` avec une prop, ne pas dupliquer le style.
+⚠ `!important` interdit dans les CSS modules pour override un `<Button>` — utiliser la prop `size` ou ajouter une variante.
 
 ### 8.2 Header
 
