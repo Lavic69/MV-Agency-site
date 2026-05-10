@@ -6,7 +6,7 @@
 .wrap {
   background: rgba(15, 15, 15, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.875rem;
+  border-radius: var(--radius-lg);
   padding: 1.5rem;
   margin: 3.5rem 0;
   overflow: hidden; /* empêche tout débordement (notamment cercle pointillé du circular) */
@@ -15,7 +15,7 @@
 .label {
   font-family: "SF Mono", Menlo, monospace;
   font-size: 0.625rem;
-  color: #60A5FA;
+  color: var(--primary-400);
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 700;
@@ -56,7 +56,7 @@
 .linNodeNum {
   font-family: "SF Mono", Menlo, monospace;
   font-size: 0.5625rem;
-  color: #60A5FA;
+  color: var(--primary-400);
   letter-spacing: 1px;
   margin-bottom: 0.375rem;
 }
@@ -102,7 +102,7 @@
 .circNodeNum {
   font-family: "SF Mono", Menlo, monospace;
   font-size: 0.5625rem;
-  color: #60A5FA;
+  color: var(--primary-400);
   letter-spacing: 1px;
   margin-bottom: 0.25rem;
 }
@@ -122,7 +122,7 @@
 .circCenter {
   /* Deux backgrounds layered : solid color + radial gradient.
      Le solid masque le cercle pointillé qui passe DERRIÈRE. */
-  background-color: var(--bg-neutral, #0a0a0a);
+  background-color: var(--bg-neutral);
   background-image: radial-gradient(circle, rgba(37, 99, 235, 0.4), rgba(37, 99, 235, 0.1));
   border: 1px solid rgba(96, 165, 250, 0.6);
   border-radius: 50%;
@@ -139,7 +139,7 @@
   font-family: var(--font-heading), sans-serif;
   font-size: 0.875rem;
   font-weight: 800;
-  color: #60A5FA;
+  color: var(--primary-400);
 }
 
 /* === HIERARCHY (arbre / branches) === */
@@ -249,7 +249,7 @@
 .funValue {
   font-family: "SF Mono", Menlo, monospace;
   font-size: 0.6875rem;
-  color: #60A5FA;
+  color: var(--primary-400);
   font-weight: 700;
 }
 
@@ -282,7 +282,7 @@
 .quadCell {
   background: rgba(37, 99, 235, 0.05);
   border: 1px solid rgba(96, 165, 250, 0.2);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   padding: 0.875rem;
   display: flex;
   flex-direction: column;
