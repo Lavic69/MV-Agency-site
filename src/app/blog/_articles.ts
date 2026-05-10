@@ -66,7 +66,7 @@ export const articles: ReadonlyArray<ArticleMeta> = [
     category: "Création de site web",
     keyword: { type: "text", value: "PRIX" },
     takeaways: [
-      "Vitrine sur-mesure = 1 900 € à 4 000 € (template dès 500 €)",
+      "Vitrine 100 % customisée = 1 900 € à 4 000 € (template dès 500 €)",
       "E-commerce sur-mesure démarre à 6 000 €",
       "5 facteurs principaux font varier le prix",
       "Coûts récurrents = 1/3 du devis sur 3 ans",

@@ -63,7 +63,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Quel est le prix moyen d'un site internet vitrine en 2026 ?",
     answer:
-      "À partir de 500 €, on trouve des landing pages et templates pré-faits avec personnalisation limitée — ça peut suffire pour démarrer. Pour un site vitrine 100 % sur-mesure de 5 à 7 pages (design unique, CMS choisi, optimisation SEO à la racine), comptez entre 1 900 € et 4 000 €. Au-dessus de 4 000 €, on entre sur des architectures avec automatisations.",
+      "À partir de 500 €, on trouve des landing pages et templates pré-faits avec personnalisation limitée — ça peut suffire pour démarrer. Pour un site vitrine 100 % customisé de 5 à 7 pages (design unique, CMS choisi, optimisation SEO à la racine), comptez entre 1 900 € et 4 000 €. Au-dessus de 4 000 €, on entre sur des architectures avec automatisations.",
   },
   {
     question: "Combien coûte un site e-commerce en 2026 ?",
@@ -146,12 +146,12 @@ export default function Page() {
 
         <div className={styles.articleContent}>
           <AnswerBlock>
-            Un site internet coûte entre <strong>500 € et 8 000 €</strong> en
+            Un site internet coûte entre <strong>500 € et 8 000 €</strong>{" "}en
             2026 selon trois facteurs principaux : le <strong>type de site</strong>{" "}
             (vitrine, automatisé, e-commerce), le <strong>degré de personnalisation</strong>{" "}
             (template vs design sur-mesure) et la <strong>stack technique</strong>{" "}
             (WordPress vs Next.js). Un site basé sur un template démarre à 500 €, une
-            vitrine <strong>100 % sur-mesure</strong> à 1 900 €, un site avec automatisations
+            vitrine <strong>100 % customisée</strong>{" "}à 1 900 €, un site avec automatisations
             à 4 000 €, un e-commerce sur-mesure à 6 000 €. Au-delà de
             l&apos;investissement initial, le vrai coût se mesure sur 3 ans : un site mal conçu
             coûte le double en maintenance et refonte. Cet article détaille les fourchettes
@@ -174,21 +174,21 @@ export default function Page() {
             </p>
             <ul>
               <li>
-                <strong>Site vitrine sur-mesure</strong> : 5 à 10 pages, présentation de
+                <strong>Site vitrine 100 % customisé</strong>{" "}: 5 à 10 pages, présentation de
                 l&apos;entreprise et des services, formulaire de contact, optimisation SEO de
                 base. Pas d&apos;espace client, pas de paiement.
               </li>
               <li>
-                <strong>Site vitrine + automatisations</strong> : la même chose plus une
+                <strong>Site vitrine + automatisations</strong>{" "}: la même chose plus une
                 intégration CRM, un chatbot IA, un système de prise de rendez-vous, des
                 emails déclenchés automatiquement.
               </li>
               <li>
-                <strong>E-commerce</strong> : catalogue produits, panier, paiement
+                <strong>E-commerce</strong>{" "}: catalogue produits, panier, paiement
                 sécurisé, gestion des commandes, suivi de livraison.
               </li>
               <li>
-                <strong>Plateforme sur-mesure</strong> : application web avec gestion
+                <strong>Plateforme sur-mesure</strong>{" "}: application web avec gestion
                 d&apos;utilisateurs, base de données complexe, fonctionnalités métier
                 spécifiques (réservation, marketplace, SaaS).
               </li>
@@ -203,7 +203,7 @@ export default function Page() {
               À partir de 500 €, on trouve des landing pages et templates pré-faits — c&apos;est
               suffisant pour démarrer mais ça vieillit vite, la personnalisation est très
               limitée, et la cohérence visuelle n&apos;est pas toujours au rendez-vous. Pour un
-              site vitrine <strong>100 % sur-mesure</strong> (design unique, choix du CMS,
+              site vitrine <strong>100 % customisé</strong>{" "}(design unique, choix du CMS,
               SEO racine, contenus rédigés), la fourchette réaliste en 2026 est de{" "}
               <strong>1 900 € à 4 000 €</strong>.
             </p>
@@ -230,7 +230,7 @@ export default function Page() {
             <p>
               Quand on ajoute des automatisations sérieuses (CRM, emailing déclenché,
               chatbot IA, contenu assisté par intelligence artificielle), la fourchette
-              monte naturellement. Le pack <strong>Croissance digitale</strong> de MV Agency
+              monte naturellement. Le pack <strong>Croissance digitale</strong>{" "}de MV Agency
               démarre à 4 000 € et structure votre acquisition de A à Z : site avancé
               jusqu&apos;à 10 pages, SEO profond, landing page de conversion, automatisations
               clés en main, chatbot IA intelligent, génération de contenu assistée et
@@ -239,7 +239,7 @@ export default function Page() {
             <p>
               La différence avec une vitrine simple n&apos;est pas seulement esthétique. Une
               automatisation bien conçue peut représenter <strong>4 à 8 heures gagnées
-              chaque semaine</strong> sur des tâches répétitives — saisie de leads,
+              chaque semaine</strong>{" "}sur des tâches répétitives — saisie de leads,
               relances, qualification. Sur 12 mois, ce gain rentabilise l&apos;investissement
               plus rapidement qu&apos;un site purement décoratif.
             </p>
@@ -247,7 +247,7 @@ export default function Page() {
             <StatHighlight
               value="94%"
               label="Première impression"
-              description="des visiteurs jugent la crédibilité d'un site sur son design en moins de 50 ms."
+              description="Des visiteurs jugent la crédibilité d'un site sur son design en moins de 50 ms."
               source="Stanford Web Credibility Project, 2024"
             />
 
@@ -256,7 +256,7 @@ export default function Page() {
               Pour un e-commerce sur-mesure, la fourchette de départ est de <strong>6 000 €
               à 15 000 €</strong>, voire au-delà selon la complexité du catalogue, les
               intégrations CRM/ERP, les passerelles de paiement multiples ou les
-              fonctionnalités d&apos;abonnement. Le pack <strong>Performance IA</strong> de
+              fonctionnalités d&apos;abonnement. Le pack <strong>Performance IA</strong>{" "}de
               MV Agency, qui démarre à 6 000 €, couvre l&apos;e-commerce ou la plateforme
               sur-mesure avec un écosystème IA complet et des automatisations avancées.
             </p>
@@ -281,27 +281,27 @@ export default function Page() {
             </p>
             <ol>
               <li>
-                <strong>Le nombre de pages</strong> — chaque page rédigée et designée prend
+                <strong>Le nombre de pages</strong>{" "}— chaque page rédigée et designée prend
                 du temps. Passer de 5 à 15 pages double souvent l&apos;effort sans doubler
                 forcément la valeur.
               </li>
               <li>
-                <strong>Le degré de personnalisation visuelle</strong> — un design 100 %
+                <strong>Le degré de personnalisation visuelle</strong>{" "}— un design 100 %
                 sur-mesure (illustrations, micro-interactions, mockups) coûte
                 significativement plus qu&apos;un thème adapté.
               </li>
               <li>
-                <strong>La stack technique choisie</strong> — Next.js demande plus de
+                <strong>La stack technique choisie</strong>{" "}— Next.js demande plus de
                 compétences que WordPress, mais offre des performances et une sécurité
                 supérieures. Le bon choix dépend du contexte.
               </li>
               <li>
-                <strong>Les intégrations tierces</strong> — connecter un CRM, un outil
+                <strong>Les intégrations tierces</strong>{" "}— connecter un CRM, un outil
                 d&apos;emailing, un système de paiement, une API IA, chacune de ces
                 intégrations ajoute du temps de développement et de tests.
               </li>
               <li>
-                <strong>La rédaction et la production de contenu</strong> — fournir vos
+                <strong>La rédaction et la production de contenu</strong>{" "}— fournir vos
                 textes et images réduit le coût. Si l&apos;agence doit les produire (copywriting,
                 shooting photo, vidéo), comptez 500 à 3 000 € additionnels.
               </li>
@@ -314,24 +314,24 @@ export default function Page() {
             </p>
             <ul>
               <li>
-                <strong>Nom de domaine</strong> — entre 10 € et 50 € par an selon
+                <strong>Nom de domaine</strong>{" "}— entre 10 € et 50 € par an selon
                 l&apos;extension et le registrar.
               </li>
               <li>
-                <strong>Hébergement</strong> — 60 à 300 € par an pour un site vitrine
+                <strong>Hébergement</strong>{" "}— 60 à 300 € par an pour un site vitrine
                 (Vercel, Netlify, OVH), bien plus pour de l&apos;e-commerce avec trafic.
               </li>
               <li>
-                <strong>Licences logicielles</strong> — thèmes WordPress premium, plugins,
+                <strong>Licences logicielles</strong>{" "}— thèmes WordPress premium, plugins,
                 API IA (OpenAI, Anthropic) : variable selon les choix techniques.
               </li>
               <li>
-                <strong>Maintenance technique</strong> — mises à jour de sécurité,
+                <strong>Maintenance technique</strong>{" "}— mises à jour de sécurité,
                 sauvegardes, monitoring. À budgéter à 50-150 € par mois pour un site qui
                 tourne en production.
               </li>
               <li>
-                <strong>Production de contenu</strong> — si vous publiez régulièrement
+                <strong>Production de contenu</strong>{" "}— si vous publiez régulièrement
                 (blog SEO, articles métier), prévoyez du temps interne ou un budget de
                 rédaction.
               </li>
@@ -348,7 +348,7 @@ export default function Page() {
             </p>
 
             <Callout variant="warning" label="PIÈGE FRÉQUENT">
-              Trois schémas reviennent chez les clients qui ont déjà eu une mauvaise expérience : <strong>site illisible sur mobile</strong> six mois après la livraison, <strong>refonte intégrale après deux ans</strong> faute d&apos;optimisation, <strong>licence d&apos;utilisation</strong> facturée chaque année sur le code de l&apos;agence. Comparez le coût total sur 3 ans, pas le devis seul, et vérifiez qui détient la propriété du code à la livraison.
+              Trois schémas reviennent chez les clients qui ont déjà eu une mauvaise expérience : <strong>site illisible sur mobile</strong>{" "}six mois après la livraison, <strong>refonte intégrale après deux ans</strong>{" "}faute d&apos;optimisation, <strong>licence d&apos;utilisation</strong>{" "}facturée chaque année sur le code de l&apos;agence. Comparez le coût total sur 3 ans, pas le devis seul, et vérifiez qui détient la propriété du code à la livraison.
             </Callout>
 
             <h2 id="devis-fiable">Comment obtenir un devis fiable en 4 étapes ?</h2>
