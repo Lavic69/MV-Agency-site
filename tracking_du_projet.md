@@ -93,3 +93,69 @@ Reprise de session. Objectifs : (1) finaliser l'infrastructure email pro sur `mv
 - `[ ]` Déploiement Vercel + branchement DNS `mvagency.ai` sur le site.
 - `[ ]` Investiguer la "1 high severity vulnerability" signalée par `npm audit`.
 - `[ ]` Pages GEO (La Réunion / Belgique / France) pour SEO local.
+
+---
+
+## Session J3 — 08/05/2026 — Audit SEO/GEO + infra mesure & analytics
+
+### 🎯 Contexte
+Audit SEO/GEO complet du repo (état des lieux vs. plans `SEO MV Agency.md` + `GEO_Plan_MV_Agency.md`). Constat : socle technique excellent (schemas, robots IA, sitemap dynamique, llms.txt, page géo Réunion, 1 article blog), mais **trou critique côté mesure** : aucune analytics, aucune verification GSC/Bing, aucun event tracking. Décision user : pas de Google Analytics + bandeau cookies pour démarrer (friction UX). On part sur du **gratuit, sans cookies, sans bandeau**.
+
+### ✅ Wave 1 — Tracking foundation (sans cookies, sans bandeau RGPD)
+- `[x]` `npm install @vercel/analytics @vercel/speed-insights` — packages installés.
+- `[x]` `<Analytics />` + `<SpeedInsights />` injectés dans `src/app/layout.tsx` (chargés sur tous les routes).
+- `[x]` `metadata.verification` ajouté dans `layout.tsx` : lit `NEXT_PUBLIC_GSC_VERIFICATION` + `NEXT_PUBLIC_BING_VERIFICATION` depuis l'env. Tant que vide, aucune meta tag injectée.
+- `[x]` Helper `src/lib/analytics.ts` : `trackEvent(name, props)` qui pousse vers Vercel Analytics + Clarity (si dispo). Constantes `EVENTS` listées pour autocomplete (`cal_booking_opened`, `pack_selected`, `contact_cta_clicked`, etc.).
+- `[x]` `.env.example` créé avec instructions pas-à-pas pour GSC + Bing + Clarity.
+
+### ✅ Wave 2 — Microsoft Clarity (dormant)
+- `[x]` Composant `src/components/analytics/Clarity.tsx` — chargé uniquement si `NEXT_PUBLIC_CLARITY_ID` est défini ET si `localStorage["mv-analytics-consent"] === "granted"`. Tant qu'aucune des deux conditions n'est remplie : `return null;` → snippet Clarity jamais injecté.
+- `[x]` Wired dans `layout.tsx`, prêt à activer en 5 min via env var (et un futur ConsentBanner).
+
+### ✅ Wave 3a — Icônes PWA dynamiques
+- `[x]` `src/app/icon.tsx` : génère 3 PNG via `next/og` + `generateImageMetadata` → `/icon/favicon` (32×32), `/icon/android-192`, `/icon/android-512`. Design : monogramme "MV" sur dégradé navy → bleu primaire.
+- `[x]` `src/app/apple-icon.tsx` : 180×180 même style pour iOS Add to Home Screen.
+- `[x]` `manifest.ts` mis à jour : référence les routes `/icon/android-192` et `/icon/android-512` (purpose any + maskable).
+- `[x]` Plus de dépendance au gros `Logo_Rond_MV_V2.svg` (362 KB) pour les icônes système.
+
+### ✅ Wave 3b — Page géo Belgique
+- `[x]` `src/app/agence-web-belgique/page.tsx` créée — mirror structurel de la page Réunion adapté au contexte belge :
+  - Métadonnées dédiées (title, description, OG, canonical)
+  - JSON-LD `BreadcrumbList` + `ProfessionalService` (parentOrganization → MV Agency, areaServed Bruxelles/Wallonie/Liège/Namur/Charleroi/Mons/Tournai/Louvain-la-Neuve)
+  - JSON-LD `FAQPage` avec 8 Q/R Belgique-spécifiques (TVA autoliquidation, RGPD, méthode async, fuseau horaire, types d'entreprises)
+  - Sections : Hero / Différenciateurs / Services / AnswerBlock GEO / Zones / Stack / FAQ / CTA
+  - Réutilise `AgenceReunion.module.css` via import relatif (même charte visuelle, scoping CSS modules respecté)
+- `[x]` `sitemap.ts` : ajout entrée `/agence-web-belgique` priority 0.9.
+- `[x]` `plan-du-site/page.tsx` : ajout du lien dans la section "Zones d'intervention".
+
+### ✅ Wave 3c — Migration `<img>` → `next/image` (LCP-critique)
+- `[x]` `next.config.ts` : ajout `images.remotePatterns` pour `images.unsplash.com` + `svgl.app`.
+- `[x]` `src/app/cas-clients/ProjectMockup.tsx` : 3 `<img>` → `<Image fill>` avec `sizes` adaptés. Impact massif (les screenshots projet font 4-12 MB chacun avant optim Next).
+- `[x]` `src/app/a-propos/AProposClient.tsx` ligne 189 : photo Victor en `<Image fill priority>` (LCP candidate sur /a-propos).
+- `[x]` `src/app/blog/BlogClient.tsx` : cover blog en `<Image fill>` avec `priority` sur la première carte.
+- `[x]` Restent en `<img>` natif (impact LCP négligeable) : avatars Unsplash dans /contact (28×28, décoration), logos svgl.app dans LogoLoop /home (déjà tiny SVGs).
+
+### ✅ Wave 4 — Documentation
+- `[x]` `tracking_du_projet.md` (ce fichier) : section J3 ajoutée.
+- `[ ]` `SEO MV Agency/SEO MV Agency.md` : update §1.4 (problèmes résolus) + §6 (Track A restant) + §9 (journal).
+- `[ ]` `politique-de-confidentialite/page.tsx` : mention Vercel Analytics (cookieless, conforme).
+
+### 📊 Résultat build final
+```
+✓ Compiled successfully in 1.5s
+  Finished TypeScript in 2.1s
+  Generating static pages (24/24) in 630ms
+```
+**De 16 → 24 routes statiques** : ajout `/agence-web-belgique`, `/apple-icon`, `/icon/[favicon|android-192|android-512]`, `/manifest.webmanifest`. Toutes les routes existantes restent statiques.
+
+### 🔜 À faire post-déploiement Vercel (par Victor, gratuit)
+1. **Google Search Console** → ajouter propriété `https://mvagency.ai` → méthode "Balise HTML" → copier la valeur dans Vercel env var `NEXT_PUBLIC_GSC_VERIFICATION`.
+2. **Bing Webmaster Tools** → import depuis GSC en 1 clic → copier la valeur dans `NEXT_PUBLIC_BING_VERIFICATION`.
+3. **Vercel Analytics** → activer dans Vercel Dashboard → Project → Analytics → Enable (Web Analytics + Speed Insights). Aucune env var nécessaire.
+4. **(Plus tard, optionnel)** Microsoft Clarity → créer projet → coller ID dans `NEXT_PUBLIC_CLARITY_ID` → poser un ConsentBanner RGPD pour activer le chargement (sinon le composant reste dormant).
+
+### 🚫 Décisions actées (à ne pas reprocher dans 6 mois)
+- **Pas de GA4 + bandeau cookies pour l'instant** : friction UX > valeur data au stade actuel (0 trafic). On reviendra dessus si besoin de retargeting Google Ads ou si Vercel Analytics atteint sa limite (50k events/mois sur plan Hobby).
+- **Pas de Plausible** : payant (€9/mois). Vercel Analytics couvre les besoins.
+- **Pas de pixel Meta / LinkedIn Insight** : pas de comptes ads créés, pas de campagnes prévues court terme.
+- **`sameAs` Organization vide** : LinkedIn entreprise + Clutch pas encore créés. À injecter dans `src/lib/seo.ts` quand les profils existent.

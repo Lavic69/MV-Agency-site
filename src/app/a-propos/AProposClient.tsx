@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { TextReveal } from '@/components/ui/TextReveal';
 import { Timeline, TimelineStep } from '@/components/ui/Timeline';
@@ -186,7 +187,15 @@ export default function AProposClient() {
             <FadeIn direction="right" delay={0.4}>
               <div className={styles.imageWrapper}>
                 <div className={styles.imageDecoration}></div>
-                <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=80" alt="Victor Marchetti, Fondateur de MV Agency" />
+                {/* Photo Victor — LCP candidate sur /a-propos. `priority` pour précharger.
+                    `fill` car le wrapper a aspect-ratio 4/5 défini en CSS. */}
+                <Image
+                  src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&q=80"
+                  alt="Victor Marchetti, Fondateur de MV Agency"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 480px"
+                  priority
+                />
               </div>
             </FadeIn>
           </div>

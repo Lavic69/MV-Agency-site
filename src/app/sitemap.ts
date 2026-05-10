@@ -30,6 +30,9 @@ const STATIC_ROUTES: ReadonlyArray<{
   { path: "/a-propos", changeFrequency: "yearly", priority: 0.6 },
   { path: "/contact", changeFrequency: "yearly", priority: 0.7 },
   { path: "/agence-web-la-reunion", changeFrequency: "monthly", priority: 0.95 },
+  { path: "/agence-web-belgique", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/agence-web-bruxelles", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/agence-web-france", changeFrequency: "monthly", priority: 0.85 },
   { path: "/plan-du-site", changeFrequency: "monthly", priority: 0.4 },
 ];
 
