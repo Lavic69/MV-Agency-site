@@ -6,20 +6,6 @@ import {
   Quote,
   Building2,
 } from "lucide-react";
-import {
-  SiNextdotjs,
-  SiReact,
-  SiVercel,
-  SiFigma,
-  SiFramer,
-  SiWebflow,
-  SiWordpress,
-  SiStripe,
-  SiOdoo,
-  SiNotion,
-  SiOpenai,
-  SiAnthropic,
-} from "react-icons/si";
 import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -40,6 +26,7 @@ import {
 } from "@/lib/seo";
 import styles from "../agence-web-la-reunion/AgenceReunion.module.css";
 import { BruxellesMap } from "./BruxellesMap";
+import { techLogos } from "@/data/tech-logos";
 
 /* -------------------------------------------------------------------------- */
 /*  Metadata                                                                  */
@@ -213,24 +200,6 @@ const DIFF_CARDS = [
     text:
       "Là où la majorité des agences bruxelloises sont spécialisées (web OU marketing OU data), MV Agency cumule la maîtrise de Next.js et l'intégration concrète d'IA en production. Un seul interlocuteur, une vision cohérente, livrable unifié.",
   },
-];
-
-/** Logos tech pour LogoLoop — alignés couleurs avec /agence-web-la-reunion. */
-const techLogos = [
-  { node: <SiNextdotjs size={40} color="var(--text-light)" />, title: "Next.js" },
-  { node: <SiReact size={40} color="#61DAFB" />, title: "React" },
-  { node: <SiAnthropic size={40} color="#d97757" />, title: "Claude AI" },
-  { node: <SiOpenai size={40} color="var(--text-light)" />, title: "ChatGPT" },
-  { node: <SiNotion size={40} color="var(--text-light)" />, title: "Notion" },
-  { node: <SiVercel size={40} color="var(--text-light)" />, title: "Vercel" },
-  { node: <SiStripe size={40} color="#635BFF" />, title: "Stripe" },
-  { node: <SiWebflow size={40} color="#4353FF" />, title: "Webflow" },
-  { node: <SiWordpress size={40} color="#21759b" />, title: "WordPress" },
-  { node: <SiFramer size={40} color="#0055FF" />, title: "Framer" },
-  { node: <SiOdoo size={55} color="#714B67" />, title: "Odoo" },
-  { node: <SiFigma size={40} color="var(--text-light)" />, title: "Figma" },
-  // eslint-disable-next-line @next/next/no-img-element
-  { node: <img src="https://svgl.app/library/n8n.svg" style={{ height: 35, width: "auto" }} alt="n8n" />, title: "n8n" },
 ];
 
 /* -------------------------------------------------------------------------- */
