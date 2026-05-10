@@ -161,7 +161,7 @@
 
 .projectCard:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .projectMockup {

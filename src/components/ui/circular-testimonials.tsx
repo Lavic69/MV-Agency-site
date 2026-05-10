@@ -271,7 +271,7 @@ export const CircularTestimonials = ({
           object-fit: cover;
           object-position: top;
           border-radius: 1.5rem;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+          box-shadow: var(--shadow-card-hover);
           /* Permet de faire redescendre lentement quand on arrête le survol */
           transition: object-position 2s ease-out !important;
         }

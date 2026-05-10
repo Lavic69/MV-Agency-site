@@ -103,7 +103,7 @@
 .postCard:hover {
   transform: translateY(-8px);
   border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .imageWrapper {
