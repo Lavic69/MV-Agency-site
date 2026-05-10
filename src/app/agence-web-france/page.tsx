@@ -8,20 +8,6 @@ import {
   Sparkles,
   Loader2,
 } from "lucide-react";
-import {
-  SiNextdotjs,
-  SiReact,
-  SiVercel,
-  SiFigma,
-  SiFramer,
-  SiWebflow,
-  SiWordpress,
-  SiStripe,
-  SiOdoo,
-  SiNotion,
-  SiOpenai,
-  SiAnthropic,
-} from "react-icons/si";
 import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -32,6 +18,7 @@ import { MockupWeb } from "@/components/ui/mockups/MockupWeb";
 import { MockupIA } from "@/components/ui/mockups/MockupIA";
 import { MockupWorkflow } from "@/components/ui/mockups/MockupWorkflow";
 import { MockupTree } from "@/components/ui/mockups/MockupTree";
+import { techLogos } from "@/data/tech-logos";
 import {
   SITE_URL,
   CONTACT_EMAIL,
@@ -216,24 +203,6 @@ const DIFF_CARDS = [
     text:
       "Notion partagé en tableau de bord, Loom pour les explications asynchrones, visio hebdo de 30 min pendant la phase active. Pas de Slack permanent, pas de chef de projet intermédiaire. Vous parlez directement à la personne qui construit.",
   },
-];
-
-/** Logos tech pour LogoLoop — alignés couleurs avec /agence-web-la-reunion. */
-const techLogos = [
-  { node: <SiNextdotjs size={40} color="var(--text-light)" />, title: "Next.js" },
-  { node: <SiReact size={40} color="#61DAFB" />, title: "React" },
-  { node: <SiAnthropic size={40} color="#d97757" />, title: "Claude AI" },
-  { node: <SiOpenai size={40} color="var(--text-light)" />, title: "ChatGPT" },
-  { node: <SiNotion size={40} color="var(--text-light)" />, title: "Notion" },
-  { node: <SiVercel size={40} color="var(--text-light)" />, title: "Vercel" },
-  { node: <SiStripe size={40} color="#635BFF" />, title: "Stripe" },
-  { node: <SiWebflow size={40} color="#4353FF" />, title: "Webflow" },
-  { node: <SiWordpress size={40} color="#21759b" />, title: "WordPress" },
-  { node: <SiFramer size={40} color="#0055FF" />, title: "Framer" },
-  { node: <SiOdoo size={55} color="#714B67" />, title: "Odoo" },
-  { node: <SiFigma size={40} color="var(--text-light)" />, title: "Figma" },
-  // eslint-disable-next-line @next/next/no-img-element
-  { node: <img src="https://svgl.app/library/n8n.svg" style={{ height: 35, width: "auto" }} alt="n8n" />, title: "n8n" },
 ];
 
 /* -------------------------------------------------------------------------- */
