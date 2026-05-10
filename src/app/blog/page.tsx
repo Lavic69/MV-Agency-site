@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
-import { FadeIn } from "@/components/ui/FadeIn";
 import { TextReveal } from "@/components/ui/TextReveal";
+import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerContainer";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL, buildBreadcrumbSchema } from "@/lib/seo";
 import { formatDateMono } from "@/lib/formatDate";
@@ -41,20 +41,24 @@ export default function BlogPage() {
       <JsonLd data={breadcrumbSchema} />
 
       <section style={{ minHeight: "40vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "10rem 2rem 3rem 2rem", textAlign: "center" }}>
-        <FadeIn delay={0.1} direction="up">
-          <span style={{ fontFamily: "'SF Mono', Menlo, monospace", fontSize: "0.6875rem", color: "var(--primary)", letterSpacing: "3px", textTransform: "uppercase", fontWeight: 700, display: "block", marginBottom: "0.875rem" }}>
-            — Ressources
-          </span>
-        </FadeIn>
-        <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 700, margin: "0 0 1.5rem 0", lineHeight: 1.1, fontFamily: "var(--font-heading)" }}>
-          <TextReveal delay={0.3} inline>Bibliothèque</TextReveal>{' '}
-          <TextReveal delay={0.7} inline wordClassName="globalGradientWordItalic">d’Actualités</TextReveal>
-        </h1>
-        <FadeIn delay={1.0} direction="up" style={{ maxWidth: "600px" }}>
-          <p style={{ fontSize: "1.1rem", color: "var(--text-secondary, #B5B7BC)", lineHeight: 1.6, margin: 0 }}>
-            Plongez dans nos réflexions sur l’IA, le design d’interfaces, et l’écosystème digital qui bouscule les codes de demain.
-          </p>
-        </FadeIn>
+        <StaggerContainer style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <StaggerItem>
+            <span style={{ fontFamily: "'SF Mono', Menlo, monospace", fontSize: "0.6875rem", color: "var(--primary)", letterSpacing: "3px", textTransform: "uppercase", fontWeight: 700, display: "block", marginBottom: "0.875rem" }}>
+              — Ressources
+            </span>
+          </StaggerItem>
+          <StaggerItem>
+            <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 700, margin: "0 0 1.5rem 0", lineHeight: 1.1, fontFamily: "var(--font-heading)" }}>
+              <TextReveal delay={0.1} inline>Bibliothèque</TextReveal>{' '}
+              <TextReveal delay={0.5} inline wordClassName="globalGradientWordItalic">d’Actualités</TextReveal>
+            </h1>
+          </StaggerItem>
+          <StaggerItem>
+            <p style={{ fontSize: "1.1rem", color: "var(--text-secondary, #B5B7BC)", lineHeight: 1.6, margin: 0, maxWidth: "600px" }}>
+              Plongez dans nos réflexions sur l’IA, le design d’interfaces, et l’écosystème digital qui bouscule les codes de demain.
+            </p>
+          </StaggerItem>
+        </StaggerContainer>
       </section>
 
       <BlogClient posts={posts} />
