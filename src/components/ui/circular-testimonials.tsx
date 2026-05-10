@@ -61,9 +61,20 @@ export const CircularTestimonials = ({
   const [hoverPrev, setHoverPrev] = useState(false);
   const [hoverNext, setHoverNext] = useState(false);
   const [containerWidth, setContainerWidth] = useState(1200);
+  const [isMobile, setIsMobile] = useState(false);
 
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const autoplayIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Détection mobile : sur <768px, on cache les cards adjacentes du carousel
+  // (sinon les translateX(±60px) + scale(0.85) débordent du viewport).
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   const testimonialsLength = useMemo(() => testimonials.length, [testimonials]);
   const activeTestimonial = useMemo(() => testimonials[activeIndex], [activeIndex, testimonials]);
@@ -115,7 +126,18 @@ export const CircularTestimonials = ({
     const isActive = index === activeIndex;
     const isLeft = (activeIndex - 1 + testimonialsLength) % testimonialsLength === index;
     const isRight = (activeIndex + 1) % testimonialsLength === index;
-    
+
+    // Mobile : seule la card active est visible, pas de peek 3D des côtés
+    if (isMobile) {
+      return {
+        zIndex: isActive ? 3 : 1,
+        opacity: isActive ? 1 : 0,
+        pointerEvents: isActive ? "auto" : "none",
+        transform: `translateX(0px) translateY(0px) scale(${isActive ? 1 : 0.95}) rotateY(0deg)`,
+        transition: "transform 0.5s cubic-bezier(.4,2,.3,1), opacity 0.5s cubic-bezier(.4,2,.3,1)",
+      };
+    }
+
     if (isActive) {
       return {
         zIndex: 3, opacity: 1, pointerEvents: "auto",
