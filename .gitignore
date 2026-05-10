@@ -47,6 +47,22 @@ next-env.d.ts
 .superpowers/
 preview/
 
+# Docs internes (kept local only — pas de pollution du repo public)
+AUDIT_IMPECCABLE.md
+BLOG_BRIEF_TEMPLATE.md
+BLOG_SYSTEM.md
+Brainstorming_MV_Agency.md
+CRO_Audit_MV_Agency.md
+InfoMVAgency.md
+design_system.md
+tracking_du_projet.md
+ROADMAP-TECHNIQUE.md
+SEO MV Agency/
+docs/superpowers/
+
+# macOS Finder artefacts
+Icon?
+
 # Temporary / local scripts
 fix_colors.js
 
