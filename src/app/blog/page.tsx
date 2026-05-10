@@ -47,7 +47,8 @@ export default function BlogPage() {
           </span>
         </FadeIn>
         <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 700, margin: "0 0 1.5rem 0", lineHeight: 1.1, fontFamily: "var(--font-heading)" }}>
-          <TextReveal delay={0.3}>Bibliothèque d’Actualités</TextReveal>
+          <TextReveal delay={0.3} inline>Bibliothèque</TextReveal>{' '}
+          <TextReveal delay={0.7} inline wordClassName="globalGradientWordItalic">d’Actualités</TextReveal>
         </h1>
         <FadeIn delay={1.0} direction="up" style={{ maxWidth: "600px" }}>
           <p style={{ fontSize: "1.1rem", color: "var(--text-secondary, #B5B7BC)", lineHeight: 1.6, margin: 0 }}>
