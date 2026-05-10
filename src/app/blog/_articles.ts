@@ -59,7 +59,7 @@ export const articles: ReadonlyArray<ArticleMeta> = [
     slug: "combien-coute-un-site-internet",
     title: "Combien coûte un site internet en 2026 ?",
     description:
-      "Le prix d'un site internet en 2026 varie de 1 500 € à plus de 8 000 €. Détail des fourchettes par type de projet, des 5 facteurs qui font varier le coût, et comparatif honnête des packs MV Agency.",
+      "Le prix d'un site internet en 2026 varie de 500 € à plus de 8 000 €. Détail des fourchettes par type de projet, des 5 facteurs qui font varier le coût, et comparatif honnête des packs MV Agency.",
     publishedAt: "2026-05-07",
     updatedAt: "2026-05-07",
     pillar: "creation-site-web",

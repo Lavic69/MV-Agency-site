@@ -63,7 +63,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Quel est le prix moyen d'un site internet vitrine en 2026 ?",
     answer:
-      "Pour un site vitrine professionnel de 5 à 7 pages, comptez entre 1 900 € et 4 000 € selon le degré de personnalisation du design, le CMS choisi, et le niveau d'optimisation SEO à la racine. En dessous de 1 500 €, on parle généralement de templates pré-faits avec personnalisation limitée. Au-dessus de 4 000 €, on entre sur des architectures sur-mesure avec automatisations.",
+      "Pour un site vitrine professionnel de 5 à 7 pages, comptez entre 1 900 € et 4 000 € selon le degré de personnalisation du design, le CMS choisi, et le niveau d'optimisation SEO à la racine. À partir de 500 €, on trouve des landing pages et templates pré-faits avec personnalisation limitée. Au-dessus de 4 000 €, on entre sur des architectures sur-mesure avec automatisations.",
   },
   {
     question: "Combien coûte un site e-commerce en 2026 ?",
@@ -146,7 +146,7 @@ export default function Page() {
 
         <div className={styles.articleContent}>
           <AnswerBlock>
-            Un site internet professionnel coûte entre <strong>1 500 € et 8 000 €</strong> en
+            Un site internet professionnel coûte entre <strong>500 € et 8 000 €</strong> en
             2026 selon trois facteurs principaux : le <strong>type de site</strong>{" "}
             (vitrine, automatisé, e-commerce), le <strong>degré de personnalisation</strong>{" "}
             (template vs design sur-mesure) et la <strong>stack technique</strong>{" "}
@@ -200,9 +200,9 @@ export default function Page() {
             <h2 id="site-vitrine">Combien coûte un site vitrine en 2026 ?</h2>
             <p>
               Pour un site vitrine professionnel, la fourchette réaliste en 2026 est de{" "}
-              <strong>1 900 € à 4 000 €</strong>. En dessous de 1 500 €, on entre dans les
-              territoires des templates pré-faits avec personnalisation très limitée — c&apos;est
-              parfois suffisant pour démarrer mais ça vieillit vite et la cohérence visuelle
+              <strong>1 900 € à 4 000 €</strong>. À partir de 500 €, on trouve des landing pages
+              et templates pré-faits avec personnalisation très limitée — c&apos;est parfois
+              suffisant pour démarrer mais ça vieillit vite et la cohérence visuelle
               n&apos;est pas toujours au rendez-vous.
             </p>
             <p>
