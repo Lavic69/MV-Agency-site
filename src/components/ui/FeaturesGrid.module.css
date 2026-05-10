@@ -41,7 +41,7 @@
 }
 
 .iconWrapper {
-  color: #3b82f6; /* Blue matching the client's theme */
+  color: var(--primary-500); /* Blue matching the client's theme */
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
 }
@@ -80,7 +80,7 @@
 }
 
 .checkIcon {
-  color: #3b82f6;
+  color: var(--primary-500);
   font-size: 1rem;
   flex-shrink: 0;
 }

@@ -165,7 +165,7 @@ export function MockupHub() {
               width: "30px",
               height: "30px",
               borderRadius: "50%",
-              background: "linear-gradient(135deg, #3b82f6, #1d4ed8)",
+              background: "linear-gradient(135deg, var(--primary-500), var(--primary-700))",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

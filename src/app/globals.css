@@ -127,7 +127,7 @@ a {
   font-weight: 700;
 }
 .globalGradientWord {
-  background: linear-gradient(90deg, #60a5fa 0%, #ffffff 100%);
+  background: linear-gradient(90deg, var(--primary-400) 0%, #ffffff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -138,7 +138,7 @@ a {
 }
 
 .globalGradientWordItalic {
-  background: linear-gradient(90deg, #60a5fa 0%, #ffffff 100%);
+  background: linear-gradient(90deg, var(--primary-400) 0%, #ffffff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
