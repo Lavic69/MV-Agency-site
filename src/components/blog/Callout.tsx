@@ -35,7 +35,10 @@ export const Callout: React.FC<CalloutProps> = ({ variant, label, children }) =>
   const config = VARIANT_CONFIG[variant];
   const Icon = config.Icon;
   return (
-    <aside className={`${styles.callout} ${styles[config.className]}`}>
+    <aside
+      className={`${styles.callout} ${styles[config.className]}`}
+      aria-label={label ?? config.defaultLabel}
+    >
       <Icon size={18} className={styles.calloutIcon} aria-hidden="true" />
       <div className={styles.calloutContent}>
         <div className={`${styles.calloutLabel} ${styles[config.labelClassName]}`}>— {label ?? config.defaultLabel}</div>
