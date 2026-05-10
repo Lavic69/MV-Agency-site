@@ -1,62 +1,60 @@
+import React from "react";
+import { CoverKeyword } from "./CoverKeyword";
+import type { CoverKeyword as CoverKeywordType } from "@/app/blog/_articles";
+import { formatDateMono, formatDateLong } from "@/lib/formatDate";
 import { FOUNDER_NAME } from "@/lib/seo";
 import styles from "./Article.module.css";
 
-type ArticleHeaderProps = {
-  /** Étiquette catégorie ou pilier (ex : "IA & Automatisation PME") */
-  eyebrow: string;
-  /** Titre H1 de l'article */
+interface ArticleHeaderProps {
+  pillarLabel: string;        // libellé affiché dans le pillar tag, ex: "Création de site web"
+  num: string;                // numéro article 2 chars, ex: "01"
+  keyword: CoverKeywordType;
   title: string;
-  /** ISO date YYYY-MM-DD de publication */
-  publishedAt: string;
-  /** ISO date YYYY-MM-DD de la dernière mise à jour */
-  updatedAt: string;
-  /** Image cover (url relative `/public` ou absolue) */
-  coverImage: string;
-  /** Texte alternatif descriptif de l'image */
-  coverAlt: string;
-};
+  publishedAt: string;        // ISO YYYY-MM-DD
+  updatedAt: string;          // ISO YYYY-MM-DD
+  readingTime: number;        // en minutes
+  authorName?: string;        // par défaut FOUNDER_NAME (Victor Marchetti)
+}
 
-const formatDate = (iso: string) =>
-  new Date(iso).toLocaleDateString("fr-FR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-
-export function ArticleHeader({
-  eyebrow,
+export const ArticleHeader: React.FC<ArticleHeaderProps> = ({
+  pillarLabel,
+  num,
+  keyword,
   title,
   publishedAt,
   updatedAt,
-  coverImage,
-  coverAlt,
-}: ArticleHeaderProps) {
-  const showUpdatedNotice = updatedAt !== publishedAt;
+  readingTime,
+  authorName = FOUNDER_NAME,
+}) => {
+  const showUpdated = updatedAt !== publishedAt;
 
   return (
     <header className={styles.header}>
-      <span className={styles.eyebrow}>{eyebrow}</span>
-      <h1 className={styles.title}>{title}</h1>
-
-      <div className={styles.metaRow}>
-        <span className={styles.metaAuthor}>Par {FOUNDER_NAME}</span>
-        <span className={styles.metaSeparator}>·</span>
-        <time dateTime={publishedAt}>Publié le {formatDate(publishedAt)}</time>
-        {showUpdatedNotice && (
-          <>
-            <span className={styles.metaSeparator}>·</span>
-            <span className={styles.metaUpdated}>Mis à jour le {formatDate(updatedAt)}</span>
-          </>
-        )}
+      <div className={styles.heroBox}>
+        <div className={styles.heroPillar}>— {pillarLabel}</div>
+        <div className={styles.heroNum}>Nº {num}</div>
+        <div className={styles.heroBigword}>
+          <CoverKeyword keyword={keyword} size="xl" />
+        </div>
+        <div className={styles.heroTitleStack}>
+          <h1 className={styles.heroTitle}>{title}</h1>
+          <div className={styles.heroSep} aria-hidden="true" />
+          <div className={styles.heroMeta}>
+            <span className={styles.heroMetaAuthor}>
+              Par <strong>{authorName}</strong>
+            </span>
+            <time className={styles.heroMetaMono} dateTime={publishedAt}>
+              {formatDateMono(publishedAt)}
+            </time>
+            <span className={styles.heroMetaMono}>{readingTime} MIN</span>
+            {showUpdated && (
+              <span className={styles.heroMetaUpdated}>
+                Maj <time dateTime={updatedAt}>{formatDateLong(updatedAt)}</time>
+              </span>
+            )}
+          </div>
+        </div>
       </div>
-
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={coverImage}
-        alt={coverAlt}
-        className={styles.coverImage}
-        loading="eager"
-      />
     </header>
   );
-}
+};

@@ -6,73 +6,120 @@
 
 /* ----- Wrapper d'article ----- */
 .articleWrapper {
-  max-width: 760px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem 4rem;
+  padding: 0 2rem 4rem;
   position: relative;
   z-index: 1;
 }
 
-/* ----- Header ----- */
+/* ----- Header / Hero d'article (langage magazine) ----- */
 .header {
-  padding: 8rem 0 3rem;
-  text-align: center;
+  padding: 2rem 0 3rem;
 }
 
-.eyebrow {
-  display: inline-block;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--primary);
-  margin-bottom: 1rem;
-}
-
-.title {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1.15;
-  margin: 0 0 1.5rem 0;
-  letter-spacing: -0.02em;
-}
-
-.metaRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.metaAuthor {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text-light);
-  font-weight: 500;
-}
-
-.metaSeparator {
-  opacity: 0.4;
-}
-
-.metaUpdated {
-  font-style: italic;
-  font-size: 0.85rem;
-}
-
-.coverImage {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1200 / 630;
+.heroBox {
+  position: relative;
+  height: 320px;
+  background: linear-gradient(160deg, #0f1638 0%, #0a0a0a 75%);
+  border: 1px solid rgba(96, 165, 250, 0.18);
   border-radius: 1rem;
-  object-fit: cover;
-  margin-top: 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.heroPillar {
+  position: absolute;
+  top: 1.625rem;
+  left: 2rem;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.75rem;
+  color: #60A5FA;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  z-index: 2;
+}
+
+.heroNum {
+  position: absolute;
+  top: 1.625rem;
+  right: 2rem;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.75rem;
+  color: #6B7280;
+  letter-spacing: 2px;
+  z-index: 2;
+}
+
+.heroBigword {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 0.5rem 0.25rem 0.5rem;
+  z-index: 1;
+}
+
+.heroTitleStack {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  z-index: 2;
+}
+
+.heroTitle {
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+  color: var(--text-light);
+  margin: 0 0 0.875rem 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 80%;
+}
+
+.heroSep {
+  width: 60px;
+  height: 2px;
+  background: var(--primary, #2563EB);
+  margin: 0 0 0.875rem 0;
+  border-radius: 2px;
+}
+
+.heroMeta {
+  font-size: 0.8125rem;
+  color: rgba(229, 231, 235, 0.7);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.125rem;
+  align-items: center;
+}
+
+.heroMetaAuthor strong { color: var(--text-light); }
+
+.heroMetaMono {
+  font-family: "SF Mono", Menlo, monospace;
+  color: #6B7280;
+}
+
+.heroMetaUpdated {
+  font-style: italic;
+  font-size: 0.75rem;
+  color: #6B7280;
+}
+
+/* Tablet (700-899px) — hero un peu plus court */
+@media (max-width: 899px) {
+  .heroBox { height: 280px; }
+}
+
+@media (max-width: 700px) {
+  .header { padding: 4rem 0 2rem; }
+  .heroBox { height: 260px; }
+  .heroTitleStack { left: 1.25rem; right: 1.25rem; bottom: 1.25rem; }
+  .heroTitle { max-width: 90%; }
+  .heroPillar, .heroNum { font-size: 0.6875rem; }
 }
 
 /* ----- AnswerBlock (le bloc résumé GEO) ----- */
@@ -237,7 +284,7 @@
   gap: 0.4rem;
   font-size: 0.85rem;
   color: var(--text-muted);
-  padding: 6rem 0 0;
+  padding: 10rem 0 0;
 }
 
 .breadcrumbLink {
@@ -257,4 +304,623 @@
 .breadcrumbCurrent {
   color: var(--text-light);
   font-weight: 500;
+}
+
+/* ----- PullQuote (citation magazine) ----- */
+.pullQuote {
+  position: relative;
+  padding: 2rem 1.5rem 2rem 4rem;
+  margin: 3.5rem 0;
+  border-top: 1px solid rgba(96, 165, 250, 0.2);
+  border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+.pullQuoteMark {
+  position: absolute;
+  top: 1.1rem;
+  left: 0.75rem;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 6rem;
+  font-weight: 900;
+  color: rgba(96, 165, 250, 0.25);
+  line-height: 0.5;
+  user-select: none;
+}
+
+.pullQuoteText {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-light);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.pullQuoteText:not(:last-child) {
+  margin-bottom: 0.875rem;
+}
+
+.pullQuoteAttr {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.7rem;
+  color: #60A5FA;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+  .pullQuote {
+    padding: 1.5rem 1rem 1.5rem 3rem;
+    margin: 2.5rem 0;
+  }
+  .pullQuoteMark { font-size: 4.5rem; top: 0.7rem; left: 0.4rem; }
+  .pullQuoteText { font-size: 1.15rem; }
+}
+
+/* ----- StatHighlight (chiffre clé en surbrillance) ----- */
+.stat {
+  display: flex;
+  align-items: stretch;
+  margin: 3.5rem 0;
+  padding: 1.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(96, 165, 250, 0.18);
+}
+
+.statNum {
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(3.5rem, 8vw, 5.25rem);
+  font-weight: 900;
+  color: #60A5FA;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  padding-right: 1.75rem;
+  border-right: 1px solid rgba(96, 165, 250, 0.25);
+  flex-shrink: 0;
+}
+
+.statText {
+  padding-left: 1.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.statLabel {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.625rem;
+  color: #60A5FA;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.statDesc {
+  font-size: 0.95rem;
+  color: rgba(229, 231, 235, 0.9);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.statSource {
+  font-size: 0.75rem;
+  color: #6B7280;
+  font-style: italic;
+  margin-top: 0.625rem;
+}
+
+@media (max-width: 700px) {
+  .stat {
+    flex-direction: column;
+    padding: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .statNum {
+    border-right: none;
+    border-bottom: 1px solid rgba(96, 165, 250, 0.25);
+    padding-right: 0;
+    padding-bottom: 0.875rem;
+    margin-bottom: 0.875rem;
+  }
+  .statText { padding-left: 0; }
+}
+
+/* ----- ProcessSteps (liste numérotée avec ligne de connexion) ----- */
+.steps {
+  list-style: none;
+  margin: 3.5rem 0;
+  padding: 0.75rem 0;
+}
+
+.stepRow {
+  display: flex;
+  gap: 1.125rem;
+  position: relative;
+  padding-bottom: 1.625rem;
+  align-items: flex-start;
+}
+.stepRow:last-child { padding-bottom: 0; }
+
+/* La ligne verticale part exactement du centre du cercle (left: 15px = 16-1px de largeur de ligne).
+   top: 32px = sous le cercle. bottom: 0 = jusqu'au cercle suivant. */
+.stepRow:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 32px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(96, 165, 250, 0.5), rgba(96, 165, 250, 0.15));
+}
+
+.stepNum {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--bg-neutral, #0a0a0a);
+  border: 2px solid rgba(96, 165, 250, 0.5);
+  color: #60A5FA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  z-index: 1;
+  position: relative;
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.2);
+}
+
+.stepContent {
+  flex: 1;
+  padding-top: 0.25rem;
+}
+
+.stepTitle {
+  display: block;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-light);
+  margin: 0 0 0.3125rem 0;
+  line-height: 1.3;
+}
+
+.stepDesc {
+  font-size: 0.875rem;
+  color: rgba(229, 231, 235, 0.7);
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .steps { margin: 2.5rem 0; }
+  .stepDesc { font-size: 0.85rem; }
+}
+
+/* ----- ArticleSidebar (TOC + Takeaways stack vertical) ----- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* Variante desktop : sticky avec border-left */
+.sidebarDesktop {
+  border-left: 2px solid rgba(96, 165, 250, 0.3);
+  padding: 0.375rem 0 0.375rem 1.375rem;
+  position: sticky;
+  top: 7rem; /* sous le header fixed (top: 1.5rem + hauteur ~5rem) + marge */
+  align-self: start;
+}
+
+/* Variante mobile : <details> repliable */
+.sidebarMobile {
+  display: none; /* caché par défaut, override en media query */
+  background: rgba(96, 165, 250, 0.05);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  border-radius: 0.625rem;
+  margin-bottom: 1.5rem;
+}
+
+.sidebarMobileSummary {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.6875rem;
+  color: #60A5FA;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Cache la flèche par défaut du <details> et utilise notre propre indicateur */
+.sidebarMobileSummary::-webkit-details-marker { display: none; }
+.sidebarMobileSummary::after {
+  content: "▾";
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+.sidebarMobile[open] .sidebarMobileSummary::after { transform: rotate(180deg); }
+
+.sidebarMobileContent {
+  padding: 0.5rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Label commun aux deux sections (TOC + Takeaways) */
+.sidebarLabel {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.6875rem;
+  color: #60A5FA;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.875rem;
+}
+
+/* Séparateur entre TOC et Takeaways */
+.sidebarSep {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(96, 165, 250, 0.3), transparent);
+}
+
+/* === TOC === */
+.tocList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.tocItem {
+  display: block;
+  font-size: 0.78125rem;
+  color: rgba(229, 231, 235, 0.55);
+  line-height: 1.45;
+  padding: 0.375rem 0 0.375rem 0.875rem;
+  border-left: 2px solid transparent;
+  margin-left: -1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.tocItem:hover { color: rgba(229, 231, 235, 0.9); }
+
+.tocItemActive {
+  color: var(--text-light);
+  border-left-color: var(--primary);
+  font-weight: 600;
+}
+
+/* === Takeaways === */
+.takeawaysList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.takeawayItem {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: 0.84375rem;
+  color: rgba(229, 231, 235, 0.85);
+  line-height: 1.5;
+}
+
+.takeawayItem strong {
+  color: var(--text-light);
+}
+
+.takeawayBullet {
+  flex-shrink: 0;
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  color: #60A5FA;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.625rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+/* === Responsive : <900px = mobile <details>, hide desktop sidebar === */
+@media (max-width: 899px) {
+  .sidebarDesktop { display: none; }
+  .sidebarMobile { display: block; }
+}
+
+/* ----- Layout 2 colonnes : sidebar Takeaways + contenu ----- */
+.articleLayout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 800px);
+  gap: 4rem;
+  align-items: start;
+  padding: 0 0 3rem;
+  justify-content: center;
+}
+
+.articleContent {
+  min-width: 0; /* permet au flex/grid d'overflow correctement */
+  font-size: 1.0625rem;        /* 17px — corps long, confortable */
+  line-height: 1.75;
+  color: rgba(229, 231, 235, 0.88);
+}
+
+.articleContent h2 {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.625rem;
+  color: var(--text-light);
+  font-weight: 700;
+  margin: 4rem 0 1.25rem 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  scroll-margin-top: 7rem; /* offset pour les ancres de TOC (header fixed) */
+}
+.articleContent h2:first-child { margin-top: 0; }
+
+.articleContent p { margin: 0 0 1.375rem 0; }
+.articleContent p strong { color: var(--text-light); }
+.articleContent ul,
+.articleContent ol {
+  margin: 0 0 1.375rem 0;
+  padding-left: 1.5rem;
+}
+.articleContent li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 899px) {
+  .articleLayout {
+    grid-template-columns: 1fr; /* mobile : sidebar bascule en bloc statique en haut */
+    gap: 0;
+  }
+  .articleContent { font-size: 1rem; line-height: 1.7; }
+  .articleContent h2 { margin: 3rem 0 1rem; font-size: 1.4rem; }
+}
+
+/* ----- CTA finale (Button standard du site) ----- */
+.ctaFinal {
+  position: relative;
+  margin-top: 4.5rem;
+  padding: 3rem 2rem 3rem;
+  text-align: center;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.18);
+}
+.ctaFinalTitle {
+  position: relative;
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  font-weight: 700;
+  color: var(--text-light);
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  z-index: 1;
+}
+
+/* Force le gradient text sur le mot wrapé en globalGradientWord
+   (les CSS Modules sont chargés après les classes globales, on doit re-déclarer
+   les propriétés du gradient avec une spécificité supérieure pour gagner). */
+.ctaFinalTitle :global(.globalGradientWord) {
+  background: linear-gradient(90deg, #60a5fa 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+.ctaFinal .ctaFinalText {
+  position: relative;
+  font-size: 1rem;
+  color: rgba(229, 231, 235, 0.75);
+  margin: 0 auto 1.75rem;
+  max-width: 28rem;
+  line-height: 1.65;
+  text-align: center;
+  z-index: 1;
+}
+.ctaFinalButtonWrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* ----- ComparisonTable (table comparative dense) ----- */
+.comparisonWrap {
+  margin: 3.5rem 0;
+}
+
+.comparisonScroll {
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  /* scroll shadow hint — fade gradient at right edge when content overflows */
+  background:
+    linear-gradient(to right, rgba(15, 15, 15, 0.6), transparent 20%) 0 0 / 100% 100% no-repeat local,
+    linear-gradient(to left, rgba(15, 15, 15, 0.6), transparent 20%) 100% 0 / 100% 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.3), transparent) 0 0 / 16px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.3), transparent) 100% 0 / 16px 100% no-repeat scroll;
+}
+
+.comparisonTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78125rem;
+}
+
+.comparisonTable th,
+.comparisonTable td {
+  padding: 0.625rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.comparisonTable th {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.625rem;
+  color: #60A5FA;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  background: rgba(96, 165, 250, 0.04);
+}
+
+.comparisonFeature {
+  color: rgba(229, 231, 235, 0.65);
+  font-weight: 500;
+}
+
+.comparisonYes { color: #4ADE80; font-weight: 700; }
+.comparisonNo { color: rgba(245, 158, 11, 0.7); }
+
+.comparisonHighlight {
+  background: rgba(37, 99, 235, 0.04);
+}
+
+.comparisonCaption {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.6875rem;
+  color: #6B7280;
+  text-align: center;
+  margin-top: 0.875rem;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .comparisonWrap { margin: 2.5rem 0; }
+}
+
+/* ----- Callout (warning / tip / info) ----- */
+.callout {
+  display: flex;
+  gap: 0.875rem;
+  padding: 0.875rem 1.125rem;
+  border-radius: 0.625rem;
+  align-items: flex-start;
+  margin: 3.5rem 0;
+}
+
+.calloutIcon {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.calloutContent {
+  flex: 1;
+}
+
+.calloutLabel {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.59375rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.calloutText {
+  font-size: 0.78125rem;
+  color: rgba(229, 231, 235, 0.85);
+  line-height: 1.55;
+}
+
+.calloutText p { margin: 0 0 0.5rem 0; }
+.calloutText p:last-child { margin-bottom: 0; }
+
+/* Variant warning */
+.calloutWarn {
+  background: rgba(245, 158, 11, 0.06);
+  border-left: 3px solid #F59E0B;
+}
+.calloutWarn .calloutIcon { color: #F59E0B; }
+.calloutLabelWarn { color: #F59E0B; }
+
+/* Variant tip */
+.calloutTip {
+  background: rgba(34, 197, 94, 0.06);
+  border-left: 3px solid #4ADE80;
+}
+.calloutTip .calloutIcon { color: #4ADE80; }
+.calloutLabelTip { color: #4ADE80; }
+
+/* Variant info */
+.calloutInfo {
+  background: rgba(96, 165, 250, 0.06);
+  border-left: 3px solid #60A5FA;
+}
+.calloutInfo .calloutIcon { color: #60A5FA; }
+.calloutLabelInfo { color: #60A5FA; }
+
+@media (max-width: 700px) {
+  .callout { padding: 0.75rem 1rem; margin: 2.5rem 0; }
+}
+
+/* ----- DefinitionBox (encadré pédagogique pour terme technique) ----- */
+.defbox {
+  background: rgba(15, 15, 15, 0.6);
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  border-radius: 0.625rem;
+  padding: 0.875rem 1.125rem;
+  margin: 3.5rem 0;
+}
+
+.defboxLabel {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.59375rem;
+  color: #60A5FA;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.375rem;
+}
+
+.defboxTerm {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: normal;
+  color: var(--text-light);
+  margin-bottom: 0.375rem;
+}
+
+.defboxDesc {
+  font-size: 0.78125rem;
+  color: rgba(229, 231, 235, 0.75);
+  line-height: 1.55;
+}
+
+.defboxDesc p { margin: 0 0 0.5rem 0; }
+.defboxDesc p:last-child { margin-bottom: 0; }
+
+@media (max-width: 700px) {
+  .defbox { padding: 0.75rem 1rem; margin: 2.5rem 0; }
 }
