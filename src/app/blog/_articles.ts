@@ -28,6 +28,16 @@ export type CoverKeyword =
   | { type: "text"; value: string }
   | { type: "vs"; logos: [string, string] };
 
+/**
+ * Item du sommaire (TOC) affiché dans la sidebar de l'article.
+ * - `id` : ancre HTML (kebab-case, ex: "site-vitrine") posée sur le <h2 id="..."> dans le JSX
+ * - `label` : libellé affiché dans le sommaire
+ */
+export type TocItem = {
+  id: string;
+  label: string;
+};
+
 export type ArticleMeta = {
   slug: string;
   title: string;
@@ -38,6 +48,7 @@ export type ArticleMeta = {
   category: string;           // libellé affiché (peut différer du label du pillar)
   keyword: CoverKeyword;
   takeaways: string[];        // 3-5 enseignements clés pour la sidebar sticky
+  tocItems: TocItem[];        // ✨ NEW (v2)
   readingTime?: number;       // minutes ; calculé auto à partir du body si absent
   primaryKeyword: string;     // mot-clé SEO principal
   status?: "published" | "draft";
@@ -59,6 +70,16 @@ export const articles: ReadonlyArray<ArticleMeta> = [
       "E-commerce sur-mesure démarre à 6 000 €",
       "5 facteurs principaux font varier le prix",
       "Coûts récurrents = 1/3 du devis sur 3 ans",
+    ],
+    tocItems: [
+      { id: "de-quoi-parle-t-on", label: "De quoi parle-t-on ?" },
+      { id: "site-vitrine", label: "Combien coûte un site vitrine ?" },
+      { id: "automatisations-ia", label: "Sites avec automatisations ou IA" },
+      { id: "e-commerce", label: "Combien coûte un site e-commerce ?" },
+      { id: "5-facteurs", label: "5 facteurs qui font varier le prix" },
+      { id: "couts-recurrents", label: "Quels sont les coûts récurrents ?" },
+      { id: "moins-cher", label: "Pourquoi le « moins cher » coûte plus cher ?" },
+      { id: "devis-fiable", label: "Comment obtenir un devis fiable en 4 étapes ?" },
     ],
     readingTime: 12,
     primaryKeyword: "prix site web",
