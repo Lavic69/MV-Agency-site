@@ -151,8 +151,8 @@ export default function RootLayout({
             mouseForce={20}
             cursorSize={80}
             isViscous={false}
-            iterationsPoisson={8}
-            resolution={0.35}
+            iterationsPoisson={4}
+            resolution={0.2}
             isBounce={false}
             autoDemo
             autoSpeed={0.5}
