@@ -110,6 +110,14 @@ export function getRelatedArticles(
 }
 
 /**
+ * Index slug → numéro d'article ("01", "02", …) construit une fois à l'init
+ * du module. Lookup O(1) au lieu de O(n) sur findIndex.
+ */
+const ARTICLE_NUMBERS: ReadonlyMap<string, string> = new Map(
+  articles.map((a, i) => [a.slug, String(i + 1).padStart(2, "0")])
+);
+
+/**
  * Numéro d'article (Nº 01, Nº 02, …) basé sur l'ordre d'ajout au registre,
  * 1-indexed. Stable dans le temps : un nouvel article ajouté reçoit le
  * prochain numéro, les articles existants gardent le leur.
@@ -120,9 +128,7 @@ export function getRelatedArticles(
  * de tous les articles publiés ensuite.
  */
 export function getArticleNumber(slug: string): string {
-  const idx = articles.findIndex((a) => a.slug === slug);
-  if (idx < 0) return "00";
-  return String(idx + 1).padStart(2, "0");
+  return ARTICLE_NUMBERS.get(slug) ?? "00";
 }
 
 const WORDS_PER_MINUTE = 200;
