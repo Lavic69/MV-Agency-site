@@ -31,7 +31,7 @@ export const MockupTree = () => {
         <line
           className="circuit-path"
           x1="63.5" y1="68" x2="63.5" y2="232"
-          stroke="#3b82f6"
+          style={{ stroke: 'var(--primary-500)' }}
           strokeWidth="4"
           strokeLinecap="round"
           filter="drop-shadow(0 0 6px rgba(59, 130, 246, 0.9))"

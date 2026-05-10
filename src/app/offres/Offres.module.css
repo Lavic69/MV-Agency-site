@@ -67,13 +67,13 @@
 
 .packCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .packCardHighlight {
   background: linear-gradient(180deg, rgba(30, 58, 138, 0.6), rgba(17, 24, 39, 0.5));
   backdrop-filter: blur(10px);
-  border: 2px solid #3b82f6;
+  border: 2px solid var(--primary-500);
   transform: scale(1.05);
   box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
   z-index: 10;
@@ -96,10 +96,10 @@
 
 .packBadge {
   position: absolute;
-  top: -15px;
+  top: -16px;
   left: 50%;
   transform: translateX(-50%);
-  background: #3b82f6;
+  background: var(--primary-500);
   color: var(--text-light);
   padding: 0.3rem 1.5rem;
   border-radius: 20px;
@@ -153,10 +153,10 @@
 }
 
 .checkIcon {
-  color: #3b82f6;
+  color: var(--primary-500);
   font-size: 1.1rem;
   flex-shrink: 0;
-  margin-top: 3px;
+  margin-top: 4px;
 }
 
 /* ====================
@@ -212,8 +212,8 @@
 
 .highlightColHeader {
   background: rgba(59, 130, 246, 0.2) !important;
-  color: #60a5fa !important;
-  border-top: 2px solid #3b82f6;
+  color: var(--primary-400) !important;
+  border-top: 2px solid var(--primary-500);
   border-left: 1px solid rgba(59, 130, 246, 0.3);
   border-right: 1px solid rgba(59, 130, 246, 0.3);
 }
@@ -224,7 +224,7 @@
   margin: 0 auto;
 }
 .iconCheckAccent {
-  color: #3b82f6;
+  color: var(--primary-500);
   font-size: 1.2rem;
   margin: 0 auto;
 }

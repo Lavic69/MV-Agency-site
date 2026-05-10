@@ -39,7 +39,7 @@
   content: "";
   position: absolute;
   inset: 1.5px; /* Determines the border thickness */
-  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%); /* Solid vibrant blue */
+  background: linear-gradient(180deg, var(--primary-500) 0%, var(--primary-600) 100%); /* Solid vibrant blue */
   border-radius: 50px; /* matches the button default */
   z-index: 1;
   transition: all 0.3s ease;
@@ -57,11 +57,11 @@
 }
 
 .primary:hover::after {
-  background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 100%); /* Lighter on hover */
+  background: linear-gradient(180deg, var(--primary-400) 0%, var(--primary-500) 100%); /* Lighter on hover */
 }
 
 .primary:hover {
-  background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 100%);
+  background: linear-gradient(180deg, var(--primary-400) 0%, var(--primary-500) 100%);
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(37, 99, 235, 0.5); /* Extended glow on hover */
 }

@@ -58,8 +58,8 @@ export const MockupWeb = () => {
              </div>
              
              {/* Dropped Element Layer */}
-             <div className="dropped-element" style={{ width: '100%', height: '120px', backgroundColor: 'rgba(59, 130, 246, 0.1)', border: '2px dashed #3b82f6', borderRadius: '8px', opacity: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div className="dropped-content" style={{ width: '0%', height: '8px', backgroundColor: '#3b82f6', borderRadius: '4px' }} />
+             <div className="dropped-element" style={{ width: '100%', height: '120px', backgroundColor: 'rgba(59, 130, 246, 0.1)', border: '2px dashed var(--primary-500)', borderRadius: '8px', opacity: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="dropped-content" style={{ width: '0%', height: '8px', backgroundColor: 'var(--primary-500)', borderRadius: '4px' }} />
              </div>
            </div>
         </div>
@@ -69,7 +69,7 @@ export const MockupWeb = () => {
            <div style={{ width: '100%', height: '14px', backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: '2px', marginBottom: '16px' }} />
            <div style={{ width: '100%', height: '8px', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '2px', marginBottom: '8px' }} />
            <div style={{ width: '100%', height: '20px', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '4px', marginBottom: '16px' }} />
-           <div style={{ width: '100%', height: '25px', backgroundColor: '#3b82f6', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '4px', marginBottom: '16px' }} />
+           <div style={{ width: '100%', height: '25px', backgroundColor: 'var(--primary-500)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '4px', marginBottom: '16px' }} />
            <div className="property-target" style={{ width: '100%', height: '25px', backgroundColor: '#22c55e', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '4px', opacity: 0.3 }} />
         </div>
 
@@ -81,7 +81,7 @@ export const MockupWeb = () => {
         </div>
         
         {/* Animated dragging element duplicate */}
-        <div className="dragging-element" style={{ position: 'absolute', zIndex: 40, width: '40px', height: '30px', backgroundColor: 'rgba(59, 130, 246, 0.4)', border: '1px solid #3b82f6', borderRadius: '4px', top: '55px', left: '10px', opacity: 0 }} />
+        <div className="dragging-element" style={{ position: 'absolute', zIndex: 40, width: '40px', height: '30px', backgroundColor: 'rgba(59, 130, 246, 0.4)', border: '1px solid var(--primary-500)', borderRadius: '4px', top: '55px', left: '10px', opacity: 0 }} />
 
       </div>
       <style>{`
@@ -143,8 +143,8 @@ export const MockupWeb = () => {
           animation: appearContent 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
         @keyframes appearContent {
-           0%, 38% { width: 0%; background-color: #3b82f6; }
-           45%, 63% { width: 60%; background-color: #3b82f6; }
+           0%, 38% { width: 0%; background-color: var(--primary-500); }
+           45%, 63% { width: 60%; background-color: var(--primary-500); }
            64%, 90% { width: 80%; background-color: #22c55e; }
            91%, 100% { width: 0%; }
         }

@@ -140,7 +140,7 @@ export const Timeline = ({ steps }: TimelineProps) => {
           top: 0;
           left: 0;
           width: 100%;
-          background: linear-gradient(180deg, transparent, #3b82f6);
+          background: linear-gradient(180deg, transparent, var(--primary-500));
           box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
         }
 
@@ -153,7 +153,7 @@ export const Timeline = ({ steps }: TimelineProps) => {
           height: 8px;
           border-radius: 50%;
           background: #fff;
-          box-shadow: 0 0 10px #fff, 0 0 20px #3b82f6, 0 0 40px #3b82f6;
+          box-shadow: 0 0 10px #fff, 0 0 20px var(--primary-500), 0 0 40px var(--primary-500);
         }
 
         .timeline-content {

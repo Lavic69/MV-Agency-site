@@ -33,7 +33,7 @@
 .card:hover {
   transform: translateY(-5px);
   border-color: rgba(59, 130, 246, 0.3);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .card:hover::before {
@@ -41,7 +41,7 @@
 }
 
 .iconWrapper {
-  color: #3b82f6; /* Blue matching the client's theme */
+  color: var(--primary-500); /* Blue matching the client's theme */
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
 }
@@ -80,7 +80,7 @@
 }
 
 .checkIcon {
-  color: #3b82f6;
+  color: var(--primary-500);
   font-size: 1rem;
   flex-shrink: 0;
 }
