@@ -3,7 +3,7 @@
 Document de suivi SEO du site MV Agency. Trace ce qui a été fait, ce qui reste,
 et ce qui est volontairement reporté en v2.
 
-Dernière mise à jour : 2026-05-11
+Dernière mise à jour : 2026-05-12
 
 ---
 
@@ -93,12 +93,25 @@ Dernière mise à jour : 2026-05-11
 
 Items qui débloquent du code côté site :
 
-- **Compte Twitter / X** : créer `@mv_agency` (ou similaire) → ajoutera le `@handle` dans Twitter cards + URL dans `sameAs`
-- **Compte Instagram** : créer la page → ajoutera l'URL dans `sameAs` + icône Instagram dans Footer (actuellement icône inerte)
-- **Photo perso Victor pour `/a-propos`** : remplacer la photo Unsplash actuelle (`/public/avatars/victor.jpg`) par une vraie photo de toi. Idéalement portrait carré ~800×800, fond sobre cohérent avec le brand
-- **Google Business Profile — après vérification** : me partager (1) URL Maps de la fiche, (2) Place ID, (3) URL "laisser un avis" — pour wirer le `sameAs` JSON-LD + bouton "Donner un avis Google" sur la page contact
-- **Photos Google Business Profile** : viser 8-15 photos (logo, cover, 4 captures sites livrés, photo perso, behind-the-scenes, mockups process)
-- **Profils Clutch / Malt** : si tu en crées → ajout dans `sameAs` aussi
+### Cette semaine *(prioritaire — ~2h total)*
+
+1. **Twitter / X** : créer `@mv_agency` ou `@mv_ai_agency` → ajoutera le `@handle` Twitter cards + URL dans `sameAs`
+2. **Instagram** : créer `@mvagency.ai` → ajoutera URL dans `sameAs` + active icône Footer
+3. **Malt** : profil agence/freelance *(lead gen direct + backlink, plus pertinent que Clutch à ce stade)*
+4. **Pages Jaunes** : fiche pro *(citation NAP française)*
+5. **PagesPro** : fiche pro *(citation NAP B2B)*
+6. **Google Business Profile** : attendre validation Google + demander 3-5 avis à anciens clients
+
+### Plus tard *(quand bien lancé, 6-12 mois)*
+
+- **Photo perso Victor pour `/a-propos`** : remplacer `/public/avatars/victor.jpg`
+- **Google Business Profile — après vérification** : me partager (1) URL Maps, (2) Place ID, (3) URL "laisser un avis" → JSON-LD enrichi + bouton avis sur page contact
+- **Photos GBP** : viser 8-15 photos (logo, cover, 4 captures sites livrés, photo perso, behind-the-scenes)
+- **Clutch / Sortlist / The Manifest / GoodFirms** : annuaires agences (quand 5+ clients)
+- **Apple Business Connect** : visibilité iOS
+- **Bing Webmaster Tools** : second moteur (5-10 % trafic FR)
+- **LinkedIn perso Victor** : profil optimisé (MV Agency en expérience, mots-clés)
+- **Trustpilot** : plateforme avis additionnelle
 
 ---
 
