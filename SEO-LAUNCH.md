@@ -57,6 +57,15 @@ Dernière mise à jour : 2026-05-11
 - **Footer site** : icône LinkedIn désormais cliquable vers URL réelle
 - **JSON-LD `sameAs`** : URL LinkedIn ajoutée → renforce le knowledge graph Google
 
+### Google Business Profile *(setup en cours)*
+
+- **Type** : Service business (SAB — pas d'adresse publique)
+- **Catégorie primaire** : Concepteur de sites Web
+- **10 services** listés (création web, IA, automatisation, audit SEO, formation…)
+- **Description** : 640 chars optimisée local SEO (mots-clés + villes nommées)
+- **WhatsApp Business** : numéro pro `+32 470 63 64 52`, lien click-to-chat connecté à la fiche
+- **À finaliser côté utilisateur** : vérification de la fiche par Google, ajout photos (logo, cover, screenshots sites livrés, photo perso, behind-the-scenes), confirmation des zones de service + horaires
+
 ### Infrastructure SEO (déjà en place)
 
 - Sitemap dynamique [src/app/sitemap.ts](src/app/sitemap.ts)
@@ -87,6 +96,8 @@ Items qui débloquent du code côté site :
 - **Compte Twitter / X** : créer `@mv_agency` (ou similaire) → ajoutera le `@handle` dans Twitter cards + URL dans `sameAs`
 - **Compte Instagram** : créer la page → ajoutera l'URL dans `sameAs` + icône Instagram dans Footer (actuellement icône inerte)
 - **Photo perso Victor pour `/a-propos`** : remplacer la photo Unsplash actuelle (`/public/avatars/victor.jpg`) par une vraie photo de toi. Idéalement portrait carré ~800×800, fond sobre cohérent avec le brand
+- **Google Business Profile — après vérification** : me partager (1) URL Maps de la fiche, (2) Place ID, (3) URL "laisser un avis" — pour wirer le `sameAs` JSON-LD + bouton "Donner un avis Google" sur la page contact
+- **Photos Google Business Profile** : viser 8-15 photos (logo, cover, 4 captures sites livrés, photo perso, behind-the-scenes, mockups process)
 - **Profils Clutch / Malt** : si tu en crées → ajout dans `sameAs` aussi
 
 ---
