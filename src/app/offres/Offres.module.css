@@ -160,7 +160,7 @@
 }
 
 /* ====================
-   TABLEAU COMPARATIF 
+   TABLEAU COMPARATIF
    ==================== */
 .tableContainer {
   margin-top: 6rem;
@@ -169,13 +169,53 @@
   border: 1px solid rgba(255,255,255,0.1);
   background: rgba(10, 10, 10, 0.5);
   backdrop-filter: blur(10px);
+  position: relative;
+  /* Affordance scroll mobile : ombre de fade sur le bord droit + smooth scroll */
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  /* iOS: rendre la scrollbar légèrement visible */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(96, 165, 250, 0.5) transparent;
+}
+.tableContainer::-webkit-scrollbar {
+  height: 6px;
+}
+.tableContainer::-webkit-scrollbar-thumb {
+  background: rgba(96, 165, 250, 0.5);
+  border-radius: 3px;
+}
+.tableContainer::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Hint visuel "→ glisser pour voir" affiché uniquement sur mobile au-dessus du tableau */
+.scrollHint {
+  display: none;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(96, 165, 250, 0.85);
+  margin-bottom: 0.75rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+@media (max-width: 767px) {
+  .scrollHint {
+    display: block;
+  }
 }
 
 .compareTable {
   width: 100%;
   border-collapse: collapse;
-  /* min-width removed — mobile uses comparisonMobile cards layout instead */
   text-align: left;
+}
+
+@media (max-width: 767px) {
+  /* Sur mobile, forcer une largeur minimale pour rendre le scroll horizontal nécessaire
+     (sinon le tableau se squeeze en colonnes illisibles) */
+  .compareTable {
+    min-width: 720px;
+  }
 }
 
 .compareTable th,
@@ -287,49 +327,5 @@
   flex-wrap: wrap;
 }
 
-/* Mobile cards stack — alternative au compareTable sur mobile */
-.compareMobile {
-  display: none;
-}
-.compareMobileCard {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 12px;
-  padding: 1.25rem;
-  margin-bottom: 1rem;
-}
-.compareMobileCardTitle {
-  color: var(--primary-400);
-  font-family: 'SF Mono', Menlo, monospace;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-bottom: 0.875rem;
-}
-.compareMobileList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.compareMobileList li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: rgba(229, 231, 235, 0.88);
-}
-.compareMobileList li:last-child { border-bottom: none; }
-.compareMobileList strong { color: var(--text-light); }
-
-@media (max-width: 767px) {
-  .tableContainer {
-    display: none !important;
-  }
-  .compareTable {
-    display: none !important;
-  }
-  .compareMobile {
-    display: block;
-  }
-}
+/* Mobile : on garde le tableau (overflow-x: auto sur tableContainer) plutôt que
+   des cards stack — l'utilisateur attend une comparaison croisée scrollable horizontalement. */

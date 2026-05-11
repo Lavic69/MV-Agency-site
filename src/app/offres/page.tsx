@@ -23,14 +23,6 @@ export const metadata: Metadata = {
   alternates: { canonical: '/offres' },
 };
 
-type ComparePackKey = 'fondation' | 'croissance' | 'performance';
-
-const comparePacks: { key: ComparePackKey; label: string }[] = [
-  { key: 'fondation', label: 'Fondation' },
-  { key: 'croissance', label: 'Croissance' },
-  { key: 'performance', label: 'Performance IA' },
-];
-
 const compareRows: {
   feature: string;
   fondation: string | null;
@@ -241,6 +233,7 @@ export default function OffresPage() {
             </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
+            <p className={styles.scrollHint} aria-hidden="true">← glisser horizontalement pour comparer →</p>
             <div className={styles.tableContainer}>
               <table className={styles.compareTable}>
                 <thead>
@@ -262,25 +255,6 @@ export default function OffresPage() {
                   ))}
                 </tbody>
               </table>
-            </div>
-            {/* Mobile cards stack — alternative au compareTable sur mobile */}
-            <div className={styles.compareMobile}>
-              {comparePacks.map((pack) => (
-                <div key={pack.key} className={styles.compareMobileCard}>
-                  <div className={styles.compareMobileCardTitle}>{pack.label}</div>
-                  <ul className={styles.compareMobileList}>
-                    {compareRows.map((row) => {
-                      const value = row[pack.key];
-                      return (
-                        <li key={row.feature}>
-                          <strong>{row.feature} :</strong>{' '}
-                          {value === null ? '—' : value}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              ))}
             </div>
           </FadeIn>
         </div>

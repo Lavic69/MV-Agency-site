@@ -39,20 +39,20 @@ export default function ServicesPage() {
       <section className={`${styles.section} ${styles.heroServices}`} style={{ display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', background: 'transparent', marginTop: '6rem' }}>
         <div className={styles.container} style={{ position: 'relative', zIndex: 1, width: '100%' }}>
           <div className={styles.splitLayout} style={{ alignItems: 'center' }}>
-            <div className={styles.col60}>
+            <div className={`${styles.col60} ${styles.heroCol60}`}>
               <FadeIn direction="up">
-                <h1 className={styles.headerTitle} style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1, textAlign: 'left' }}>
-                  <TextReveal inline justify="flex-start">Les 4 piliers qui feront passer votre activité à la</TextReveal>{' '}
-                  <TextReveal delay={1.35} inline justify="flex-start" wordClassName="globalGradientWordItalic">vitesse supérieure</TextReveal>
+                <h1 className={styles.headerTitle} style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1 }}>
+                  <TextReveal inline>Les 4 piliers qui feront passer votre activité à la</TextReveal>{' '}
+                  <TextReveal delay={1.35} inline wordClassName="globalGradientWordItalic">vitesse supérieure</TextReveal>
                 </h1>
               </FadeIn>
               <FadeIn direction="up" delay={0.2}>
-                <p className={styles.headerDesc} style={{ margin: '1.5rem 0 0', textAlign: 'left' }}>
-                  <TextReveal delay={1.8} inline justify="flex-start">Une agence qui conçoit, explique et propulse. Pour les professionnels qui veulent des résultats mesurables, pas des slides.</TextReveal>
+                <p className={styles.headerDesc} style={{ margin: '1.5rem 0 0' }}>
+                  <TextReveal delay={1.8} inline>Une agence qui conçoit, explique et propulse. Pour les professionnels qui veulent des résultats mesurables, pas des slides.</TextReveal>
                 </p>
               </FadeIn>
               <FadeIn direction="up" delay={0.3}>
-                <div className={styles.ctaActions} style={{ justifyContent: 'flex-start', marginTop: '3rem' }}>
+                <div className={`${styles.ctaActions} ${styles.heroCtaActions}`} style={{ marginTop: '3rem' }}>
                   <Link href="/contact" tabIndex={-1}>
                     <Button variant="primary">Réserver un appel offert</Button>
                   </Link>

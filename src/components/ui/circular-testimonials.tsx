@@ -343,16 +343,6 @@ export const CircularTestimonials = ({
             padding-top: 0;
           }
         }
-        @media (max-width: 767px) {
-          /* Increase mobile preview height + show mid-section of project page
-             (default object-position: top would crop to nav header only) */
-          .image-container {
-            height: 32rem;
-          }
-          .testimonial-image {
-            object-position: center 20%;
-          }
-        }
       `}</style>
     </div>
   );

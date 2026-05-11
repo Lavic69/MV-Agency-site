@@ -181,14 +181,14 @@ export const MockupIA = () => {
         @media (max-width: 767px) {
           .mockup-ia-scaler {
             transform-origin: top center;
-            transform: scale(0.75);
-            margin-bottom: -18%;
+            transform: scale(0.92);
+            margin-bottom: -6%;
           }
         }
         @media (max-width: 480px) {
           .mockup-ia-scaler {
-            transform: scale(0.62);
-            margin-bottom: -30%;
+            transform: scale(0.8);
+            margin-bottom: -16%;
           }
         }
       `}</style>

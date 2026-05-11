@@ -136,6 +136,16 @@
   min-height: 60vh;
 }
 
+/* Hero col60 — H1 + description + CTAs centrés (TextReveal défaut = center
+   en inline style, donc on s'aligne sur ça même côté desktop pour rester
+   cohérent : H1 centré dans le 60% col, mockup à droite dans le 40%). */
+.heroCol60 {
+  text-align: center;
+}
+.heroCtaActions {
+  justify-content: center;
+}
+
 @media (max-width: 767px) {
   .heroServices {
     min-height: auto;

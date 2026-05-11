@@ -334,6 +334,19 @@
   transform-origin: top center;
 }
 
+/* Sur mobile, les mockups (MockupWeb/Workflow/IA) gèrent déjà leur propre
+   transform scale via leur wrapper interne. Éviter le double scaling
+   (qui rendait les blocs services minuscules dans leurs cards). */
+@media (max-width: 767px) {
+  .serviceMockupWrapper {
+    height: 240px;
+    padding: 1rem 1rem 0;
+  }
+  .serviceMockupWrapper > * {
+    transform: none;
+  }
+}
+
 .serviceCardBody {
   padding: 1.5rem 1.75rem 2rem;
   flex: 1;

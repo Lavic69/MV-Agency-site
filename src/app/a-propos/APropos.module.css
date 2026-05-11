@@ -356,8 +356,9 @@
 @media (max-width: 767px) {
   .bentoFlexRow {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     gap: 1.75rem;
+    text-align: center;
   }
   .bentoFlexRow > div {
     max-width: 100% !important;

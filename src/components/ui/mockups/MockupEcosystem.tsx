@@ -10,13 +10,18 @@ export const MockupEcosystem = () => {
   // Logical dimensions where everything fits perfectly
   const LOGICAL_WIDTH = 550;
   const LOGICAL_HEIGHT = 450;
+  // Les labels textuels ("Intelligence Artificielle", "Formation & Autonomie", etc.)
+  // dépassent de la zone LOGICAL_WIDTH × LOGICAL_HEIGHT — il faut compter ~100px de
+  // débordement de chaque côté horizontalement et ~24px en haut/bas pour que rien
+  // ne soit clippé par overflow:hidden.
+  const HORIZONTAL_PADDING = 200;
 
   useEffect(() => {
     const handleResize = () => {
       if (containerRef.current) {
         const parentWidth = containerRef.current.offsetWidth;
-        // Scale down if parent is smaller than logical width, but don't scale up infinitely
-        const newScale = Math.min(1, parentWidth / LOGICAL_WIDTH);
+        // Scale down si parent < LOGICAL_WIDTH + padding labels, sans upscale au-delà de 1
+        const newScale = Math.min(1, parentWidth / (LOGICAL_WIDTH + HORIZONTAL_PADDING));
         setScale(newScale);
       }
     };
