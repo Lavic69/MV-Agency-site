@@ -11,15 +11,15 @@ Dernière mise à jour : 2026-05-11
 
 ### Hiérarchie H1-H6 (12 pages indexées + composants partagés)
 
-- **Homepage** : « Partenaires techniques » h3→h2, garanties (Satisfait/Pas d'engagement/Un seul interlocuteur) h4→h3
+- **Homepage** : « Partenaires techniques » h3→h2, garanties h4→h3
 - **Services** : « 6 leviers » h3→h2, garanties h4→h3
-- **Offres** : 3 packs (Fondation/Croissance/Performance) h3→h2, garanties h4→h3
-- **Blog article** « Combien coûte un site internet » : ajout de 10 h3 dans « 5 facteurs » et « coûts récurrents » pour structure scannable
-- **Contact** : ajout d'un h2 « Réservez votre appel découverte » au-dessus du widget Cal.com (résout le `[Missing heading]` détecté par les scanners)
-- **Footer** *(cascade sur toutes pages)* : colonnes h4→h3
+- **Offres** : 3 packs h3→h2, garanties h4→h3
+- **Blog article** « Combien coûte un site internet » : ajout de 10 h3 dans « 5 facteurs » et « coûts récurrents »
+- **Contact** : ajout d'un h2 « Réservez votre appel découverte » au-dessus du widget Cal.com
+- **Footer** *(cascade toutes pages)* : colonnes h4→h3
 - **MagicBento** *(homepage)* : `card.title` h2→h3
 - **AnimatedTestimonials** *(services)* : `testimonial.name` h4→h3
-- **Timeline** *(offres + a-propos + agence-web-la-reunion)* : `step.title` h4→h3
+- **Timeline** *(offres + a-propos + reunion)* : `step.title` h4→h3
 
 ### Titles + Meta descriptions (8 pages)
 
@@ -34,9 +34,32 @@ Dernière mise à jour : 2026-05-11
 | `/a-propos` | OK | raccourcie 162→135 chars |
 | `/contact` | OK | raccourcie 163→138 chars |
 
+### OG dédiés (Open Graph + Twitter cards par page)
+
+- **Homepage** : OG + Twitter dédiés *(commit `a69bd1e`)*
+- **`/services`** : OG + Twitter dédiés
+- **`/offres`** : OG + Twitter dédiés
+- **`/cas-clients`** : OG + Twitter dédiés
+- **`/blog`** : OG + Twitter dédiés
+
+### Performance & RGPD (impact ranking direct)
+
+- **Migration `<img>` → `<Image>` Next.js** sur tous les usages *(commit `86248c1`)* — Core Web Vitals (LCP, CLS) optimisés
+- **Hotlinks Unsplash → rapatriement local** : 10 photos téléchargées dans `/public/avatars/`
+- **SVG svgl.app → local** : 4 logos tech dans `/public/tech/`
+- Plus aucune fuite d'IP visiteur vers tiers (RGPD)
+
+### LinkedIn (commit `7d32b5b`)
+
+- **Page entreprise MV Agency** créée et configurée : https://www.linkedin.com/company/mv-ai-agency
+- **Cover banner** sur-mesure 1128×191 @3x retina (`cover.png` dans `Linkedin/cover-linkedin-mv-agency/`)
+- **Logo carré** 400×400 @3x avec fond brand `#0A0A0A` (`logo-square.png`)
+- **Footer site** : icône LinkedIn désormais cliquable vers URL réelle
+- **JSON-LD `sameAs`** : URL LinkedIn ajoutée → renforce le knowledge graph Google
+
 ### Infrastructure SEO (déjà en place)
 
-- Sitemap dynamique [src/app/sitemap.ts](src/app/sitemap.ts) (routes statiques + articles blog)
+- Sitemap dynamique [src/app/sitemap.ts](src/app/sitemap.ts)
 - robots.txt avec bots IA (GPTBot, ClaudeBot, PerplexityBot, etc.) [src/app/robots.ts](src/app/robots.ts)
 - JSON-LD global : Organization + LocalBusiness + Person (founder)
 - JSON-LD par page : Breadcrumb (toutes), FAQ (4 pages), Article (blog), OfferCatalog (offres)
@@ -48,74 +71,62 @@ Dernière mise à jour : 2026-05-11
 
 ### Commits
 
-- `ed71404` — fix(seo): hiérarchie H1-H6 + metas réécrites pour publication
+- `ed71404` — fix(seo): hiérarchie H1-H6 + metas réécrites
 - `ae049dc` — fix(seo): hiérarchie H dans composants partagés
-- `2b0532d` — fix(seo): ajoute h2 label sur colonne calendrier contact
+- `2b0532d` — fix(seo): h2 label colonne calendrier contact
+- `86248c1` — fix(seo,perf): rapatriement Unsplash + Image + OG dédiés
+- `a69bd1e` — fix(seo): OG dédiés homepage
+- `7d32b5b` — feat(seo): LinkedIn URL footer + sameAs
+
+---
+
+## 🟠 Côté utilisateur — à fournir / créer
+
+Items qui débloquent du code côté site :
+
+- **Compte Twitter / X** : créer `@mv_agency` (ou similaire) → ajoutera le `@handle` dans Twitter cards + URL dans `sameAs`
+- **Compte Instagram** : créer la page → ajoutera l'URL dans `sameAs` + icône Instagram dans Footer (actuellement icône inerte)
+- **Photo perso Victor pour `/a-propos`** : remplacer la photo Unsplash actuelle (`/public/avatars/victor.jpg`) par une vraie photo de toi. Idéalement portrait carré ~800×800, fond sobre cohérent avec le brand
+- **Profils Clutch / Malt** : si tu en crées → ajout dans `sameAs` aussi
 
 ---
 
 ## 🔴 Restant pour être au top (priorisé)
 
-### Performance & UX (impact ranking direct)
+### Contenu & autorité (court-moyen terme — gros levier search)
 
-1. **Migration `<img>` → `<Image>` Next.js** — Core Web Vitals (LCP/CLS) = facteur de ranking direct. Fichiers concernés :
-   - [src/app/page.tsx:29](src/app/page.tsx:29) (techLogos)
-   - [src/components/ui/AnimatedTestimonials.tsx:136](src/components/ui/AnimatedTestimonials.tsx:136)
-   - [src/components/ui/Features.tsx:118](src/components/ui/Features.tsx:118)
-   - [src/components/ui/circular-testimonials.tsx:180](src/components/ui/circular-testimonials.tsx:180)
-   - [src/components/ui/LogoLoop.jsx:241](src/components/ui/LogoLoop.jsx:241)
-   - [src/components/ui/testimonials-columns.tsx:84](src/components/ui/testimonials-columns.tsx:84)
-   - [src/app/contact/ContactClient.tsx:132](src/app/contact/ContactClient.tsx:132)
-   - [src/app/a-propos/AProposClient.tsx:143](src/app/a-propos/AProposClient.tsx:143)
+1. **Articles blog cornerstone** — 1 seul publié actuellement (`combien-coute-un-site-internet`). Objectif **6-10 articles** sur tes piliers :
+   - Création de site web *(1/X)*
+   - IA pour PME *(0/X)*
+   - Automatisation n8n / Make / Zapier *(0/X)*
+   - SEO / acquisition *(0/X)*
 
-2. **Hotlinks Unsplash → rapatriement local** (perf + RGPD : pas de CDN tiers qui voit l'IP visiteur)
-   - [src/app/contact/ContactClient.tsx:132-135](src/app/contact/ContactClient.tsx:132) (4 images clients)
-   - [src/app/a-propos/AProposClient.tsx](src/app/a-propos/AProposClient.tsx)
+2. **Premiers avis clients publics** — viser 5+ avis collectés pour pouvoir activer le schema `AggregateRating` + `Review` (étoiles dans les SERPs)
 
-3. **OG dédiés** sur les 4 pages commerciales clés (héritent du layout sinon, dommage au partage social) :
-   - [src/app/services/page.tsx](src/app/services/page.tsx)
-   - [src/app/offres/page.tsx](src/app/offres/page.tsx)
-   - [src/app/cas-clients/page.tsx](src/app/cas-clients/page.tsx)
-   - [src/app/blog/page.tsx](src/app/blog/page.tsx)
+3. **Backlinks initiaux** :
+   - Clutch et/ou Malt (profil agence)
+   - Mentions presse locale (974 + Belgique)
+   - Posts LinkedIn invitant à visiter le site
 
 ### Audit headings — restants à investiguer
 
-4. **`[Missing heading]` h2 après h1 sur homepage / services / offres** — probablement un badge / section visuelle stylée comme heading sans h-tag réel. À identifier composant par composant.
-
-5. **`[Missing heading]` h3 avant footer (toutes pages)** — probablement le brand panel Footer (logo + texte « MV Agency ») détecté visuellement comme heading. Solution : transformer le `<span>` logo en h-tag approprié OU laisser tel quel (faux positif).
-
-6. **Duplicates h2 mobile/desktop sur `/services`** — pattern responsive (CSS hide). Google gère, mais pour être 100 % propre : remplacer la version cachée par un `<div role="presentation">` ou conditionner le rendu côté React.
-
-### Contenu & autorité (court-moyen terme)
-
-7. **Articles blog** — 1 seul publié actuellement (`combien-coute-un-site-internet`). Pour bâtir l'autorité topique, viser **6-10 articles cornerstone** sur tes 4 piliers :
-   - Création de site web (en cours)
-   - IA pour PME
-   - Automatisation (n8n / Make / Zapier)
-   - SEO / acquisition
-
-8. **`sameAs` LinkedIn / Clutch / Malt** — dès profils créés, remplir [src/lib/seo.ts:116](src/lib/seo.ts:116) (renforce le knowledge graph)
-
-9. **Backlinks initiaux** :
-    - LinkedIn entreprise MV Agency
-    - Profil Clutch et/ou Malt
-    - Mentions presse locale (974 + agence belge/française)
+4. **`[Missing heading]` h2 après h1 sur homepage / services / offres** — probablement un badge / section visuelle stylée comme heading sans h-tag réel
+5. **`[Missing heading]` h3 avant footer (toutes pages)** — probablement le brand panel Footer (logo + texte « MV Agency ») détecté comme heading visuel
+6. **Duplicates h2 mobile/desktop sur `/services`** — pattern responsive Next.js (CSS hide). Google gère mais pas pristine
 
 ### Schemas additionnels (nice-to-have)
 
-10. **`Service` schema** dédié sur `/services` (actuellement OfferCatalog seulement)
-11. **`AggregateRating` + `Review`** une fois 5+ avis clients publics collectés
-12. **`hreflang`** — non requis tant que mono-langue FR. À ajouter si tu lances une variante BE-FR / CH-FR / CA-FR ou une version EN
+7. **`Service` schema** dédié sur `/services` (actuellement OfferCatalog seulement)
+8. **`hreflang`** — non requis tant que mono-langue FR. À ajouter si version EN ou variantes BE-FR / CH-FR / CA-FR
 
 ---
 
 ## 🟡 V2 / Post-launch (volontairement reporté)
 
-- **Bing Webmaster Tools** (`NEXT_PUBLIC_BING_VERIFICATION`) — < 5 % du trafic search en France, faible ROI immédiat
+- **Bing Webmaster Tools** (`NEXT_PUBLIC_BING_VERIFICATION`) — < 5 % du trafic search FR, faible ROI immédiat
 - **Microsoft Clarity** (`NEXT_PUBLIC_CLARITY_ID`) — heatmaps, intéressant après 1000+ visites/mois
-- **@handle Twitter** dans [src/app/layout.tsx](src/app/layout.tsx) — quand compte X créé
-- **Pages géo additionnelles** (Paris, Lyon, Genève, etc.) — selon stratégie commerciale
-- **GEO / AI search optimization** approfondi (llms.txt, citation-readiness, etc.)
+- **Pages géo additionnelles** (Paris, Lyon, Genève…) — selon stratégie commerciale
+- **GEO / AI search optimization** approfondi (llms.txt, citation-readiness)
 - **A/B test sur titres / descriptions** une fois GSC actif et données collectées
 - **Programmatic SEO** (templates de pages générées) si scaling justifie
 - **Bandeau consentement RGPD** (préalable activation Clarity)
@@ -124,7 +135,7 @@ Dernière mise à jour : 2026-05-11
 
 ## Ordre conseillé pour atteindre le « top »
 
-1. **Avant gros trafic** → migration `<Image>` + Unsplash local + OG dédiés (~2-3h dev)
-2. **Mois 1 post-launch** → 3 nouveaux articles cornerstone + LinkedIn entreprise + Clutch
-3. **Mois 2-3** → continuer blog (objectif 6-10 articles), collecter premiers avis (5+ pour AggregateRating)
-4. **Mois 3+** → backlinks ciblés, schemas avancés, audit hreflang si international
+1. **Cette semaine** → Twitter + Instagram créés + photo perso fournie → je wire tout côté code
+2. **Mois 1** → 3 articles blog cornerstone + profils Clutch/Malt
+3. **Mois 2-3** → continuer blog (6-10 articles), collecter premiers avis (5+ pour AggregateRating), Service schema dédié /services
+4. **Mois 3+** → audit headings résiduels, backlinks ciblés presse locale, hreflang si international
