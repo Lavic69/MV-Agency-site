@@ -30,6 +30,7 @@ export const MockupIA = () => {
   }, []);
 
   return (
+    <div className="mockup-ia-scaler">
     <div style={{
       width: '100%',
       height: '380px',
@@ -176,7 +177,22 @@ export const MockupIA = () => {
           0% { width: 10%; }
           100% { width: 95%; }
         }
+        .mockup-ia-scaler { width: 100%; }
+        @media (max-width: 767px) {
+          .mockup-ia-scaler {
+            transform-origin: top center;
+            transform: scale(0.75);
+            margin-bottom: -18%;
+          }
+        }
+        @media (max-width: 480px) {
+          .mockup-ia-scaler {
+            transform: scale(0.62);
+            margin-bottom: -30%;
+          }
+        }
       `}</style>
+    </div>
     </div>
   );
 };
