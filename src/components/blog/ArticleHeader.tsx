@@ -1,5 +1,6 @@
 import React from "react";
 import { CoverKeyword } from "./CoverKeyword";
+import { TextReveal } from "@/components/ui/TextReveal";
 import type { CoverKeyword as CoverKeywordType } from "@/app/blog/_articles";
 import { formatDateMono, formatDateLong } from "@/lib/formatDate";
 import { FOUNDER_NAME } from "@/lib/seo";
@@ -37,7 +38,7 @@ export const ArticleHeader: React.FC<ArticleHeaderProps> = ({
           <CoverKeyword keyword={keyword} size="xl" />
         </div>
         <div className={styles.heroTitleStack}>
-          <h1 className={styles.heroTitle}>{title}</h1>
+          <h1 className={styles.heroTitle}><TextReveal>{title}</TextReveal></h1>
           <div className={styles.heroSep} aria-hidden="true" />
           <div className={styles.heroMeta}>
             <span className={styles.heroMetaAuthor}>

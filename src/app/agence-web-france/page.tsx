@@ -563,7 +563,7 @@ export default function AgenceWebFrancePage() {
         <div className={styles.containerNarrow}>
           <span className={styles.sectionEyebrow}>Foire aux questions</span>
           <h2 id="faq-france" className={styles.faqTitle}>
-            Les questions des PME françaises avant de réserver l'appel
+            <TextReveal>Les questions des PME françaises avant de réserver l&apos;appel</TextReveal>
           </h2>
           <p className={styles.faqSubtitle}>
             Distanciel, tarifs, RGPD, délais, présentiel ponctuel — les réponses précises.

@@ -449,7 +449,7 @@ export default function AgenceWebBruxellesPage() {
         <div className={styles.containerNarrow}>
           <span className={styles.sectionEyebrow}>Foire aux questions</span>
           <h2 id="faq-bruxelles" className={styles.faqTitle}>
-            Les questions des PME, ASBL et indépendants bruxellois
+            <TextReveal>Les questions des PME, ASBL et indépendants bruxellois</TextReveal>
           </h2>
           <p className={styles.faqSubtitle}>
             Tarifs, présentiel, multilinguisme, ASBL, communes — les réponses précises avant

@@ -439,7 +439,7 @@ export default function AgenceWebBelgiquePage() {
         <div className={styles.containerNarrow}>
           <span className={styles.sectionEyebrow}>Foire aux questions</span>
           <h2 id="faq-belgique" className={styles.faqTitle}>
-            Les questions des PME belges, traitées une bonne fois
+            <TextReveal>Les questions des PME belges, traitées une bonne fois</TextReveal>
           </h2>
           <p className={styles.faqSubtitle}>
             Tout ce qu'il faut savoir avant de réserver un appel — TVA, RGPD, méthode
