@@ -189,8 +189,8 @@ export default function ServicesPage() {
           <div className={styles.mobileOnly}>
             <FadeIn direction="up">
               <div className={styles.mobileServiceCard}>
-                <MobileWorkflowAnim />
                 <span className={styles.mobileServiceEyebrow}>Automatisation</span>
+                <MobileWorkflowAnim />
                 <h2 className={styles.mobileServiceTitle}><TextReveal>L'automatisation au service de votre productivité</TextReveal></h2>
                 <ul className={styles.mobileServiceBullets}>
                   <li><FaCheck size={14} /><span>Connexion directe et secrète entre tous vos outils via n8n & Make</span></li>
