@@ -12,80 +12,165 @@
 
 import React from "react";
 import { FaPlay, FaCheck, FaGraduationCap, FaGlobe, FaBrain, FaEnvelope, FaDesktop, FaRobot, FaBolt } from "react-icons/fa";
-import { Bot, Sparkles } from "lucide-react";
+import { Bot, Sparkles, MousePointer2 } from "lucide-react";
 
 /* ============================================================
-   1. CRÉATION WEB — mini browser + skeleton lines
+   1. CRÉATION WEB — drag & drop d'éléments dans un canvas browser
+   Animation : un block coloré est "dragged" depuis l'extérieur du canvas
+   vers une zone cible à l'intérieur, accompagné d'un cursor pointer.
+   Loop infinie.
    ============================================================ */
 export const MobileWebAnim = () => (
   <div className="msa-card msa-web">
-    <div className="msa-web-topbar">
-      <span className="msa-web-dot" style={{ background: "#ff5f56" }} />
-      <span className="msa-web-dot" style={{ background: "#ffbd2e" }} />
-      <span className="msa-web-dot" style={{ background: "#27c93f" }} />
-      <span className="msa-web-url" />
-    </div>
-    <div className="msa-web-body">
-      <div className="msa-web-heading" />
-      <div className="msa-web-line msa-pulse" style={{ width: "75%" }} />
-      <div className="msa-web-line msa-pulse" style={{ width: "55%", animationDelay: "0.2s" }} />
-      <div className="msa-web-line msa-pulse" style={{ width: "85%", animationDelay: "0.4s" }} />
+    {/* Browser canvas avec topbar + grid background */}
+    <div className="msa-web-canvas">
+      <div className="msa-web-topbar">
+        <span className="msa-web-dot" style={{ background: "#ff5f56" }} />
+        <span className="msa-web-dot" style={{ background: "#ffbd2e" }} />
+        <span className="msa-web-dot" style={{ background: "#27c93f" }} />
+      </div>
+      <div className="msa-web-stage">
+        {/* Zone cible : pointillé where the block will drop */}
+        <div className="msa-web-drop-target" />
+        {/* Blocks déjà placés (statiques) */}
+        <div className="msa-web-placed msa-web-placed-1" />
+        <div className="msa-web-placed msa-web-placed-2" />
+        {/* Block animé : drag depuis l'extérieur droit vers la drop target */}
+        <div className="msa-web-drag-block" />
+        {/* Cursor qui suit le block */}
+        <div className="msa-web-cursor">
+          <MousePointer2 size={14} fill="white" stroke="#000" />
+        </div>
+      </div>
     </div>
     <style jsx>{`
       .msa-card {
         width: 100%;
         max-width: 320px;
         height: 140px;
+      }
+      .msa-web-canvas {
+        width: 100%;
+        height: 100%;
         background: #15151a;
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
       }
       .msa-web-topbar {
         display: flex;
         align-items: center;
-        gap: 6px;
-        padding: 8px 10px;
-        background: rgba(0, 0, 0, 0.4);
+        gap: 5px;
+        padding: 7px 10px;
+        background: rgba(0, 0, 0, 0.5);
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        flex-shrink: 0;
       }
       .msa-web-dot {
-        width: 8px;
-        height: 8px;
+        width: 7px;
+        height: 7px;
         border-radius: 50%;
       }
-      .msa-web-url {
+      .msa-web-stage {
+        position: relative;
         flex: 1;
-        height: 12px;
-        background: rgba(255, 255, 255, 0.06);
-        border-radius: 4px;
-        margin-left: 6px;
+        padding: 10px;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        background-size: 14px 14px;
       }
-      .msa-web-body {
-        padding: 12px 14px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .msa-web-heading {
+      /* Block déjà placé en haut */
+      .msa-web-placed-1 {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
         height: 14px;
-        width: 50%;
-        background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
-        border-radius: 4px;
-        margin-bottom: 4px;
-      }
-      .msa-web-line {
-        height: 8px;
-        background: rgba(255, 255, 255, 0.1);
+        background: linear-gradient(90deg, #2563eb, #60a5fa);
         border-radius: 4px;
       }
-      @keyframes msa-pulse {
-        0%, 100% { opacity: 0.4; }
-        50% { opacity: 1; }
+      /* Block déjà placé en bas gauche */
+      .msa-web-placed-2 {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        width: 80px;
+        height: 22px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
       }
-      .msa-pulse {
-        animation: msa-pulse 2s ease-in-out infinite;
+      /* Drop target : zone pointillée où le block va se déposer */
+      .msa-web-drop-target {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: 90px;
+        height: 22px;
+        border: 1.5px dashed rgba(96, 165, 250, 0.35);
+        border-radius: 4px;
+        animation: msa-web-target 3s ease-in-out infinite;
+      }
+      @keyframes msa-web-target {
+        0%, 50%, 100% { border-color: rgba(96, 165, 250, 0.35); background: transparent; }
+        60%, 75% { border-color: rgba(96, 165, 250, 0.7); background: rgba(96, 165, 250, 0.08); }
+      }
+      /* Block en cours de drag : part de l'extérieur droit, va dans drop target */
+      .msa-web-drag-block {
+        position: absolute;
+        bottom: 10px;
+        width: 90px;
+        height: 22px;
+        background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.45);
+        animation: msa-web-drag 3s ease-in-out infinite;
+      }
+      @keyframes msa-web-drag {
+        0% {
+          right: -100px;
+          opacity: 0;
+          transform: scale(0.9) rotate(-2deg);
+        }
+        15% {
+          right: 60px;
+          opacity: 1;
+          transform: scale(1.05) rotate(-2deg);
+        }
+        50%, 75% {
+          right: 10px;
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+        }
+        90%, 100% {
+          right: 10px;
+          opacity: 0.5;
+          transform: scale(1) rotate(0deg);
+        }
+      }
+      /* Cursor qui suit le block en mouvement */
+      .msa-web-cursor {
+        position: absolute;
+        bottom: 18px;
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
+        animation: msa-web-cursor 3s ease-in-out infinite;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+      }
+      @keyframes msa-web-cursor {
+        0% { right: -80px; opacity: 0; }
+        15% { right: 70px; opacity: 1; }
+        50%, 75% { right: 16px; opacity: 1; }
+        90% { right: 16px; opacity: 1; }
+        100% { right: -80px; opacity: 0; }
       }
     `}</style>
   </div>
@@ -103,22 +188,22 @@ export const MobileWorkflowAnim = () => (
       <div className="msa-wf-cell">
         <div className="msa-wf-node" style={{ background: "#8b5cf6" }}>
           <FaGlobe size={16} color="#fff" />
+          <span className="msa-wf-label">Webhook</span>
         </div>
-        <span className="msa-wf-label">Webhook</span>
       </div>
       <div className="msa-wf-connector msa-wf-connector-1" />
       <div className="msa-wf-cell">
         <div className="msa-wf-node msa-wf-node-ai" style={{ background: "#2563eb" }}>
           <FaBrain size={16} color="#fff" />
+          <span className="msa-wf-label">OpenAI</span>
         </div>
-        <span className="msa-wf-label">OpenAI</span>
       </div>
       <div className="msa-wf-connector msa-wf-connector-2" />
       <div className="msa-wf-cell">
         <div className="msa-wf-node" style={{ background: "#22c55e" }}>
           <FaEnvelope size={16} color="#fff" />
+          <span className="msa-wf-label">Email</span>
         </div>
-        <span className="msa-wf-label">Email</span>
       </div>
     </div>
     <style jsx>{`
@@ -144,13 +229,12 @@ export const MobileWorkflowAnim = () => (
         width: 100%;
       }
       .msa-wf-cell {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 6px;
+        position: relative;
+        width: 38px;     /* explicite = largeur de l'icon, pas du label */
         flex-shrink: 0;
       }
       .msa-wf-node {
+        position: relative;
         width: 38px;
         height: 38px;
         border-radius: 10px;
@@ -166,7 +250,13 @@ export const MobileWorkflowAnim = () => (
         from { transform: translateY(0); }
         to { transform: translateY(-4px); }
       }
+      /* Label en position: absolute pour qu'il ne pousse pas la cell wider que l'icon
+         → garantit que le connector flex:1 connecte exactement icon-to-icon */
       .msa-wf-label {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 50%;
+        transform: translateX(-50%);
         font-size: 9px;
         color: rgba(255, 255, 255, 0.55);
         font-weight: 600;
@@ -176,12 +266,12 @@ export const MobileWorkflowAnim = () => (
       }
       /* Connecteur dashed CSS — auto-ajusté à la largeur disponible via flex:1.
          repeating-linear-gradient construit le dashed pattern ; background-position
-         anime via keyframes pour effet "flux de données". */
+         anime via keyframes pour effet "flux de données". align-self: center
+         + cell-height=icon-height = connector parfaitement aligné au milieu de l'icon. */
       .msa-wf-connector {
         flex: 1;
         height: 3px;
-        align-self: flex-start;
-        margin-top: 18px;
+        align-self: center;
         border-radius: 2px;
         background-image: repeating-linear-gradient(
           to right,
@@ -211,7 +301,9 @@ export const MobileWorkflowAnim = () => (
 );
 
 /* ============================================================
-   3. AGENTS IA — chat bubble + typing dots + sparkle
+   3. AGENTS IA — génération de texte progressive
+   Chat bubble avec réponse de l'IA qui se révèle caractère par caractère
+   via clip-path (compatible variable-width fonts) + cursor "|" qui clignote
    ============================================================ */
 export const MobileIAAnim = () => (
   <div className="msa-card msa-ia">
@@ -219,17 +311,19 @@ export const MobileIAAnim = () => (
       <div className="msa-ia-icon">
         <Bot size={14} />
       </div>
-      <span className="msa-ia-name">Agent Support</span>
+      <span className="msa-ia-name">Agent IA</span>
       <Sparkles size={12} className="msa-ia-sparkle" />
     </div>
-    <div className="msa-ia-bubble">
-      <div className="msa-ia-text-line" style={{ width: "85%" }} />
-      <div className="msa-ia-text-line" style={{ width: "60%" }} />
+    {/* Question utilisateur (statique) */}
+    <div className="msa-ia-user-msg">
+      <span>Rédige un titre SEO</span>
     </div>
-    <div className="msa-ia-typing">
-      <span className="msa-ia-dot" />
-      <span className="msa-ia-dot" />
-      <span className="msa-ia-dot" />
+    {/* Réponse IA générée progressivement */}
+    <div className="msa-ia-bot-msg">
+      <div className="msa-ia-typewriter">
+        <span className="msa-ia-text">Boostez votre SEO grâce à l&apos;IA générative</span>
+        <span className="msa-ia-cursor">|</span>
+      </div>
     </div>
     <style jsx>{`
       .msa-card {
@@ -239,10 +333,10 @@ export const MobileIAAnim = () => (
         background: linear-gradient(135deg, rgba(20,20,20,0.9) 0%, rgba(10,10,10,0.95) 100%);
         border: 1px solid rgba(167, 139, 250, 0.2);
         border-radius: 10px;
-        padding: 14px;
+        padding: 12px;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
       }
       .msa-ia-header {
@@ -251,8 +345,8 @@ export const MobileIAAnim = () => (
         gap: 8px;
       }
       .msa-ia-icon {
-        width: 24px;
-        height: 24px;
+        width: 22px;
+        height: 22px;
         border-radius: 6px;
         background: rgba(167, 139, 250, 0.15);
         color: #a78bfa;
@@ -263,7 +357,7 @@ export const MobileIAAnim = () => (
       .msa-ia-name {
         color: #a78bfa;
         font-size: 11px;
-        font-weight: 600;
+        font-weight: 700;
         flex: 1;
       }
       .msa-ia-sparkle {
@@ -274,37 +368,63 @@ export const MobileIAAnim = () => (
         0%, 100% { transform: scale(1); opacity: 0.5; }
         50% { transform: scale(1.3); opacity: 1; }
       }
-      .msa-ia-bubble {
-        background: rgba(167, 139, 250, 0.08);
+      /* Message utilisateur (bulle alignée droite) */
+      .msa-ia-user-msg {
+        align-self: flex-end;
+        background: rgba(96, 165, 250, 0.15);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        border-radius: 10px 10px 0 10px;
+        padding: 5px 9px;
+        max-width: 70%;
+      }
+      .msa-ia-user-msg span {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.3;
+      }
+      /* Réponse IA (bulle gauche) */
+      .msa-ia-bot-msg {
+        align-self: flex-start;
+        background: rgba(167, 139, 250, 0.1);
         border-left: 2px solid #a78bfa;
-        border-radius: 6px;
-        padding: 8px 10px;
+        border-radius: 0 8px 8px 8px;
+        padding: 6px 9px;
+        max-width: 90%;
+        overflow: hidden;
+      }
+      .msa-ia-typewriter {
+        position: relative;
+        font-size: 10.5px;
+        line-height: 1.4;
+        color: rgba(255, 255, 255, 0.95);
+        font-weight: 500;
         display: flex;
-        flex-direction: column;
-        gap: 6px;
+        align-items: flex-end;
+        white-space: nowrap;
       }
-      .msa-ia-text-line {
-        height: 6px;
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 3px;
+      /* Le texte est révélé progressivement via clip-path : inset clipe par la
+         droite, animation de 100% → 0% révèle le texte de gauche à droite */
+      .msa-ia-text {
+        display: inline-block;
+        clip-path: inset(0 100% 0 0);
+        animation: msa-ia-type 5s steps(30) infinite;
       }
-      .msa-ia-typing {
-        display: flex;
-        gap: 5px;
-        padding: 0 4px;
+      @keyframes msa-ia-type {
+        0% { clip-path: inset(0 100% 0 0); }
+        50%, 75% { clip-path: inset(0 0 0 0); }
+        88%, 100% { clip-path: inset(0 100% 0 0); }
       }
-      .msa-ia-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: #a78bfa;
-        animation: msa-bounce 1.4s ease-in-out infinite;
+      /* Cursor qui clignote, simule la frappe d'un IA en cours de génération */
+      .msa-ia-cursor {
+        display: inline-block;
+        color: #a78bfa;
+        font-weight: 700;
+        margin-left: 1px;
+        animation: msa-ia-blink 0.6s step-end infinite;
       }
-      .msa-ia-dot:nth-child(2) { animation-delay: 0.2s; }
-      .msa-ia-dot:nth-child(3) { animation-delay: 0.4s; }
-      @keyframes msa-bounce {
-        0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
-        30% { transform: translateY(-5px); opacity: 1; }
+      @keyframes msa-ia-blink {
+        0%, 50% { opacity: 1; }
+        50.01%, 100% { opacity: 0; }
       }
     `}</style>
   </div>
@@ -471,26 +591,36 @@ export const MobileEcosystemAnim = () => (
       </circle>
     </svg>
 
-    {/* 4 pillar nodes positionnés en absolu sur le stage */}
-    <div className="msa-eco-node msa-eco-top" style={{ borderColor: "rgba(59,130,246,0.45)", color: "#60a5fa" }}>
-      <FaDesktop size={13} />
+    {/* 4 pillar nodes — chaque icon est suivi de son label positionné dessous,
+        comme un pair vertical (icon + caption) qui flotte aux 4 cardinaux du
+        cercle. Évite les overflows latéraux qu'on avait avec les labels à côté. */}
+    <div className="msa-eco-pillar msa-eco-pillar-top">
+      <div className="msa-eco-node" style={{ borderColor: "rgba(59,130,246,0.45)", color: "#60a5fa" }}>
+        <FaDesktop size={13} />
+      </div>
+      <span className="msa-eco-label">Dev Web</span>
     </div>
-    <span className="msa-eco-label msa-eco-label-top">Développement Web</span>
 
-    <div className="msa-eco-node msa-eco-right" style={{ borderColor: "rgba(168,85,247,0.45)", color: "#d8b4fe" }}>
-      <FaRobot size={13} />
+    <div className="msa-eco-pillar msa-eco-pillar-right">
+      <div className="msa-eco-node" style={{ borderColor: "rgba(168,85,247,0.45)", color: "#d8b4fe" }}>
+        <FaRobot size={13} />
+      </div>
+      <span className="msa-eco-label">IA</span>
     </div>
-    <span className="msa-eco-label msa-eco-label-right">Intelligence Artificielle</span>
 
-    <div className="msa-eco-node msa-eco-bottom" style={{ borderColor: "rgba(16,185,129,0.45)", color: "#34d399" }}>
-      <FaBolt size={13} />
+    <div className="msa-eco-pillar msa-eco-pillar-bottom">
+      <div className="msa-eco-node" style={{ borderColor: "rgba(16,185,129,0.45)", color: "#34d399" }}>
+        <FaBolt size={13} />
+      </div>
+      <span className="msa-eco-label">Automatisation</span>
     </div>
-    <span className="msa-eco-label msa-eco-label-bottom">Automatisation</span>
 
-    <div className="msa-eco-node msa-eco-left" style={{ borderColor: "rgba(251,146,60,0.45)", color: "#fdba74" }}>
-      <FaGraduationCap size={13} />
+    <div className="msa-eco-pillar msa-eco-pillar-left">
+      <div className="msa-eco-node" style={{ borderColor: "rgba(251,146,60,0.45)", color: "#fdba74" }}>
+        <FaGraduationCap size={13} />
+      </div>
+      <span className="msa-eco-label">Formation</span>
     </div>
-    <span className="msa-eco-label msa-eco-label-left">Formation</span>
 
     <style jsx>{`
       .msa-card.msa-eco {
@@ -514,8 +644,19 @@ export const MobileEcosystemAnim = () => (
         height: 280px;
         z-index: 1;
       }
-      .msa-eco-node {
+      /* Chaque pillar est un wrapper icon + label en colonne. Positionné
+         absolument aux 4 cardinaux du cercle. Le wrapper est centré sur le
+         point de l'orbital, ce qui garantit que label et icon restent dans
+         le card sans débordement latéral. */
+      .msa-eco-pillar {
         position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        z-index: 2;
+      }
+      .msa-eco-node {
         width: 32px;
         height: 32px;
         border-radius: 50%;
@@ -524,74 +665,40 @@ export const MobileEcosystemAnim = () => (
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 2;
         box-shadow: 0 0 12px rgba(59, 130, 246, 0.18);
       }
-      /* Positions calc: centre du card = (50%, 50%), orbit r=78 (en stage 280)
-         → top node y = 50% - 78px = -78 from center. En translate: -78px sur Y */
-      .msa-eco-top {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, calc(-50% - 78px));
-      }
-      .msa-eco-right {
-        top: 50%;
-        left: 50%;
-        transform: translate(calc(-50% + 78px), -50%);
-      }
-      .msa-eco-bottom {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, calc(-50% + 78px));
-      }
-      .msa-eco-left {
-        top: 50%;
-        left: 50%;
-        transform: translate(calc(-50% - 78px), -50%);
-      }
       .msa-eco-label {
-        position: absolute;
-        font-size: 10px;
+        font-size: 9.5px;
         font-weight: 700;
         color: var(--text-light);
         font-family: var(--font-heading);
         line-height: 1.15;
-        z-index: 2;
-        pointer-events: none;
-      }
-      /* Top label : au-dessus du top node */
-      .msa-eco-label-top {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, calc(-50% - 112px));
-        text-align: center;
         white-space: nowrap;
-      }
-      /* Bottom label : en-dessous du bottom node */
-      .msa-eco-label-bottom {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, calc(-50% + 100px));
         text-align: center;
-        white-space: nowrap;
       }
-      /* Right label : à droite du right node, max-width pour éviter overflow */
-      .msa-eco-label-right {
+      /* Top pillar : centré horizontalement, au-dessus du centre du card */
+      .msa-eco-pillar-top {
         top: 50%;
         left: 50%;
-        transform: translate(calc(-50% + 100px), -50%);
-        text-align: left;
-        max-width: 60px;
-        white-space: normal;
+        transform: translate(-50%, calc(-50% - 78px - 18px));
       }
-      /* Left label : à gauche du left node */
-      .msa-eco-label-left {
+      /* Bottom pillar : centré horizontalement, en bas */
+      .msa-eco-pillar-bottom {
         top: 50%;
         left: 50%;
-        transform: translate(calc(-50% - 100px - 56px), -50%);
-        text-align: right;
-        max-width: 56px;
-        white-space: normal;
+        transform: translate(-50%, calc(-50% + 78px - 18px));
+      }
+      /* Right pillar : à droite du cercle, centré verticalement */
+      .msa-eco-pillar-right {
+        top: 50%;
+        left: 50%;
+        transform: translate(calc(-50% + 78px), calc(-50% - 18px));
+      }
+      /* Left pillar : à gauche du cercle, centré verticalement */
+      .msa-eco-pillar-left {
+        top: 50%;
+        left: 50%;
+        transform: translate(calc(-50% - 78px), calc(-50% - 18px));
       }
     `}</style>
   </div>
