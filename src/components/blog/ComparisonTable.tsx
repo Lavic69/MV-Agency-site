@@ -16,6 +16,27 @@ interface ComparisonTableProps {
 export const ComparisonTable: React.FC<ComparisonTableProps> = ({ columns, rows, caption }) => {
   return (
     <figure className={styles.comparisonWrap}>
+      {/* Mobile : cards stack vertical (visible <768px) */}
+      <div className={styles.comparisonMobile}>
+        {columns.map((col, ci) => (
+          <div key={col} className={styles.comparisonMobileCard}>
+            <div className={styles.comparisonMobileCardTitle}>{col}</div>
+            <ul className={styles.comparisonMobileList}>
+              {rows.map((row) => {
+                const val = row.values[ci];
+                if (val === false) return null;
+                return (
+                  <li key={row.feature}>
+                    <strong>{row.feature}</strong>
+                    {typeof val === "string" && <span> : {val}</span>}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+      {/* Desktop : table (visible ≥768px) */}
       <div className={styles.comparisonScroll}>
         <table className={styles.comparisonTable}>
           <thead>
