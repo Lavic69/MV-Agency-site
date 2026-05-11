@@ -10,18 +10,20 @@ export const MockupEcosystem = () => {
   // Logical dimensions where everything fits perfectly
   const LOGICAL_WIDTH = 550;
   const LOGICAL_HEIGHT = 450;
-  // Les labels textuels ("Intelligence Artificielle", "Formation & Autonomie", etc.)
-  // dépassent de la zone LOGICAL_WIDTH × LOGICAL_HEIGHT. Marge généreuse (180px
-  // de chaque côté) pour qu'aucun label ne soit clippé et que la visualisation
-  // reste visuellement centrée même quand les labels asymmétriques par taille.
-  const HORIZONTAL_PADDING = 360;
+  // Note : ce composant ne s'affiche plus QUE sur desktop (via .desktopOnly
+  // dans services/page.tsx). Sur mobile, c'est une grid 2×2 de piliers qui
+  // remplace, donc plus besoin de buffer "labels qui débordent". On laisse
+  // le mockup scale jusqu'à 1.5x sur grands écrans pour qu'il remplisse bien
+  // le col40 (typiquement ~700-900px sur viewports >1200px).
 
   useEffect(() => {
     const handleResize = () => {
       if (containerRef.current) {
         const parentWidth = containerRef.current.offsetWidth;
-        // Scale down si parent < LOGICAL_WIDTH + padding labels, sans upscale au-delà de 1
-        const newScale = Math.min(1, parentWidth / (LOGICAL_WIDTH + HORIZONTAL_PADDING));
+        // Scale up jusqu'à 1.5x sur écrans larges pour remplir le col40 ;
+        // scale down si parent < LOGICAL_WIDTH (rare en desktop puisqu'on
+        // n'affiche plus sur mobile).
+        const newScale = Math.min(1.5, parentWidth / LOGICAL_WIDTH);
         setScale(newScale);
       }
     };
@@ -139,16 +141,6 @@ export const MockupEcosystem = () => {
         </div>
 
       </div>
-      <style jsx>{`
-        @media (max-width: 767px) {
-          :global(.ecosystem-label) {
-            white-space: normal !important;
-            max-width: 80px;
-            font-size: 0.7rem !important;
-            line-height: 1.2;
-          }
-        }
-      `}</style>
     </div>
   );
 };
