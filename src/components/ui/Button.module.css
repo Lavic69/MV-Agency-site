@@ -139,3 +139,30 @@
 .button:hover .charWrapper {
   transform: translateY(-100%);
 }
+
+/* === Responsive : mobile ===
+   Sur les petits écrans, les boutons à texte long ("Découvrir notre méthode
+   complète", "Réserver un appel offert", etc.) dépassaient la zone utile du
+   viewport. Cause : la rollupWrapper / charWrapper sont en inline-flex sans
+   flex-wrap, donc le texte ne wrappe jamais → bouton plus large que viewport
+   → débordait à gauche/droite avec textAlign:center sur le parent.
+   Fix : on rétrécit font-size + padding pour que les longs labels rentrent
+   dans une zone utile ~330-340px (viewport 414 - section padding). */
+@media (max-width: 767px) {
+  .button {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .sizeSm {
+    padding: 0.65rem 1.2rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .sizeMd {
+    padding: 0.85rem 1.5rem 1rem;
+    font-size: 1.05rem;
+  }
+  .sizeLg {
+    padding: 1rem 1.75rem 1.15rem;
+    font-size: 1.15rem;
+  }
+}
