@@ -44,6 +44,7 @@ Dernière mise à jour : 2026-05-11
 - Icons file-based (Next 16)
 - Canonical sur chaque page
 - Vercel Analytics + Speed Insights
+- **Google Search Console** : propriété vérifiée + sitemap soumis ✅
 
 ### Commits
 
@@ -55,13 +56,9 @@ Dernière mise à jour : 2026-05-11
 
 ## 🔴 Restant pour être au top (priorisé)
 
-### Bloquant publication
-
-1. **Google Search Console** — créer la propriété, copier le code dans `NEXT_PUBLIC_GSC_VERIFICATION` sur Vercel, redéployer, soumettre `sitemap.xml`. ~5 min.
-
 ### Performance & UX (impact ranking direct)
 
-2. **Migration `<img>` → `<Image>` Next.js** — Core Web Vitals (LCP/CLS) = facteur de ranking direct. Fichiers concernés :
+1. **Migration `<img>` → `<Image>` Next.js** — Core Web Vitals (LCP/CLS) = facteur de ranking direct. Fichiers concernés :
    - [src/app/page.tsx:29](src/app/page.tsx:29) (techLogos)
    - [src/components/ui/AnimatedTestimonials.tsx:136](src/components/ui/AnimatedTestimonials.tsx:136)
    - [src/components/ui/Features.tsx:118](src/components/ui/Features.tsx:118)
@@ -71,11 +68,11 @@ Dernière mise à jour : 2026-05-11
    - [src/app/contact/ContactClient.tsx:132](src/app/contact/ContactClient.tsx:132)
    - [src/app/a-propos/AProposClient.tsx:143](src/app/a-propos/AProposClient.tsx:143)
 
-3. **Hotlinks Unsplash → rapatriement local** (perf + RGPD : pas de CDN tiers qui voit l'IP visiteur)
+2. **Hotlinks Unsplash → rapatriement local** (perf + RGPD : pas de CDN tiers qui voit l'IP visiteur)
    - [src/app/contact/ContactClient.tsx:132-135](src/app/contact/ContactClient.tsx:132) (4 images clients)
    - [src/app/a-propos/AProposClient.tsx](src/app/a-propos/AProposClient.tsx)
 
-4. **OG dédiés** sur les 4 pages commerciales clés (héritent du layout sinon, dommage au partage social) :
+3. **OG dédiés** sur les 4 pages commerciales clés (héritent du layout sinon, dommage au partage social) :
    - [src/app/services/page.tsx](src/app/services/page.tsx)
    - [src/app/offres/page.tsx](src/app/offres/page.tsx)
    - [src/app/cas-clients/page.tsx](src/app/cas-clients/page.tsx)
@@ -83,32 +80,32 @@ Dernière mise à jour : 2026-05-11
 
 ### Audit headings — restants à investiguer
 
-5. **`[Missing heading]` h2 après h1 sur homepage / services / offres** — probablement un badge / section visuelle stylée comme heading sans h-tag réel. À identifier composant par composant.
+4. **`[Missing heading]` h2 après h1 sur homepage / services / offres** — probablement un badge / section visuelle stylée comme heading sans h-tag réel. À identifier composant par composant.
 
-6. **`[Missing heading]` h3 avant footer (toutes pages)** — probablement le brand panel Footer (logo + texte « MV Agency ») détecté visuellement comme heading. Solution : transformer le `<span>` logo en h-tag approprié OU laisser tel quel (faux positif).
+5. **`[Missing heading]` h3 avant footer (toutes pages)** — probablement le brand panel Footer (logo + texte « MV Agency ») détecté visuellement comme heading. Solution : transformer le `<span>` logo en h-tag approprié OU laisser tel quel (faux positif).
 
-7. **Duplicates h2 mobile/desktop sur `/services`** — pattern responsive (CSS hide). Google gère, mais pour être 100 % propre : remplacer la version cachée par un `<div role="presentation">` ou conditionner le rendu côté React.
+6. **Duplicates h2 mobile/desktop sur `/services`** — pattern responsive (CSS hide). Google gère, mais pour être 100 % propre : remplacer la version cachée par un `<div role="presentation">` ou conditionner le rendu côté React.
 
 ### Contenu & autorité (court-moyen terme)
 
-8. **Articles blog** — 1 seul publié actuellement (`combien-coute-un-site-internet`). Pour bâtir l'autorité topique, viser **6-10 articles cornerstone** sur tes 4 piliers :
+7. **Articles blog** — 1 seul publié actuellement (`combien-coute-un-site-internet`). Pour bâtir l'autorité topique, viser **6-10 articles cornerstone** sur tes 4 piliers :
    - Création de site web (en cours)
    - IA pour PME
    - Automatisation (n8n / Make / Zapier)
    - SEO / acquisition
 
-9. **`sameAs` LinkedIn / Clutch / Malt** — dès profils créés, remplir [src/lib/seo.ts:116](src/lib/seo.ts:116) (renforce le knowledge graph)
+8. **`sameAs` LinkedIn / Clutch / Malt** — dès profils créés, remplir [src/lib/seo.ts:116](src/lib/seo.ts:116) (renforce le knowledge graph)
 
-10. **Backlinks initiaux** :
+9. **Backlinks initiaux** :
     - LinkedIn entreprise MV Agency
     - Profil Clutch et/ou Malt
     - Mentions presse locale (974 + agence belge/française)
 
 ### Schemas additionnels (nice-to-have)
 
-11. **`Service` schema** dédié sur `/services` (actuellement OfferCatalog seulement)
-12. **`AggregateRating` + `Review`** une fois 5+ avis clients publics collectés
-13. **`hreflang`** — non requis tant que mono-langue FR. À ajouter si tu lances une variante BE-FR / CH-FR / CA-FR ou une version EN
+10. **`Service` schema** dédié sur `/services` (actuellement OfferCatalog seulement)
+11. **`AggregateRating` + `Review`** une fois 5+ avis clients publics collectés
+12. **`hreflang`** — non requis tant que mono-langue FR. À ajouter si tu lances une variante BE-FR / CH-FR / CA-FR ou une version EN
 
 ---
 
@@ -127,8 +124,7 @@ Dernière mise à jour : 2026-05-11
 
 ## Ordre conseillé pour atteindre le « top »
 
-1. **Maintenant** → setup GSC + soumission sitemap (5 min)
-2. **Avant gros trafic** → migration `<Image>` + Unsplash local + OG dédiés (~2-3h dev)
-3. **Mois 1 post-launch** → 3 nouveaux articles cornerstone + LinkedIn entreprise + Clutch
-4. **Mois 2-3** → continuer blog (objectif 6-10 articles), collecter premiers avis (5+ pour AggregateRating)
-5. **Mois 3+** → backlinks ciblés, schemas avancés, audit hreflang si international
+1. **Avant gros trafic** → migration `<Image>` + Unsplash local + OG dédiés (~2-3h dev)
+2. **Mois 1 post-launch** → 3 nouveaux articles cornerstone + LinkedIn entreprise + Clutch
+3. **Mois 2-3** → continuer blog (objectif 6-10 articles), collecter premiers avis (5+ pour AggregateRating)
+4. **Mois 3+** → backlinks ciblés, schemas avancés, audit hreflang si international
