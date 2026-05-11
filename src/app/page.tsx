@@ -26,6 +26,19 @@ export const metadata: Metadata = {
   description:
     "Agence web et intelligence artificielle pour TPE, PME et indépendants. On conçoit votre site, on intègre l'IA dans vos process, on vous forme.",
   alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    title: "Agence web & IA pour PME — MV Agency",
+    description:
+      "On conçoit votre site, on intègre l'IA dans vos process, on vous forme. Pour TPE, PME et indépendants qui veulent comprendre, pas juste déléguer.",
+    url: SITE_URL,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Agence web & IA pour PME — MV Agency",
+    description:
+      "Sites premium et IA intégrée pour PME. On conçoit, on explique, on propulse.",
+  },
 };
 
 const techLogos = [
