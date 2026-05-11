@@ -277,65 +277,82 @@ export default function Page() {
             <h2 id="5-facteurs">Quels sont les 5 facteurs qui font varier le prix ?</h2>
             <p>
               À périmètre fonctionnel équivalent, cinq variables expliquent l&apos;essentiel des
-              écarts de prix entre devis :
+              écarts de prix entre devis.
             </p>
-            <ol>
-              <li>
-                <strong>Le nombre de pages</strong>{" "}— chaque page rédigée et designée prend
-                du temps. Passer de 5 à 15 pages double souvent l&apos;effort sans doubler
-                forcément la valeur.
-              </li>
-              <li>
-                <strong>Le degré de personnalisation visuelle</strong>{" "}— un design 100 %
-                sur-mesure (illustrations, micro-interactions, mockups) coûte
-                significativement plus qu&apos;un thème adapté.
-              </li>
-              <li>
-                <strong>La stack technique choisie</strong>{" "}— Next.js demande plus de
-                compétences que WordPress, mais offre des performances et une sécurité
-                supérieures. Le bon choix dépend du contexte.
-              </li>
-              <li>
-                <strong>Les intégrations tierces</strong>{" "}— connecter un CRM, un outil
-                d&apos;emailing, un système de paiement, une API IA, chacune de ces
-                intégrations ajoute du temps de développement et de tests.
-              </li>
-              <li>
-                <strong>La rédaction et la production de contenu</strong>{" "}— fournir vos
-                textes et images réduit le coût. Si l&apos;agence doit les produire (copywriting,
-                shooting photo, vidéo), comptez 500 à 3 000 € additionnels.
-              </li>
-            </ol>
+
+            <h3 id="facteur-pages">1. Le nombre de pages</h3>
+            <p>
+              Chaque page rédigée et designée prend du temps. Passer de 5 à 15 pages double
+              souvent l&apos;effort sans doubler forcément la valeur — la priorité doit être
+              donnée aux pages qui convertissent réellement.
+            </p>
+
+            <h3 id="facteur-design">2. Le degré de personnalisation visuelle</h3>
+            <p>
+              Un design 100 % sur-mesure (illustrations, micro-interactions, mockups) coûte
+              significativement plus qu&apos;un thème adapté. C&apos;est aussi ce qui crée la
+              différenciation et la première impression de crédibilité.
+            </p>
+
+            <h3 id="facteur-stack">3. La stack technique choisie</h3>
+            <p>
+              Next.js demande plus de compétences que WordPress, mais offre des performances
+              et une sécurité supérieures. Le bon choix dépend du contexte : volume de
+              trafic attendu, besoins d&apos;évolution, équipe interne en place.
+            </p>
+
+            <h3 id="facteur-integrations">4. Les intégrations tierces</h3>
+            <p>
+              Connecter un CRM, un outil d&apos;emailing, un système de paiement, une API IA —
+              chacune de ces intégrations ajoute du temps de développement et de tests, et
+              augmente le coût récurrent en abonnements logiciels.
+            </p>
+
+            <h3 id="facteur-contenu">5. La rédaction et la production de contenu</h3>
+            <p>
+              Fournir vos textes et images réduit le coût. Si l&apos;agence doit les produire
+              (copywriting, shooting photo, vidéo), comptez 500 à 3 000 € additionnels selon
+              le volume et le niveau de qualité attendu.
+            </p>
 
             <h2 id="couts-recurrents">Quels sont les coûts récurrents à prévoir ?</h2>
             <p>
-              Au-delà du devis initial, votre site génère des frais récurrents annuels qu&apos;il
-              faut intégrer dans votre plan financier :
+              Au-delà du devis initial, votre site génère des frais récurrents annuels
+              qu&apos;il faut intégrer dans votre plan financier.
             </p>
-            <ul>
-              <li>
-                <strong>Nom de domaine</strong>{" "}— entre 10 € et 50 € par an selon
-                l&apos;extension et le registrar.
-              </li>
-              <li>
-                <strong>Hébergement</strong>{" "}— 60 à 300 € par an pour un site vitrine
-                (Vercel, Netlify, OVH), bien plus pour de l&apos;e-commerce avec trafic.
-              </li>
-              <li>
-                <strong>Licences logicielles</strong>{" "}— thèmes WordPress premium, plugins,
-                API IA (OpenAI, Anthropic) : variable selon les choix techniques.
-              </li>
-              <li>
-                <strong>Maintenance technique</strong>{" "}— mises à jour de sécurité,
-                sauvegardes, monitoring. À budgéter à 50-150 € par mois pour un site qui
-                tourne en production.
-              </li>
-              <li>
-                <strong>Production de contenu</strong>{" "}— si vous publiez régulièrement
-                (blog SEO, articles métier), prévoyez du temps interne ou un budget de
-                rédaction.
-              </li>
-            </ul>
+
+            <h3 id="recurrent-domaine">Nom de domaine</h3>
+            <p>
+              Entre 10 € et 50 € par an selon l&apos;extension (.fr, .com, .io) et le
+              registrar choisi. Un poste minime mais incontournable.
+            </p>
+
+            <h3 id="recurrent-hebergement">Hébergement</h3>
+            <p>
+              60 à 300 € par an pour un site vitrine (Vercel, Netlify, OVH), bien plus pour
+              de l&apos;e-commerce avec du trafic ou des bases de données importantes.
+            </p>
+
+            <h3 id="recurrent-licences">Licences logicielles</h3>
+            <p>
+              Thèmes WordPress premium, plugins payants, API IA (OpenAI, Anthropic) :
+              variable selon les choix techniques. Compter de 0 € (stack 100 % open source)
+              à plusieurs centaines d&apos;euros par mois.
+            </p>
+
+            <h3 id="recurrent-maintenance">Maintenance technique</h3>
+            <p>
+              Mises à jour de sécurité, sauvegardes, monitoring. À budgéter à 50-150 € par
+              mois pour un site qui tourne en production — c&apos;est ce qui évite les
+              mauvaises surprises.
+            </p>
+
+            <h3 id="recurrent-contenu">Production de contenu</h3>
+            <p>
+              Si vous publiez régulièrement (blog SEO, articles métier), prévoyez du temps
+              interne ou un budget de rédaction. Sans contenu frais, le SEO stagne et le
+              site vieillit.
+            </p>
             <PullQuote>
               Sur 3 ans, les coûts récurrents totalisent souvent l&apos;équivalent d&apos;un tiers à
               la moitié du devis initial — un détail que les comparaisons rapides oublient.

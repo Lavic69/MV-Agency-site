@@ -43,9 +43,9 @@ import styles from "../agence-web-la-reunion/AgenceReunion.module.css";
 /* -------------------------------------------------------------------------- */
 
 export const metadata: Metadata = {
-  title: "Agence web France : sites & IA pour PME en distanciel | MV Agency",
+  title: "Agence web France : sites & IA pour PME | MV Agency",
   description:
-    "Agence web française accompagnant les PME en distanciel sur tout le territoire. Création de sites internet premium et intégration d'intelligence artificielle. Tarifs ajustés vs Paris.",
+    "Agence web française 100 % distancielle pour PME. Sites premium et intégration IA, méthode async (Notion, Loom). Tarifs ajustés vs Paris.",
   alternates: { canonical: "/agence-web-france" },
   openGraph: {
     type: "website",

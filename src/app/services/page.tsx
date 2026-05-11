@@ -25,8 +25,8 @@ import { BlogPreview } from '@/components/ui/BlogPreview';
 import { ShieldCheck, Scale, User, Globe2, Workflow, Bot, GraduationCap } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Services | MV Agency',
-  description: 'Découvrez comment nous propulsons les PME avec le digital et l\'IA.',
+  title: 'Services agence web & IA pour PME | MV Agency',
+  description: 'Création de sites premium, intégration d\'agents IA, automatisations métier et formation. 6 leviers concrets pour propulser votre PME.',
   alternates: { canonical: '/services' },
 };
 
@@ -90,9 +90,9 @@ export default function ServicesPage() {
         <div className={styles.container}>
           <FadeIn direction="up">
             <span className="eyebrow" style={{ textAlign: "center" }}>Notre Écosystème</span>
-            <h3 style={{ textAlign: 'center', fontSize: '1.8rem', color: 'var(--text-light)', marginBottom: '3rem' }}>
+            <h2 style={{ textAlign: 'center', fontSize: '1.8rem', color: 'var(--text-light)', marginBottom: '3rem' }}>
               <TextReveal>6 leviers pour accélérer votre croissance</TextReveal>
-            </h3>
+            </h2>
             <FeaturesGrid />
           </FadeIn>
         </div>
@@ -223,21 +223,21 @@ export default function ServicesPage() {
               <FadeIn direction="up" delay={0.1}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
                   <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}><ShieldCheck size={36} /></div>
-                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Satisfait ou remanié</h4>
+                  <h3 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Satisfait ou remanié</h3>
                   <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}>Rendu initial pas conforme ? <strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>On itère gratuitement</strong>, sans discussion.</p>
                 </div>
               </FadeIn>
               <FadeIn direction="up" delay={0.2}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
                   <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}><Scale size={36} /></div>
-                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Pas d&apos;engagement</h4>
+                  <h3 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Pas d&apos;engagement</h3>
                   <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}><strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>Aucun abonnement caché.</strong> Vous restez libres à tout moment.</p>
                 </div>
               </FadeIn>
               <FadeIn direction="up" delay={0.3}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
                   <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}><User size={36} /></div>
-                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Un seul interlocuteur</h4>
+                  <h3 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Un seul interlocuteur</h3>
                   <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}>Du premier appel à la livraison finale, <strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>une seule personne</strong> pilote votre projet.</p>
                 </div>
               </FadeIn>

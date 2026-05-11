@@ -11,7 +11,7 @@ const breadcrumbSchema = buildBreadcrumbSchema([
 export const metadata: Metadata = {
   title: "Contact — Parlons de votre projet",
   description:
-    "Prenez rendez-vous avec Victor Marchetti, fondateur de MV Agency. Échange de 30 minutes gratuit pour discuter de votre projet web ou IA. Réponse sous 24h ouvrées.",
+    "Réservez un appel découverte de 30 minutes avec Victor Marchetti pour votre projet web ou IA. Sans engagement. Réponse sous 24h ouvrées.",
   alternates: { canonical: "/contact" },
   openGraph: {
     type: "website",

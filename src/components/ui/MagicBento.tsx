@@ -595,7 +595,7 @@ export default function MagicBento({
                   </div>
                 </div>
                 <div className="magic-bento-card__content" style={{ flex: 1, display: 'flex', flexDirection: 'column', marginTop: '1.25rem' }}>
-                  <h2 className="magic-bento-card__title">{card.title}</h2>
+                  <h3 className="magic-bento-card__title">{card.title}</h3>
                   <p className="magic-bento-card__description">{card.description}</p>
                   {/* @ts-ignore */}
                   {card.illustration && card.illustration}
@@ -722,7 +722,7 @@ export default function MagicBento({
                 </div>
               </div>
               <div className="magic-bento-card__content" style={{ flex: 1, display: 'flex', flexDirection: 'column', marginTop: '1.25rem' }}>
-                <h2 className="magic-bento-card__title">{card.title}</h2>
+                <h3 className="magic-bento-card__title">{card.title}</h3>
                 <p className="magic-bento-card__description">{card.description}</p>
                 {/* @ts-ignore */}
                 {card.illustration && card.illustration}

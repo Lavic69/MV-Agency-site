@@ -23,20 +23,20 @@ export const Footer = () => {
 
           <div className={styles.linksPanel}>
             <div className={styles.column}>
-              <h4 className={styles.colTitle}>Agence</h4>
+              <h3 className={styles.colTitle}>Agence</h3>
               <Link href="/services" className={styles.link}>Services</Link>
               <Link href="/offres" className={styles.link}>Offres &amp; Packs</Link>
               <Link href="/a-propos" className={styles.link}>À propos</Link>
               <Link href="/contact" className={styles.link}>Contact</Link>
             </div>
             <div className={styles.column}>
-              <h4 className={styles.colTitle}>Ressources</h4>
+              <h3 className={styles.colTitle}>Ressources</h3>
               <Link href="/cas-clients" className={styles.link}>Cas clients</Link>
               <Link href="/blog" className={styles.link}>Blog &amp; Actualités</Link>
               <Link href="/plan-du-site" className={styles.link}>Plan du site</Link>
             </div>
             <div className={styles.column}>
-              <h4 className={styles.colTitle}>Légal</h4>
+              <h3 className={styles.colTitle}>Légal</h3>
               <Link href="/mentions-legales" className={styles.link}>Mentions Légales</Link>
               <Link href="/politique-de-confidentialite" className={styles.link}>Confidentialité</Link>
               <Link href="/cgv" className={styles.link}>CGV</Link>

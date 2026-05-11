@@ -135,7 +135,7 @@ export function AnimatedTestimonials({
                   <div className={styles.userInfo}>
                     <img src={testimonial.avatar} alt={testimonial.name} className={styles.avatar} />
                     <div>
-                      <h4 className={styles.userName}>{testimonial.name}</h4>
+                      <h3 className={styles.userName}>{testimonial.name}</h3>
                       <p className={styles.userRole}>
                         {testimonial.role}, {testimonial.company}
                       </p>

@@ -49,7 +49,7 @@ import styles from "./AgenceReunion.module.css";
 export const metadata: Metadata = {
   title: "Agence web & IA à La Réunion (974) | MV Agency",
   description:
-    "Agence web & intelligence artificielle à La Réunion. Création de sites web premium, agents IA et automatisations pour TPE/PME. Intervention sur toute l'île — Saint-Denis, Saint-Pierre, Saint-Paul, Le Port, en présentiel ou en visio.",
+    "Agence web et IA à La Réunion. Sites premium et agents IA pour TPE/PME — Saint-Denis, Saint-Pierre, Saint-Paul, Le Port. Présentiel ou visio.",
   alternates: { canonical: "/agence-web-la-reunion" },
   openGraph: {
     type: "website",

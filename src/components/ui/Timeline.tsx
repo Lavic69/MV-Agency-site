@@ -105,7 +105,7 @@ export const Timeline = ({ steps }: TimelineProps) => {
                   }}
                 >
                   <div className="card-number">{step.num}</div>
-                  <h4 className="card-title">{step.title}</h4>
+                  <h3 className="card-title">{step.title}</h3>
                   <p className="card-text">{step.text}</p>
                 </div>
               </motion.div>

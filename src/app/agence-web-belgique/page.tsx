@@ -44,7 +44,7 @@ import { techLogos } from "@/data/tech-logos";
 export const metadata: Metadata = {
   title: "Agence web & IA en Belgique | MV Agency",
   description:
-    "Agence web & intelligence artificielle pour les PME belges. Création de sites web premium, agents IA et automatisations. Bruxelles, Wallonie, Liège, Namur, Charleroi — collaboration 100 % asynchrone (visio, Loom, Notion).",
+    "Agence web et IA pour les PME belges. Sites premium, agents IA et automatisations. Bruxelles, Wallonie, Liège. Collaboration 100 % asynchrone.",
   alternates: { canonical: "/agence-web-belgique" },
   openGraph: {
     type: "website",
