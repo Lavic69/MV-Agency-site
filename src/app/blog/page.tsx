@@ -17,6 +17,18 @@ export const metadata: Metadata = {
   description:
     "Articles approfondis sur la création de sites web, l'intelligence artificielle pour PME, le SEO et le marketing digital — par Victor Marchetti.",
   alternates: { canonical: "/blog" },
+  openGraph: {
+    type: "website",
+    title: "Blog MV Agency — Web, IA, SEO pour PME",
+    description:
+      "Articles approfondis sur la création de sites web, l'IA pour PME, le SEO et le marketing digital — par Victor Marchetti.",
+    url: `${SITE_URL}/blog`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog MV Agency",
+    description: "Ressources web, IA et SEO pour PME — par Victor Marchetti.",
+  },
 };
 
 const breadcrumbSchema = buildBreadcrumbSchema([

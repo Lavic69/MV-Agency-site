@@ -12,6 +12,7 @@ import {
   SiOpenai,
   SiAnthropic,
 } from "react-icons/si";
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 export type TechLogo = { node: ReactNode; title: string };
@@ -34,6 +35,5 @@ export const techLogos: TechLogo[] = [
   { node: <SiFramer size={40} color="#0055FF" />, title: "Framer" },
   { node: <SiOdoo size={55} color="#714B67" />, title: "Odoo" },
   { node: <SiFigma size={40} color="var(--text-light)" />, title: "Figma" },
-  // eslint-disable-next-line @next/next/no-img-element
-  { node: <img src="https://svgl.app/library/n8n.svg" style={{ height: 35, width: "auto" }} alt="n8n" />, title: "n8n" },
+  { node: <Image src="/tech/n8n.svg" width={35} height={35} style={{ height: 35, width: "auto" }} alt="n8n" />, title: "n8n" },
 ];
