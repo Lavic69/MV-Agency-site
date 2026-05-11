@@ -14,6 +14,7 @@ import {
   MobileWorkflowAnim,
   MobileIAAnim,
   MobileFormationAnim,
+  MobileEcosystemAnim,
 } from '@/components/ui/mockups/MobileServiceAnims';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { TextReveal } from '@/components/ui/TextReveal';
@@ -102,31 +103,8 @@ export default function ServicesPage() {
               </div>
             </FadeIn>
             <FadeIn direction="up" delay={0.4}>
-              <div className={styles.heroPillarsGrid} style={{ marginTop: '2.5rem' }}>
-                <div className={styles.heroPillarItem}>
-                  <div className={styles.heroPillarIcon} style={{ background: 'rgba(59,130,246,0.12)', borderColor: 'rgba(59,130,246,0.4)', color: '#60a5fa' }}>
-                    <Globe2 size={22} />
-                  </div>
-                  <span className={styles.heroPillarLabel}>Développement Web</span>
-                </div>
-                <div className={styles.heroPillarItem}>
-                  <div className={styles.heroPillarIcon} style={{ background: 'rgba(168,85,247,0.12)', borderColor: 'rgba(168,85,247,0.4)', color: '#d8b4fe' }}>
-                    <Bot size={22} />
-                  </div>
-                  <span className={styles.heroPillarLabel}>Intelligence Artificielle</span>
-                </div>
-                <div className={styles.heroPillarItem}>
-                  <div className={styles.heroPillarIcon} style={{ background: 'rgba(16,185,129,0.12)', borderColor: 'rgba(16,185,129,0.4)', color: '#34d399' }}>
-                    <Workflow size={22} />
-                  </div>
-                  <span className={styles.heroPillarLabel}>Automatisation</span>
-                </div>
-                <div className={styles.heroPillarItem}>
-                  <div className={styles.heroPillarIcon} style={{ background: 'rgba(251,146,60,0.12)', borderColor: 'rgba(251,146,60,0.4)', color: '#fdba74' }}>
-                    <GraduationCap size={22} />
-                  </div>
-                  <span className={styles.heroPillarLabel}>Formation & Autonomie</span>
-                </div>
+              <div style={{ marginTop: '2.5rem', display: 'flex', justifyContent: 'center' }}>
+                <MobileEcosystemAnim />
               </div>
             </FadeIn>
           </div>
