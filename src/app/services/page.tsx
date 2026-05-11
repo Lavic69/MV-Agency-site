@@ -9,6 +9,12 @@ import { MockupWorkflow } from '@/components/ui/mockups/MockupWorkflow';
 import { MockupTree } from '@/components/ui/mockups/MockupTree';
 import { MockupIA } from '@/components/ui/mockups/MockupIA';
 import { MockupEcosystem } from '@/components/ui/mockups/MockupEcosystem';
+import {
+  MobileWebAnim,
+  MobileWorkflowAnim,
+  MobileIAAnim,
+  MobileFormationAnim,
+} from '@/components/ui/mockups/MobileServiceAnims';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { TextReveal } from '@/components/ui/TextReveal';
 import { AnimatedTestimonials } from '@/components/ui/AnimatedTestimonials';
@@ -173,11 +179,11 @@ export default function ServicesPage() {
               </div>
             </div>
           </div>
-          {/* Mobile: card simple icon + texte + bullets */}
+          {/* Mobile: card avec animation web + texte + bullets */}
           <div className={styles.mobileOnly}>
             <FadeIn direction="up">
               <div className={styles.mobileServiceCard}>
-                <div className={styles.mobileServiceIcon}><Globe2 size={32} /></div>
+                <MobileWebAnim />
                 <span className={styles.mobileServiceEyebrow}>Création Web</span>
                 <h2 className={styles.mobileServiceTitle}>Une présence digitale qui marque les esprits</h2>
                 <ul className={styles.mobileServiceBullets}>
@@ -231,7 +237,7 @@ export default function ServicesPage() {
           <div className={styles.mobileOnly}>
             <FadeIn direction="up">
               <div className={styles.mobileServiceCard}>
-                <div className={styles.mobileServiceIcon}><Workflow size={32} /></div>
+                <MobileWorkflowAnim />
                 <span className={styles.mobileServiceEyebrow}>Automatisation</span>
                 <h2 className={styles.mobileServiceTitle}>L'automatisation au service de votre productivité</h2>
                 <ul className={styles.mobileServiceBullets}>
@@ -322,7 +328,7 @@ export default function ServicesPage() {
           <div className={styles.mobileOnly}>
             <FadeIn direction="up">
               <div className={styles.mobileServiceCard}>
-                <div className={styles.mobileServiceIcon}><Bot size={32} /></div>
+                <MobileIAAnim />
                 <span className={styles.mobileServiceEyebrow}>Agents IA</span>
                 <h2 className={styles.mobileServiceTitle}>L'Intelligence Artificielle intégrée à votre métier</h2>
                 <ul className={styles.mobileServiceBullets}>
@@ -373,7 +379,7 @@ export default function ServicesPage() {
           <div className={styles.mobileOnly}>
             <FadeIn direction="up">
               <div className={styles.mobileServiceCard}>
-                <div className={styles.mobileServiceIcon}><GraduationCap size={32} /></div>
+                <MobileFormationAnim />
                 <span className={styles.mobileServiceEyebrow}>Formation & Accompagnement</span>
                 <h2 className={styles.mobileServiceTitle}>Vous rendre 100% autonome</h2>
                 <ul className={styles.mobileServiceBullets}>
