@@ -67,13 +67,13 @@ export const Header = () => {
           <Link href="/cas-clients" className={styles.mobileNavLink} onClick={closeMenu}>Cas Clients</Link>
           <Link href="/offres" className={styles.mobileNavLink} onClick={closeMenu}>Offres & Packs</Link>
           <Link href="/a-propos" className={styles.mobileNavLink} onClick={closeMenu}>À propos</Link>
-          <Link href="/blog" className={styles.mobileNavLink} onClick={closeMenu}>Ressources</Link>
+          <Link href="/contact" className={styles.mobileNavLink} onClick={closeMenu}>Contact</Link>
         </nav>
         
         <div className={styles.mobileMenuFooter}>
           <Link href="/contact" onClick={closeMenu} style={{ width: '100%', textDecoration: 'none' }}>
-            <Button variant="primary" style={{ width: '100%', padding: '1.2rem', fontSize: '1.1rem' }}>
-              Discuter de votre projet
+            <Button variant="primary" style={{ width: '100%', padding: '1rem', fontSize: '1rem' }}>
+              Réserver un appel offert
             </Button>
           </Link>
           <a href="mailto:contact@mv-agency.com" className={styles.contactEmail} style={{ marginTop: '1rem' }}>
