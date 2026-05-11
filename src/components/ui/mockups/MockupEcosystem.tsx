@@ -105,7 +105,7 @@ export const MockupEcosystem = () => {
         <div style={{ position: 'absolute', top: LOGICAL_HEIGHT/2 - 130, left: LOGICAL_WIDTH/2, transform: 'translate(-50%, -50%)', zIndex: 2 }}>
           <div style={{ position: 'relative', width: 48, height: 48, borderRadius: '50%', background: '#111827', border: '1px solid rgba(59, 130, 246, 0.4)', color: '#60a5fa', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', boxShadow: '0 0 15px rgba(59, 130, 246, 0.2)' }}>
             <FaDesktop />
-            <span style={{ position: 'absolute', bottom: '100%', marginBottom: '14px', left: '50%', transform: 'translateX(-50%)', color: 'var(--text-light)', fontWeight: 'bold', fontSize: '1rem', whiteSpace: 'nowrap' }}>Développement Web</span>
+            <span className="ecosystem-label" style={{ position: 'absolute', bottom: '100%', marginBottom: '14px', left: '50%', transform: 'translateX(-50%)', color: 'var(--text-light)', fontWeight: 'bold', fontSize: '1rem', whiteSpace: 'nowrap' }}>Développement Web</span>
           </div>
         </div>
 
@@ -113,7 +113,7 @@ export const MockupEcosystem = () => {
         <div style={{ position: 'absolute', top: LOGICAL_HEIGHT/2, left: LOGICAL_WIDTH/2 + 130, transform: 'translate(-50%, -50%)', zIndex: 2 }}>
           <div style={{ position: 'relative', width: 52, height: 52, borderRadius: '50%', background: '#111827', border: '1px solid rgba(168, 85, 247, 0.4)', color: '#d8b4fe', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', boxShadow: '0 0 15px rgba(168, 85, 247, 0.2)' }}>
             <FaRobot />
-            <span style={{ position: 'absolute', left: '100%', marginLeft: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-light)', fontWeight: 'bold', fontSize: '0.95rem', whiteSpace: 'nowrap' }}>Intelligence<br/>Artificielle</span>
+            <span className="ecosystem-label" style={{ position: 'absolute', left: '100%', marginLeft: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-light)', fontWeight: 'bold', fontSize: '0.95rem', whiteSpace: 'nowrap' }}>Intelligence<br/>Artificielle</span>
           </div>
         </div>
 
@@ -121,7 +121,7 @@ export const MockupEcosystem = () => {
         <div style={{ position: 'absolute', top: LOGICAL_HEIGHT/2 + 130, left: LOGICAL_WIDTH/2, transform: 'translate(-50%, -50%)', zIndex: 2 }}>
           <div style={{ position: 'relative', width: 48, height: 48, borderRadius: '50%', background: '#111827', border: '1px solid rgba(16, 185, 129, 0.4)', color: '#34d399', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', boxShadow: '0 0 15px rgba(16, 185, 129, 0.2)' }}>
             <FaBolt />
-            <span style={{ position: 'absolute', top: '100%', marginTop: '14px', left: '50%', transform: 'translateX(-50%)', color: 'var(--text-light)', fontWeight: 'bold', fontSize: '0.95rem', whiteSpace: 'nowrap' }}>Automatisation</span>
+            <span className="ecosystem-label" style={{ position: 'absolute', top: '100%', marginTop: '14px', left: '50%', transform: 'translateX(-50%)', color: 'var(--text-light)', fontWeight: 'bold', fontSize: '0.95rem', whiteSpace: 'nowrap' }}>Automatisation</span>
           </div>
         </div>
 
@@ -129,11 +129,21 @@ export const MockupEcosystem = () => {
         <div style={{ position: 'absolute', top: LOGICAL_HEIGHT/2, left: LOGICAL_WIDTH/2 - 130, transform: 'translate(-50%, -50%)', zIndex: 2 }}>
           <div style={{ position: 'relative', width: 48, height: 48, borderRadius: '50%', background: '#111827', border: '1px solid rgba(251, 146, 60, 0.4)', color: '#fdba74', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', boxShadow: '0 0 15px rgba(251, 146, 60, 0.2)' }}>
             <FaGraduationCap />
-            <span style={{ position: 'absolute', right: '100%', marginRight: '16px', top: '50%', transform: 'translateY(-50%)', textAlign: 'right', color: 'var(--text-light)', fontWeight: 'bold', fontSize: '0.95rem', whiteSpace: 'nowrap' }}>Formation<br/>& Autonomie</span>
+            <span className="ecosystem-label" style={{ position: 'absolute', right: '100%', marginRight: '16px', top: '50%', transform: 'translateY(-50%)', textAlign: 'right', color: 'var(--text-light)', fontWeight: 'bold', fontSize: '0.95rem', whiteSpace: 'nowrap' }}>Formation<br/>& Autonomie</span>
           </div>
         </div>
 
       </div>
+      <style jsx>{`
+        @media (max-width: 767px) {
+          :global(.ecosystem-label) {
+            white-space: normal !important;
+            max-width: 80px;
+            font-size: 0.7rem !important;
+            line-height: 1.2;
+          }
+        }
+      `}</style>
     </div>
   );
 };
