@@ -177,18 +177,18 @@ export const MockupIA = () => {
           0% { width: 10%; }
           100% { width: 95%; }
         }
-        .mockup-ia-scaler { width: 100%; }
+        .mockup-ia-scaler { width: 100%; display: flex; justify-content: center; }
         @media (max-width: 767px) {
           .mockup-ia-scaler {
             transform-origin: top center;
-            transform: scale(0.92);
-            margin-bottom: -6%;
+            transform: scale(0.98);
+            margin-bottom: -2%;
           }
         }
         @media (max-width: 480px) {
           .mockup-ia-scaler {
-            transform: scale(0.8);
-            margin-bottom: -16%;
+            transform: scale(0.88);
+            margin-bottom: -10%;
           }
         }
       `}</style>

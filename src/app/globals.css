@@ -192,3 +192,40 @@ a {
     margin-bottom: -12%;
   }
 }
+
+/* MockupHub : sidebar icon-only sur mobile pour libérer 130px d'espace au
+   dashboard. Pattern emprunté aux vrais SaaS responsives (GitHub/Linear/Notion).
+   Sur desktop, sidebar reste 180px avec labels textuels complets. */
+@media (max-width: 767px) {
+  .mv-hub-sidebar {
+    width: 56px !important;
+    padding: 16px 0 !important;
+  }
+  .mv-hub-logo {
+    padding: 0 0 16px !important;
+    justify-content: center !important;
+  }
+  .mv-hub-logo-text {
+    display: none !important;
+  }
+  .mv-hub-nav {
+    padding: 12px 6px !important;
+  }
+  .mv-hub-nav-item {
+    justify-content: center !important;
+    padding: 9px 6px !important;
+    gap: 0 !important;
+  }
+  .mv-hub-nav-label {
+    display: none !important;
+  }
+  .mv-hub-account {
+    margin: 0 6px !important;
+    padding: 6px !important;
+    justify-content: center !important;
+    gap: 0 !important;
+  }
+  .mv-hub-account-text {
+    display: none !important;
+  }
+}

@@ -69,6 +69,7 @@ export function MockupHub() {
     >
       {/* ── SIDEBAR ── */}
       <div
+        className="mv-hub-sidebar"
         style={{
           width: "180px",
           flexShrink: 0,
@@ -80,6 +81,7 @@ export function MockupHub() {
       >
         {/* Logo */}
         <div
+          className="mv-hub-logo"
           style={{
             display: "flex",
             alignItems: "center",
@@ -101,11 +103,13 @@ export function MockupHub() {
               fontSize: "12px",
               color: "#fff",
               letterSpacing: "-0.5px",
+              flexShrink: 0,
             }}
           >
             MV
           </div>
           <span
+            className="mv-hub-logo-text"
             style={{
               color: "#fff",
               fontWeight: 700,
@@ -118,10 +122,11 @@ export function MockupHub() {
         </div>
 
         {/* Nav */}
-        <nav style={{ flex: 1, padding: "12px 8px" }}>
+        <nav className="mv-hub-nav" style={{ flex: 1, padding: "12px 8px" }}>
           {navItems.map((item, i) => (
             <div
               key={i}
+              className="mv-hub-nav-item"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -140,7 +145,7 @@ export function MockupHub() {
               }}
             >
               {item.icon}
-              <span style={{ fontSize: "12px", fontWeight: item.active ? 600 : 400 }}>
+              <span className="mv-hub-nav-label" style={{ fontSize: "12px", fontWeight: item.active ? 600 : 400 }}>
                 {item.label}
               </span>
             </div>
@@ -149,6 +154,7 @@ export function MockupHub() {
 
         {/* Account */}
         <div
+          className="mv-hub-account"
           style={{
             margin: "0 8px",
             padding: "10px",
@@ -174,7 +180,7 @@ export function MockupHub() {
           >
             <UserCircle size={16} color="#fff" />
           </div>
-          <div style={{ overflow: "hidden" }}>
+          <div className="mv-hub-account-text" style={{ overflow: "hidden" }}>
             <div
               style={{
                 color: "#fff",

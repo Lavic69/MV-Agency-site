@@ -172,18 +172,20 @@ export const MockupWeb = () => {
     <style>{`
       .mockup-web-scaler {
         width: 100%;
+        display: flex;
+        justify-content: center;
       }
       @media (max-width: 767px) {
         .mockup-web-scaler {
           transform-origin: top center;
-          transform: scale(0.85);
-          margin-bottom: -10%;
+          transform: scale(0.98);
+          margin-bottom: -2%;
         }
       }
       @media (max-width: 480px) {
         .mockup-web-scaler {
-          transform: scale(0.75);
-          margin-bottom: -18%;
+          transform: scale(0.88);
+          margin-bottom: -10%;
         }
       }
     `}</style>

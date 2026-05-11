@@ -292,6 +292,10 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   align-items: stretch;
+  /* Empêche les enfants box-content de déborder du grid */
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
 }
 
 @media (max-width: 860px) {
@@ -310,6 +314,11 @@
   overflow: hidden;
   backdrop-filter: blur(6px);
   transition: border-color 0.2s ease, transform 0.2s ease;
+  /* Garantit que la card ne déborde jamais du viewport */
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .serviceCard:hover {
@@ -340,11 +349,15 @@
    clippe ou le mockup ne remplit pas son espace dédié. On override le scale
    interne avec la valeur correcte au contexte card. */
 @media (max-width: 767px) {
-  /* Cards légèrement plus fines + centrées */
+  /* Grid : padding latéral pour breathing room. Garantit que cards ne touchent
+     pas les bords du viewport. */
+  .servicesGrid {
+    padding: 0 0.5rem;
+    gap: 1.25rem;
+  }
+  /* Cards : pas de max-width, on laisse la grid + padding gérer la largeur */
   .serviceCard {
-    max-width: 94%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
   }
   .serviceMockupWrapper {
     height: 220px;
@@ -355,7 +368,7 @@
   }
   /* Override scale interne mockup pour qu'il remplisse la card sans déborder */
   .serviceMockupWrapper :global(.mockup-web-scaler) {
-    transform: scale(0.6) !important;
+    transform: scale(0.55) !important;
     transform-origin: top center !important;
     margin-bottom: 0 !important;
   }

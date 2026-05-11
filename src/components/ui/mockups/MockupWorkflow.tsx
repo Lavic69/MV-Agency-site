@@ -18,18 +18,24 @@ export const MockupWorkflow = () => {
     }}>
       
       {/* SVG Connections with animated dash */}
-      <svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0 }}>
-        {/* Line 1 -> 2 (Webhook to OpenAI) */}
-        <path d="M 120 95 C 160 95, 160 175, 220 175" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" />
-        <path d="M 120 95 C 160 95, 160 175, 220 175" fill="none" stroke="#2563eb" strokeWidth="3" className="data-flow" />
-        
-        {/* Line 2 -> 3 (OpenAI to Email) */}
-        <path d="M 300 175 C 340 175, 340 75, 400 75" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" />
-        <path d="M 300 175 C 340 175, 340 75, 400 75" fill="none" stroke="#22c55e" strokeWidth="3" className="data-flow-2" />
+      <svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0 }} className="workflow-svg">
+        {/* Line 1 -> 2 (Webhook to OpenAI) — desktop coords */}
+        <path className="path-1 path-desktop" d="M 120 95 C 160 95, 160 175, 220 175" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" />
+        <path className="path-1 path-desktop data-flow" d="M 120 95 C 160 95, 160 175, 220 175" fill="none" stroke="#2563eb" strokeWidth="3" />
+
+        {/* Line 2 -> 3 (OpenAI to Email) — desktop coords */}
+        <path className="path-2 path-desktop" d="M 300 175 C 340 175, 340 75, 400 75" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" />
+        <path className="path-2 path-desktop data-flow-2" d="M 300 175 C 340 175, 340 75, 400 75" fill="none" stroke="#22c55e" strokeWidth="3" />
+
+        {/* Mobile : nodes plus rapprochés (Email à left:250 au lieu de 380, AI à left:140) */}
+        <path className="path-1 path-mobile" d="M 120 95 C 140 95, 140 175, 160 175" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" />
+        <path className="path-1 path-mobile data-flow" d="M 120 95 C 140 95, 140 175, 160 175" fill="none" stroke="#2563eb" strokeWidth="3" />
+        <path className="path-2 path-mobile" d="M 240 175 C 260 175, 260 65, 280 65" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" />
+        <path className="path-2 path-mobile data-flow-2" d="M 240 175 C 260 175, 260 65, 280 65" fill="none" stroke="#22c55e" strokeWidth="3" />
       </svg>
 
       {/* Node 1: Webhook */}
-      <div className="node" style={{ top: '65px', left: '20px' }}>
+      <div className="node node-webhook" style={{ top: '65px', left: '20px' }}>
         <div style={{ backgroundColor: '#8b5cf6', padding: '12px', borderRadius: '12px 0 0 12px', display: 'flex', alignItems: 'center' }}>
           <FaGlobe color="var(--text-light)" size={20} />
         </div>
@@ -40,7 +46,7 @@ export const MockupWorkflow = () => {
       </div>
 
       {/* Node 2: AI */}
-      <div className="node floating" style={{ top: '145px', left: '200px' }}>
+      <div className="node node-ai floating" style={{ top: '145px', left: '200px' }}>
         <div style={{ backgroundColor: '#2563eb', padding: '12px', borderRadius: '12px 0 0 12px', display: 'flex', alignItems: 'center' }}>
           <FaBrain color="var(--text-light)" size={20} />
         </div>
@@ -51,7 +57,7 @@ export const MockupWorkflow = () => {
       </div>
 
       {/* Node 3: Email */}
-      <div className="node" style={{ top: '45px', left: '380px' }}>
+      <div className="node node-email" style={{ top: '45px', left: '380px' }}>
         <div style={{ backgroundColor: '#22c55e', padding: '12px', borderRadius: '12px 0 0 12px', display: 'flex', alignItems: 'center' }}>
           <FaEnvelope color="var(--text-light)" size={20} />
         </div>
@@ -103,18 +109,42 @@ export const MockupWorkflow = () => {
 
         .mockup-workflow-scaler {
           width: 100%;
+          display: flex;
+          justify-content: center;
         }
+        /* Desktop : paths desktop visibles, mobile cachés */
+        .path-mobile { display: none; }
+        .path-desktop { display: block; }
+
+        /* Mobile : on repositionne Node 3 (Email) plus à gauche pour qu'il rentre
+           dans le viewport, plutôt que de scale-down agressivement. */
         @media (max-width: 767px) {
           .mockup-workflow-scaler {
             transform-origin: top center;
-            transform: scale(0.92);
-            margin-bottom: -6%;
+            transform: scale(0.95);
+            margin-bottom: -4%;
           }
+          .node-email {
+            left: 250px !important;
+            top: 35px !important;
+          }
+          .node-ai {
+            left: 140px !important;
+          }
+          .path-mobile { display: block; }
+          .path-desktop { display: none; }
         }
         @media (max-width: 480px) {
           .mockup-workflow-scaler {
-            transform: scale(0.78);
-            margin-bottom: -18%;
+            transform: scale(0.85);
+            margin-bottom: -12%;
+          }
+          .node-email {
+            left: 240px !important;
+            top: 30px !important;
+          }
+          .node-ai {
+            left: 130px !important;
           }
         }
       `}</style>

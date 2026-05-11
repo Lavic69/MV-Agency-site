@@ -11,10 +11,10 @@ export const MockupEcosystem = () => {
   const LOGICAL_WIDTH = 550;
   const LOGICAL_HEIGHT = 450;
   // Les labels textuels ("Intelligence Artificielle", "Formation & Autonomie", etc.)
-  // dépassent de la zone LOGICAL_WIDTH × LOGICAL_HEIGHT — il faut compter ~120px de
-  // débordement de chaque côté horizontalement pour que rien ne soit clippé par
-  // overflow:hidden et que la visualisation soit naturellement centrée.
-  const HORIZONTAL_PADDING = 280;
+  // dépassent de la zone LOGICAL_WIDTH × LOGICAL_HEIGHT. Marge généreuse (180px
+  // de chaque côté) pour qu'aucun label ne soit clippé et que la visualisation
+  // reste visuellement centrée même quand les labels asymmétriques par taille.
+  const HORIZONTAL_PADDING = 360;
 
   useEffect(() => {
     const handleResize = () => {

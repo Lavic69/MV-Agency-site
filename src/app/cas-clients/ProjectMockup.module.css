@@ -123,26 +123,38 @@
 }
 
 @media (max-width: 768px) {
-  /* Important : on bascule en display:block au lieu de flex+aspect-ratio,
-     car la combinaison flex parent + aspect-ratio enfant + Next.js Image fill
-     collapse à 0 hauteur sur iOS Safari — résultat : seul le browser header
-     (24px) s'affiche, contenu de l'image invisible. */
+  /* iOS Safari ne propage pas correctement aspect-ratio aux enfants quand le
+     parent est en flex+aspect-ratio. Résultat : .desktopFrame collapse à 24px
+     (juste la hauteur du browserHeader). Next/Image `fill` exige un parent
+     avec dimensions calculées SYNCHRONE — aspect-ratio est résolu async.
+     Fix : hauteur explicite en viewport units (56vw ≈ ratio 16/10 + marge). */
   .mockupContainer {
     display: block;
     perspective: none;
     aspect-ratio: unset;
     width: 100%;
+    height: 56vw;
+    min-height: 200px;
     margin: 1rem 0 2rem 0;
+    position: relative;
   }
 
   .desktopFrame {
     width: 100%;
-    aspect-ratio: 16/10;
+    height: 100%;
+    aspect-ratio: unset;
     transform: rotateY(0deg) rotateX(0deg) !important;
+  }
+
+  /* .screenContent prend l'espace restant après le browserHeader (24px) */
+  .screenContent {
+    height: calc(100% - 24px);
   }
 
   .mobileFrame {
     width: 30%;
+    height: auto;
+    aspect-ratio: 9/19;
     transform: translateZ(10px) rotateY(-5deg) rotateX(0deg) !important;
     right: 0%;
     bottom: -10%;
@@ -150,6 +162,8 @@
 
   .saasFrame {
     width: 65%;
+    height: auto;
+    aspect-ratio: 16/10;
     transform: translateZ(5px) rotateY(-5deg) rotateX(0deg) !important;
     right: 2%;
     bottom: -5%;
