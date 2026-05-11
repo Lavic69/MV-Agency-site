@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import LogoLoop from "@/components/ui/LogoLoop";
@@ -18,6 +19,13 @@ import { realizations } from "@/data/projects";
 import { SiWordpress, SiWebflow, SiNotion, SiShopify, SiOpenai, SiAnthropic, SiReact, SiNextdotjs, SiFigma, SiN8N, SiStripe, SiVercel, SiOdoo, SiJira, SiAsana, SiFramer } from 'react-icons/si';
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL, buildFaqPageSchema } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "Agence web & IA pour PME | MV Agency",
+  description:
+    "Agence web et intelligence artificielle pour TPE, PME et indépendants. On conçoit votre site, on intègre l'IA dans vos process, on vous forme.",
+  alternates: { canonical: "/" },
+};
 
 const techLogos = [
   { node: <SiWordpress size={40} color="#21759b" />, title: "WordPress" },
@@ -240,16 +248,16 @@ export default function Home() {
         {/* S2 — TECHNOLOGIES (Désormais sous le fond interactif) */}
         <section className={styles.marqueeSection} style={{ padding: '8rem 0 6rem 0', background: 'transparent', position: 'relative', zIndex: 1, flexDirection: 'column', alignItems: 'center' }}>
           <div style={{ textAlign: "center", marginBottom: "4rem", padding: "0 2rem" }}>
-              <h3 style={{ 
-                fontSize: "clamp(1.8rem, 4vw, 2.6rem)", 
-                fontWeight: 600, 
+              <h2 style={{
+                fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
+                fontWeight: 600,
                 fontFamily: "var(--font-heading), sans-serif",
                 letterSpacing: "-0.03em",
                 color: "var(--text-light)",
                 margin: 0
               }}>
                 <TextReveal>Partenaires techniques certifiés</TextReveal>
-              </h3>
+              </h2>
           </div>
           <div style={{ width: '100%' }}>
             {/* @ts-ignore - LogoLoop is a JSX component */}
@@ -378,7 +386,7 @@ export default function Home() {
                   <div style={{ color: '#60A5FA', padding: '16px', background: 'var(--bg-deep)', borderRadius: '16px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}>
                     <ShieldCheck size={36} />
                   </div>
-                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Satisfait ou remanié</h4>
+                  <h3 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Satisfait ou remanié</h3>
                   <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}>Rendu initial pas conforme ? <strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>On itère gratuitement</strong>, sans discussion.</p>
                 </div>
               </FadeIn>
@@ -387,7 +395,7 @@ export default function Home() {
                   <div style={{ color: '#60A5FA', padding: '16px', background: 'var(--bg-deep)', borderRadius: '16px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}>
                     <Scale size={36} />
                   </div>
-                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Pas d&apos;engagement</h4>
+                  <h3 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Pas d&apos;engagement</h3>
                   <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}><strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>Aucun abonnement caché.</strong> Vous restez libres à tout moment.</p>
                 </div>
               </FadeIn>
@@ -396,7 +404,7 @@ export default function Home() {
                   <div style={{ color: '#60A5FA', padding: '16px', background: 'var(--bg-deep)', borderRadius: '16px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}>
                     <User size={36} />
                   </div>
-                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Un seul interlocuteur</h4>
+                  <h3 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Un seul interlocuteur</h3>
                   <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}>Du premier appel à la livraison finale, <strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>une seule personne</strong> pilote votre projet.</p>
                 </div>
               </FadeIn>

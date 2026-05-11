@@ -105,7 +105,7 @@ export default function OffresPage() {
             {/* PACK 1 */}
             <FadeIn delay={0.1}>
               <div className={styles.packCard}>
-                <h3 className={styles.packTitle}>Fondation digitale</h3>
+                <h2 className={styles.packTitle}>Fondation digitale</h2>
                 <p className={styles.packSubtitle}>Créer votre présence en ligne professionnelle et performante.</p>
                 <div className={styles.packDivider} />
                 <ul className={styles.packList}>
@@ -127,7 +127,7 @@ export default function OffresPage() {
             <FadeIn delay={0.3}>
               <div className={`${styles.packCard} ${styles.packCardHighlight}`} style={{ transform: 'scale(1.05)', border: '2px solid #60A5FA', boxShadow: '0 0 40px rgba(96, 165, 250, 0.3)', zIndex: 10 }}>
                 <div className={styles.packBadge} style={{ background: '#60A5FA', color: '#000', fontWeight: 'bold' }}>⭐ Le plus choisi</div>
-                <h3 className={styles.packTitle}>Croissance digitale</h3>
+                <h2 className={styles.packTitle}>Croissance digitale</h2>
                 <p className={styles.packSubtitle}>Générer des clients et structurer votre acquisition de A à Z.</p>
                 <div className={styles.packDivider} />
                 <ul className={styles.packList}>
@@ -153,7 +153,7 @@ export default function OffresPage() {
             {/* PACK 3 */}
             <FadeIn delay={0.5}>
               <div className={styles.packCard}>
-                <h3 className={styles.packTitle}>Performance IA</h3>
+                <h2 className={styles.packTitle}>Performance IA</h2>
                 <p className={styles.packSubtitle}>Automatiser et optimiser chaque processus de votre business.</p>
                 <div className={styles.packDivider} />
                 <ul className={styles.packList}>
@@ -199,21 +199,21 @@ export default function OffresPage() {
               <FadeIn direction="up" delay={0.1}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
                   <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}><ShieldCheck size={36} /></div>
-                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Satisfait ou remanié</h4>
+                  <h3 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Satisfait ou remanié</h3>
                   <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}>Rendu initial pas conforme ? <strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>On itère gratuitement</strong>, sans discussion.</p>
                 </div>
               </FadeIn>
               <FadeIn direction="up" delay={0.2}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
                   <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}><Scale size={36} /></div>
-                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Pas d&apos;engagement</h4>
+                  <h3 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Pas d&apos;engagement</h3>
                   <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}><strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>Aucun abonnement caché.</strong> Vous restez libres à tout moment.</p>
                 </div>
               </FadeIn>
               <FadeIn direction="up" delay={0.3}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
                   <div style={{ color: '#60A5FA', padding: '16px', background: '#0d1628', borderRadius: '14px', border: '1px solid rgba(96,165,250,0.3)', boxShadow: '0 0 24px rgba(37,99,235,0.25)' }}><User size={36} /></div>
-                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Un seul interlocuteur</h4>
+                  <h3 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--text-light)', fontWeight: 700, letterSpacing: '-0.01em' }}>Un seul interlocuteur</h3>
                   <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '240px' }}>Du premier appel à la livraison finale, <strong style={{ color: 'var(--text-light)', fontWeight: 600 }}>une seule personne</strong> pilote votre projet.</p>
                 </div>
               </FadeIn>

@@ -11,7 +11,7 @@ const breadcrumbSchema = buildBreadcrumbSchema([
 export const metadata: Metadata = {
   title: "À propos — Qui est derrière MV Agency",
   description:
-    "Victor Marchetti, fondateur de MV Agency. Agence web & IA pour TPE, PME et indépendants à La Réunion, en Belgique et en France. Approche pédagogique, sans jargon.",
+    "Victor Marchetti, fondateur de MV Agency. Agence web & IA pour PME à La Réunion, Belgique et France. Approche pédagogique, sans jargon.",
   alternates: { canonical: "/a-propos" },
   openGraph: {
     type: "profile",

@@ -43,9 +43,9 @@ import { techLogos } from "@/data/tech-logos";
 /* -------------------------------------------------------------------------- */
 
 export const metadata: Metadata = {
-  title: "Agence web à Bruxelles : sites premium & IA pour PME | MV Agency",
+  title: "Agence web Bruxelles : sites & IA pour PME | MV Agency",
   description:
-    "Agence web à Bruxelles. Création de sites internet premium et intégration d'intelligence artificielle pour les PME bruxelloises. Présence locale (Schaerbeek, Ixelles, Etterbeek, Anderlecht), méthode rapide.",
+    "Agence web à Bruxelles. Sites internet premium et intégration IA pour les PME bruxelloises. Toutes communes desservies, méthode async + visio.",
   alternates: { canonical: "/agence-web-bruxelles" },
   openGraph: {
     type: "website",
