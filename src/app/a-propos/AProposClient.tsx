@@ -308,7 +308,7 @@ export default function AProposClient() {
             {/* Right — Mockup */}
             <div style={{ flex: '1 1 400px', minWidth: 0, display: 'flex', justifyContent: 'center' }}>
               <FadeIn direction="right" delay={0.2}>
-                <div style={{
+                <div className="mockup-hub-gradient-wrapper" style={{
                   position: 'relative',
                   padding: '2px',
                   borderRadius: '18px',

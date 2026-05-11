@@ -170,3 +170,25 @@ a {
   background-attachment: fixed;
   background-size: 100vw 100vh;
 }
+
+/* MockupHub gradient wrapper — scale together with inner mockup on mobile.
+   The inner MockupHub no longer self-scales (cf. Task 6 fix). */
+.mockup-hub-gradient-wrapper {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 767px) {
+  .mockup-hub-gradient-wrapper {
+    transform-origin: top center;
+    transform: scale(0.55);
+    margin-bottom: -45%;
+  }
+}
+@media (max-width: 480px) {
+  .mockup-hub-gradient-wrapper {
+    transform: scale(0.48);
+    margin-bottom: -52%;
+  }
+}

@@ -490,7 +490,7 @@ export default function Home() {
         {/* MockupHub sous les étapes */}
         <FadeIn direction="up" delay={0.4}>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3.5rem' }}>
-            <div style={{ padding: '2px', borderRadius: '20px', background: 'linear-gradient(135deg, rgba(37,99,235,0.3) 0%, rgba(139,92,246,0.2) 100%)' }}>
+            <div className="mockup-hub-gradient-wrapper" style={{ padding: '2px', borderRadius: '20px', background: 'linear-gradient(135deg, rgba(37,99,235,0.3) 0%, rgba(139,92,246,0.2) 100%)' }}>
               <MockupHub />
             </div>
           </div>
