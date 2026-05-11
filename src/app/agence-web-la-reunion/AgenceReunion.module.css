@@ -421,6 +421,16 @@
   transform-origin: center;
 }
 
+@media (max-width: 768px) {
+  .casMockupWrapper {
+    min-height: 360px;
+    padding: 1.5rem 0;
+  }
+  .casMockupWrapper > * {
+    transform: scale(0.95);
+  }
+}
+
 .casCardBody {
   padding: 1.5rem 0 0;
   flex: 1;
