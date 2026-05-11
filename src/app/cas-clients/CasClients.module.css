@@ -57,6 +57,12 @@
 @media (max-width: 968px) {
   .caseRow, .caseRow:nth-child(even) {
     flex-direction: column;
+    /* Override le align-items: center du desktop : sur mobile en column flex,
+       l'axe transverse devient horizontal et center fait que les enfants
+       prennent leur largeur intrinsèque. Or .caseMockup contient une Image
+       en position: absolute (Next/Image fill) qui n'a pas de largeur
+       intrinsèque → collapse à ~60px. stretch force le full width. */
+    align-items: stretch;
     gap: 2rem;
     margin-bottom: 5rem;
   }
