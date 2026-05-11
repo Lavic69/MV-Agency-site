@@ -40,10 +40,6 @@ export const MockupEcosystem = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#0a0a0c',
-        borderRadius: '16px',
-        border: '1px solid rgba(255,255,255,0.05)',
-        boxShadow: '0 10px 40px rgba(0,0,0,0.6)',
         // Dynamic height based on scale to avoid empty space
         height: `${LOGICAL_HEIGHT * scale}px`,
         overflow: 'hidden'
