@@ -143,9 +143,20 @@ export default function ContactClient() {
 
         {/* Right Column */}
         <FadeIn direction="left" delay={0.3} className={styles.rightCol}>
+          <h2 style={{
+            margin: '0 0 1.25rem 0',
+            fontSize: 'clamp(1.5rem, 2.5vw, 1.75rem)',
+            fontFamily: 'var(--font-heading)',
+            color: 'var(--text-light)',
+            fontWeight: 600,
+            letterSpacing: '-0.01em',
+          }}>
+            Réservez votre appel découverte
+          </h2>
           <div style={{ width: '100%', height: '600px', borderRadius: '24px', overflow: 'hidden', background: '#0A0A0A', border: '1px solid rgba(255, 255, 255, 0.05)', colorScheme: 'dark' }}>
             <div
               id="mv-cal-inline"
+              aria-label="Calendrier de réservation Cal.com"
               style={{ width: '100%', height: '100%', overflow: 'scroll' }}
             />
           </div>
