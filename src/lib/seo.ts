@@ -113,9 +113,8 @@ export const organizationSchema = {
     areaServed: ["FR", "BE", "RE"],
   },
   sameAs: [
-    // TODO: ajouter au fur et à mesure
-    // "https://www.linkedin.com/company/mv-agency",
-    // "https://clutch.co/profile/mv-agency",
+    "https://www.linkedin.com/company/mv-ai-agency",
+    // TODO: ajouter Clutch / Malt quand profils créés
   ],
 } as const;
 
