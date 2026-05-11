@@ -36,7 +36,7 @@ export default function ServicesPage() {
       ))}
       <JsonLd data={breadcrumbSchema} />
       {/* S1 — HEADER / HERO SERVICES */}
-      <section className={`${styles.section}`} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', background: 'transparent', marginTop: '6rem' }}>
+      <section className={`${styles.section} ${styles.heroServices}`} style={{ display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', background: 'transparent', marginTop: '6rem' }}>
         <div className={styles.container} style={{ position: 'relative', zIndex: 1, width: '100%' }}>
           <div className={styles.splitLayout} style={{ alignItems: 'center' }}>
             <div className={styles.col60}>

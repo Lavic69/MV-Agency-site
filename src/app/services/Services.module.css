@@ -129,3 +129,17 @@
 .ctaActions a {
   text-decoration: none;
 }
+
+/* Hero services — réduit padding/min-height sur mobile pour éviter espace vide
+   et CTA coupé par la barre URL Safari */
+.heroServices {
+  min-height: 60vh;
+}
+
+@media (max-width: 767px) {
+  .heroServices {
+    min-height: auto;
+    padding: 4rem 1.5rem 2rem;
+    margin-top: 3rem !important;
+  }
+}
