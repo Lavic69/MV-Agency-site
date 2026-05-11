@@ -28,6 +28,17 @@ export const metadata: Metadata = {
   title: 'Services agence web & IA pour PME | MV Agency',
   description: 'Création de sites premium, intégration d\'agents IA, automatisations métier et formation. 6 leviers concrets pour propulser votre PME.',
   alternates: { canonical: '/services' },
+  openGraph: {
+    type: 'website',
+    title: 'Services web & IA pour PME — MV Agency',
+    description: 'Sites premium, agents IA, automatisations et formation : 6 leviers concrets pour propulser votre PME.',
+    url: `${SITE_URL}/services`,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Services web & IA — MV Agency',
+    description: 'Sites premium, agents IA et automatisations pour faire passer votre PME au niveau supérieur.',
+  },
 };
 
 const breadcrumbSchema = buildBreadcrumbSchema([
@@ -366,7 +377,7 @@ export default function ServicesPage() {
             content:
               "MV a transformé notre idée en app qui convertit. On a pigé chaque ligne de code livrée.",
             rating: 5,
-            avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
+            avatar: "/avatars/client-3.jpg",
           },
           {
             id: 2,
@@ -376,7 +387,7 @@ export default function ServicesPage() {
             content:
               "Un site refondu en 4 semaines. Aujourd'hui, on pilote notre visibilité locale sans dépendre de personne.",
             rating: 5,
-            avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80",
+            avatar: "/avatars/client-1.jpg",
           },
           {
             id: 3,
@@ -386,7 +397,7 @@ export default function ServicesPage() {
             content:
               "Intégration IA propre et documentée. L'équipe MV explique au lieu de jargonner.",
             rating: 5,
-            avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80",
+            avatar: "/avatars/client-2.jpg",
           },
         ]}
       />

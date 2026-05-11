@@ -140,10 +140,12 @@ export default function AProposClient() {
               
               <FadeIn direction="up" delay={0.8} style={{ alignSelf: 'center', marginTop: '1rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
-                  <img 
-                    src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=80" 
-                    alt="Victor Marchetti, Fondateur de MV Agency" 
-                    style={{ width: '64px', height: '64px', borderRadius: '50%', border: '2px solid rgba(255,255,255,0.1)', objectFit: 'cover' }}
+                  <Image
+                    src="/avatars/victor.jpg"
+                    alt="Victor Marchetti, Fondateur de MV Agency"
+                    width={64}
+                    height={64}
+                    style={{ borderRadius: '50%', border: '2px solid rgba(255,255,255,0.1)', objectFit: 'cover' }}
                   />
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                     <span style={{ color: 'var(--text-light)', fontWeight: 600, fontSize: '1.1rem', lineHeight: 1.2 }}>Victor Marchetti</span>
@@ -190,7 +192,7 @@ export default function AProposClient() {
                 {/* Photo Victor — LCP candidate sur /a-propos. `priority` pour précharger.
                     `fill` car le wrapper a aspect-ratio 4/5 défini en CSS. */}
                 <Image
-                  src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&q=80"
+                  src="/avatars/victor.jpg"
                   alt="Victor Marchetti, Fondateur de MV Agency"
                   fill
                   sizes="(max-width: 768px) 100vw, 480px"

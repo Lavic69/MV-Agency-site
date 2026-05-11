@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import LogoLoop from "@/components/ui/LogoLoop";
@@ -34,18 +35,18 @@ const techLogos = [
   { node: <SiNextdotjs size={40} color="var(--text-light)" />, title: "Next.js" },
   { node: <SiNotion size={40} color="var(--text-light)" />, title: "Notion" },
   { node: <SiAnthropic size={40} color="#d97757" />, title: "Claude AI" },
-  { node: <img src="https://svgl.app/library/shopify.svg" style={{ height: 40, width: 'auto' }} alt="Shopify" />, title: "Shopify" },
+  { node: <Image src="/tech/shopify.svg" width={40} height={40} style={{ height: 40, width: 'auto' }} alt="Shopify" />, title: "Shopify" },
   { node: <SiOpenai size={40} color="var(--text-light)" />, title: "ChatGPT" },
-  { node: <img src="https://svgl.app/library/n8n.svg" style={{ height: 35, width: 'auto' }} alt="n8n" />, title: "n8n" },
+  { node: <Image src="/tech/n8n.svg" width={35} height={35} style={{ height: 35, width: 'auto' }} alt="n8n" />, title: "n8n" },
   { node: <SiStripe size={40} color="#635BFF" />, title: "Stripe" },
-  { node: <img src="https://svgl.app/library/figma.svg" style={{ height: 40, width: 'auto' }} alt="Figma" />, title: "Figma" },
+  { node: <Image src="/tech/figma.svg" width={40} height={40} style={{ height: 40, width: 'auto' }} alt="Figma" />, title: "Figma" },
   { node: <SiVercel size={40} color="var(--text-light)" />, title: "Vercel" },
   { node: <SiOdoo size={55} color="#714B67" />, title: "Odoo" },
   { node: <SiJira size={40} color="#0052CC" />, title: "Jira" },
   { node: <SiAsana size={40} color="#F06A6A" />, title: "Asana" },
   { node: <SiFramer size={40} color="#0055FF" />, title: "Framer" },
-  { node: <img src="https://svgl.app/library/canva.svg" style={{ height: 40, width: 'auto' }} alt="Canva" />, title: "Canva" },
-  { node: <img src="/ollama.svg" style={{ height: 40, width: 'auto' }} alt="Ollama" />, title: "Ollama" },
+  { node: <Image src="/tech/canva.svg" width={40} height={40} style={{ height: 40, width: 'auto' }} alt="Canva" />, title: "Canva" },
+  { node: <Image src="/ollama.svg" width={40} height={40} style={{ height: 40, width: 'auto' }} alt="Ollama" />, title: "Ollama" },
 ];
 
 
@@ -76,55 +77,55 @@ const expertises = [
 const testimonials = [
   {
     text: "Grâce à MV Agency, nos patients prennent rendez-vous et déposent leurs ordonnances en ligne en toute sécurité. Un gain de temps inestimable au comptoir.",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80",
+    image: "/avatars/client-1.jpg",
     name: "Olivier G.",
     role: "Titulaire, Pharmacie Les Lataniers"
   },
   {
     text: "Une architecture sans faille. MV Agency a construit la structure technique de notre app de coaching sportif et notre magnifique site vitrine. Le rendu final est bluffant.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80",
+    image: "/avatars/client-2.jpg",
     name: "Johnny M.",
     role: "Fondateur, Johnny App"
   },
   {
     text: "Notre nouvelle landing page e-commerce convertit incroyablement bien. Le design est ultra premium, fluide, et valorise parfaitement notre nouvelle gamme de produits.",
-    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=80",
+    image: "/avatars/client-5.jpg",
     name: "Léa C.",
     role: "Fondatrice, Osan"
   },
   {
     text: "Nous perdions des heures en saisie manuelle. Ils ont automatisé toute la création de nos contrats et la synchronisation CRM. Mon équipe commerciale revit complètement !",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80",
+    image: "/avatars/client-4.jpg",
     name: "Thomas V.",
     role: "Directeur Commercial"
   },
   {
     text: "L'agent IA qu'ils ont entraîné sur nos données internes répond à 80% des requêtes clients, 24/7. Notre délai de réponse a fondu et la satisfaction client a explosé.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
+    image: "/avatars/client-3.jpg",
     name: "Camille P.",
     role: "CEO E-commerce"
   },
   {
     text: "Création d'un portail interne sur mesure connecté à tous nos flux de données via n8n. Tout est centralisé en temps réel. Un travail de backend chirurgical.",
-    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&q=80",
+    image: "/avatars/client-6.jpg",
     name: "Antoine M.",
     role: "Gérant Agence Immo"
   },
   {
     text: "La solution de génération de contenu optimisée pour le SEO, que l'équipe a propulsée par IA pour notre blog, nous permet de ranker sans sacrifier notre temps.",
-    image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&q=80",
+    image: "/avatars/client-7.jpg",
     name: "Sophie K.",
     role: "Responsable Marketing"
   },
   {
     text: "L'automatisation complète de notre process d'onboarding RH a éliminé toutes nos frictions. Du formulaire initial à la création des accès mails, l'IA pilote tout.",
-    image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=100&q=80",
+    image: "/avatars/client-8.jpg",
     name: "Nicolas B.",
     role: "Directeur des Opérations"
   },
   {
     text: "Plus qu'une agence, de vrais architectes tech. Ils ont mis en place des automatisations complexes, tout en formant nos équipes pour nous rendre 100% autonomes.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+    image: "/avatars/client-9.jpg",
     name: "Élodie F.",
     role: "Fondatrice Cabinet Conseil"
   }
@@ -232,10 +233,10 @@ export default function Home() {
                 role="img"
                 style={{ display: 'flex', marginLeft: '4px' }}
               >
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="" aria-hidden="true" style={{ width: '28px', height: '28px', borderRadius: '8px', border: '1px solid #222', position: 'relative', zIndex: 4, objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80" alt="" aria-hidden="true" style={{ width: '28px', height: '28px', borderRadius: '8px', border: '1px solid #222', position: 'relative', zIndex: 3, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="" aria-hidden="true" style={{ width: '28px', height: '28px', borderRadius: '8px', border: '1px solid #222', position: 'relative', zIndex: 2, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="" aria-hidden="true" style={{ width: '28px', height: '28px', borderRadius: '8px', border: '1px solid #222', position: 'relative', zIndex: 1, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+                <Image src="/avatars/client-1.jpg" alt="" aria-hidden="true" width={28} height={28} style={{ borderRadius: '8px', border: '1px solid #222', position: 'relative', zIndex: 4, objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+                <Image src="/avatars/client-2.jpg" alt="" aria-hidden="true" width={28} height={28} style={{ borderRadius: '8px', border: '1px solid #222', position: 'relative', zIndex: 3, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+                <Image src="/avatars/client-3.jpg" alt="" aria-hidden="true" width={28} height={28} style={{ borderRadius: '8px', border: '1px solid #222', position: 'relative', zIndex: 2, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
+                <Image src="/avatars/client-4.jpg" alt="" aria-hidden="true" width={28} height={28} style={{ borderRadius: '8px', border: '1px solid #222', position: 'relative', zIndex: 1, marginLeft: '-10px', objectFit: 'cover', filter: 'grayscale(0.15) brightness(0.9)', opacity: 0.85 }} />
               </div>
               <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)', letterSpacing: '0.3px', fontFamily: 'var(--font-body)' }}>
                 <strong style={{ color: 'var(--text-light)', fontWeight: '500' }}>10+ projets livrés</strong> · Web & IA

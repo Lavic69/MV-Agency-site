@@ -21,6 +21,17 @@ export const metadata: Metadata = {
   title: 'Nos Offres & Packs | MV Agency',
   description: 'Découvrez nos packs sur-mesure combinant un design web high-end et toute la puissance de l\'intelligence artificielle pour votre croissance.',
   alternates: { canonical: '/offres' },
+  openGraph: {
+    type: 'website',
+    title: 'Nos 3 packs web + IA — MV Agency',
+    description: '3 packs digitaux pour chaque étape de croissance : Fondation, Croissance, Performance IA. Sur-mesure, IA intégrée, propriété 100 % client.',
+    url: `${SITE_URL}/offres`,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '3 packs web + IA — MV Agency',
+    description: 'Fondation, Croissance, Performance IA : 3 packs pour chaque ambition. Sur-mesure, propriété client, sans engagement.',
+  },
 };
 
 const compareRows: {
