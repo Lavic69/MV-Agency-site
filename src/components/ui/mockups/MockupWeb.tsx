@@ -3,6 +3,7 @@ import { MousePointer2 } from 'lucide-react';
 
 export const MockupWeb = () => {
   return (
+    <div className="mockup-web-scaler">
     <div style={{
       width: '100%',
       height: '420px',
@@ -167,6 +168,25 @@ export const MockupWeb = () => {
            91%, 100% { opacity: 0.3; }
         }
       `}</style>
+    </div>
+    <style>{`
+      .mockup-web-scaler {
+        width: 100%;
+      }
+      @media (max-width: 767px) {
+        .mockup-web-scaler {
+          transform-origin: top center;
+          transform: scale(0.85);
+          margin-bottom: -10%;
+        }
+      }
+      @media (max-width: 480px) {
+        .mockup-web-scaler {
+          transform: scale(0.75);
+          margin-bottom: -18%;
+        }
+      }
+    `}</style>
     </div>
   );
 };
