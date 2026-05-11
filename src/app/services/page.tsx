@@ -38,41 +38,65 @@ export default function ServicesPage() {
       {/* S1 — HEADER / HERO SERVICES */}
       <section className={`${styles.section} ${styles.heroServices}`} style={{ display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', background: 'transparent', marginTop: '6rem' }}>
         <div className={styles.container} style={{ position: 'relative', zIndex: 1, width: '100%' }}>
-          <div className={styles.splitLayout} style={{ alignItems: 'center' }}>
-            <div className={`${styles.col60} ${styles.heroCol60}`}>
-              <FadeIn direction="up">
-                <h1 className={styles.headerTitle} style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1 }}>
-                  <TextReveal inline>Les 4 piliers qui feront passer votre activité à la</TextReveal>{' '}
-                  <TextReveal delay={1.35} inline wordClassName="globalGradientWordItalic">vitesse supérieure</TextReveal>
-                </h1>
-              </FadeIn>
-              <FadeIn direction="up" delay={0.2}>
-                <p className={styles.headerDesc} style={{ margin: '1.5rem 0 0' }}>
-                  <TextReveal delay={1.8} inline>Une agence qui conçoit, explique et propulse. Pour les professionnels qui veulent des résultats mesurables, pas des slides.</TextReveal>
-                </p>
-              </FadeIn>
-              <FadeIn direction="up" delay={0.3}>
-                <div className={`${styles.ctaActions} ${styles.heroCtaActions}`} style={{ marginTop: '3rem' }}>
-                  <Link href="/contact" tabIndex={-1}>
-                    <Button variant="primary">Réserver un appel offert</Button>
-                  </Link>
-                  <Link href="/offres" tabIndex={-1}>
-                    <Button variant="outline">Voir nos packs</Button>
-                  </Link>
-                </div>
-              </FadeIn>
-            </div>
-            <div className={`${styles.col40} ${styles.desktopOnly}`}>
-              <FadeIn direction="right" delay={0.4} className="w-full">
-                <MockupEcosystem />
-              </FadeIn>
+          {/* Desktop : splitLayout original — H1 left, mockup right */}
+          <div className={styles.desktopOnly}>
+            <div className={styles.splitLayout} style={{ alignItems: 'center' }}>
+              <div className={styles.col60}>
+                <FadeIn direction="up">
+                  <h1 className={styles.headerTitle} style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1, textAlign: 'left' }}>
+                    <TextReveal inline justify="flex-start">Les 4 piliers qui feront passer votre activité à la</TextReveal>{' '}
+                    <TextReveal delay={1.35} inline justify="flex-start" wordClassName="globalGradientWordItalic">vitesse supérieure</TextReveal>
+                  </h1>
+                </FadeIn>
+                <FadeIn direction="up" delay={0.2}>
+                  <p className={styles.headerDesc} style={{ margin: '1.5rem 0 0', textAlign: 'left' }}>
+                    <TextReveal delay={1.8} inline justify="flex-start">Une agence qui conçoit, explique et propulse. Pour les professionnels qui veulent des résultats mesurables, pas des slides.</TextReveal>
+                  </p>
+                </FadeIn>
+                <FadeIn direction="up" delay={0.3}>
+                  <div className={styles.ctaActions} style={{ justifyContent: 'flex-start', marginTop: '3rem' }}>
+                    <Link href="/contact" tabIndex={-1}>
+                      <Button variant="primary">Réserver un appel offert</Button>
+                    </Link>
+                    <Link href="/offres" tabIndex={-1}>
+                      <Button variant="outline">Voir nos packs</Button>
+                    </Link>
+                  </div>
+                </FadeIn>
+              </div>
+              <div className={styles.col40}>
+                <FadeIn direction="right" delay={0.4} className="w-full">
+                  <MockupEcosystem />
+                </FadeIn>
+              </div>
             </div>
           </div>
-          {/* Mobile : grid 2×2 des 4 piliers (au lieu du MockupEcosystem qui débordait
-              et était mal centré dans son container) */}
-          <div className={styles.mobileOnly} style={{ marginTop: '2.5rem' }}>
+
+          {/* Mobile : H1 centré + description + CTAs + grid 2×2 piliers */}
+          <div className={styles.mobileOnly}>
+            <FadeIn direction="up">
+              <h1 className={styles.headerTitle} style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1, textAlign: 'center' }}>
+                <TextReveal inline>Les 4 piliers qui feront passer votre activité à la</TextReveal>{' '}
+                <TextReveal delay={1.35} inline wordClassName="globalGradientWordItalic">vitesse supérieure</TextReveal>
+              </h1>
+            </FadeIn>
+            <FadeIn direction="up" delay={0.2}>
+              <p className={styles.headerDesc} style={{ margin: '1.5rem 0 0', textAlign: 'center' }}>
+                <TextReveal delay={1.8} inline>Une agence qui conçoit, explique et propulse. Pour les professionnels qui veulent des résultats mesurables, pas des slides.</TextReveal>
+              </p>
+            </FadeIn>
+            <FadeIn direction="up" delay={0.3}>
+              <div className={styles.ctaActions} style={{ justifyContent: 'center', marginTop: '3rem' }}>
+                <Link href="/contact" tabIndex={-1}>
+                  <Button variant="primary">Réserver un appel offert</Button>
+                </Link>
+                <Link href="/offres" tabIndex={-1}>
+                  <Button variant="outline">Voir nos packs</Button>
+                </Link>
+              </div>
+            </FadeIn>
             <FadeIn direction="up" delay={0.4}>
-              <div className={styles.heroPillarsGrid}>
+              <div className={styles.heroPillarsGrid} style={{ marginTop: '2.5rem' }}>
                 <div className={styles.heroPillarItem}>
                   <div className={styles.heroPillarIcon} style={{ background: 'rgba(59,130,246,0.12)', borderColor: 'rgba(59,130,246,0.4)', color: '#60a5fa' }}>
                     <Globe2 size={22} />
