@@ -21,6 +21,12 @@ import { MockupIA } from "@/components/ui/mockups/MockupIA";
 import { MockupWorkflow } from "@/components/ui/mockups/MockupWorkflow";
 import { MockupTree } from "@/components/ui/mockups/MockupTree";
 import {
+  MobileWebAnim,
+  MobileWorkflowAnim,
+  MobileIAAnim,
+  MobileFormationAnim,
+} from "@/components/ui/mockups/MobileServiceAnims";
+import {
   SITE_URL,
   CONTACT_EMAIL,
   FOUNDER_NAME,
@@ -145,10 +151,7 @@ const faqPageSchema = buildFaqPageSchema(faqItems, PAGE_URL);
 const services = [
   {
     Mockup: MockupWeb,
-    Icon: Globe2,
-    iconColor: "#60a5fa",
-    iconBg: "rgba(59,130,246,0.12)",
-    iconBorder: "rgba(59,130,246,0.4)",
+    MobileAnim: MobileWebAnim,
     title: "Création de site web premium",
     desc: "Sites vitrines Next.js, e-commerce Shopify ou sur-mesure pour PME, ASBL et indépendants bruxellois. Multilingue FR/NL/EN selon cible, SEO racine, accessibilité WCAG 2.1.",
     bullets: [
@@ -159,10 +162,7 @@ const services = [
   },
   {
     Mockup: MockupIA,
-    Icon: Bot,
-    iconColor: "#d8b4fe",
-    iconBg: "rgba(168,85,247,0.12)",
-    iconBorder: "rgba(168,85,247,0.4)",
+    MobileAnim: MobileIAAnim,
     title: "Intégration d'IA conforme RGPD",
     desc: "Agents IA et chatbots souverains. Choix du fournisseur (Anthropic, OpenAI, modèles européens, auto-hébergement) selon sensibilité — clé pour structures liées aux institutions UE.",
     bullets: [
@@ -173,10 +173,7 @@ const services = [
   },
   {
     Mockup: MockupWorkflow,
-    Icon: Workflow,
-    iconColor: "#34d399",
-    iconBg: "rgba(16,185,129,0.12)",
-    iconBorder: "rgba(16,185,129,0.4)",
+    MobileAnim: MobileWorkflowAnim,
     title: "Automatisation & connecteurs",
     desc: "Make, n8n, Zapier. Connexion CRM (HubSpot, Pipedrive), comptabilité (Odoo), emailing, gestion adhérents pour ASBL. L'IA branchée sur vos workflows existants.",
     bullets: [
@@ -187,10 +184,7 @@ const services = [
   },
   {
     Mockup: MockupTree,
-    Icon: GraduationCap,
-    iconColor: "#fdba74",
-    iconBg: "rgba(251,146,60,0.12)",
-    iconBorder: "rgba(251,146,60,0.4)",
+    MobileAnim: MobileFormationAnim,
     title: "Formation & accompagnement",
     desc: "Sessions pédagogiques en présentiel à Bruxelles ou en visio. Documentation Notion fournie. Pas de dépendance technique : à la livraison, votre équipe est autonome.",
     bullets: [
@@ -322,22 +316,15 @@ export default function AgenceWebBruxellesPage() {
           <div className={styles.servicesGrid}>
             {services.map((s, i) => {
               const Mockup = s.Mockup;
-              const Icon = s.Icon;
+              const MobileAnim = s.MobileAnim;
               return (
                 <FadeIn key={s.title} direction="up" delay={0.08 * i}>
                   <div className={styles.serviceCard}>
                     <div className={styles.serviceMockupWrapper}>
                       <Mockup />
                     </div>
-                    <div
-                      className={styles.serviceIconWrapper}
-                      style={{
-                        background: s.iconBg,
-                        borderColor: s.iconBorder,
-                        color: s.iconColor,
-                      }}
-                    >
-                      <Icon size={42} />
+                    <div className={styles.serviceIconWrapper}>
+                      <MobileAnim />
                     </div>
                     <div className={styles.serviceCardBody}>
                       <h3>{s.title}</h3>

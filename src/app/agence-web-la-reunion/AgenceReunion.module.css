@@ -371,16 +371,18 @@
   .serviceMockupWrapper {
     display: none;
   }
+  /* Wrapper transparent qui centre l'animation mobile (MobileWebAnim,
+     MobileWorkflowAnim, etc.) — ces composants ont leur propre card style.
+     Avant : icon coloré 84×84 dans un cercle gradient.
+     Maintenant : on hébege la même animation que les service blocks de /services
+     pour cohérence visuelle. */
   .serviceIconWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 84px;
-    height: 84px;
-    border-radius: 24px;
-    border: 1px solid transparent;
-    margin: 2rem auto 0.5rem;
-    box-shadow: 0 0 32px rgba(59, 130, 246, 0.2);
+    margin: 1.5rem auto 0.5rem;
+    padding: 0 0.5rem;
+    width: 100%;
   }
   /* Override scale interne mockup au cas où le mockup desktop serait affiché
      dans un autre contexte (legacy fallback) */

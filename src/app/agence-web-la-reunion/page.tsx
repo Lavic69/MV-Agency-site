@@ -21,6 +21,12 @@ import LogoLoop from "@/components/ui/LogoLoop";
 import { MockupWeb } from "@/components/ui/mockups/MockupWeb";
 import { MockupWorkflow } from "@/components/ui/mockups/MockupWorkflow";
 import { MockupIA } from "@/components/ui/mockups/MockupIA";
+import {
+  MobileWebAnim,
+  MobileWorkflowAnim,
+  MobileIAAnim,
+  MobileFormationAnim,
+} from "@/components/ui/mockups/MobileServiceAnims";
 import { MockupTree } from "@/components/ui/mockups/MockupTree";
 import { ProjectMockup } from "@/app/cas-clients/ProjectMockup";
 import {
@@ -177,14 +183,12 @@ const differentiators = [
   },
 ];
 
-/** 4 services contextualisés Réunion, chacun avec un mockup visuel. */
+/** 4 services contextualisés Réunion, chacun avec un mockup desktop +
+ *  une animation mobile dédiée (cohérente avec /services). */
 const services = [
   {
     Mockup: MockupWeb,
-    Icon: Globe2,
-    iconColor: "#60a5fa",
-    iconBg: "rgba(59,130,246,0.12)",
-    iconBorder: "rgba(59,130,246,0.4)",
+    MobileAnim: MobileWebAnim,
     title: "Création de site web",
     desc: "Sites vitrines premium, e-commerce, refontes et landing pages de conversion. SEO optimisé à la racine, design responsive sur-mesure, technologie adaptée au projet.",
     bullets: [
@@ -195,10 +199,7 @@ const services = [
   },
   {
     Mockup: MockupIA,
-    Icon: Bot,
-    iconColor: "#d8b4fe",
-    iconBg: "rgba(168,85,247,0.12)",
-    iconBorder: "rgba(168,85,247,0.4)",
+    MobileAnim: MobileIAAnim,
     title: "Intégration d'IA",
     desc: "Agents IA et chatbots souverains, automatisations augmentées par l'IA, génération de contenu assistée. Architecture qui garantit la confidentialité de vos données.",
     bullets: [
@@ -209,10 +210,7 @@ const services = [
   },
   {
     Mockup: MockupWorkflow,
-    Icon: Workflow,
-    iconColor: "#34d399",
-    iconBg: "rgba(16,185,129,0.12)",
-    iconBorder: "rgba(16,185,129,0.4)",
+    MobileAnim: MobileWorkflowAnim,
     title: "Automatisation",
     desc: "Connexion entre vos outils via n8n et Make. Automatisation CRM, processus de vente, emailing dynamique, déclencheurs d'événements.",
     bullets: [
@@ -223,10 +221,7 @@ const services = [
   },
   {
     Mockup: MockupTree,
-    Icon: GraduationCap,
-    iconColor: "#fdba74",
-    iconBg: "rgba(251,146,60,0.12)",
-    iconBorder: "rgba(251,146,60,0.4)",
+    MobileAnim: MobileFormationAnim,
     title: "Formation & accompagnement",
     desc: "Sessions pédagogiques pour rendre vos équipes autonomes sur le site, les outils d'automatisation et les usages quotidiens de l'IA.",
     bullets: [
@@ -405,7 +400,7 @@ export default function AgenceWebLaReunionPage() {
           <div className={styles.servicesGrid}>
             {services.map((s, i) => {
               const Mockup = s.Mockup;
-              const Icon = s.Icon;
+              const MobileAnim = s.MobileAnim;
               return (
                 <FadeIn key={s.title} direction="up" delay={0.08 * i}>
                   <div className={styles.serviceCard}>
@@ -413,18 +408,9 @@ export default function AgenceWebLaReunionPage() {
                     <div className={styles.serviceMockupWrapper}>
                       <Mockup />
                     </div>
-                    {/* Mobile : icon coloré centré (mockup trop complexe pour
-                        une card 350px-de-large, donc on remplace par un visuel
-                        simple sur mobile uniquement). */}
-                    <div
-                      className={styles.serviceIconWrapper}
-                      style={{
-                        background: s.iconBg,
-                        borderColor: s.iconBorder,
-                        color: s.iconColor,
-                      }}
-                    >
-                      <Icon size={42} />
+                    {/* Mobile : mini-animation dédiée (même style que /services) */}
+                    <div className={styles.serviceIconWrapper}>
+                      <MobileAnim />
                     </div>
                     <div className={styles.serviceCardBody}>
                       <h3>{s.title}</h3>
