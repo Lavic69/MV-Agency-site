@@ -136,6 +136,34 @@
   min-height: 60vh;
 }
 
+/* Hero S1 : H1 unique, présentation responsive
+   - Desktop (≥768px) : texte aligné à gauche dans col60, mockup desktop
+   - Mobile  (<768px)  : texte centré, mockup mobile */
+.heroTextCol {
+  text-align: center;
+}
+
+.heroDesktopMockup { display: block; }
+.heroMobileMockup { display: none; }
+
+@media (min-width: 768px) {
+  .heroTextCol {
+    text-align: left;
+  }
+  .heroTextCol .headerDesc {
+    margin: 1.5rem 0 0;
+    max-width: none;
+  }
+  .heroTextCol .ctaActions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 767px) {
+  .heroDesktopMockup { display: none; }
+  .heroMobileMockup { display: block; }
+}
+
 /* Note : le hero a maintenant un double rendu desktop/mobile dans page.tsx —
    desktop affiche le splitLayout original (H1 left-aligned), mobile affiche
    une version stacked centrée + grid 2×2 de piliers. Les classes .heroCol60

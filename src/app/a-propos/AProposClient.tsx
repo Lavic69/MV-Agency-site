@@ -408,8 +408,8 @@ export default function AProposClient() {
                   }}
                 >
                   <div className={styles.bentoFlexRow}>
-                    <div style={{ maxWidth: '75%' }}>
-                      <h3 className={styles.bentoActionTitle} style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1 }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <h3 className={styles.bentoActionTitle} style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", lineHeight: 1.15 }}>
                         <TextReveal delay={0.1} inline>Prêt à transformer</TextReveal><br/>
                         <TextReveal delay={0.4} inline wordClassName="globalGradientWordItalic">votre présence ?</TextReveal>
                       </h3>

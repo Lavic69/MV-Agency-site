@@ -42,71 +42,47 @@ export default function ServicesPage() {
         <JsonLd key={schema['@id']} data={schema} />
       ))}
       <JsonLd data={breadcrumbSchema} />
-      {/* S1 — HEADER / HERO SERVICES */}
+      {/* S1 — HEADER / HERO SERVICES (H1 unique, layout responsive via CSS) */}
       <section className={`${styles.section} ${styles.heroServices}`} style={{ display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', background: 'transparent', marginTop: '6rem' }}>
         <div className={styles.container} style={{ position: 'relative', zIndex: 1, width: '100%' }}>
-          {/* Desktop : splitLayout original — H1 left, mockup right */}
-          <div className={styles.desktopOnly}>
-            <div className={styles.splitLayout} style={{ alignItems: 'center' }}>
-              <div className={styles.col60}>
-                <FadeIn direction="up">
-                  <h1 className={styles.headerTitle} style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1, textAlign: 'left' }}>
-                    <TextReveal inline justify="flex-start">Les 4 piliers qui feront passer votre activité à la</TextReveal>{' '}
-                    <TextReveal delay={1.35} inline justify="flex-start" wordClassName="globalGradientWordItalic">vitesse supérieure</TextReveal>
-                  </h1>
-                </FadeIn>
-                <FadeIn direction="up" delay={0.2}>
-                  <p className={styles.headerDesc} style={{ margin: '1.5rem 0 0', textAlign: 'left' }}>
-                    <TextReveal delay={1.8} inline justify="flex-start">Une agence qui conçoit, explique et propulse. Pour les professionnels qui veulent des résultats mesurables, pas des slides.</TextReveal>
-                  </p>
-                </FadeIn>
-                <FadeIn direction="up" delay={0.3}>
-                  <div className={styles.ctaActions} style={{ justifyContent: 'flex-start', marginTop: '3rem' }}>
-                    <Link href="/contact" tabIndex={-1}>
-                      <Button variant="primary">Réserver un appel offert</Button>
-                    </Link>
-                    <Link href="/offres" tabIndex={-1}>
-                      <Button variant="outline">Voir nos packs</Button>
-                    </Link>
-                  </div>
-                </FadeIn>
-              </div>
-              <div className={styles.col40}>
+          <div className={styles.splitLayout} style={{ alignItems: 'center' }}>
+            <div className={`${styles.col60} ${styles.heroTextCol}`}>
+              <FadeIn direction="up">
+                <h1 className={styles.headerTitle} style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1 }}>
+                  <TextReveal inline>Les 4 piliers qui feront passer votre activité à la</TextReveal>{' '}
+                  <TextReveal delay={1.35} inline wordClassName="globalGradientWordItalic">vitesse supérieure</TextReveal>
+                </h1>
+              </FadeIn>
+              <FadeIn direction="up" delay={0.2}>
+                <p className={styles.headerDesc} style={{ margin: '1.5rem 0 0' }}>
+                  <TextReveal delay={1.8} inline>Une agence qui conçoit, explique et propulse. Pour les professionnels qui veulent des résultats mesurables, pas des slides.</TextReveal>
+                </p>
+              </FadeIn>
+              <FadeIn direction="up" delay={0.3}>
+                <div className={styles.ctaActions} style={{ marginTop: '3rem' }}>
+                  <Link href="/contact" tabIndex={-1}>
+                    <Button variant="primary">Réserver un appel offert</Button>
+                  </Link>
+                  <Link href="/offres" tabIndex={-1}>
+                    <Button variant="outline">Voir nos packs</Button>
+                  </Link>
+                </div>
+              </FadeIn>
+            </div>
+            <div className={styles.col40}>
+              <div className={styles.heroDesktopMockup}>
                 <FadeIn direction="right" delay={0.4} className="w-full">
                   <MockupEcosystem />
                 </FadeIn>
               </div>
+              <div className={styles.heroMobileMockup}>
+                <FadeIn direction="up" delay={0.4}>
+                  <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <MobileEcosystemAnim />
+                  </div>
+                </FadeIn>
+              </div>
             </div>
-          </div>
-
-          {/* Mobile : H1 centré + description + CTAs + grid 2×2 piliers */}
-          <div className={styles.mobileOnly}>
-            <FadeIn direction="up">
-              <h1 className={styles.headerTitle} style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1, textAlign: 'center' }}>
-                <TextReveal inline>Les 4 piliers qui feront passer votre activité à la</TextReveal>{' '}
-                <TextReveal delay={1.35} inline wordClassName="globalGradientWordItalic">vitesse supérieure</TextReveal>
-              </h1>
-            </FadeIn>
-            <FadeIn direction="up" delay={0.2}>
-              <p className={styles.headerDesc} style={{ margin: '1.5rem 0 0', textAlign: 'center' }}>
-                <TextReveal delay={1.8} inline>Une agence qui conçoit, explique et propulse. Pour les professionnels qui veulent des résultats mesurables, pas des slides.</TextReveal>
-              </p>
-            </FadeIn>
-            <FadeIn direction="up" delay={0.3}>
-              <div className={styles.ctaActions} style={{ justifyContent: 'center', marginTop: '3rem' }}>
-                <Link href="/contact" tabIndex={-1}>
-                  <Button variant="primary">Réserver un appel offert</Button>
-                </Link>
-                <Link href="/offres" tabIndex={-1}>
-                  <Button variant="outline">Voir nos packs</Button>
-                </Link>
-              </div>
-            </FadeIn>
-            <FadeIn direction="up" delay={0.4}>
-              <div style={{ marginTop: '2.5rem', display: 'flex', justifyContent: 'center' }}>
-                <MobileEcosystemAnim />
-              </div>
-            </FadeIn>
           </div>
         </div>
       </section>
@@ -163,7 +139,7 @@ export default function ServicesPage() {
               <div className={styles.mobileServiceCard}>
                 <MobileWebAnim />
                 <span className={styles.mobileServiceEyebrow}>Création Web</span>
-                <h2 className={styles.mobileServiceTitle}>Une présence digitale qui marque les esprits</h2>
+                <h2 className={styles.mobileServiceTitle}><TextReveal>Une présence digitale qui marque les esprits</TextReveal></h2>
                 <ul className={styles.mobileServiceBullets}>
                   <li><FaCheck size={14} /><span>Sites vitrines, e-commerce, refontes et landing pages de conversion</span></li>
                   <li><FaCheck size={14} /><span>SEO et référencement naturel optimisé à la racine</span></li>
@@ -217,7 +193,7 @@ export default function ServicesPage() {
               <div className={styles.mobileServiceCard}>
                 <MobileWorkflowAnim />
                 <span className={styles.mobileServiceEyebrow}>Automatisation</span>
-                <h2 className={styles.mobileServiceTitle}>L'automatisation au service de votre productivité</h2>
+                <h2 className={styles.mobileServiceTitle}><TextReveal>L'automatisation au service de votre productivité</TextReveal></h2>
                 <ul className={styles.mobileServiceBullets}>
                   <li><FaCheck size={14} /><span>Connexion directe et secrète entre tous vos outils via n8n & Make</span></li>
                   <li><FaCheck size={14} /><span>Automatisation complète de votre CRM et processus de vente</span></li>
@@ -308,7 +284,7 @@ export default function ServicesPage() {
               <div className={styles.mobileServiceCard}>
                 <MobileIAAnim />
                 <span className={styles.mobileServiceEyebrow}>Agents IA</span>
-                <h2 className={styles.mobileServiceTitle}>L'Intelligence Artificielle intégrée à votre métier</h2>
+                <h2 className={styles.mobileServiceTitle}><TextReveal>L'Intelligence Artificielle intégrée à votre métier</TextReveal></h2>
                 <ul className={styles.mobileServiceBullets}>
                   <li><FaCheck size={14} /><span>Déploiement d'agents IA autonomes ultra-spécifiques</span></li>
                   <li><FaCheck size={14} /><span>Connexion aux modèles de langage (Claude, GPT) sur vos propres données</span></li>
@@ -359,7 +335,7 @@ export default function ServicesPage() {
               <div className={styles.mobileServiceCard}>
                 <MobileFormationAnim />
                 <span className={styles.mobileServiceEyebrow}>Formation & Accompagnement</span>
-                <h2 className={styles.mobileServiceTitle}>Vous rendre 100% autonome</h2>
+                <h2 className={styles.mobileServiceTitle}><TextReveal>Vous rendre 100% autonome</TextReveal></h2>
                 <ul className={styles.mobileServiceBullets}>
                   <li><FaCheck size={14} /><span>Formation incluse de base dans tous nos packs</span></li>
                   <li><FaCheck size={14} /><span>Vidéos Loom explicatives et archivées pour chaque livrable</span></li>
