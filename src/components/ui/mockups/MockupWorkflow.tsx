@@ -101,24 +101,20 @@ export const MockupWorkflow = () => {
           100% { transform: scale(0.85) translateY(-5px); }
         }
 
-        @media (max-width: 768px) {
-          .node { transform: scale(0.65); }
-        }
-
         .mockup-workflow-scaler {
           width: 100%;
         }
         @media (max-width: 767px) {
           .mockup-workflow-scaler {
             transform-origin: top center;
-            transform: scale(0.78);
-            margin-bottom: -15%;
+            transform: scale(0.72);
+            margin-bottom: -20%;
           }
         }
         @media (max-width: 480px) {
           .mockup-workflow-scaler {
-            transform: scale(0.65);
-            margin-bottom: -28%;
+            transform: scale(0.55);
+            margin-bottom: -35%;
           }
         }
       `}</style>
