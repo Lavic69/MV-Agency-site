@@ -166,7 +166,7 @@
 
 /* Note : le hero a maintenant un double rendu desktop/mobile dans page.tsx —
    desktop affiche le splitLayout original (H1 left-aligned), mobile affiche
-   une version stacked centrée + grid 2×2 de piliers. Les classes .heroCol60
+   une version stacked centrée + grid 2×2 de leviers. Les classes .heroCol60
    et .heroCtaActions ont été supprimées (n'étaient utilisées que pour combler
    le gap entre TextReveal inline-style et la centrage mobile). */
 
@@ -288,7 +288,7 @@
   color: var(--text-light);
 }
 
-/* Hero mobile : grid 2×2 des 4 piliers (remplace MockupEcosystem qui débordait) */
+/* Hero mobile : grid 2×2 des 4 leviers (remplace MockupEcosystem qui débordait) */
 .heroPillarsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
