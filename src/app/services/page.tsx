@@ -69,20 +69,18 @@ export default function ServicesPage() {
                 </div>
               </FadeIn>
             </div>
-            <div className={styles.col40}>
-              <div className={styles.heroDesktopMockup}>
-                <FadeIn direction="right" delay={0.4} className="w-full">
-                  <MockupEcosystem />
-                </FadeIn>
-              </div>
-              <div className={styles.heroMobileMockup}>
-                <FadeIn direction="up" delay={0.4}>
-                  <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <MobileEcosystemAnim />
-                  </div>
-                </FadeIn>
-              </div>
+            <div className={`${styles.col40} ${styles.heroDesktopMockup}`}>
+              <FadeIn direction="right" delay={0.4} className="w-full">
+                <MockupEcosystem />
+              </FadeIn>
             </div>
+          </div>
+          <div className={styles.heroMobileMockup}>
+            <FadeIn direction="up" delay={0.4}>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <MobileEcosystemAnim />
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
