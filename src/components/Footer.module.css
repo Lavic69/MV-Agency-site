@@ -139,7 +139,7 @@
 
 .colTitle {
   font-family: var(--font-heading);
-  color: var(--text-light);
+  color: var(--primary-400);
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
