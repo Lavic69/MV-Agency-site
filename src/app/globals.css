@@ -76,6 +76,13 @@
   padding: 0;
 }
 
+html {
+  /* Belt-and-suspenders : `clip` ne crée pas de scroll container (compatible
+     position: sticky) mais bloque tout débordement horizontal — utile car iOS
+     Safari peut ignorer overflow-x: hidden sur body dans certains cas. */
+  overflow-x: clip;
+}
+
 body {
   background-color: var(--bg-neutral);
   color: var(--text-light);

@@ -153,3 +153,155 @@
     margin-top: 3rem !important;
   }
 }
+
+/* =====================================================
+   Double rendu desktop/mobile pour les 4 service blocks
+   ===================================================== */
+.desktopOnly { display: block; }
+.mobileOnly { display: none; }
+
+@media (max-width: 767px) {
+  .desktopOnly { display: none; }
+  .mobileOnly { display: block; }
+}
+
+.mobileServiceCard {
+  background: rgba(10, 10, 10, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  backdrop-filter: blur(10px);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.mobileServiceIcon {
+  width: 68px;
+  height: 68px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(37, 99, 235, 0.12);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  color: #60A5FA;
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.2);
+  flex-shrink: 0;
+}
+
+.mobileServiceEyebrow {
+  font-family: 'SF Mono', Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--primary-400);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.mobileServiceTitle {
+  font-size: clamp(1.5rem, 5vw, 1.75rem);
+  font-weight: 700;
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  color: var(--text-light);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.mobileServiceBullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.mobileServiceBullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  text-align: left;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-light);
+}
+
+.mobileServiceBullets svg {
+  color: var(--primary-400);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.mobileServiceHighlight {
+  font-size: 0.95rem;
+  color: var(--primary-400);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-top: 0.25rem;
+}
+
+.mobileServicePills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.mobileServicePills span {
+  padding: 0.4rem 0.9rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+/* Hero mobile : grid 2×2 des 4 piliers (remplace MockupEcosystem qui débordait) */
+.heroPillarsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.heroPillarItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1.25rem 0.5rem;
+  background: rgba(10, 10, 10, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.heroPillarIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.15);
+}
+
+.heroPillarLabel {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-light);
+  line-height: 1.25;
+  font-family: var(--font-heading);
+}

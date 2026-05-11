@@ -15,7 +15,7 @@ import { AnimatedTestimonials } from '@/components/ui/AnimatedTestimonials';
 import { JsonLd } from '@/components/JsonLd';
 import { SITE_URL, servicesSchemas, buildBreadcrumbSchema } from '@/lib/seo';
 import { BlogPreview } from '@/components/ui/BlogPreview';
-import { ShieldCheck, Scale, User } from 'lucide-react';
+import { ShieldCheck, Scale, User, Globe2, Workflow, Bot, GraduationCap } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Services | MV Agency',
@@ -62,11 +62,43 @@ export default function ServicesPage() {
                 </div>
               </FadeIn>
             </div>
-            <div className={styles.col40}>
+            <div className={`${styles.col40} ${styles.desktopOnly}`}>
               <FadeIn direction="right" delay={0.4} className="w-full">
                 <MockupEcosystem />
               </FadeIn>
             </div>
+          </div>
+          {/* Mobile : grid 2×2 des 4 piliers (au lieu du MockupEcosystem qui débordait
+              et était mal centré dans son container) */}
+          <div className={styles.mobileOnly} style={{ marginTop: '2.5rem' }}>
+            <FadeIn direction="up" delay={0.4}>
+              <div className={styles.heroPillarsGrid}>
+                <div className={styles.heroPillarItem}>
+                  <div className={styles.heroPillarIcon} style={{ background: 'rgba(59,130,246,0.12)', borderColor: 'rgba(59,130,246,0.4)', color: '#60a5fa' }}>
+                    <Globe2 size={22} />
+                  </div>
+                  <span className={styles.heroPillarLabel}>Développement Web</span>
+                </div>
+                <div className={styles.heroPillarItem}>
+                  <div className={styles.heroPillarIcon} style={{ background: 'rgba(168,85,247,0.12)', borderColor: 'rgba(168,85,247,0.4)', color: '#d8b4fe' }}>
+                    <Bot size={22} />
+                  </div>
+                  <span className={styles.heroPillarLabel}>Intelligence Artificielle</span>
+                </div>
+                <div className={styles.heroPillarItem}>
+                  <div className={styles.heroPillarIcon} style={{ background: 'rgba(16,185,129,0.12)', borderColor: 'rgba(16,185,129,0.4)', color: '#34d399' }}>
+                    <Workflow size={22} />
+                  </div>
+                  <span className={styles.heroPillarLabel}>Automatisation</span>
+                </div>
+                <div className={styles.heroPillarItem}>
+                  <div className={styles.heroPillarIcon} style={{ background: 'rgba(251,146,60,0.12)', borderColor: 'rgba(251,146,60,0.4)', color: '#fdba74' }}>
+                    <GraduationCap size={22} />
+                  </div>
+                  <span className={styles.heroPillarLabel}>Formation & Autonomie</span>
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -87,33 +119,57 @@ export default function ServicesPage() {
       {/* S2 — CRÉATION WEB (bloc détaillé) */}
       <section className={`${styles.section} ${styles.neutralBg}`}>
         <div className={styles.container}>
-          <div className={styles.splitLayout}>
-            <div className={styles.col60}>
-              <FadeIn direction="left">
-                <span className="eyebrow" style={{ textAlign: "center" }}>Création Web</span>
-                <h2 className={styles.sectionTitle}>
-                  <TextReveal>Une présence digitale qui marque les esprits</TextReveal>
-                </h2>
-                <ul className={styles.servicesList}>
-                  <li><FaCheck className={styles.checkIcon} /> Sites vitrines ultra-rapides en Next.js, e-commerce, refontes et landing pages de conversion</li>
-                   <li><FaCheck className={styles.checkIcon} /> SEO et référencement naturel optimisé à la racine</li>
-                  <li><FaCheck className={styles.checkIcon} /> Identité visuelle (Logos animés, charte graphique sur mesure)</li>
-                  <li><FaCheck className={styles.checkIcon} /> Design responsive parfait et UX centrée conversion</li>
+          {/* Desktop: layout split text+mockup intact */}
+          <div className={styles.desktopOnly}>
+            <div className={styles.splitLayout}>
+              <div className={styles.col60}>
+                <FadeIn direction="left">
+                  <span className="eyebrow" style={{ textAlign: "center" }}>Création Web</span>
+                  <h2 className={styles.sectionTitle}>
+                    <TextReveal>Une présence digitale qui marque les esprits</TextReveal>
+                  </h2>
+                  <ul className={styles.servicesList}>
+                    <li><FaCheck className={styles.checkIcon} /> Sites vitrines ultra-rapides en Next.js, e-commerce, refontes et landing pages de conversion</li>
+                     <li><FaCheck className={styles.checkIcon} /> SEO et référencement naturel optimisé à la racine</li>
+                    <li><FaCheck className={styles.checkIcon} /> Identité visuelle (Logos animés, charte graphique sur mesure)</li>
+                    <li><FaCheck className={styles.checkIcon} /> Design responsive parfait et UX centrée conversion</li>
+                  </ul>
+                  <div className={styles.pillsContainer}>
+                    <span className={styles.pill}>Rapide</span>
+                    <span className={styles.pill}>SEO-ready</span>
+                    <span className={styles.pill}>Évolutif</span>
+                    <span className={styles.pill}>100% propriétaire</span>
+                  </div>
+                </FadeIn>
+              </div>
+              <div className={styles.col40}>
+                <FadeIn direction="right" delay={0.2} className="w-full">
+                  <MockupWeb />
+                </FadeIn>
+              </div>
+            </div>
+          </div>
+          {/* Mobile: card simple icon + texte + bullets */}
+          <div className={styles.mobileOnly}>
+            <FadeIn direction="up">
+              <div className={styles.mobileServiceCard}>
+                <div className={styles.mobileServiceIcon}><Globe2 size={32} /></div>
+                <span className={styles.mobileServiceEyebrow}>Création Web</span>
+                <h2 className={styles.mobileServiceTitle}>Une présence digitale qui marque les esprits</h2>
+                <ul className={styles.mobileServiceBullets}>
+                  <li><FaCheck size={14} /><span>Sites vitrines, e-commerce, refontes et landing pages de conversion</span></li>
+                  <li><FaCheck size={14} /><span>SEO et référencement naturel optimisé à la racine</span></li>
+                  <li><FaCheck size={14} /><span>Identité visuelle (logos animés, charte graphique sur mesure)</span></li>
+                  <li><FaCheck size={14} /><span>Design responsive parfait et UX centrée conversion</span></li>
                 </ul>
-                
-                <div className={styles.pillsContainer}>
-                  <span className={styles.pill}>Rapide</span>
-                  <span className={styles.pill}>SEO-ready</span>
-                  <span className={styles.pill}>Évolutif</span>
-                  <span className={styles.pill}>100% propriétaire</span>
+                <div className={styles.mobileServicePills}>
+                  <span>Rapide</span>
+                  <span>SEO-ready</span>
+                  <span>Évolutif</span>
+                  <span>100% propriétaire</span>
                 </div>
-              </FadeIn>
-            </div>
-            <div className={styles.col40}>
-              <FadeIn direction="right" delay={0.2} className="w-full">
-                <MockupWeb />
-              </FadeIn>
-            </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -121,28 +177,49 @@ export default function ServicesPage() {
       {/* S3 — AUTOMATISATION (bloc détaillé) */}
       <section className={`${styles.section} ${styles.darkBg}`}>
         <div className={styles.container}>
-          <div className={styles.splitLayout} style={{ flexDirection: 'row-reverse' }}>
-            <div className={styles.col60}>
-              <FadeIn direction="right">
-                <span className="eyebrow" style={{ textAlign: "center" }}>Automatisation</span>
-                <h2 className={styles.sectionTitle}>
-                  <TextReveal>L'automatisation au service de votre productivité</TextReveal>
-                </h2>
-                <ul className={styles.servicesList}>
-                  <li><FaCheck className={styles.checkIcon} /> Connexion directe et secrète entre tous vos outils via n8n & Make</li>
-                  <li><FaCheck className={styles.checkIcon} /> Automatisation complète de votre CRM et processus de vente</li>
-                  <li><FaCheck className={styles.checkIcon} /> Emailing dynamique et trigger d'événements</li>
+          {/* Desktop */}
+          <div className={styles.desktopOnly}>
+            <div className={styles.splitLayout} style={{ flexDirection: 'row-reverse' }}>
+              <div className={styles.col60}>
+                <FadeIn direction="right">
+                  <span className="eyebrow" style={{ textAlign: "center" }}>Automatisation</span>
+                  <h2 className={styles.sectionTitle}>
+                    <TextReveal>L'automatisation au service de votre productivité</TextReveal>
+                  </h2>
+                  <ul className={styles.servicesList}>
+                    <li><FaCheck className={styles.checkIcon} /> Connexion directe et secrète entre tous vos outils via n8n & Make</li>
+                    <li><FaCheck className={styles.checkIcon} /> Automatisation complète de votre CRM et processus de vente</li>
+                    <li><FaCheck className={styles.checkIcon} /> Emailing dynamique et trigger d'événements</li>
+                  </ul>
+                  <span className={styles.highlightText}>
+                    Accessible à tous. Pas besoin d'être technique, on s'occupe de la magie.
+                  </span>
+                </FadeIn>
+              </div>
+              <div className={styles.col40}>
+                <FadeIn direction="left" delay={0.2} className="w-full">
+                  <MockupWorkflow />
+                </FadeIn>
+              </div>
+            </div>
+          </div>
+          {/* Mobile */}
+          <div className={styles.mobileOnly}>
+            <FadeIn direction="up">
+              <div className={styles.mobileServiceCard}>
+                <div className={styles.mobileServiceIcon}><Workflow size={32} /></div>
+                <span className={styles.mobileServiceEyebrow}>Automatisation</span>
+                <h2 className={styles.mobileServiceTitle}>L'automatisation au service de votre productivité</h2>
+                <ul className={styles.mobileServiceBullets}>
+                  <li><FaCheck size={14} /><span>Connexion directe et secrète entre tous vos outils via n8n & Make</span></li>
+                  <li><FaCheck size={14} /><span>Automatisation complète de votre CRM et processus de vente</span></li>
+                  <li><FaCheck size={14} /><span>Emailing dynamique et trigger d'événements</span></li>
                 </ul>
-                <span className={styles.highlightText}>
+                <span className={styles.mobileServiceHighlight}>
                   Accessible à tous. Pas besoin d'être technique, on s'occupe de la magie.
                 </span>
-              </FadeIn>
-            </div>
-            <div className={styles.col40}>
-              <FadeIn direction="left" delay={0.2} className="w-full">
-                <MockupWorkflow />
-              </FadeIn>
-            </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -190,29 +267,51 @@ export default function ServicesPage() {
       {/* S3BIS — INTELLIGENCE ARTIFICIELLE (nouveau bloc) */}
       <section className={`${styles.section} ${styles.neutralBg}`}>
         <div className={styles.container}>
-          <div className={styles.splitLayout}>
-            <div className={styles.col60}>
-              <FadeIn direction="left">
-                <span className="eyebrow" style={{ textAlign: "center" }}>Agents IA</span>
-                <h2 className={styles.sectionTitle}>
-                  <TextReveal>L'Intelligence Artificielle intégrée à votre métier</TextReveal>
-                </h2>
-                <ul className={styles.servicesList}>
-                  <li><FaCheck className={styles.checkIcon} /> Déploiement d'agents IA autonomes ultra-spécifiques</li>
-                  <li><FaCheck className={styles.checkIcon} /> Connexion aux modèles de langage (LLM, Claude, GPT) sur vos propres données</li>
-                  <li><FaCheck className={styles.checkIcon} /> Chatbots de support surhumain pour le service client</li>
-                  <li><FaCheck className={styles.checkIcon} /> Génération assistée de contenu SEO et rapports internes</li>
+          {/* Desktop */}
+          <div className={styles.desktopOnly}>
+            <div className={styles.splitLayout}>
+              <div className={styles.col60}>
+                <FadeIn direction="left">
+                  <span className="eyebrow" style={{ textAlign: "center" }}>Agents IA</span>
+                  <h2 className={styles.sectionTitle}>
+                    <TextReveal>L'Intelligence Artificielle intégrée à votre métier</TextReveal>
+                  </h2>
+                  <ul className={styles.servicesList}>
+                    <li><FaCheck className={styles.checkIcon} /> Déploiement d'agents IA autonomes ultra-spécifiques</li>
+                    <li><FaCheck className={styles.checkIcon} /> Connexion aux modèles de langage (LLM, Claude, GPT) sur vos propres données</li>
+                    <li><FaCheck className={styles.checkIcon} /> Chatbots de support surhumain pour le service client</li>
+                    <li><FaCheck className={styles.checkIcon} /> Génération assistée de contenu SEO et rapports internes</li>
+                  </ul>
+                  <span className={styles.highlightText}>
+                    La puissance maximale des modèles de langage configurée uniquement pour vos besoins.
+                  </span>
+                </FadeIn>
+              </div>
+              <div className={styles.col40}>
+                <FadeIn direction="right" delay={0.2} className="w-full">
+                  <MockupIA />
+                </FadeIn>
+              </div>
+            </div>
+          </div>
+          {/* Mobile */}
+          <div className={styles.mobileOnly}>
+            <FadeIn direction="up">
+              <div className={styles.mobileServiceCard}>
+                <div className={styles.mobileServiceIcon}><Bot size={32} /></div>
+                <span className={styles.mobileServiceEyebrow}>Agents IA</span>
+                <h2 className={styles.mobileServiceTitle}>L'Intelligence Artificielle intégrée à votre métier</h2>
+                <ul className={styles.mobileServiceBullets}>
+                  <li><FaCheck size={14} /><span>Déploiement d'agents IA autonomes ultra-spécifiques</span></li>
+                  <li><FaCheck size={14} /><span>Connexion aux modèles de langage (Claude, GPT) sur vos propres données</span></li>
+                  <li><FaCheck size={14} /><span>Chatbots de support surhumain pour le service client</span></li>
+                  <li><FaCheck size={14} /><span>Génération assistée de contenu SEO et rapports internes</span></li>
                 </ul>
-                <span className={styles.highlightText}>
+                <span className={styles.mobileServiceHighlight}>
                   La puissance maximale des modèles de langage configurée uniquement pour vos besoins.
                 </span>
-              </FadeIn>
-            </div>
-            <div className={styles.col40}>
-              <FadeIn direction="right" delay={0.2} className="w-full">
-                 <MockupIA />
-              </FadeIn>
-            </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -220,6 +319,8 @@ export default function ServicesPage() {
       {/* S4 — FORMATION & ACCOMPAGNEMENT (bloc détaillé) */}
       <section className={`${styles.section} ${styles.darkBg}`}>
         <div className={styles.container}>
+          {/* Desktop */}
+          <div className={styles.desktopOnly}>
           <div className={styles.splitLayout} style={{ flexDirection: 'row-reverse' }}>
             <div className={styles.col60}>
               <FadeIn direction="right">
@@ -242,6 +343,25 @@ export default function ServicesPage() {
                 <MockupTree />
               </FadeIn>
             </div>
+          </div>
+          </div>
+          {/* Mobile */}
+          <div className={styles.mobileOnly}>
+            <FadeIn direction="up">
+              <div className={styles.mobileServiceCard}>
+                <div className={styles.mobileServiceIcon}><GraduationCap size={32} /></div>
+                <span className={styles.mobileServiceEyebrow}>Formation & Accompagnement</span>
+                <h2 className={styles.mobileServiceTitle}>Vous rendre 100% autonome</h2>
+                <ul className={styles.mobileServiceBullets}>
+                  <li><FaCheck size={14} /><span>Formation incluse de base dans tous nos packs</span></li>
+                  <li><FaCheck size={14} /><span>Vidéos Loom explicatives et archivées pour chaque livrable</span></li>
+                  <li><FaCheck size={14} /><span>Bibliothèque de ressources privées dans notre portail client Notion</span></li>
+                </ul>
+                <span className={styles.mobileServiceHighlight}>
+                  Notre but : Vous repartez 100% autonome, pas dépendant de l'agence.
+                </span>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>

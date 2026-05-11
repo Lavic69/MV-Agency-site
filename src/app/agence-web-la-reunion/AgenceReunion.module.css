@@ -343,6 +343,12 @@
   transform-origin: top center;
 }
 
+/* Mobile : on remplace le mockup complexe par un icon coloré centré.
+   Caché sur desktop, affiché uniquement sur <767px. */
+.serviceIconWrapper {
+  display: none;
+}
+
 /* Sur mobile : les mockups internes appliquent leur propre scale prévu pour
    le full viewport (~414px). Dans une geo card constrained à ~350px de large,
    ce scale n'est pas assez fort — résultat : Node 3 (Email) de MockupWorkflow
@@ -359,14 +365,25 @@
   .serviceCard {
     width: 100%;
   }
+  /* Mobile : on cache le mockup complexe et on affiche l'icon coloré.
+     Le mockup ne tenait pas bien dans la card 350px de large — meilleur UX
+     avec un visuel simple. */
   .serviceMockupWrapper {
-    height: 220px;
-    padding: 1rem 0.5rem 0;
+    display: none;
   }
-  .serviceMockupWrapper > * {
-    transform: none;
+  .serviceIconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 84px;
+    height: 84px;
+    border-radius: 24px;
+    border: 1px solid transparent;
+    margin: 2rem auto 0.5rem;
+    box-shadow: 0 0 32px rgba(59, 130, 246, 0.2);
   }
-  /* Override scale interne mockup pour qu'il remplisse la card sans déborder */
+  /* Override scale interne mockup au cas où le mockup desktop serait affiché
+     dans un autre contexte (legacy fallback) */
   .serviceMockupWrapper :global(.mockup-web-scaler) {
     transform: scale(0.55) !important;
     transform-origin: top center !important;

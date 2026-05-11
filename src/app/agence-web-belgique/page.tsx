@@ -5,6 +5,9 @@ import {
   ShieldCheck,
   Sparkles,
   Quote,
+  Bot,
+  Workflow,
+  GraduationCap,
 } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
@@ -137,6 +140,10 @@ const faqPageSchema = buildFaqPageSchema(faqItems, PAGE_URL);
 const services = [
   {
     Mockup: MockupWeb,
+    Icon: Globe2,
+    iconColor: "#60a5fa",
+    iconBg: "rgba(59,130,246,0.12)",
+    iconBorder: "rgba(59,130,246,0.4)",
     title: "Création de site web premium",
     desc: "Sites vitrines en Next.js, e-commerce Shopify ou sur-mesure, refontes pour PME et startups belges. Multilingue FR/NL/EN, SEO optimisé à la racine, accessibilité WCAG 2.1.",
     bullets: [
@@ -147,6 +154,10 @@ const services = [
   },
   {
     Mockup: MockupIA,
+    Icon: Bot,
+    iconColor: "#d8b4fe",
+    iconBg: "rgba(168,85,247,0.12)",
+    iconBorder: "rgba(168,85,247,0.4)",
     title: "Intégration d'IA conforme RGPD",
     desc: "Agents IA, chatbots souverains, automatisations augmentées. Architecture qui respecte le RGPD européen — fondamental pour les structures belges proches des institutions UE.",
     bullets: [
@@ -157,6 +168,10 @@ const services = [
   },
   {
     Mockup: MockupWorkflow,
+    Icon: Workflow,
+    iconColor: "#34d399",
+    iconBg: "rgba(16,185,129,0.12)",
+    iconBorder: "rgba(16,185,129,0.4)",
     title: "Automatisation des processus",
     desc: "Connexion entre vos outils via Make et n8n. Automatisation CRM, synchronisation comptable (Odoo, Sage), déclencheurs marketing. L'IA branchée sur vos workflows.",
     bullets: [
@@ -167,6 +182,10 @@ const services = [
   },
   {
     Mockup: MockupTree,
+    Icon: GraduationCap,
+    iconColor: "#fdba74",
+    iconBg: "rgba(251,146,60,0.12)",
+    iconBorder: "rgba(251,146,60,0.4)",
     title: "Formation & accompagnement",
     desc: "Sessions pédagogiques en visio pour rendre votre équipe autonome sur le site, les automatisations et les usages quotidiens de l'IA. Documentation Notion fournie.",
     bullets: [
@@ -295,11 +314,22 @@ export default function AgenceWebBelgiquePage() {
           <div className={styles.servicesGrid}>
             {services.map((s, i) => {
               const Mockup = s.Mockup;
+              const Icon = s.Icon;
               return (
                 <FadeIn key={s.title} direction="up" delay={0.08 * i}>
                   <div className={styles.serviceCard}>
                     <div className={styles.serviceMockupWrapper}>
                       <Mockup />
+                    </div>
+                    <div
+                      className={styles.serviceIconWrapper}
+                      style={{
+                        background: s.iconBg,
+                        borderColor: s.iconBorder,
+                        color: s.iconColor,
+                      }}
+                    >
+                      <Icon size={42} />
                     </div>
                     <div className={styles.serviceCardBody}>
                       <h3>{s.title}</h3>

@@ -7,6 +7,9 @@ import {
   Video,
   Sparkles,
   Loader2,
+  Globe2,
+  Bot,
+  GraduationCap,
 } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
@@ -144,6 +147,10 @@ const faqPageSchema = buildFaqPageSchema(faqItems, PAGE_URL);
 const services = [
   {
     Mockup: MockupWeb,
+    Icon: Globe2,
+    iconColor: "#60a5fa",
+    iconBg: "rgba(59,130,246,0.12)",
+    iconBorder: "rgba(59,130,246,0.4)",
     title: "Création de site web premium",
     desc: "Sites vitrines Next.js, e-commerce Shopify ou sur-mesure, refontes pour PME et startups françaises. Design responsive, identité sur-mesure, SEO racine.",
     bullets: [
@@ -154,6 +161,10 @@ const services = [
   },
   {
     Mockup: MockupIA,
+    Icon: Bot,
+    iconColor: "#d8b4fe",
+    iconBg: "rgba(168,85,247,0.12)",
+    iconBorder: "rgba(168,85,247,0.4)",
     title: "Intégration d'intelligence artificielle",
     desc: "Agents IA, chatbots souverains, automatisations augmentées. Choix du fournisseur (modèles européens, US sous DPA, auto-hébergement) selon votre sensibilité RGPD.",
     bullets: [
@@ -164,6 +175,10 @@ const services = [
   },
   {
     Mockup: MockupWorkflow,
+    Icon: Workflow,
+    iconColor: "#34d399",
+    iconBg: "rgba(16,185,129,0.12)",
+    iconBorder: "rgba(16,185,129,0.4)",
     title: "Automatisation des processus",
     desc: "Connexion entre vos outils via Make, n8n, Zapier. Automatisation CRM, synchronisation comptable (Pennylane, Sage), déclencheurs marketing.",
     bullets: [
@@ -174,6 +189,10 @@ const services = [
   },
   {
     Mockup: MockupTree,
+    Icon: GraduationCap,
+    iconColor: "#fdba74",
+    iconBg: "rgba(251,146,60,0.12)",
+    iconBorder: "rgba(251,146,60,0.4)",
     title: "Formation & accompagnement",
     desc: "Sessions pédagogiques en visio pour rendre votre équipe autonome sur le site, les automatisations et les usages de l'IA. Documentation Notion en français.",
     bullets: [
@@ -303,11 +322,22 @@ export default function AgenceWebFrancePage() {
           <div className={styles.servicesGrid}>
             {services.map((s, i) => {
               const Mockup = s.Mockup;
+              const Icon = s.Icon;
               return (
                 <FadeIn key={s.title} direction="up" delay={0.08 * i}>
                   <div className={styles.serviceCard}>
                     <div className={styles.serviceMockupWrapper}>
                       <Mockup />
+                    </div>
+                    <div
+                      className={styles.serviceIconWrapper}
+                      style={{
+                        background: s.iconBg,
+                        borderColor: s.iconBorder,
+                        color: s.iconColor,
+                      }}
+                    >
+                      <Icon size={42} />
                     </div>
                     <div className={styles.serviceCardBody}>
                       <h3>{s.title}</h3>
