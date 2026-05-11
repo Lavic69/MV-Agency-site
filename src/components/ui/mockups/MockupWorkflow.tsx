@@ -3,6 +3,7 @@ import { FaGlobe, FaBrain, FaEnvelope } from 'react-icons/fa';
 
 export const MockupWorkflow = () => {
   return (
+    <div className="mockup-workflow-scaler">
     <div style={{
       width: '100%',
       height: '300px',
@@ -103,7 +104,25 @@ export const MockupWorkflow = () => {
         @media (max-width: 768px) {
           .node { transform: scale(0.65); }
         }
+
+        .mockup-workflow-scaler {
+          width: 100%;
+        }
+        @media (max-width: 767px) {
+          .mockup-workflow-scaler {
+            transform-origin: top center;
+            transform: scale(0.78);
+            margin-bottom: -15%;
+          }
+        }
+        @media (max-width: 480px) {
+          .mockup-workflow-scaler {
+            transform: scale(0.65);
+            margin-bottom: -28%;
+          }
+        }
       `}</style>
+    </div>
     </div>
   );
 };
