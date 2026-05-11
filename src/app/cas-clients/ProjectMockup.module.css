@@ -123,15 +123,24 @@
 }
 
 @media (max-width: 768px) {
+  /* Important : on bascule en display:block au lieu de flex+aspect-ratio,
+     car la combinaison flex parent + aspect-ratio enfant + Next.js Image fill
+     collapse à 0 hauteur sur iOS Safari — résultat : seul le browser header
+     (24px) s'affiche, contenu de l'image invisible. */
   .mockupContainer {
-    perspective: none; /* Disable heavy 3D rendering overhead */
+    display: block;
+    perspective: none;
+    aspect-ratio: unset;
+    width: 100%;
+    margin: 1rem 0 2rem 0;
   }
-  
+
   .desktopFrame {
     width: 100%;
+    aspect-ratio: 16/10;
     transform: rotateY(0deg) rotateX(0deg) !important;
   }
-  
+
   .mobileFrame {
     width: 30%;
     transform: translateZ(10px) rotateY(-5deg) rotateX(0deg) !important;

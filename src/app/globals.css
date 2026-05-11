@@ -182,13 +182,13 @@ a {
 @media (max-width: 767px) {
   .mockup-hub-gradient-wrapper {
     transform-origin: top center;
-    transform: scale(0.85);
-    margin-bottom: -15%;
+    transform: scale(0.98);
+    margin-bottom: -2%;
   }
 }
 @media (max-width: 480px) {
   .mockup-hub-gradient-wrapper {
-    transform: scale(0.72);
-    margin-bottom: -28%;
+    transform: scale(0.88);
+    margin-bottom: -12%;
   }
 }

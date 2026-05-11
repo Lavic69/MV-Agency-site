@@ -30,7 +30,7 @@ const OwnershipIllustration = () => (
 );
 
 const DesignIllustration = () => (
-    <div style={{ marginTop: 'auto', display: 'flex', gap: '1.5rem', opacity: 0.9 }}>
+    <div style={{ marginTop: 'auto', paddingTop: '2rem', display: 'flex', gap: '1.5rem', opacity: 0.9 }}>
         {/* Colors */}
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             <div style={{ width: '100%', height: '54px', backgroundColor: '#2563EB', borderRadius: '8px' }}></div>

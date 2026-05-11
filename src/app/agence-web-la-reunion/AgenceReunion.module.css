@@ -334,16 +334,40 @@
   transform-origin: top center;
 }
 
-/* Sur mobile, les mockups (MockupWeb/Workflow/IA) gèrent déjà leur propre
-   transform scale via leur wrapper interne. Éviter le double scaling
-   (qui rendait les blocs services minuscules dans leurs cards). */
+/* Sur mobile : les mockups internes appliquent leur propre scale prévu pour
+   le full viewport (~414px). Dans une geo card constrained à ~350px de large,
+   ce scale n'est pas assez fort — résultat : Node 3 (Email) de MockupWorkflow
+   clippe ou le mockup ne remplit pas son espace dédié. On override le scale
+   interne avec la valeur correcte au contexte card. */
 @media (max-width: 767px) {
+  /* Cards légèrement plus fines + centrées */
+  .serviceCard {
+    max-width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .serviceMockupWrapper {
-    height: 240px;
-    padding: 1rem 1rem 0;
+    height: 220px;
+    padding: 1rem 0.5rem 0;
   }
   .serviceMockupWrapper > * {
     transform: none;
+  }
+  /* Override scale interne mockup pour qu'il remplisse la card sans déborder */
+  .serviceMockupWrapper :global(.mockup-web-scaler) {
+    transform: scale(0.6) !important;
+    transform-origin: top center !important;
+    margin-bottom: 0 !important;
+  }
+  .serviceMockupWrapper :global(.mockup-workflow-scaler) {
+    transform: scale(0.66) !important;
+    transform-origin: top center !important;
+    margin-bottom: 0 !important;
+  }
+  .serviceMockupWrapper :global(.mockup-ia-scaler) {
+    transform: scale(0.72) !important;
+    transform-origin: top center !important;
+    margin-bottom: 0 !important;
   }
 }
 
