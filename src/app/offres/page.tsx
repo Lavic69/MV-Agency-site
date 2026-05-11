@@ -23,6 +23,28 @@ export const metadata: Metadata = {
   alternates: { canonical: '/offres' },
 };
 
+type ComparePackKey = 'fondation' | 'croissance' | 'performance';
+
+const comparePacks: { key: ComparePackKey; label: string }[] = [
+  { key: 'fondation', label: 'Fondation' },
+  { key: 'croissance', label: 'Croissance' },
+  { key: 'performance', label: 'Performance IA' },
+];
+
+const compareRows: {
+  feature: string;
+  fondation: string | null;
+  croissance: string;
+  performance: string;
+}[] = [
+  { feature: 'Création de Site Web', fondation: 'Vitrines basic', croissance: 'Vitrines avancé', performance: 'E-commerce / Sur-mesure' },
+  { feature: 'Optimisation SEO', fondation: 'Fondations techniques', croissance: 'Avancée + Contenu IA', performance: 'Audit profond & Stratégie' },
+  { feature: 'Automatisations Métier', fondation: null, croissance: 'CRM & Emailing de base', performance: 'Workflows IA ultra-complexes' },
+  { feature: 'Intelligence Artificielle', fondation: null, croissance: 'Chatbot & Génération texte', performance: 'Agents IA autonomes (LLM)' },
+  { feature: 'Formation & Autonomie', fondation: 'Outils CMS basiques', croissance: 'Marketing & Édition site', performance: 'Masterclass IA complète' },
+  { feature: 'Accompagnement & Suivi', fondation: 'Support technique J+14', croissance: '1 session stratégique', performance: 'Suivi Premium (3 mois)' },
+];
+
 const faqItems = [
   {
     question: "Comment se déroule la collaboration ?",
@@ -230,44 +252,35 @@ export default function OffresPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className={styles.featureName}>Création de Site Web</td>
-                    <td>Vitrines basic</td>
-                    <td className={styles.highlightCol}>Vitrines avancé</td>
-                    <td>E-commerce / Sur-mesure</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.featureName}>Optimisation SEO</td>
-                    <td>Fondations techniques</td>
-                    <td className={styles.highlightCol}>Avancée + Contenu IA</td>
-                    <td>Audit profond & Stratégie</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.featureName}>Automatisations Métier</td>
-                    <td><FaTimes className={styles.iconCross} /></td>
-                    <td className={styles.highlightCol}>CRM & Emailing de base</td>
-                    <td>Workflows IA ultra-complexes</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.featureName}>Intelligence Artificielle</td>
-                    <td><FaTimes className={styles.iconCross} /></td>
-                    <td className={styles.highlightCol}>Chatbot & Génération texte</td>
-                    <td>Agents IA autonomes (LLM)</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.featureName}>Formation & Autonomie</td>
-                    <td>Outils CMS basiques</td>
-                    <td className={styles.highlightCol}>Marketing & Édition site</td>
-                    <td>Masterclass IA complète</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.featureName}>Accompagnement & Suivi</td>
-                    <td>Support technique J+14</td>
-                    <td className={styles.highlightCol}>1 session stratégique</td>
-                    <td>Suivi Premium (3 mois)</td>
-                  </tr>
+                  {compareRows.map((row) => (
+                    <tr key={row.feature}>
+                      <td className={styles.featureName}>{row.feature}</td>
+                      <td>{row.fondation === null ? <FaTimes className={styles.iconCross} /> : row.fondation}</td>
+                      <td className={styles.highlightCol}>{row.croissance}</td>
+                      <td>{row.performance}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
+            </div>
+            {/* Mobile cards stack — alternative au compareTable sur mobile */}
+            <div className={styles.compareMobile}>
+              {comparePacks.map((pack) => (
+                <div key={pack.key} className={styles.compareMobileCard}>
+                  <div className={styles.compareMobileCardTitle}>{pack.label}</div>
+                  <ul className={styles.compareMobileList}>
+                    {compareRows.map((row) => {
+                      const value = row[pack.key];
+                      return (
+                        <li key={row.feature}>
+                          <strong>{row.feature} :</strong>{' '}
+                          {value === null ? '—' : value}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ))}
             </div>
           </FadeIn>
         </div>

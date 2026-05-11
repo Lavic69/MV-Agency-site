@@ -286,3 +286,50 @@
   gap: 1rem;
   flex-wrap: wrap;
 }
+
+/* Mobile cards stack — alternative au compareTable sur mobile */
+.compareMobile {
+  display: none;
+}
+.compareMobileCard {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.compareMobileCardTitle {
+  color: var(--primary-400);
+  font-family: 'SF Mono', Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.875rem;
+}
+.compareMobileList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.compareMobileList li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(229, 231, 235, 0.88);
+}
+.compareMobileList li:last-child { border-bottom: none; }
+.compareMobileList strong { color: var(--text-light); }
+
+@media (max-width: 767px) {
+  .tableContainer {
+    display: none !important;
+  }
+  .compareTable {
+    display: none !important;
+  }
+  .compareMobile {
+    display: block;
+  }
+}
