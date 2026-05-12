@@ -26,9 +26,16 @@ export const TextReveal: React.FC<TextRevealProps> = ({ children, delay = 0, inl
   if (typeof children === "string") {
     const words = children.split(" ");
     return (
-      <span ref={ref} style={{ display: inline ? "inline-flex" : "flex", flexWrap: "wrap", columnGap: "0.22em", rowGap: "0em", justifyContent: justify, verticalAlign: inline ? "bottom" : "baseline" }}>
+      <span
+        ref={ref}
+        style={{
+          display: inline ? "inline" : "block",
+          textAlign: justify === "center" ? "center" : undefined,
+          verticalAlign: inline ? "bottom" : "baseline",
+        }}
+      >
         {words.map((word, i) => (
-          <span key={i} style={{ display: "inline-block" }}>
+          <React.Fragment key={i}>
             <motion.span
               initial={initial}
               animate={animate}
@@ -38,7 +45,8 @@ export const TextReveal: React.FC<TextRevealProps> = ({ children, delay = 0, inl
             >
               {word}
             </motion.span>
-          </span>
+            {i < words.length - 1 ? " " : null}
+          </React.Fragment>
         ))}
       </span>
     );

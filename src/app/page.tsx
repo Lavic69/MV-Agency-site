@@ -22,7 +22,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL, buildFaqPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Agence web & IA pour PME | MV Agency",
+  title: "Création de site web & IA pour PME — MV Agency",
   description:
     "Agence web et intelligence artificielle pour TPE, PME et indépendants. On conçoit votre site, on intègre l'IA dans vos process, on vous forme.",
   alternates: { canonical: "/" },
@@ -196,8 +196,8 @@ export default function Home() {
             </StaggerItem>
             <StaggerItem>
               <h1 className={styles.heroTitle} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
-                <TextReveal delay={0.1}>Un site qui convertit.</TextReveal>
-                <span style={{ 
+                <TextReveal delay={0.1}>Un site qui convertit.</TextReveal>{" "}
+                <span style={{
                   display: "inline-block",
                   paddingBottom: "0.1em",
                   paddingRight: "0.1em"
