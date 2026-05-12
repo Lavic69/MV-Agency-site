@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { founderPersonSchema, SITE_URL, buildBreadcrumbSchema } from "@/lib/seo";
+import { founderPersonSchema, SITE_URL, buildBreadcrumbSchema, OG_IMAGE } from "@/lib/seo";
 import AProposClient from "./AProposClient";
 
 const breadcrumbSchema = buildBreadcrumbSchema([
@@ -19,12 +19,14 @@ export const metadata: Metadata = {
     description:
       "L'histoire et la mission de MV Agency, l'agence digitale qui rend le web et l'IA accessibles aux TPE/PME.",
     url: `${SITE_URL}/a-propos`,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "À propos de MV Agency",
     description:
       "Victor Marchetti, fondateur de MV Agency — agence web & IA pour TPE/PME.",
+    images: [OG_IMAGE.url],
   },
 };
 

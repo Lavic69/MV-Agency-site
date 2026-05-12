@@ -20,7 +20,7 @@ import { FadeIn } from '@/components/ui/FadeIn';
 import { TextReveal } from '@/components/ui/TextReveal';
 import { AnimatedTestimonials } from '@/components/ui/AnimatedTestimonials';
 import { JsonLd } from '@/components/JsonLd';
-import { SITE_URL, servicesSchemas, buildBreadcrumbSchema } from '@/lib/seo';
+import { SITE_URL, servicesSchemas, buildBreadcrumbSchema, OG_IMAGE } from "@/lib/seo";
 import { BlogPreview } from '@/components/ui/BlogPreview';
 import { ShieldCheck, Scale, User, Globe2, Workflow, Bot, GraduationCap } from 'lucide-react';
 
@@ -33,11 +33,13 @@ export const metadata: Metadata = {
     title: 'Services web & IA pour PME — MV Agency',
     description: 'Sites premium, agents IA, automatisations et formation : 6 leviers concrets pour propulser votre PME.',
     url: `${SITE_URL}/services`,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Services web & IA — MV Agency',
     description: 'Sites premium, agents IA et automatisations pour faire passer votre PME au niveau supérieur.',
+    images: [OG_IMAGE.url],
   },
 };
 

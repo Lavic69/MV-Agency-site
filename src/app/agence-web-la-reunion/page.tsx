@@ -29,14 +29,7 @@ import {
 } from "@/components/ui/mockups/MobileServiceAnims";
 import { MockupTree } from "@/components/ui/mockups/MockupTree";
 import { ProjectMockup } from "@/app/cas-clients/ProjectMockup";
-import {
-  SITE_URL,
-  CONTACT_EMAIL,
-  FOUNDER_NAME,
-  buildBreadcrumbSchema,
-  buildFaqPageSchema,
-  type FaqItem,
-} from "@/lib/seo";
+import { SITE_URL, CONTACT_EMAIL, FOUNDER_NAME, buildBreadcrumbSchema, buildFaqPageSchema, type FaqItem, OG_IMAGE } from "@/lib/seo";
 import { realizations } from "@/data/projects";
 import { ReunionMap } from "./ReunionMap";
 import { techLogos } from "@/data/tech-logos";
@@ -57,12 +50,14 @@ export const metadata: Metadata = {
     description:
       "Création de sites premium et intégration IA pour les PME réunionnaises. Présentiel sur toute l'île ou visio. Pas d'abonnement caché, propriété 100 % client.",
     url: `${SITE_URL}/agence-web-la-reunion`,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Agence web & IA à La Réunion — MV Agency",
     description:
       "Sites web premium et IA pour PME 974. Saint-Denis, Saint-Pierre, Saint-Paul, Le Port. Présentiel ou visio.",
+    images: [OG_IMAGE.url],
   },
 };
 

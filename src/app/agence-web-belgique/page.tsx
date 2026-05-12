@@ -25,14 +25,7 @@ import {
   MobileIAAnim,
   MobileFormationAnim,
 } from "@/components/ui/mockups/MobileServiceAnims";
-import {
-  SITE_URL,
-  CONTACT_EMAIL,
-  FOUNDER_NAME,
-  buildBreadcrumbSchema,
-  buildFaqPageSchema,
-  type FaqItem,
-} from "@/lib/seo";
+import { SITE_URL, CONTACT_EMAIL, FOUNDER_NAME, buildBreadcrumbSchema, buildFaqPageSchema, type FaqItem, OG_IMAGE } from "@/lib/seo";
 import styles from "../agence-web-la-reunion/AgenceReunion.module.css";
 import { BelgiqueMap } from "./BelgiqueMap";
 import { techLogos } from "@/data/tech-logos";
@@ -52,12 +45,14 @@ export const metadata: Metadata = {
     description:
       "Création de sites premium et intégration IA pour les PME belges. Collaboration asynchrone (visio, Loom, Notion). Pas d'abonnement caché, propriété 100 % client.",
     url: `${SITE_URL}/agence-web-belgique`,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Agence web & IA en Belgique — MV Agency",
     description:
       "Sites web premium et IA pour PME belges. Bruxelles, Wallonie, Liège, Namur. 100 % asynchrone.",
+    images: [OG_IMAGE.url],
   },
 };
 

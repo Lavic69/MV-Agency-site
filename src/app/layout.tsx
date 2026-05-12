@@ -12,6 +12,7 @@ import {
   SITE_NAME,
   LOCALE,
   FOUNDER_NAME,
+  OG_IMAGE,
   organizationSchema,
   localBusinessSchema,
 } from "@/lib/seo";
@@ -70,8 +71,7 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} | L'art du web, la puissance de l'IA`,
     description:
       "Concevoir, expliquer, propulser votre présence digitale avec l'Intelligence Artificielle de nouvelle génération.",
-    // L'image est générée automatiquement via src/app/opengraph-image.tsx
-    // Next.js injecte les balises <meta property="og:image:*" /> seul.
+    images: [OG_IMAGE],
   },
 
   twitter: {
@@ -79,6 +79,7 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} | L'art du web, la puissance de l'IA`,
     description:
       "Concevoir, expliquer, propulser votre présence digitale avec l'Intelligence Artificielle.",
+    images: [OG_IMAGE.url],
     // TODO: ajouter @handle quand compte X créé
   },
 

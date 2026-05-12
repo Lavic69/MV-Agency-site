@@ -10,7 +10,7 @@ import { ProjectMockup } from './ProjectMockup';
 import styles from './CasClients.module.css';
 import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';
 import { JsonLd } from '@/components/JsonLd';
-import { SITE_URL, buildBreadcrumbSchema } from '@/lib/seo';
+import { SITE_URL, buildBreadcrumbSchema, OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: 'Nos Cas Clients | MV Agency',
@@ -21,11 +21,13 @@ export const metadata: Metadata = {
     title: 'Cas clients — Réalisations MV Agency',
     description: 'Sites premium, applications IA et automatisations livrés pour des PME et startups. Projets concrets, ROI mesuré.',
     url: `${SITE_URL}/cas-clients`,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Cas clients — MV Agency',
     description: 'Sites premium et apps IA livrés pour PME et startups. Projets concrets, ROI mesurés.',
+    images: [OG_IMAGE.url],
   },
 };
 
