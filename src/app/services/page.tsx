@@ -25,7 +25,7 @@ import { BlogPreview } from '@/components/ui/BlogPreview';
 import { ShieldCheck, Scale, User, Globe2, Workflow, Bot, GraduationCap } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Services agence web & IA pour PME | MV Agency',
+  title: 'Services : création site web & IA pour PME — MV Agency',
   description: 'Création de sites premium, intégration d\'agents IA, automatisations métier et formation. 6 leviers concrets pour propulser votre PME.',
   alternates: { canonical: '/services' },
   openGraph: {

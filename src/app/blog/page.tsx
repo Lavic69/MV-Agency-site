@@ -13,7 +13,7 @@ import {
 } from "./_articles";
 
 export const metadata: Metadata = {
-  title: "Blog & Actualités | MV Agency",
+  title: "Blog MV Agency : web, IA & SEO pour PME ambitieuses",
   description:
     "Articles approfondis sur la création de sites web, l'intelligence artificielle pour PME, le SEO et le marketing digital — par Victor Marchetti.",
   alternates: { canonical: "/blog" },

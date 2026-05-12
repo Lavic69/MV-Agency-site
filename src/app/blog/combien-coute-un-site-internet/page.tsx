@@ -29,7 +29,7 @@ const ARTICLE = _ARTICLE;
 const URL = `${SITE_URL}/blog/${SLUG}`;
 
 export const metadata: Metadata = {
-  title: ARTICLE.title,
+  title: `${ARTICLE.title} — MV Agency`,
   description: ARTICLE.description,
   alternates: { canonical: `/blog/${SLUG}` },
   openGraph: {

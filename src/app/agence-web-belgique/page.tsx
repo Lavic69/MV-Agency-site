@@ -35,7 +35,7 @@ import { techLogos } from "@/data/tech-logos";
 /* -------------------------------------------------------------------------- */
 
 export const metadata: Metadata = {
-  title: "Agence web & IA en Belgique | MV Agency",
+  title: "Agence web & IA en Belgique pour PME et startups — MV Agency",
   description:
     "Agence web et IA pour les PME belges. Sites premium, agents IA et automatisations. Bruxelles, Wallonie, Liège. Collaboration 100 % asynchrone.",
   alternates: { canonical: "/agence-web-belgique" },

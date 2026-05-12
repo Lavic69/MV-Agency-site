@@ -9,7 +9,7 @@ const breadcrumbSchema = buildBreadcrumbSchema([
 ]);
 
 export const metadata: Metadata = {
-  title: "Contact — Parlons de votre projet",
+  title: "Contact MV Agency — Réservez votre appel découverte",
   description:
     "Réservez un appel découverte de 30 minutes avec Victor Marchetti pour votre projet web ou IA. Sans engagement. Réponse sous 24h ouvrées.",
   alternates: { canonical: "/contact" },

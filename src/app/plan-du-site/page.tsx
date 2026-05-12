@@ -5,7 +5,7 @@ import { SITE_URL, buildBreadcrumbSchema } from "@/lib/seo";
 import { getPublishedArticles } from "../blog/_articles";
 
 export const metadata: Metadata = {
-  title: "Plan du site",
+  title: "Plan du site — MV Agency",
   description:
     "Plan du site MV Agency : navigation complète, pages services, offres, blog, cas clients, pages locales et mentions légales.",
   alternates: { canonical: "/plan-du-site" },
