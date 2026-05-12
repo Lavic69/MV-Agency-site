@@ -10,12 +10,7 @@ import { FaCheckCircle, FaTimes, FaCheck } from 'react-icons/fa';
 import { Accordion } from '@/components/ui/accordion';
 import { Timeline, defaultOffresSteps } from '@/components/ui/Timeline';
 import { JsonLd } from '@/components/JsonLd';
-import {
-  SITE_URL,
-  offerCatalogSchema,
-  buildFaqPageSchema,
-  buildBreadcrumbSchema,
-} from '@/lib/seo';
+import { SITE_URL, offerCatalogSchema, buildFaqPageSchema, buildBreadcrumbSchema, OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: 'Nos Offres & Packs | MV Agency',
@@ -26,11 +21,13 @@ export const metadata: Metadata = {
     title: 'Nos 3 packs web + IA — MV Agency',
     description: '3 packs digitaux pour chaque étape de croissance : Fondation, Croissance, Performance IA. Sur-mesure, IA intégrée, propriété 100 % client.',
     url: `${SITE_URL}/offres`,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title: '3 packs web + IA — MV Agency',
     description: 'Fondation, Croissance, Performance IA : 3 packs pour chaque ambition. Sur-mesure, propriété client, sans engagement.',
+    images: [OG_IMAGE.url],
   },
 };
 

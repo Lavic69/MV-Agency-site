@@ -19,7 +19,7 @@ import { AvailabilityPill } from "@/components/ui/AvailabilityPill";
 import { realizations } from "@/data/projects";
 import { SiWordpress, SiWebflow, SiNotion, SiShopify, SiOpenai, SiAnthropic, SiReact, SiNextdotjs, SiFigma, SiN8N, SiStripe, SiVercel, SiOdoo, SiJira, SiAsana, SiFramer } from 'react-icons/si';
 import { JsonLd } from "@/components/JsonLd";
-import { SITE_URL, buildFaqPageSchema } from "@/lib/seo";
+import { SITE_URL, buildFaqPageSchema, OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Création de site web & IA pour PME — MV Agency",
@@ -32,12 +32,14 @@ export const metadata: Metadata = {
     description:
       "On conçoit votre site, on intègre l'IA dans vos process, on vous forme. Pour TPE, PME et indépendants qui veulent comprendre, pas juste déléguer.",
     url: SITE_URL,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Agence web & IA pour PME — MV Agency",
     description:
       "Sites premium et IA intégrée pour PME. On conçoit, on explique, on propulse.",
+    images: [OG_IMAGE.url],
   },
 };
 

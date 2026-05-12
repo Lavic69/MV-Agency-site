@@ -26,14 +26,7 @@ import {
   MobileIAAnim,
   MobileFormationAnim,
 } from "@/components/ui/mockups/MobileServiceAnims";
-import {
-  SITE_URL,
-  CONTACT_EMAIL,
-  FOUNDER_NAME,
-  buildBreadcrumbSchema,
-  buildFaqPageSchema,
-  type FaqItem,
-} from "@/lib/seo";
+import { SITE_URL, CONTACT_EMAIL, FOUNDER_NAME, buildBreadcrumbSchema, buildFaqPageSchema, type FaqItem, OG_IMAGE } from "@/lib/seo";
 import styles from "../agence-web-la-reunion/AgenceReunion.module.css";
 import { BruxellesMap } from "./BruxellesMap";
 import { techLogos } from "@/data/tech-logos";
@@ -53,12 +46,14 @@ export const metadata: Metadata = {
     description:
       "Création de sites web premium et intégration IA pour les PME bruxelloises. Ancrage local, méthode async, propriété 100 % client.",
     url: `${SITE_URL}/agence-web-bruxelles`,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Agence web à Bruxelles — MV Agency",
     description:
       "Sites premium & IA pour PME bruxelloises. Toutes les communes desservies. Async + visio.",
+    images: [OG_IMAGE.url],
   },
 };
 

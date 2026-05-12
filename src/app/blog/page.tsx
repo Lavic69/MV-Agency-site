@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerContainer";
 import { JsonLd } from "@/components/JsonLd";
-import { SITE_URL, buildBreadcrumbSchema } from "@/lib/seo";
+import { SITE_URL, buildBreadcrumbSchema, OG_IMAGE } from "@/lib/seo";
 import { formatDateMono } from "@/lib/formatDate";
 import { BlogClient } from "./BlogClient";
 import {
@@ -23,11 +23,13 @@ export const metadata: Metadata = {
     description:
       "Articles approfondis sur la création de sites web, l'IA pour PME, le SEO et le marketing digital — par Victor Marchetti.",
     url: `${SITE_URL}/blog`,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Blog MV Agency",
     description: "Ressources web, IA et SEO pour PME — par Victor Marchetti.",
+    images: [OG_IMAGE.url],
   },
 };
 

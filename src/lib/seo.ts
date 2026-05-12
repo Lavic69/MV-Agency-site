@@ -23,6 +23,24 @@ export const FOUNDER_ROLE = "Fondateur";
 export const LOCALE = "fr_FR";
 
 /**
+ * Image OG globale — référencée depuis tous les `metadata.openGraph.images`
+ * pour garantir que chaque page sert le même visuel social.
+ * (Le fichier `src/app/opengraph-image.tsx` n'est appliqué par Next que sur la
+ * route `/`. Pour les sous-routes, il faut le référencer explicitement ici.)
+ */
+export const OG_IMAGE: {
+  url: string;
+  width: number;
+  height: number;
+  alt: string;
+} = {
+  url: `${SITE_URL}/opengraph-image`,
+  width: 1200,
+  height: 630,
+  alt: `${SITE_NAME} — Création de site web & IA pour TPE/PME`,
+};
+
+/**
  * Données légales — micro-entreprise immatriculée au RCS Saint-Denis de La Réunion.
  * Sources : extrait Kbis 2025A00241, Synthèse Guichet Unique J00120928718 (validée 31/01/2025).
  * Adresse publique volontairement réduite à la commune (siège = domicile de l'entrepreneur).

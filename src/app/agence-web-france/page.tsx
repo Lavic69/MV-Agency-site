@@ -28,14 +28,7 @@ import {
   MobileFormationAnim,
 } from "@/components/ui/mockups/MobileServiceAnims";
 import { techLogos } from "@/data/tech-logos";
-import {
-  SITE_URL,
-  CONTACT_EMAIL,
-  FOUNDER_NAME,
-  buildBreadcrumbSchema,
-  buildFaqPageSchema,
-  type FaqItem,
-} from "@/lib/seo";
+import { SITE_URL, CONTACT_EMAIL, FOUNDER_NAME, buildBreadcrumbSchema, buildFaqPageSchema, type FaqItem, OG_IMAGE } from "@/lib/seo";
 import styles from "../agence-web-la-reunion/AgenceReunion.module.css";
 
 /* -------------------------------------------------------------------------- */
@@ -53,12 +46,14 @@ export const metadata: Metadata = {
     description:
       "MV Agency accompagne les PME françaises en distanciel : sites web premium et intégration d'IA. Tarifs ajustés vs Paris, méthode async éprouvée.",
     url: `${SITE_URL}/agence-web-france`,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Agence web en France — MV Agency",
     description:
       "Sites premium & IA pour PME françaises. 100 % distanciel, méthode async éprouvée, tarifs ajustés.",
+    images: [OG_IMAGE.url],
   },
 };
 

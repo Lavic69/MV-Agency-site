@@ -16,13 +16,7 @@ import {
   Diagram,
 } from "@/components/blog";
 import { Button } from "@/components/ui/Button";
-import {
-  SITE_URL,
-  buildArticleSchema,
-  buildFaqPageSchema,
-  buildBreadcrumbSchema,
-  type FaqItem,
-} from "@/lib/seo";
+import { SITE_URL, buildArticleSchema, buildFaqPageSchema, buildBreadcrumbSchema, type FaqItem, OG_IMAGE } from "@/lib/seo";
 import { getArticleBySlug, getArticleNumber, PILLAR_LABEL } from "@/app/blog/_articles";
 import styles from "@/components/blog/Article.module.css";
 
@@ -45,11 +39,13 @@ export const metadata: Metadata = {
     url: URL,
     publishedTime: ARTICLE.publishedAt,
     modifiedTime: ARTICLE.updatedAt,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: ARTICLE.title,
     description: ARTICLE.description,
+    images: [OG_IMAGE.url],
   },
 };
 
