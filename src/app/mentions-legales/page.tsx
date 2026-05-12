@@ -9,7 +9,7 @@ import {
 } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Mentions légales",
+  title: "Mentions légales — MV Agency",
   description: `Mentions légales de ${SITE_NAME}. Éditeur, hébergeur, propriété intellectuelle.`,
   alternates: { canonical: "/mentions-legales" },
   robots: { index: true, follow: false },

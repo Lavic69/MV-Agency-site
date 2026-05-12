@@ -13,7 +13,7 @@ import { JsonLd } from '@/components/JsonLd';
 import { SITE_URL, offerCatalogSchema, buildFaqPageSchema, buildBreadcrumbSchema, OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: 'Nos Offres & Packs | MV Agency',
+  title: 'Nos packs web & IA pour PME : 3 offres — MV Agency',
   description: 'Découvrez nos packs sur-mesure combinant un design web high-end et toute la puissance de l\'intelligence artificielle pour votre croissance.',
   alternates: { canonical: '/offres' },
   openGraph: {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_NAME, CONTACT_EMAIL, LEGAL, LEGAL_LAST_UPDATED } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Conditions Générales de Vente",
+  title: "Conditions Générales de Vente — MV Agency",
   description: `Conditions Générales de Vente des prestations de ${SITE_NAME} — création web, intégration IA, accompagnement.`,
   alternates: { canonical: "/cgv" },
   robots: { index: true, follow: false },

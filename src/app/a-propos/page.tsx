@@ -9,7 +9,7 @@ const breadcrumbSchema = buildBreadcrumbSchema([
 ]);
 
 export const metadata: Metadata = {
-  title: "À propos — Qui est derrière MV Agency",
+  title: "À propos de MV Agency — Victor Marchetti, fondateur",
   description:
     "Victor Marchetti, fondateur de MV Agency. Agence web & IA pour PME à La Réunion, Belgique et France. Approche pédagogique, sans jargon.",
   alternates: { canonical: "/a-propos" },

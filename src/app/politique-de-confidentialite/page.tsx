@@ -8,7 +8,7 @@ import {
 } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Politique de confidentialité",
+  title: "Politique de confidentialité — MV Agency",
   description: `Politique de confidentialité et traitement des données personnelles de ${SITE_NAME}, conforme RGPD.`,
   alternates: { canonical: "/politique-de-confidentialite" },
   robots: { index: true, follow: false },

@@ -37,7 +37,9 @@ export const metadata: Metadata = {
 
   title: {
     default: `${SITE_NAME} | L'art du web, la puissance de l'IA`,
-    template: `%s · ${SITE_NAME}`,
+    // Pas de template auto : chaque page définit son <title> complet
+    // (avec "— MV Agency" inline) pour contrôler précisément la longueur SEO.
+    template: `%s`,
   },
   description:
     "Création de sites web premium et intégration d'Intelligence Artificielle (IA) sur-mesure pour PME et startups. L'alliance parfaite entre design de haut vol et ingénierie de pointe.",

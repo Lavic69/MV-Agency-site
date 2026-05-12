@@ -13,7 +13,7 @@ import { JsonLd } from '@/components/JsonLd';
 import { SITE_URL, buildBreadcrumbSchema, OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: 'Nos Cas Clients | MV Agency',
+  title: 'Cas clients & réalisations web & IA pour PME — MV Agency',
   description: 'Découvrez nos réalisations, sites vitrines, applications web IA et le ROI généré pour nos clients.',
   alternates: { canonical: '/cas-clients' },
   openGraph: {

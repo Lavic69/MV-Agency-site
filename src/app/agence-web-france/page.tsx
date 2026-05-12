@@ -36,7 +36,7 @@ import styles from "../agence-web-la-reunion/AgenceReunion.module.css";
 /* -------------------------------------------------------------------------- */
 
 export const metadata: Metadata = {
-  title: "Agence web France : sites & IA pour PME | MV Agency",
+  title: "Agence web France : sites & IA pour PME — MV Agency",
   description:
     "Agence web française 100 % distancielle pour PME. Sites premium et intégration IA, méthode async (Notion, Loom). Tarifs ajustés vs Paris.",
   alternates: { canonical: "/agence-web-france" },

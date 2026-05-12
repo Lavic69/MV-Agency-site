@@ -40,7 +40,7 @@ import styles from "./AgenceReunion.module.css";
 /* -------------------------------------------------------------------------- */
 
 export const metadata: Metadata = {
-  title: "Agence web & IA à La Réunion (974) | MV Agency",
+  title: "Agence web & IA à La Réunion (974) pour PME — MV Agency",
   description:
     "Agence web et IA à La Réunion. Sites premium et agents IA pour TPE/PME — Saint-Denis, Saint-Pierre, Saint-Paul, Le Port. Présentiel ou visio.",
   alternates: { canonical: "/agence-web-la-reunion" },
