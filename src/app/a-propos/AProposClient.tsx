@@ -119,7 +119,7 @@ export default function AProposClient() {
                   textAlign: 'center',
                   letterSpacing: '-0.02em'
                 }}>
-                  <TextReveal delay={0.1} inline>On ne vend pas du code.</TextReveal><br/>
+                  <TextReveal delay={0.1} inline>On ne vend pas du code.</TextReveal>{' '}<br/>
                   <TextReveal delay={1.0} inline>On vend</TextReveal>{' '}
                   <TextReveal delay={1.3} inline>
                     <span style={{ 
