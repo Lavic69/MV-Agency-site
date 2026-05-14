@@ -12,7 +12,6 @@ import { MockupHub } from "@/components/ui/mockups/MockupHub";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerContainer";
 import { ShieldCheck, Scale, User, Phone, LayoutDashboard, Code2, Rocket, ArrowRight } from 'lucide-react';
 import styles from "./Home.module.css";
 import { AvailabilityPill } from "@/components/ui/AvailabilityPill";
@@ -192,53 +191,46 @@ export default function Home() {
 
         {/* S1: HERO CONTENT */}
         <section className={styles.hero} style={{ background: 'transparent', borderBottom: 'none', minHeight: '85vh', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-          <StaggerContainer className={styles.heroContent} style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <StaggerItem>
+          <div className={styles.heroContent} style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div className="heroReveal">
               <AvailabilityPill />
-            </StaggerItem>
-            <StaggerItem>
-              <h1 className={styles.heroTitle} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
-                <TextReveal delay={0.1}>Un site qui convertit.</TextReveal>{" "}
-                <span style={{
-                  display: "inline-block",
-                  paddingBottom: "0.1em",
-                  paddingRight: "0.1em"
-                }}>
-                  <TextReveal delay={0.8} inline wordClassName={styles.heroGradientWord}>Une IA qui vous fait gagner du temps.</TextReveal>
-                </span>
-              </h1>
-            </StaggerItem>
-            <StaggerItem>
-              <p className={styles.heroSubtitle} style={{ textAlign: "center", maxWidth: "600px", margin: "1.5rem auto" }}>
-                <TextReveal delay={1.4} inline justify="center">Agence web + IA pour les TPE, PME et indépendants qui veulent comprendre, pas juste déléguer. On conçoit, on explique, on propulse.</TextReveal>
-              </p>
-            </StaggerItem>
-            <StaggerItem>
-              <div className={styles.heroActions} style={{ justifyContent: 'center' }}>
-                <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none' }}>
-                  <Button variant="primary">
-                    Réserver un appel offert
-                  </Button>
-                </Link>
-                <Link href="/offres" tabIndex={-1} style={{ textDecoration: 'none' }}>
-                  <Button variant="outline">
-                    Voir nos packs
-                  </Button>
-                </Link>
-              </div>
-            </StaggerItem>
+            </div>
+            <h1 className={`${styles.heroTitle} heroReveal heroRevealDelay1`} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+              Un site qui convertit.{" "}
+              <span style={{
+                display: "inline-block",
+                paddingBottom: "0.1em",
+                paddingRight: "0.1em"
+              }}>
+                <span className={styles.heroGradientWord}>Une IA qui vous fait gagner du temps.</span>
+              </span>
+            </h1>
+            <p className={`${styles.heroSubtitle} heroReveal heroRevealDelay2`} style={{ textAlign: "center", maxWidth: "600px", margin: "1.5rem auto" }}>
+              Agence web + IA pour les TPE, PME et indépendants qui veulent comprendre, pas juste déléguer. On conçoit, on explique, on propulse.
+            </p>
+            <div className={`${styles.heroActions} heroReveal heroRevealDelay3`} style={{ justifyContent: 'center' }}>
+              <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none' }}>
+                <Button variant="primary">
+                  Réserver un appel offert
+                </Button>
+              </Link>
+              <Link href="/offres" tabIndex={-1} style={{ textDecoration: 'none' }}>
+                <Button variant="outline">
+                  Voir nos packs
+                </Button>
+              </Link>
+            </div>
 
           {/* Social Proof Pill */}
-          <StaggerItem>
-            <div style={{ 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '12px', 
-              marginTop: '3.5rem', 
+          <div className="heroReveal heroRevealDelay4" style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '12px',
+              marginTop: '3.5rem',
               padding: '8px 20px 8px 8px',
-              borderRadius: '999px', 
-              border: '1px solid rgba(255,255,255,0.15)', 
-              backgroundColor: 'rgba(10, 10, 10, 0.65)', 
+              borderRadius: '999px',
+              border: '1px solid rgba(255,255,255,0.15)',
+              backgroundColor: 'rgba(10, 10, 10, 0.65)',
               backdropFilter: 'blur(8px)',
               boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
               alignSelf: 'center'
@@ -257,8 +249,7 @@ export default function Home() {
                 <strong style={{ color: 'var(--text-light)', fontWeight: '500' }}>10+ projets livrés</strong> · Web & IA
               </p>
             </div>
-          </StaggerItem>
-          </StaggerContainer>
+          </div>
         </section>
 
         {/* S2 — TECHNOLOGIES (Désormais sous le fond interactif) */}
