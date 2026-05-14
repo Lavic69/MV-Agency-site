@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState, useMemo, useCallback } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./Button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -177,10 +178,12 @@ export const CircularTestimonials = ({
       <div className="testimonial-grid">
         <div className="image-container" ref={imageContainerRef}>
           {testimonials.map((testimonial, index) => (
-            <img
+            <Image
               key={testimonial.src}
               src={testimonial.src}
               alt={testimonial.name}
+              fill
+              sizes="(min-width: 768px) 380px, 90vw"
               className="testimonial-image"
               data-index={index}
               style={getImageStyle(index)}
