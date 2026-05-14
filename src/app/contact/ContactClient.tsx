@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { FadeIn } from '@/components/ui/FadeIn';
-import { TextReveal } from '@/components/ui/TextReveal';
 import { Mail, Zap } from 'lucide-react';
 import { CONTACT_EMAIL } from '@/lib/seo';
 import styles from './Contact.module.css';
@@ -74,21 +73,15 @@ export default function ContactClient() {
         <div className={styles.leftCol}>
           <AvailabilityPill isContactPage={true} />
           
-          <FadeIn direction="up">
-            <h1 className={styles.title}>
-              <TextReveal delay={0.1} inline>Construisons le</TextReveal>{' '}
-              <TextReveal delay={0.4} inline>
-                <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent', paddingRight: '0.1em' }}>futur</span>
-              </TextReveal>{' '}
-              <TextReveal delay={0.6} inline>ensemble.</TextReveal>
-            </h1>
-          </FadeIn>
+          <h1 className={`${styles.title} heroReveal`}>
+            Construisons le{' '}
+            <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent', paddingRight: '0.1em' }}>futur</span>{' '}
+            ensemble.
+          </h1>
 
-          <FadeIn direction="up" delay={0.2}>
-            <p className={styles.subtitle}>
-              <TextReveal delay={0.8} inline justify="flex-start">Nous accompagnons les professionnels et les fondateurs avec sincérité, pour concevoir des solutions digitales intuitives, performantes et qui vous ressemblent vraiment.</TextReveal>
-            </p>
-          </FadeIn>
+          <p className={`${styles.subtitle} heroReveal heroRevealDelay1`}>
+            Nous accompagnons les professionnels et les fondateurs avec sincérité, pour concevoir des solutions digitales intuitives, performantes et qui vous ressemblent vraiment.
+          </p>
 
           <div className={styles.contactInfo}>
             <FadeIn direction="up" delay={0.3}>

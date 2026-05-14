@@ -60,27 +60,21 @@ export default function ServicesPage() {
         <div className={styles.container} style={{ position: 'relative', zIndex: 1, width: '100%' }}>
           <div className={styles.splitLayout} style={{ alignItems: 'center' }}>
             <div className={`${styles.col60} ${styles.heroTextCol}`}>
-              <FadeIn direction="up">
-                <h1 className={styles.headerTitle} style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1 }}>
-                  <TextReveal inline>Les 4 leviers qui feront passer votre activité</TextReveal>{' '}
-                  <TextReveal delay={1.3} inline wordClassName="globalGradientWordItalic">à la vitesse supérieure</TextReveal>
-                </h1>
-              </FadeIn>
-              <FadeIn direction="up" delay={0.2}>
-                <p className={styles.headerDesc} style={{ margin: '1.5rem 0 0' }}>
-                  <TextReveal delay={1.8} inline>Une agence qui conçoit, explique et propulse. Pour les professionnels qui veulent des résultats mesurables, pas des slides.</TextReveal>
-                </p>
-              </FadeIn>
-              <FadeIn direction="up" delay={0.3}>
-                <div className={styles.ctaActions} style={{ marginTop: '3rem' }}>
-                  <Link href="/contact" tabIndex={-1}>
-                    <Button variant="primary">Réserver un appel offert</Button>
-                  </Link>
-                  <Link href="/offres" tabIndex={-1}>
-                    <Button variant="outline">Voir nos packs</Button>
-                  </Link>
-                </div>
-              </FadeIn>
+              <h1 className={`${styles.headerTitle} heroReveal`} style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1 }}>
+                Les 4 leviers qui feront passer votre activité{' '}
+                <span className="globalGradientWordItalic">à la vitesse supérieure</span>
+              </h1>
+              <p className={`${styles.headerDesc} heroReveal heroRevealDelay1`} style={{ margin: '1.5rem 0 0' }}>
+                Une agence qui conçoit, explique et propulse. Pour les professionnels qui veulent des résultats mesurables, pas des slides.
+              </p>
+              <div className={`${styles.ctaActions} heroReveal heroRevealDelay2`} style={{ marginTop: '3rem' }}>
+                <Link href="/contact" tabIndex={-1}>
+                  <Button variant="primary">Réserver un appel offert</Button>
+                </Link>
+                <Link href="/offres" tabIndex={-1}>
+                  <Button variant="outline">Voir nos packs</Button>
+                </Link>
+              </div>
             </div>
             <div className={`${styles.col40} ${styles.heroDesktopMockup}`}>
               <FadeIn direction="right" delay={0.4} className="w-full">

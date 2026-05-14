@@ -227,20 +227,11 @@ export default function AgenceWebFrancePage() {
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.containerNarrow}>
-          <FadeIn>
+          <div className="heroReveal">
             <span className={styles.heroEyebrow}>France métropolitaine · 100 % distanciel</span>
             <h1 className={styles.heroTitle}>
-              <TextReveal inline justify="center">
-                Agence web en France
-              </TextReveal>{" "}
-              <TextReveal
-                delay={0.4}
-                inline
-                justify="center"
-                wordClassName="globalGradientWordItalic"
-              >
-                pour PME ambitieuses
-              </TextReveal>
+              Agence web en France{" "}
+              <span className="globalGradientWordItalic">pour PME ambitieuses</span>
             </h1>
             <p className={styles.heroSubtitle}>
               Création de sites web premium et intégration d&apos;intelligence artificielle pour les
@@ -255,7 +246,7 @@ export default function AgenceWebFrancePage() {
                 <Button variant="outline">Voir les offres</Button>
               </Link>
             </div>
-          </FadeIn>
+          </div>
         </div>
       </section>
 

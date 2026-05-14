@@ -91,23 +91,23 @@ export default function OffresPage() {
       {/* S2: LES 3 PACKS (Promu en H1) */}
       <section id="packs" className={`${styles.section} ${styles.neutralBg}`} style={{ paddingTop: '12rem' }}>
         <div className={styles.container}>
-          <FadeIn direction="up">
+          <div className="heroReveal">
             <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
               <span className="eyebrow" style={{ textAlign: "center" }}>Nos Offres</span>
-              <h1 className={styles.sectionTitle} style={{ 
-                marginBottom: "1.5rem", 
-                fontSize: "clamp(2.5rem, 5vw, 4rem)", 
+              <h1 className={styles.sectionTitle} style={{
+                marginBottom: "1.5rem",
+                fontSize: "clamp(2.5rem, 5vw, 4rem)",
                 lineHeight: 1.1,
                 color: "var(--text-light)"
               }}>
-                <TextReveal inline>3 packs pour</TextReveal>{' '}
-                <TextReveal delay={0.45} inline wordClassName="globalGradientWordItalic">3 ambitions</TextReveal>
+                3 packs pour{' '}
+                <span className="globalGradientWordItalic">3 ambitions</span>
               </h1>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto' }}>
-                <TextReveal delay={0.8} inline justify="center">Du site vitrine au business propulsé par l'IA. On cadre le périmètre et le budget ensemble.</TextReveal>
+                Du site vitrine au business propulsé par l'IA. On cadre le périmètre et le budget ensemble.
               </p>
             </div>
-          </FadeIn>
+          </div>
           <div className={styles.gridPacks}>
             
             {/* PACK 1 */}
