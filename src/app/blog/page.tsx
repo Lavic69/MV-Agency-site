@@ -1,7 +1,5 @@
 import React from "react";
 import { Metadata } from "next";
-import { TextReveal } from "@/components/ui/TextReveal";
-import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerContainer";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL, buildBreadcrumbSchema, OG_IMAGE } from "@/lib/seo";
 import { formatDateMono } from "@/lib/formatDate";
@@ -55,24 +53,18 @@ export default function BlogPage() {
       <JsonLd data={breadcrumbSchema} />
 
       <section style={{ minHeight: "40vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "10rem 2rem 3rem 2rem", textAlign: "center" }}>
-        <StaggerContainer style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <StaggerItem>
-            <span style={{ fontFamily: "'SF Mono', Menlo, monospace", fontSize: "0.6875rem", color: "var(--primary)", letterSpacing: "3px", textTransform: "uppercase", fontWeight: 700, display: "block", marginBottom: "0.875rem" }}>
-              — Ressources
-            </span>
-          </StaggerItem>
-          <StaggerItem>
-            <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 700, margin: "0 0 1.5rem 0", lineHeight: 1.1, fontFamily: "var(--font-heading)" }}>
-              <TextReveal delay={0.1} inline>Bibliothèque</TextReveal>{' '}
-              <TextReveal delay={0.5} inline wordClassName="globalGradientWordItalic">d’Actualités</TextReveal>
-            </h1>
-          </StaggerItem>
-          <StaggerItem>
-            <p style={{ fontSize: "1.1rem", color: "var(--text-secondary, #B5B7BC)", lineHeight: 1.6, margin: 0, maxWidth: "600px" }}>
-              Plongez dans nos réflexions sur l’IA, le design d’interfaces, et l’écosystème digital qui bouscule les codes de demain.
-            </p>
-          </StaggerItem>
-        </StaggerContainer>
+        <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <span className="heroReveal" style={{ fontFamily: "'SF Mono', Menlo, monospace", fontSize: "0.6875rem", color: "var(--primary)", letterSpacing: "3px", textTransform: "uppercase", fontWeight: 700, display: "block", marginBottom: "0.875rem" }}>
+            — Ressources
+          </span>
+          <h1 className="heroReveal heroRevealDelay1" style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 700, margin: "0 0 1.5rem 0", lineHeight: 1.1, fontFamily: "var(--font-heading)" }}>
+            Bibliothèque{' '}
+            <span className="globalGradientWordItalic">d’Actualités</span>
+          </h1>
+          <p className="heroReveal heroRevealDelay2" style={{ fontSize: "1.1rem", color: "var(--text-secondary, #B5B7BC)", lineHeight: 1.6, margin: 0, maxWidth: "600px" }}>
+            Plongez dans nos réflexions sur l’IA, le design d’interfaces, et l’écosystème digital qui bouscule les codes de demain.
+          </p>
+        </div>
       </section>
 
       <BlogClient posts={posts} />

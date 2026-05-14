@@ -108,8 +108,7 @@ export default function AProposClient() {
             </div>
 
             <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-              <FadeIn direction="up">
-                <h1 style={{ 
+              <h1 className="heroReveal" style={{
                   fontFamily: 'var(--font-heading)',
                   fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
                   lineHeight: 1.1,
@@ -119,26 +118,23 @@ export default function AProposClient() {
                   textAlign: 'center',
                   letterSpacing: '-0.02em'
                 }}>
-                  <TextReveal delay={0.1} inline>On ne vend pas du code.</TextReveal>{' '}<br/>
-                  <TextReveal delay={1.0} inline>On vend</TextReveal>{' '}
-                  <TextReveal delay={1.3} inline>
-                    <span style={{ 
-                      fontStyle: 'italic',
-                      background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      color: 'transparent',
-                      paddingRight: '0.1em'
-                    }}>
-                      l'autonomie
-                    </span>
-                    <span style={{ color: 'var(--text-light)', fontStyle: 'normal' }}>.</span>
-                  </TextReveal>
-                </h1>
-              </FadeIn>
-              
-              <FadeIn direction="up" delay={0.8} style={{ alignSelf: 'center', marginTop: '1rem' }}>
+                On ne vend pas du code.{' '}<br/>
+                On vend{' '}
+                <span style={{
+                  fontStyle: 'italic',
+                  background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  color: 'transparent',
+                  paddingRight: '0.1em'
+                }}>
+                  l'autonomie
+                </span>
+                <span style={{ color: 'var(--text-light)', fontStyle: 'normal' }}>.</span>
+              </h1>
+
+              <div className="heroReveal heroRevealDelay1" style={{ alignSelf: 'center', marginTop: '1rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
                   <Image
                     src="/avatars/victor.jpg"
@@ -152,7 +148,7 @@ export default function AProposClient() {
                     <span style={{ color: 'var(--text-muted)', fontSize: '0.95rem', fontStyle: 'italic' }}>Fondateur de MV Agency</span>
                   </div>
                 </div>
-              </FadeIn>
+              </div>
             </div>
           </div>
 
