@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 
 export interface Testimonial {
   text: string;
@@ -81,7 +82,7 @@ export const TestimonialsColumn = (props: {
               &ldquo;{text}&rdquo;
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginTop: "1.5rem" }}>
-              <img
+              <Image
                 width={40}
                 height={40}
                 src={image}
