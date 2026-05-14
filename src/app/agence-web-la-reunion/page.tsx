@@ -271,37 +271,23 @@ export default function AgenceWebLaReunionPage() {
 
       {/* ============================== HERO ============================== */}
       <section className={styles.hero}>
-        <FadeIn direction="up">
-          <span className={styles.heroEyebrow}>Réunion · 974</span>
-        </FadeIn>
-        <FadeIn direction="up" delay={0.1}>
-          <h1 className={styles.heroTitle}>
-            <TextReveal inline justify="center">
-              Agence web &amp; IA à
-            </TextReveal>{" "}
-            <TextReveal delay={0.5} inline justify="center" wordClassName="globalGradientWordItalic">
-              La Réunion
-            </TextReveal>
-          </h1>
-        </FadeIn>
-        <FadeIn direction="up" delay={0.3}>
-          <p className={styles.heroSubtitle}>
-            <TextReveal delay={0.9} inline justify="center">
-              Création de sites web premium, agents IA et automatisations pour les TPE et PME
-              réunionnaises. Intervention sur toute l'île, en présentiel ou en visio.
-            </TextReveal>
-          </p>
-        </FadeIn>
-        <FadeIn direction="up" delay={0.5}>
-          <div className={styles.heroCtas}>
-            <Link href="/contact" tabIndex={-1}>
-              <Button variant="primary">Réserver un appel offert</Button>
-            </Link>
-            <Link href="/offres" tabIndex={-1}>
-              <Button variant="outline">Voir nos packs</Button>
-            </Link>
-          </div>
-        </FadeIn>
+        <span className={`${styles.heroEyebrow} heroReveal`}>Réunion · 974</span>
+        <h1 className={`${styles.heroTitle} heroReveal heroRevealDelay1`}>
+          Agence web &amp; IA à{" "}
+          <span className="globalGradientWordItalic">La Réunion</span>
+        </h1>
+        <p className={`${styles.heroSubtitle} heroReveal heroRevealDelay2`}>
+          Création de sites web premium, agents IA et automatisations pour les TPE et PME
+          réunionnaises. Intervention sur toute l'île, en présentiel ou en visio.
+        </p>
+        <div className={`${styles.heroCtas} heroReveal heroRevealDelay3`}>
+          <Link href="/contact" tabIndex={-1}>
+            <Button variant="primary">Réserver un appel offert</Button>
+          </Link>
+          <Link href="/offres" tabIndex={-1}>
+            <Button variant="outline">Voir nos packs</Button>
+          </Link>
+        </div>
       </section>
 
       {/* ====================== ANSWER BLOCK (résumé GEO) ====================== */}
