@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/Button';
 import styles from './Header.module.css';
@@ -30,7 +29,17 @@ export const Header = () => {
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href="/" className={styles.logoLink}>
-            <Image src="/Logo_Rond_MV_V2.svg" alt="MV Agency Logo" width={36} height={36} className={styles.logoImage} priority />
+            {/* Logo above-the-fold : <img> brut avec fetchPriority="high" — next/image
+                n'optimise pas les SVG et n'émettait pas le hint de priorité ici. */}
+            <img
+              src="/Logo_Rond_MV_V2.svg"
+              alt="MV Agency Logo"
+              width={36}
+              height={36}
+              className={styles.logoImage}
+              fetchPriority="high"
+              decoding="async"
+            />
             <span>MV Agency</span>
           </Link>
         </div>
