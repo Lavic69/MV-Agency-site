@@ -44,6 +44,8 @@ export const metadata: Metadata = {
 
 const techLogos = [
   { node: <SiWordpress size={40} color="#21759b" />, title: "WordPress" },
+  { node: <Image src="/tech/woocommerce.svg" width={158} height={32} style={{ height: 32, width: 'auto' }} alt="WooCommerce" />, title: "WooCommerce" },
+  { node: <Image src="/tech/prestashop.svg" width={64} height={55} style={{ height: 55, width: 'auto' }} alt="PrestaShop" />, title: "PrestaShop" },
   { node: <SiWebflow size={40} color="#4353FF" />, title: "Webflow" },
   { node: <SiReact size={40} color="#61DAFB" />, title: "React" },
   { node: <SiNextdotjs size={40} color="var(--text-light)" />, title: "Next.js" },
