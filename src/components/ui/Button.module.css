@@ -128,16 +128,19 @@
 
 .charHidden {
   position: absolute;
-  top: 100%;
+  top: 130%;
   left: 0;
   display: inline-flex;
   align-items: center;
   color: inherit;
 }
 
-/* We trigger the transform when the PARENT button is hovered */
+/* Translate >100% (et top symétrique sur charHidden) pour que le descender
+   des glyphes (ex. "p" dans "appel") sorte entièrement du wrapper après
+   l'animation. Sans ça, le bas du "p" se retrouve dans la zone visible
+   en haut du bouton → artefact "deux baguettes" pendant/après le hover. */
 .button:hover .charWrapper {
-  transform: translateY(-100%);
+  transform: translateY(-130%);
 }
 
 /* === Responsive : mobile ===

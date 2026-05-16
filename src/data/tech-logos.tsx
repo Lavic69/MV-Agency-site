@@ -32,6 +32,8 @@ export const techLogos: TechLogo[] = [
   { node: <SiStripe size={40} color="#635BFF" />, title: "Stripe" },
   { node: <SiWebflow size={40} color="#4353FF" />, title: "Webflow" },
   { node: <SiWordpress size={40} color="#21759b" />, title: "WordPress" },
+  { node: <Image src="/tech/woocommerce.svg" width={158} height={32} style={{ height: 32, width: "auto" }} alt="WooCommerce" />, title: "WooCommerce" },
+  { node: <Image src="/tech/prestashop.svg" width={64} height={55} style={{ height: 55, width: "auto" }} alt="PrestaShop" />, title: "PrestaShop" },
   { node: <SiFramer size={40} color="#0055FF" />, title: "Framer" },
   { node: <SiOdoo size={55} color="#714B67" />, title: "Odoo" },
   { node: <SiFigma size={40} color="var(--text-light)" />, title: "Figma" },
