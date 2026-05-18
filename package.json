@@ -35,11 +35,11 @@
     "typescript": "^5"
   },
   "browserslist": [
-    "Chrome >= 92",
-    "Edge >= 92",
-    "Firefox >= 90",
+    "Chrome >= 100",
+    "Edge >= 100",
+    "Firefox >= 100",
     "Safari >= 15.4",
     "iOS >= 15.4",
-    "ChromeAndroid >= 92"
+    "ChromeAndroid >= 100"
   ]
 }
