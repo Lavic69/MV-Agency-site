@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useRef, useState, useMemo, useCallback } from "react";
-import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./Button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -61,8 +60,9 @@ export const CircularTestimonials = ({
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoverPrev, setHoverPrev] = useState(false);
   const [hoverNext, setHoverNext] = useState(false);
-  const [containerWidth, setContainerWidth] = useState(1200);
+  const [containerWidth, setContainerWidth] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const autoplayIntervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -87,6 +87,7 @@ export const CircularTestimonials = ({
       }
     }
     handleResize();
+    setMounted(true);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -121,10 +122,20 @@ export const CircularTestimonials = ({
   }, [testimonialsLength]);
 
   function getImageStyle(index: number): React.CSSProperties {
+    const isActive = index === activeIndex;
+
+    // Avant l'hydratation côté client : style stable identique entre SSR et hydratation
+    // (sinon le containerWidth mesuré côté client diffère du fallback SSR → mismatch).
+    if (!mounted) {
+      return {
+        zIndex: isActive ? 3 : 1,
+        opacity: isActive ? 1 : 0,
+        pointerEvents: isActive ? "auto" : "none",
+      };
+    }
+
     const gap = calculateGap(containerWidth);
     const maxStickUp = gap * 0.8;
-    const offset = (index - activeIndex + testimonialsLength) % testimonialsLength;
-    const isActive = index === activeIndex;
     const isLeft = (activeIndex - 1 + testimonialsLength) % testimonialsLength === index;
     const isRight = (activeIndex + 1) % testimonialsLength === index;
 
@@ -143,27 +154,26 @@ export const CircularTestimonials = ({
       return {
         zIndex: 3, opacity: 1, pointerEvents: "auto",
         transform: `translateX(0px) translateY(0px) scale(1) rotateY(0deg)`,
-        transition: "transform 0.8s cubic-bezier(.4,2,.3,1), opacity 0.8s cubic-bezier(.4,2,.3,1)",
+        transition: "all 0.8s cubic-bezier(.4,2,.3,1)",
       };
     }
     if (isLeft) {
       return {
         zIndex: 2, opacity: 1, pointerEvents: "auto",
         transform: `translateX(-${gap}px) translateY(-${maxStickUp}px) scale(0.85) rotateY(15deg)`,
-        transition: "transform 0.8s cubic-bezier(.4,2,.3,1), opacity 0.8s cubic-bezier(.4,2,.3,1)",
+        transition: "all 0.8s cubic-bezier(.4,2,.3,1)",
       };
     }
     if (isRight) {
       return {
         zIndex: 2, opacity: 1, pointerEvents: "auto",
         transform: `translateX(${gap}px) translateY(-${maxStickUp}px) scale(0.85) rotateY(-15deg)`,
-        transition: "transform 0.8s cubic-bezier(.4,2,.3,1), opacity 0.8s cubic-bezier(.4,2,.3,1)",
+        transition: "all 0.8s cubic-bezier(.4,2,.3,1)",
       };
     }
     return {
       zIndex: 1, opacity: 0, pointerEvents: "none",
-      transform: `translateX(0px) translateY(0px) scale(0.7) rotateY(0deg)`,
-      transition: "transform 0.8s cubic-bezier(.4,2,.3,1), opacity 0.8s cubic-bezier(.4,2,.3,1)",
+      transition: "all 0.8s cubic-bezier(.4,2,.3,1)",
     };
   }
 
@@ -178,12 +188,13 @@ export const CircularTestimonials = ({
       <div className="testimonial-grid">
         <div className="image-container" ref={imageContainerRef}>
           {testimonials.map((testimonial, index) => (
-            <Image
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
               key={testimonial.src}
               src={testimonial.src}
               alt={testimonial.name}
-              fill
-              sizes="(min-width: 768px) 380px, 90vw"
+              loading="lazy"
+              decoding="async"
               className="testimonial-image"
               data-index={index}
               style={getImageStyle(index)}
