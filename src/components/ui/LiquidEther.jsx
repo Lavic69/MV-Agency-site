@@ -972,9 +972,22 @@ export default function LiquidEther({
         Common.update();
         this.output.update();
       }
-      loop() {
+      loop(timestamp) {
         if (!this.running) return; // safety
-        this.render();
+        // Cap à ~30 fps : skip une frame sur deux en 60Hz pour réduire
+        // de moitié la charge GPU/CPU sans casser la fluidité perçue
+        // d'un fond fluide décoratif.
+        if (typeof timestamp === 'number') {
+          if (this._lastFrameTime === undefined) this._lastFrameTime = timestamp;
+          const elapsed = timestamp - this._lastFrameTime;
+          if (elapsed >= 32) {
+            this._lastFrameTime = timestamp;
+            this.render();
+          }
+        } else {
+          // Premier appel (depuis start()) : render immédiat sans skip.
+          this.render();
+        }
         rafRef.current = requestAnimationFrame(this._loop);
       }
       start() {
