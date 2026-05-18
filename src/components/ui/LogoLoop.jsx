@@ -57,7 +57,11 @@ const useImageLoader = (seqRef, onLoad, dependencies) => {
   }, [onLoad, seqRef, dependencies]);
 };
 
-const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical) => {
+// `isActive` ajouté pour pauser le rAF quand le composant n'est pas observé
+// (offscreen / onglet inactif / prefers-reduced-motion). Offset préservé
+// dans offsetRef, donc au resume l'animation reprend exactement à la même
+// position visuelle (pas de saut).
+const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical, isActive) => {
   const rafRef = useRef(null);
   const lastTimestampRef = useRef(null);
   const offsetRef = useRef(0);
@@ -76,6 +80,8 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
         : `translate3d(${-offsetRef.current}px, 0, 0)`;
       track.style.transform = transformValue;
     }
+
+    if (!isActive) return undefined;
 
     const animate = timestamp => {
       if (lastTimestampRef.current === null) {
@@ -113,7 +119,44 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
       }
       lastTimestampRef.current = null;
     };
-  }, [targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical, trackRef]);
+  }, [targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical, trackRef, isActive]);
+};
+
+// Détecte si le composant doit animer : visible dans le viewport, onglet actif,
+// et utilisateur n'a pas demandé prefers-reduced-motion. Évite ~24 s de CPU
+// par minute de trace Lighthouse quand le carrousel est offscreen.
+const useShouldAnimate = (containerRef) => {
+  const [isInView, setIsInView] = useState(true);
+  const [isPageVisible, setIsPageVisible] = useState(true);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mq.matches);
+    const onChange = e => setPrefersReducedMotion(e.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0, rootMargin: '100px 0px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [containerRef]);
+
+  useEffect(() => {
+    const update = () => setIsPageVisible(document.visibilityState === 'visible');
+    update();
+    document.addEventListener('visibilitychange', update);
+    return () => document.removeEventListener('visibilitychange', update);
+  }, []);
+
+  return isInView && isPageVisible && !prefersReducedMotion;
 };
 
 export const LogoLoop = memo(
@@ -189,9 +232,11 @@ export const LogoLoop = memo(
       }
     }, [isVertical]);
 
+    const isActive = useShouldAnimate(containerRef);
+
     useResizeObserver(updateDimensions, [containerRef, seqRef], [logos, gap, logoHeight, isVertical]);
     useImageLoader(seqRef, updateDimensions, [logos, gap, logoHeight, isVertical]);
-    useAnimationLoop(trackRef, targetVelocity, seqWidth, seqHeight, isHovered, effectiveHoverSpeed, isVertical);
+    useAnimationLoop(trackRef, targetVelocity, seqWidth, seqHeight, isHovered, effectiveHoverSpeed, isVertical, isActive);
 
     const cssVariables = useMemo(
       () => ({
