@@ -13,9 +13,12 @@ import type { NextConfig } from "next";
  * 1 an : nos assets sont versionnés par hash, donc la fraîcheur n'est jamais
  * un problème, autant maximiser le cache.
  *
- * `experimental.inlineCss` inline tout le CSS dans <style> du <head>, ce qui
- * supprime les 6 fichiers CSS render-blocking observés dans Lighthouse mobile
- * (-650 ms sur le LCP estimé).
+ * NOTE : `experimental.inlineCss` a été testé en PR #23 et reverté ici. Il
+ * inlinait tout le CSS (~27 KB) dans le <head>, gonflant le HTML de 35 KB à
+ * 671 KB. Sur slow 4G (PSI mobile), le first paint attendait que la totalité
+ * du HTML soit téléchargée, ce qui dégradait TBT (10 → 180 ms) sans bénéfice
+ * sur LCP. Le défaut Next.js (CSS en chunks parallèles, cssChunking: true)
+ * est plus performant pour notre profile de bundle.
  */
 const nextConfig: NextConfig = {
   images: {
@@ -31,9 +34,6 @@ const nextConfig: NextConfig = {
         hostname: "svgl.app",
       },
     ],
-  },
-  experimental: {
-    inlineCss: true,
   },
 };
 

@@ -1,11 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Darker_Grotesque, DM_Sans } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { Clarity } from "@/components/analytics/Clarity";
+import { DeferredAnalytics } from "@/components/analytics/DeferredAnalytics";
 import LiquidEther from "@/components/ui/LiquidEtherDesktopOnly";
 import {
   SITE_URL,
@@ -172,9 +171,10 @@ export default function RootLayout({
         <Footer />
 
         {/* Mesure d'audience — Vercel Analytics & Speed Insights : sans cookies,
-            sans bandeau de consentement, gratuits jusqu'à 50k events/mois. */}
-        <Analytics />
-        <SpeedInsights />
+            sans bandeau de consentement, gratuits jusqu'à 50k events/mois.
+            Mount différé via requestIdleCallback pour les sortir du critical
+            path JS et libérer le main thread pendant le LCP. */}
+        <DeferredAnalytics />
 
         {/* Microsoft Clarity — chargé uniquement si NEXT_PUBLIC_CLARITY_ID est défini
             ET si l'utilisateur a accepté les cookies (cf. ConsentBanner). Désactivé
