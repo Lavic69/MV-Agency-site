@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import LogoLoop from "@/components/ui/LogoLoop";
-import CircularTestimonials from "@/components/ui/circular-testimonials";
-import { Accordion } from "@/components/ui/accordion";
-import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
-import FeaturesSection from "@/components/ui/Features";
-import MagicBento from "@/components/ui/MagicBento";
 import { MockupHub } from "@/components/ui/mockups/MockupHub";
+
+// Sections below-the-fold : code-split pour alléger le bundle critique mobile.
+// SSR=true (défaut) pour préserver SEO, seul le JS est différé.
+const CircularTestimonials = dynamic(() => import("@/components/ui/circular-testimonials"));
+const Accordion = dynamic(() => import("@/components/ui/accordion").then(m => ({ default: m.Accordion })));
+const TestimonialsColumn = dynamic(() => import("@/components/ui/testimonials-columns").then(m => ({ default: m.TestimonialsColumn })));
+const FeaturesSection = dynamic(() => import("@/components/ui/Features"));
+const MagicBento = dynamic(() => import("@/components/ui/MagicBento"));
 import { TiltCard } from "@/components/ui/TiltCard";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { FadeIn } from "@/components/ui/FadeIn";
