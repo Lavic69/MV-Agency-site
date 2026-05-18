@@ -89,9 +89,13 @@ const AIAssistantIllustration = () => {
 }
 
 const MeetingIllustration = () => {
-    const MESCHAC_AVATAR = 'https://avatars.githubusercontent.com/u/47919550?v=4&s=84';
-    const BERNARD_AVATAR = 'https://avatars.githubusercontent.com/u/31113941?v=4&s=84';
-    const THEO_AVATAR = 'https://avatars.githubusercontent.com/u/68236786?v=4&s=84';
+    // Avatars servis localement (84x84 JPEG) pour éviter le round-trip
+    // avatars.githubusercontent.com (cache 5min, latence variable).
+    const avatars = [
+        { src: '/avatars/meschac.jpg', alt: 'Team' },
+        { src: '/avatars/bernard.jpg', alt: 'Team' },
+        { src: '/avatars/theo.jpg', alt: 'Team' },
+    ];
 
     return (
         <div className={`${styles.illustrationCard} ${styles.translateTarget}`} aria-hidden>
@@ -106,16 +110,20 @@ const MeetingIllustration = () => {
                     MEET
                 </div>
             </div>
-            
+
             <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <div style={{ display: 'flex' }}>
-                    {[
-                        { src: MESCHAC_AVATAR, alt: 'Team' },
-                        { src: BERNARD_AVATAR, alt: 'Team' },
-                        { src: THEO_AVATAR, alt: 'Team' },
-                    ].map((avatar, index) => (
+                    {avatars.map((avatar, index) => (
                         <div key={index} style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#000', border: '2px solid #111', marginLeft: index !== 0 ? '-8px' : '0' }}>
-                            <img style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} src={avatar.src} alt={avatar.alt} />
+                            <img
+                                src={avatar.src}
+                                alt={avatar.alt}
+                                width={28}
+                                height={28}
+                                loading="lazy"
+                                decoding="async"
+                                style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                            />
                         </div>
                     ))}
                 </div>
