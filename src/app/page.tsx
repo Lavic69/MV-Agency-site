@@ -201,15 +201,12 @@ export default function Home() {
             <div className="heroReveal">
               <AvailabilityPill />
             </div>
-            <h1 className={`${styles.heroTitle} heroReveal heroRevealDelay1`} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
-              Un site qui convertit.{" "}
-              <span style={{
-                display: "inline-block",
-                paddingBottom: "0.1em",
-                paddingRight: "0.1em"
-              }}>
-                <span className={styles.heroGradientWord}>Une IA qui vous fait gagner du temps.</span>
-              </span>
+            <h1 className={styles.heroTitle} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+              <TextReveal inline>Un site qui convertit.</TextReveal>
+              {" "}
+              <TextReveal inline wordClassName={styles.heroGradientWord} delay={0.25}>
+                Une IA qui vous fait gagner du temps.
+              </TextReveal>
             </h1>
             <p className={`${styles.heroSubtitle} heroReveal heroRevealDelay2`} style={{ textAlign: "center", maxWidth: "600px", margin: "1.5rem auto" }}>
               Agence web + IA pour les TPE, PME et indépendants qui veulent comprendre, pas juste déléguer. On conçoit, on explique, on propulse.
