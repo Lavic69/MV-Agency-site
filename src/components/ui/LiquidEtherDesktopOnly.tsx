@@ -23,12 +23,12 @@ import type { CSSProperties } from "react";
  *      fenêtre minimisée) : aucun utilisateur ne regarde, autant arrêter
  *      le WebGL et libérer le CPU.
  *
- *   5. PAUSE si l'utilisateur a scrollé au-delà du premier viewport (avec
- *      debounce 800 ms anti-thrash pour les scrolls courts) : le fond n'est
- *      plus visible sous le contenu opaque, l'animation devient invisible
- *      mais continue à consommer en arrière-plan sans cela.
+ * Choix design assumé : l'animation reste active pendant TOUT le scroll de
+ * la page (pas juste le hero). Le fond fluide est un élément d'identité
+ * visuelle qu'on veut voir partout pour la cohérence, on accepte le coût
+ * CPU/GPU associé sur desktop.
  *
- * Sur mobile + reduced-motion + offscreen, on retourne `null` → fond noir
+ * Sur mobile + reduced-motion + tab inactif, on retourne `null` → fond noir
  * `--bg-neutral` reprend la main.
  */
 
@@ -57,15 +57,12 @@ type LiquidEtherDesktopOnlyProps = {
 const DESKTOP_MQ = "(min-width: 769px)";
 const REDUCED_MOTION_MQ = "(prefers-reduced-motion: reduce)";
 const MOUNT_DELAY_MS = 3000;
-const SCROLL_PAUSE_DEBOUNCE_MS = 800;
-const HERO_VIEWPORT_MULTIPLIER = 1.2;
 
 export default function LiquidEtherDesktopOnly(props: LiquidEtherDesktopOnlyProps) {
   const [isDesktop, setIsDesktop] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [mountDelayElapsed, setMountDelayElapsed] = useState(false);
   const [isPageVisible, setIsPageVisible] = useState(true);
-  const [isHeroInView, setIsHeroInView] = useState(true);
 
   // Detect desktop + prefers-reduced-motion (réactif aux changements de prefs).
   useEffect(() => {
@@ -100,50 +97,10 @@ export default function LiquidEtherDesktopOnly(props: LiquidEtherDesktopOnlyProp
     return () => document.removeEventListener("visibilitychange", update);
   }, [isDesktop]);
 
-  // Pause si l'utilisateur a scrollé au-delà du hero (debounce 800 ms).
-  useEffect(() => {
-    if (!isDesktop) return;
-    let scrollTimeoutId: ReturnType<typeof setTimeout> | null = null;
-    let rafTicking = false;
-
-    const evaluate = () => {
-      rafTicking = false;
-      const scrolledPastHero = window.scrollY > window.innerHeight * HERO_VIEWPORT_MULTIPLIER;
-      if (scrolledPastHero) {
-        if (!scrollTimeoutId) {
-          scrollTimeoutId = setTimeout(() => {
-            setIsHeroInView(false);
-            scrollTimeoutId = null;
-          }, SCROLL_PAUSE_DEBOUNCE_MS);
-        }
-      } else {
-        if (scrollTimeoutId) {
-          clearTimeout(scrollTimeoutId);
-          scrollTimeoutId = null;
-        }
-        setIsHeroInView(true);
-      }
-    };
-
-    const onScroll = () => {
-      if (!rafTicking) {
-        requestAnimationFrame(evaluate);
-        rafTicking = true;
-      }
-    };
-
-    evaluate();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (scrollTimeoutId) clearTimeout(scrollTimeoutId);
-    };
-  }, [isDesktop]);
-
   // Toutes les gates additionnées : skip si une seule échoue.
   if (prefersReducedMotion) return null;
   if (!isDesktop || !mountDelayElapsed) return null;
-  if (!isPageVisible || !isHeroInView) return null;
+  if (!isPageVisible) return null;
 
   return <LiquidEther {...props} />;
 }
