@@ -243,20 +243,24 @@ a {
 /*  le contenu hero above-the-fold : l'animation démarre dès le parse du CSS  */
 /*  (~FCP) au lieu d'attendre l'hydratation React. L'élément LCP (le          */
 /*  sous-titre du hero) sort ainsi du chemin critique JavaScript.             */
+/*                                                                            */
+/*  ATTENTION LCP : pas d'opacity dans le keyframe. Un élément avec           */
+/*  opacity:0 n'est PAS considéré comme LCP candidate par Lighthouse,         */
+/*  ce qui retarde la métrique jusqu'à la fin de l'animation. On garde        */
+/*  uniquement le translateY pour la sensation de slide-up.                   */
 /* -------------------------------------------------------------------------- */
 @keyframes heroReveal {
   from {
-    opacity: 0;
     transform: translateY(16px);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }
 
 .heroReveal {
   animation: heroReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform;
 }
 
 .heroRevealDelay1 {
