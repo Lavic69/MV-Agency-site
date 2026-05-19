@@ -5,15 +5,15 @@
 
 export type ArticlePillar =
   | "creation-site-web"
-  | "ia-pme"
-  | "seo-marketing"
-  | "site-par-metier";
+  | "ecosysteme-digital"
+  | "ia"
+  | "formation";
 
 export const PILLAR_LABEL: Record<ArticlePillar, string> = {
   "creation-site-web": "Création de site web",
-  "ia-pme": "IA pour PME",
-  "seo-marketing": "SEO & Marketing",
-  "site-par-metier": "Site par métier",
+  "ecosysteme-digital": "Écosystème digital",
+  "ia": "IA",
+  "formation": "Formation",
 };
 
 /**
@@ -85,6 +85,90 @@ export const articles: ReadonlyArray<ArticleMeta> = [
     primaryKeyword: "prix site web",
     status: "published",
   },
+  {
+    slug: "seo-marketing-pme-guide",
+    title: "SEO & marketing digital pour PME : le guide complet 2026",
+    description:
+      "Le guide opérationnel pour piloter le marketing digital d'une PME en 2026 : SEO, Google Business Profile, contenu, réseaux sociaux et IA. La méthode MV Agency en 6 étapes, les 3 erreurs qui coulent 80 % des PME, et les fourchettes de coûts par taille d'entreprise.",
+    publishedAt: "2026-05-20",
+    updatedAt: "2026-05-20",
+    pillar: "ecosysteme-digital",
+    category: "Écosystème digital",
+    keyword: { type: "text", value: "DIGITAL" },
+    takeaways: [
+      "5 piliers du marketing digital qui fonctionnent en 2026 : SEO, GBP, contenu, réseaux, IA",
+      "80 % des PME ratent leur SEO à cause de 3 erreurs fondamentales",
+      "Méthode MV Agency en 6 étapes pour piloter un écosystème digital cohérent",
+      "Fourchettes de coûts par taille d'entreprise — ROI mesurable en 6-12 mois",
+    ],
+    tocItems: [
+      { id: "c-est-quoi", label: "SEO et marketing digital — c'est quoi ?" },
+      { id: "5-piliers", label: "Les 5 piliers du marketing digital 2026" },
+      { id: "3-erreurs", label: "Pourquoi 80 % des PME ratent leur SEO" },
+      { id: "methode-mv", label: "La méthode MV Agency en 6 étapes" },
+      { id: "combien-ca-coute", label: "Combien ça coûte ?" },
+      { id: "roi", label: "Comment mesurer le ROI" },
+    ],
+    readingTime: 13,
+    primaryKeyword: "agence référencement naturel",
+    status: "published",
+  },
+  {
+    slug: "ia-automatisation-pme-guide",
+    title: "IA et automatisation pour PME : le guide pour commencer sans jargon",
+    description:
+      "Le guide opérationnel pour intégrer l'IA dans une PME en 2026 : 5 cas d'usage qui marchent vraiment, la cartographie des outils (ChatGPT, Claude, Mistral, n8n), les fourchettes de coûts, la conformité RGPD et un plan de démarrage en 30 jours.",
+    publishedAt: "2026-05-20",
+    updatedAt: "2026-05-20",
+    pillar: "ia",
+    category: "IA",
+    keyword: { type: "text", value: "IA × PME" },
+    takeaways: [
+      "5 cas d'usage IA qui marchent : support, qualification, contenu, recherche, automatisation",
+      "Cartographie des outils — ChatGPT, Claude, Mistral, Midjourney, n8n",
+      "RGPD et souveraineté : 4 points à vérifier avant tout déploiement",
+      "Plan de démarrage IA en 30 jours, sans jargon ni perte de temps",
+    ],
+    tocItems: [
+      { id: "ia-2-minutes", label: "L'IA en 2 minutes pour un dirigeant" },
+      { id: "5-cas-usage", label: "Les 5 cas d'usage qui marchent" },
+      { id: "carte-outils", label: "La carte des outils — qui fait quoi ?" },
+      { id: "combien-ca-coute", label: "Combien ça coûte vraiment ?" },
+      { id: "rgpd", label: "RGPD et souveraineté" },
+      { id: "demarrer-30-jours", label: "Comment démarrer en 30 jours" },
+    ],
+    readingTime: 13,
+    primaryKeyword: "IA pour PME",
+    status: "published",
+  },
+  {
+    slug: "no-code-vs-code-entreprise",
+    title: "No-code vs code : quelle solution pour votre entreprise en 2026 ?",
+    description:
+      "No-code, low-code, code sur-mesure : comparatif honnête sur 8 dimensions, les cas où chaque approche gagne, les 6 outils no-code à connaître et un guide pour choisir et se former en 2026.",
+    publishedAt: "2026-05-20",
+    updatedAt: "2026-05-20",
+    pillar: "formation",
+    category: "Formation",
+    keyword: { type: "text", value: "NO-CODE" },
+    takeaways: [
+      "Comparatif sur 8 dimensions : vitesse, coût, scalabilité, maintenance, contrôle",
+      "Le no-code suffit pour 70 % des projets PME (MVP, automatisations, sites simples)",
+      "Le code reste obligatoire pour les apps complexes ou ultra-performantes",
+      "6 outils no-code à connaître : Make, n8n, Webflow, Airtable, Bubble, Notion",
+    ],
+    tocItems: [
+      { id: "la-confusion", label: "La confusion no-code vs code en 2026" },
+      { id: "tableau-comparatif", label: "Comparatif sur 8 dimensions" },
+      { id: "no-code-suffit", label: "Cas où le no-code suffit" },
+      { id: "code-obligatoire", label: "Cas où le code reste obligatoire" },
+      { id: "6-outils", label: "Les 6 outils no-code à connaître" },
+      { id: "se-former", label: "Comment se former (formats + organismes)" },
+    ],
+    readingTime: 10,
+    primaryKeyword: "formation no code",
+    status: "published",
+  },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -104,9 +188,14 @@ export function getRelatedArticles(
   pillar: ArticlePillar,
   limit = 3
 ): ReadonlyArray<ArticleMeta> {
-  return getPublishedArticles()
-    .filter((a) => a.slug !== currentSlug && a.pillar === pillar)
-    .slice(0, limit);
+  const published = getPublishedArticles().filter((a) => a.slug !== currentSlug);
+  const samePillar = published.filter((a) => a.pillar === pillar);
+  if (samePillar.length >= limit) return samePillar.slice(0, limit);
+  // Fallback : complète les slots restants avec d'autres piliers (cas d'un hub
+  // seul dans son pilier). Garde l'ordre du registre pour cohérence éditoriale.
+  const remaining = limit - samePillar.length;
+  const otherPillars = published.filter((a) => a.pillar !== pillar).slice(0, remaining);
+  return [...samePillar, ...otherPillars];
 }
 
 /**

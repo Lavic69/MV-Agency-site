@@ -2,9 +2,12 @@
    /blog — page liste, search bar, filters, et carte au langage magazine.
    ========================================================================== */
 
-/* ----- Search + filters (inchangé) ----- */
+/* ----- Search + filters ----- */
+/* Élargi à 800px pour accueillir les 5 pills de catégorie sur une seule
+   ligne (5 catégories : Tout + 4 piliers). La search bar reste compacte
+   à 600px max via sa propre contrainte. */
 .searchWrapper {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto 3rem auto;
   display: flex;
   flex-direction: column;
@@ -14,6 +17,7 @@
 
 .searchBar {
   width: 100%;
+  max-width: 600px;
   position: relative;
   display: flex;
   align-items: center;
@@ -86,19 +90,24 @@
 }
 
 /* ----- Grille de cartes ----- */
+/* 3 colonnes dès 900px (et non 1100px) — sur écrans 1024-1099px, 2 colonnes
+   donnaient des cards beaucoup trop larges (~470px) qui cassaient
+   l'identité magazine. 3 cols ramène les cards à ~290-360px selon viewport.
+   `minmax(0, 1fr)` empêche les overflow internes (titre/excerpt) de pousser
+   la grille au-delà du container. */
 .postGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
 }
 
-@media (max-width: 1099px) {
+@media (max-width: 899px) {
   .postGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 699px) {
+@media (max-width: 599px) {
   .postGrid {
     grid-template-columns: 1fr;
   }
@@ -123,6 +132,9 @@
 }
 
 /* ----- Cover XL avec mot-clé géant ----- */
+/* `container-type: inline-size` permet à CoverKeyword (.size-md) de se baser
+   sur la LARGEUR de la card au lieu du viewport (via `cqi`). Sinon le clamp
+   vw faisait gonfler le mot-clé à 132px sur des cards de 363px → overflow. */
 .cardCover {
   position: relative;
   height: 160px;
@@ -133,6 +145,7 @@
   flex-direction: column;
   justify-content: flex-end;
   padding: 0 1rem 0.625rem 1rem;
+  container-type: inline-size;
 }
 
 .cardPillar {

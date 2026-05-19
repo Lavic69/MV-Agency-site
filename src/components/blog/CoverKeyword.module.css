@@ -16,13 +16,17 @@
   padding-bottom: 4px; /* coussin minimal pour ne pas couper les jambages */
 }
 
-/* Sizes — calcul du font-size via clamp() pour rester lisible
-   sur la plus grande variété de longueurs de keyword. */
+/* Sizes — calcul du font-size pour rester lisible sur la plus grande variété
+   de longueurs de keyword.
+   - `xl` / `sm` : basés sur le viewport (vw) car contextes plein-écran ou large.
+   - `md` : basé sur la LARGEUR DE LA CARD (cqi) car les cards de listing se
+     redimensionnent fortement (280px → 470px) selon le breakpoint grid.
+     Nécessite `container-type: inline-size` sur le parent (.cardCover). */
 .size-xl {
   font-size: clamp(6rem, 22vw, 20rem); /* hero d'article (cover 320px) */
 }
 .size-md {
-  font-size: clamp(3.75rem, 12vw, 8.25rem); /* carte de liste (cover 160px) */
+  font-size: clamp(2.5rem, 22cqi, 5rem); /* carte de liste — 22% de la largeur de card */
 }
 .size-sm {
   font-size: clamp(3.5rem, 10vw, 6.875rem); /* BlogPreview featured (cover 180px) */
@@ -76,12 +80,13 @@
   line-height: 1;
 }
 
-/* Sizes spécifiques au versus (parce que le flex container définit la hauteur) */
+/* Sizes spécifiques au versus (parce que le flex container définit la hauteur).
+   .versus.size-md utilise cqi pour s'adapter à la largeur de card (cf. .size-md). */
 .versus.size-xl {
   font-size: clamp(4rem, 14vw, 7rem);
 }
 .versus.size-md {
-  font-size: clamp(2.75rem, 9vw, 4.5rem);
+  font-size: clamp(2rem, 16cqi, 3.75rem);
 }
 .versus.size-sm {
   font-size: clamp(2.5rem, 8vw, 4rem);
