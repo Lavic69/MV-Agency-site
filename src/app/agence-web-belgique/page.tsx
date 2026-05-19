@@ -223,8 +223,8 @@ export default function AgenceWebBelgiquePage() {
           <div className="heroReveal">
             <span className={styles.heroEyebrow}>Belgique · Bruxelles · Wallonie</span>
             <h1 className={styles.heroTitle}>
-              Agence web & IA{" "}
-              <span className="globalGradientWordItalic">pour PME belges</span>
+              <TextReveal inline>Agence web & IA</TextReveal>{" "}
+              <TextReveal inline wordClassName="globalGradientWordItalic" delay={0.3}>pour PME belges</TextReveal>
             </h1>
             <p className={styles.heroSubtitle}>
               Création de sites web premium et intégration d'intelligence artificielle pour les

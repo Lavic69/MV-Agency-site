@@ -100,8 +100,8 @@ export default function OffresPage() {
                 lineHeight: 1.1,
                 color: "var(--text-light)"
               }}>
-                3 packs pour{' '}
-                <span className="globalGradientWordItalic">3 ambitions</span>
+                <TextReveal inline>3 packs pour</TextReveal>{' '}
+                <TextReveal inline wordClassName="globalGradientWordItalic" delay={0.3}>3 ambitions</TextReveal>
               </h1>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto' }}>
                 Du site vitrine au business propulsé par l'IA. On cadre le périmètre et le budget ensemble.

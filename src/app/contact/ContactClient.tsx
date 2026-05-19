@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { FadeIn } from '@/components/ui/FadeIn';
+import { TextReveal } from '@/components/ui/TextReveal';
 import { Mail, Zap } from 'lucide-react';
 import { CONTACT_EMAIL } from '@/lib/seo';
 import styles from './Contact.module.css';
@@ -73,10 +74,10 @@ export default function ContactClient() {
         <div className={styles.leftCol}>
           <AvailabilityPill isContactPage={true} />
           
-          <h1 className={`${styles.title} heroReveal`}>
-            Construisons le{' '}
-            <span style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent', paddingRight: '0.1em' }}>futur</span>{' '}
-            ensemble.
+          <h1 className={styles.title}>
+            <TextReveal inline>Construisons le</TextReveal>{' '}
+            <TextReveal inline wordClassName="globalGradientWordItalic" delay={0.3}>futur</TextReveal>{' '}
+            <TextReveal inline delay={0.4}>ensemble.</TextReveal>
           </h1>
 
           <p className={`${styles.subtitle} heroReveal heroRevealDelay1`}>

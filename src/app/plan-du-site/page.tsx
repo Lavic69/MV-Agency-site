@@ -3,6 +3,7 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL, buildBreadcrumbSchema } from "@/lib/seo";
 import { getPublishedArticles } from "../blog/_articles";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 export const metadata: Metadata = {
   title: "Plan du site — MV Agency",
@@ -115,7 +116,7 @@ export default function PlanDuSitePage() {
             lineHeight: 1.1,
           }}
         >
-          Plan du site
+          <TextReveal inline>Plan du site</TextReveal>
         </h1>
         <p
           style={{

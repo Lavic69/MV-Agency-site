@@ -108,7 +108,7 @@ export default function AProposClient() {
             </div>
 
             <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-              <h1 className="heroReveal" style={{
+              <h1 style={{
                   fontFamily: 'var(--font-heading)',
                   fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
                   lineHeight: 1.1,
@@ -118,19 +118,10 @@ export default function AProposClient() {
                   textAlign: 'center',
                   letterSpacing: '-0.02em'
                 }}>
-                On ne vend pas du code.{' '}<br/>
-                On vend{' '}
-                <span style={{
-                  fontStyle: 'italic',
-                  background: 'linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  color: 'transparent',
-                  paddingRight: '0.1em'
-                }}>
-                  l'autonomie
-                </span>
+                <TextReveal inline>On ne vend pas du code.</TextReveal>
+                <br/>
+                <TextReveal inline delay={0.3}>On vend</TextReveal>{' '}
+                <TextReveal inline wordClassName="globalGradientWordItalic" delay={0.45}>l'autonomie</TextReveal>
                 <span style={{ color: 'var(--text-light)', fontStyle: 'normal' }}>.</span>
               </h1>
 

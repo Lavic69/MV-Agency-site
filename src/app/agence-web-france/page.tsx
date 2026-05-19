@@ -230,8 +230,8 @@ export default function AgenceWebFrancePage() {
           <div className="heroReveal">
             <span className={styles.heroEyebrow}>France métropolitaine · 100 % distanciel</span>
             <h1 className={styles.heroTitle}>
-              Agence web en France{" "}
-              <span className="globalGradientWordItalic">pour PME ambitieuses</span>
+              <TextReveal inline>Agence web en France</TextReveal>{" "}
+              <TextReveal inline wordClassName="globalGradientWordItalic" delay={0.3}>pour PME ambitieuses</TextReveal>
             </h1>
             <p className={styles.heroSubtitle}>
               Création de sites web premium et intégration d&apos;intelligence artificielle pour les

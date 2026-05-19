@@ -7,6 +7,7 @@ import {
   HOST,
   LEGAL_LAST_UPDATED,
 } from "@/lib/seo";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 export const metadata: Metadata = {
   title: "Mentions légales — MV Agency",
@@ -24,7 +25,9 @@ const LAST_UPDATED_FR = new Date(LEGAL_LAST_UPDATED).toLocaleDateString("fr-FR",
 export default function MentionsLegalesPage() {
   return (
     <main className="container" style={{ padding: "6rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
-      <h1 style={{ fontSize: "2.5rem", marginBottom: "2rem" }}>Mentions légales</h1>
+      <h1 style={{ fontSize: "2.5rem", marginBottom: "2rem" }}>
+        <TextReveal inline>Mentions légales</TextReveal>
+      </h1>
 
       <section style={{ marginBottom: "2.5rem" }}>
         <h2 style={{ fontSize: "1.4rem", marginBottom: "1rem" }}>1. Éditeur du site</h2>

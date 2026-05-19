@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_NAME, CONTACT_EMAIL, LEGAL, LEGAL_LAST_UPDATED } from "@/lib/seo";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 export const metadata: Metadata = {
   title: "Conditions Générales de Vente — MV Agency",
@@ -19,7 +20,9 @@ const CGV_VERSION = "v1.0";
 export default function CgvPage() {
   return (
     <main className="container" style={{ padding: "6rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
-      <h1 style={{ fontSize: "2.5rem", marginBottom: "2rem" }}>Conditions Générales de Vente</h1>
+      <h1 style={{ fontSize: "2.5rem", marginBottom: "2rem" }}>
+        <TextReveal inline>Conditions Générales de Vente</TextReveal>
+      </h1>
 
       <p style={{ marginBottom: "2rem", fontStyle: "italic", color: "var(--accent)" }}>
         Les présentes Conditions Générales de Vente (ci-après « CGV ») régissent les relations

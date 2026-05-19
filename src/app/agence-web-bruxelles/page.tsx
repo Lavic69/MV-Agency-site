@@ -228,8 +228,8 @@ export default function AgenceWebBruxellesPage() {
           <div className="heroReveal">
             <span className={styles.heroEyebrow}>Bruxelles · Région-Capitale · Brabant wallon</span>
             <h1 className={styles.heroTitle}>
-              Agence web à Bruxelles{" "}
-              <span className="globalGradientWordItalic">premium + IA</span>
+              <TextReveal inline>Agence web à Bruxelles</TextReveal>{" "}
+              <TextReveal inline wordClassName="globalGradientWordItalic" delay={0.3}>premium + IA</TextReveal>
             </h1>
             <p className={styles.heroSubtitle}>
               Création de sites web premium et intégration d'intelligence artificielle pour les
