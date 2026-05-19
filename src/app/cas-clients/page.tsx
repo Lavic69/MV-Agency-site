@@ -43,19 +43,9 @@ export default function CasClientsPage() {
       
       {/* SECTION HERO */}
       <section style={{ minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: 'clamp(6rem, 15vw, 12rem) clamp(1rem, 5vw, 2rem) 4rem clamp(1rem, 5vw, 2rem)' }}>
-          <h1 className="heroReveal" style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', fontWeight: 700, margin: '0 0 1.5rem 0', lineHeight: 1.1, fontFamily: 'var(--font-heading)' }}>
-            Ce que l'on{' '}
-            <span style={{
-              fontStyle: 'italic',
-              background: "linear-gradient(90deg, #60a5fa 0%, #ffffff 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              color: "transparent",
-              paddingRight: "0.1em"
-            }}>
-              construit
-            </span>
+          <h1 style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', fontWeight: 700, margin: '0 0 1.5rem 0', lineHeight: 1.1, fontFamily: 'var(--font-heading)' }}>
+            <TextReveal inline>Ce que l'on</TextReveal>{' '}
+            <TextReveal inline wordClassName="globalGradientWordItalic" delay={0.3}>construit</TextReveal>
           </h1>
         <div className="heroReveal heroRevealDelay1" style={{ maxWidth: '600px' }}>
           <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>

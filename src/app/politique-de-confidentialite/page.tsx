@@ -6,6 +6,7 @@ import {
   LEGAL,
   LEGAL_LAST_UPDATED,
 } from "@/lib/seo";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité — MV Agency",
@@ -23,7 +24,9 @@ const LAST_UPDATED_FR = new Date(LEGAL_LAST_UPDATED).toLocaleDateString("fr-FR",
 export default function PolitiqueConfidentialitePage() {
   return (
     <main className="container" style={{ padding: "6rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
-      <h1 style={{ fontSize: "2.5rem", marginBottom: "2rem" }}>Politique de confidentialité</h1>
+      <h1 style={{ fontSize: "2.5rem", marginBottom: "2rem" }}>
+        <TextReveal inline>Politique de confidentialité</TextReveal>
+      </h1>
 
       <p style={{ marginBottom: "2rem" }}>
         La présente politique décrit la manière dont {SITE_NAME} collecte, utilise et protège les

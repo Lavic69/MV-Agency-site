@@ -272,9 +272,9 @@ export default function AgenceWebLaReunionPage() {
       {/* ============================== HERO ============================== */}
       <section className={styles.hero}>
         <span className={`${styles.heroEyebrow} heroReveal`}>Réunion · 974</span>
-        <h1 className={`${styles.heroTitle} heroReveal heroRevealDelay1`}>
-          Agence web &amp; IA à{" "}
-          <span className="globalGradientWordItalic">La Réunion</span>
+        <h1 className={styles.heroTitle}>
+          <TextReveal inline>Agence web & IA à</TextReveal>{" "}
+          <TextReveal inline wordClassName="globalGradientWordItalic" delay={0.3}>La Réunion</TextReveal>
         </h1>
         <p className={`${styles.heroSubtitle} heroReveal heroRevealDelay2`}>
           Création de sites web premium, agents IA et automatisations pour les TPE et PME
