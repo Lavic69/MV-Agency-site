@@ -92,8 +92,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* Empêche les débordements horizontaux dûs aux animations FadeIn/StaggerItem
      (transformX transitoires) ou aux mockups conçus desktop affichés sur mobile.
-     Le scroll vertical reste actif. */
-  overflow-x: hidden;
+     Le scroll vertical reste actif.
+     IMPORTANT : `clip` au lieu de `hidden` — `overflow-x: hidden` crée un
+     scroll container qui CASSE `position: sticky` sur tous les enfants
+     (notamment ArticleSidebar des pages blog). `clip` bloque le débordement
+     sans casser sticky. */
+  overflow-x: clip;
 }
 
 h1,
