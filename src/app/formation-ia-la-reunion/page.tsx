@@ -19,6 +19,7 @@ import { CaseStudyStory } from "@/components/formation-ia/CaseStudyStory";
 import { WhyUsPillars } from "@/components/formation-ia/WhyUsPillars";
 import { FormationFAQ } from "@/components/formation-ia/FormationFAQ";
 import { FormationCTA } from "@/components/formation-ia/FormationCTA";
+import sections from "@/components/formation-ia/formation-ia-sections.module.css";
 
 /* -------------------------------------------------------------------------- */
 /*  Client components — dynamically imported to defer their JS off the        */
@@ -126,13 +127,9 @@ export default function FormationIAReunionPage() {
         <FormationHero territoire={TERRITOIRE} />
 
         {/* Interactive: Diagnostic IA */}
-        <section className="mx-auto max-w-3xl px-6 py-24">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
-            {c.diagnostic.title}
-          </h2>
-          <p className="text-lg text-white/75 leading-relaxed text-center mb-12 max-w-2xl mx-auto">
-            {c.diagnostic.intro}
-          </p>
+        <section className={sections.sectionNarrow}>
+          <h2 className={sections.title}>{c.diagnostic.title}</h2>
+          <p className={sections.intro}>{c.diagnostic.intro}</p>
           <DiagnosticIA />
         </section>
 
@@ -141,33 +138,25 @@ export default function FormationIAReunionPage() {
         <MethodTimeline />
 
         {/* Interactive: ROI calculator */}
-        <section className="mx-auto max-w-3xl px-6 py-24">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
-            {c.roiCalculator.title}
-          </h2>
+        <section className={sections.sectionNarrow}>
+          <h2 className={sections.title}>{c.roiCalculator.title}</h2>
           <ROITimeCalculator />
         </section>
 
         <CaseStudyStory />
 
         {/* Interactive: Before / after IA */}
-        <section className="mx-auto max-w-5xl px-6 py-24">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
-            {c.beforeAfter.title}
-          </h2>
+        <section className={sections.sectionWide}>
+          <h2 className={sections.title}>{c.beforeAfter.title}</h2>
           <BeforeAfterIA />
         </section>
 
         <WhyUsPillars />
 
         {/* Interactive: Mini audit IA */}
-        <section className="mx-auto max-w-3xl px-6 py-24">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
-            {c.miniAudit.title}
-          </h2>
-          <p className="text-lg text-white/75 leading-relaxed text-center mb-12 max-w-2xl mx-auto">
-            {c.miniAudit.intro}
-          </p>
+        <section className={sections.sectionNarrow}>
+          <h2 className={sections.title}>{c.miniAudit.title}</h2>
+          <p className={sections.intro}>{c.miniAudit.intro}</p>
           <MiniAuditIA />
         </section>
 
