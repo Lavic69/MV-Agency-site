@@ -50,7 +50,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(2rem, 4vw, 3rem);
-  align-items: start;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -63,6 +63,15 @@
 .mockupCol {
   width: 100%;
   position: relative;
+}
+
+/* Sticky desktop reveal — keep the mockup visible briefly while the user
+   scrolls past the 3 narrative blocks. Honors prefers-reduced-motion. */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .mockupCol {
+    position: sticky;
+    top: 5rem;
+  }
 }
 
 /* ----- Mockup (faux Claude conversation) ----- */
