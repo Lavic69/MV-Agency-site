@@ -34,6 +34,7 @@ export function FormationFAQ({ territoire }: Props) {
 
   return (
     <section className={styles.section}>
+      <span className={styles.eyebrow}>{c.eyebrow}</span>
       <h2 className={styles.title}>{c.title}</h2>
       <Accordion items={items} />
     </section>

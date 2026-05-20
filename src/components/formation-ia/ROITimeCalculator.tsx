@@ -14,7 +14,7 @@ import styles from "./ROITimeCalculator.module.css";
  * 4 sliders → live computeROI() projection (60 % recoverable, monthly figure).
  */
 export function ROITimeCalculator() {
-  const { title, intro, sliders, resultLabel, subtext, cta } =
+  const { eyebrow, title, intro, sliders, resultLabel, subtext, cta } =
     formationIACommon.roiCalculator;
 
   const [values, setValues] = useState<Record<string, number>>(() =>
@@ -37,6 +37,7 @@ export function ROITimeCalculator() {
   return (
     <div className={styles.wrap}>
       <header className={styles.header}>
+        <span className={styles.eyebrow}>{eyebrow}</span>
         <h2 className={styles.title}>{title}</h2>
         <p className={styles.intro}>{intro}</p>
       </header>

@@ -144,6 +144,7 @@ export default function FormationIAReunionPage() {
 
         {/* Interactive: Before / after IA */}
         <section className={sections.sectionWide}>
+          <span className={sections.eyebrow}>{c.beforeAfter.eyebrow}</span>
           <h2 className={sections.title}>{c.beforeAfter.title}</h2>
           <BeforeAfterIA />
         </section>
@@ -152,6 +153,7 @@ export default function FormationIAReunionPage() {
 
         {/* Interactive: Mini audit IA */}
         <section className={sections.sectionNarrow}>
+          <span className={sections.eyebrow}>{c.miniAudit.eyebrow}</span>
           <h2 className={sections.title}>{c.miniAudit.title}</h2>
           <p className={sections.intro}>{c.miniAudit.intro}</p>
           <MiniAuditIA />

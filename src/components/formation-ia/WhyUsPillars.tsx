@@ -19,6 +19,7 @@ export function WhyUsPillars() {
     <section className={styles.section}>
       {/* Pour qui ? */}
       <div className={`${styles.block} ${styles.blockForWhom}`}>
+        <span className={styles.eyebrow}>{forWhom.eyebrow}</span>
         <h2 className={styles.title}>{forWhom.title}</h2>
         <div className={styles.personaRow}>
           {forWhom.personas.map((persona) => (
@@ -32,6 +33,7 @@ export function WhyUsPillars() {
 
       {/* Pourquoi MV Agency */}
       <div className={`${styles.block} ${styles.blockWhyUs}`}>
+        <span className={styles.eyebrow}>{pillars.eyebrow}</span>
         <h2 className={styles.title}>{pillars.title}</h2>
         <p className={styles.intro}>{pillars.intro}</p>
         <div className={styles.pillarGrid}>

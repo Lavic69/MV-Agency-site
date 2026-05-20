@@ -68,6 +68,7 @@ export function CaseStudyStory() {
   return (
     <section className={styles.section}>
       <header className={styles.header}>
+        <span className={styles.eyebrow}>{c.eyebrow}</span>
         <h2 className={styles.title}>{SECTION_TITLE}</h2>
         <p className={styles.intro}>{SECTION_INTRO}</p>
       </header>

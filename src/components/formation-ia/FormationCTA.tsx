@@ -7,6 +7,7 @@ export function FormationCTA() {
   return (
     <section className={styles.section}>
       <div className={styles.panel}>
+        <span className={styles.eyebrow}>{c.eyebrow}</span>
         <h2 className={styles.title}>{c.title}</h2>
         <p className={styles.body}>{c.body}</p>
         <div className={styles.actions}>

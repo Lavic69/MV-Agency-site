@@ -13,7 +13,7 @@ import styles from "./DiagnosticIA.module.css";
  * call-to-action card. Score 0..16 → profile from diagnosticProfile().
  */
 export function DiagnosticIA() {
-  const { title, intro, questions } = formationIACommon.diagnostic;
+  const { eyebrow, title, intro, questions } = formationIACommon.diagnostic;
   const { primary } = formationIACommon.ctaFinal;
 
   const [answers, setAnswers] = useState<number[]>([]);
@@ -36,6 +36,7 @@ export function DiagnosticIA() {
     <div className={styles.shell}>
       <div className={styles.card}>
         <header className={styles.header}>
+          <span className={styles.eyebrow}>{eyebrow}</span>
           <h2 className={styles.title}>{title}</h2>
           <p className={styles.intro}>{intro}</p>
         </header>

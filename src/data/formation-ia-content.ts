@@ -75,22 +75,26 @@ export interface FormationIACommon {
     badge: string;
   };
   diagnostic: {
+    eyebrow: string;
     title: string;
     intro: string;
     questions: DiagnosticQuestion[];
     profiles: DiagnosticProfile[];
   };
   differentiation: {
+    eyebrow: string;
     title: string;
     intro: string;
     cards: { title: string; body: string }[];
   };
   method: {
+    eyebrow: string;
     title: string;
     intro: string;
     phases: MethodPhase[];
   };
   roiCalculator: {
+    eyebrow: string;
     title: string;
     intro: string;
     sliders: { id: string; label: string; min: number; max: number; default: number }[];
@@ -100,39 +104,47 @@ export interface FormationIACommon {
     cta: { label: string; href: string };
   };
   caseStudy: {
+    eyebrow: string;
     title: string;
     avant: string;
     intervention: string;
     apres: string;
   };
   beforeAfter: {
+    eyebrow: string;
     title: string;
     workflowName: string;
     before: { duree: string; outils: string[]; quality: string };
     after: { duree: string; outils: string[]; quality: string };
   };
   pillars: {
+    eyebrow: string;
     title: string;
     intro: string;
     items: Pillar[];
   };
   forWhom: {
+    eyebrow: string;
     title: string;
-    personas: { label: string; body: string }[];
+    personas: { label: string; body: string; icon: string }[];
   };
   miniAudit: {
+    eyebrow: string;
     title: string;
     intro: string;
     placeholder: string;
     sectors: CannedSector[];
+    sectorOptions: { id: string; label: string }[];
     defaultAxes: [string, string, string];
     ctaAfter: { label: string; href: string };
   };
   faq: {
+    eyebrow: string;
     title: string;
     items: FormationFaqItem[];
   };
   ctaFinal: {
+    eyebrow: string;
     title: string;
     body: string;
     primary: { label: string; href: string };
@@ -154,6 +166,7 @@ export const formationIACommon: FormationIACommon = {
     badge: "Audit gratuit · 30 min",
   },
   diagnostic: {
+    eyebrow: "Diagnostic IA",
     title: "Où en êtes-vous avec l'IA ?",
     intro: "4 questions pour situer votre maturité IA et identifier la prochaine étape concrète.",
     questions: [
@@ -230,6 +243,7 @@ export const formationIACommon: FormationIACommon = {
     ],
   },
   differentiation: {
+    eyebrow: "Positionnement",
     title: "Pas une formation ChatGPT de plus.",
     intro: "Trois choses qui changent tout.",
     cards: [
@@ -248,6 +262,7 @@ export const formationIACommon: FormationIACommon = {
     ],
   },
   method: {
+    eyebrow: "Méthode",
     title: "Notre méthode en 3 phases",
     intro: "De l'état des lieux à l'autonomie complète de vos équipes.",
     phases: [
@@ -275,6 +290,7 @@ export const formationIACommon: FormationIACommon = {
     ],
   },
   roiCalculator: {
+    eyebrow: "Projection",
     title: "Combien de temps votre équipe pourrait récupérer ?",
     intro: "Ajustez les sliders selon votre réalité. On calcule une projection conservatrice (60 % de récupération).",
     sliders: [
@@ -290,6 +306,7 @@ export const formationIACommon: FormationIACommon = {
     cta: { label: "Voir comment on y arrive", href: CALENDLY_URL },
   },
   caseStudy: {
+    eyebrow: "Cas client",
     title: "Un cas concret",
     avant:
       "Un dirigeant de PME, déjà à l'aise avec l'IA, voulait passer à la vitesse supérieure et structurer l'usage de Claude pour lui et son équipe — suite au boom récent.",
@@ -299,6 +316,7 @@ export const formationIACommon: FormationIACommon = {
       "Trois résultats mesurés :\n\n1. **Production documentaire accélérée** — Excel, Word, présentations : gain de temps massif et qualité supérieure.\n2. **Tracking digital intégré** — plugins/MCP connectés à Claude pour le suivi des stats web + réseaux et la production d'audits directement depuis l'IA.\n3. **Volet comptable partiellement automatisé** — réduction des frais d'expert-comptable.\n\nL'accompagnement s'est poursuivi sur plusieurs mois au-delà du suivi 3 mois inclus.",
   },
   beforeAfter: {
+    eyebrow: "Avant / après",
     title: "Avant / après IA, sur un workflow type",
     workflowName: "Produire un compte-rendu de réunion + le diffuser",
     before: {
@@ -313,6 +331,7 @@ export const formationIACommon: FormationIACommon = {
     },
   },
   pillars: {
+    eyebrow: "Pourquoi MV Agency",
     title: "Pourquoi MV Agency",
     intro: "Quatre raisons concrètes de nous choisir pour votre formation IA.",
     items: [
@@ -339,17 +358,19 @@ export const formationIACommon: FormationIACommon = {
     ],
   },
   forWhom: {
+    eyebrow: "Pour qui",
     title: "Pour qui ?",
     personas: [
-      { label: "PME 10-50 salariés", body: "Dirigeants qui voient l'IA partout, sentent qu'ils ratent quelque chose, veulent une vraie stratégie." },
-      { label: "Cabinets / professions libérales", body: "Avocats, experts-comptables, médecins, kinés. Gain de temps sur les tâches répétitives métier." },
-      { label: "ETI / grands comptes", body: "Déploiement par département (marketing, RH, ops). Formation par batch." },
-      { label: "Indépendants en croissance", body: "Vous êtes seul·e ou en mini-équipe, l'IA peut multiplier votre capacité opérationnelle." },
+      { label: "PME 10-50 salariés", body: "Dirigeants qui voient l'IA partout, sentent qu'ils ratent quelque chose, veulent une vraie stratégie.", icon: "Building2" },
+      { label: "Cabinets / professions libérales", body: "Avocats, experts-comptables, médecins, kinés. Gain de temps sur les tâches répétitives métier.", icon: "Briefcase" },
+      { label: "ETI / grands comptes", body: "Déploiement par département (marketing, RH, ops). Formation par batch.", icon: "Network" },
+      { label: "Indépendants en croissance", body: "Vous êtes seul·e ou en mini-équipe, l'IA peut multiplier votre capacité opérationnelle.", icon: "Sparkles" },
     ],
   },
   miniAudit: {
-    title: "Un mini audit IA en 10 secondes",
-    intro: "Décrivez votre activité en une phrase. On vous propose 3 axes IA actionnables immédiatement.",
+    eyebrow: "Audit express",
+    title: "Audit IA express en 5 questions",
+    intro: "Répondez à 5 questions pour obtenir un mini-rapport personnalisé : profil détecté, 3 axes prioritaires, outils, et estimation de gain.",
     placeholder: "Ex : Je dirige une pharmacie de 8 collaborateurs à Saint-Denis…",
     // VICTOR TO FILL: refine the 3 axes per sector with Victor's input.
     sectors: [
@@ -444,6 +465,19 @@ export const formationIACommon: FormationIACommon = {
         ],
       },
     ],
+    sectorOptions: [
+      { id: "commerce", label: "Commerce / E-commerce" },
+      { id: "sante", label: "Santé (cabinet, pharmacie…)" },
+      { id: "juridique", label: "Juridique (avocat, notaire…)" },
+      { id: "immobilier", label: "Immobilier" },
+      { id: "services-pro", label: "Services pro / conseil" },
+      { id: "restauration", label: "Restauration / hôtellerie" },
+      { id: "btp", label: "BTP / artisanat" },
+      { id: "transport", label: "Transport / logistique" },
+      { id: "tourisme", label: "Tourisme" },
+      { id: "agro", label: "Agriculture / agroalimentaire" },
+      { id: "default", label: "Autre" },
+    ],
     defaultAxes: [
       "Automatiser les emails et messages récurrents pour libérer 4-8 h par semaine et par personne.",
       "Synthétiser et structurer vos documents (PDF, notes, comptes-rendus) en quelques secondes.",
@@ -452,6 +486,7 @@ export const formationIACommon: FormationIACommon = {
     ctaAfter: { label: "Audit complet sur votre activité — RDV gratuit", href: CALENDLY_URL },
   },
   faq: {
+    eyebrow: "Questions fréquentes",
     title: "Questions fréquentes",
     items: [
       {
@@ -483,6 +518,7 @@ export const formationIACommon: FormationIACommon = {
     ],
   },
   ctaFinal: {
+    eyebrow: "Prêt à démarrer",
     title: "On commence par un appel gratuit, sans engagement",
     body: "30 minutes pour comprendre votre contexte. Vous repartez avec 3 pistes IA concrètes, qu'on travaille ensemble ou pas.",
     primary: { label: "Réserver l'appel", href: CALENDLY_URL },
