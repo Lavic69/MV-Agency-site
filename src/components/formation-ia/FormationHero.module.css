@@ -11,6 +11,10 @@
   isolation: isolate;
 }
 
+.pillSlot {
+  margin-bottom: 1.25rem;
+}
+
 .eyebrow {
   font-size: 0.875rem;
   letter-spacing: 0.12em;
@@ -43,16 +47,3 @@
   justify-content: center;
 }
 
-.badge {
-  position: absolute;
-  top: clamp(4.5rem, 9vh, 7rem);
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.8125rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
-  color: rgba(255, 255, 255, 0.85);
-}

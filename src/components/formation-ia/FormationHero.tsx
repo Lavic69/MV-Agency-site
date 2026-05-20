@@ -1,5 +1,6 @@
 import { TextReveal } from "@/components/ui/TextReveal";
 import { Button } from "@/components/ui/Button";
+import { AvailabilityPill } from "@/components/ui/AvailabilityPill";
 import {
   formationIACommon,
   territoires,
@@ -17,7 +18,9 @@ export function FormationHero({ territoire }: Props) {
 
   return (
     <section className={styles.hero}>
-      <span className={styles.badge}>{c.badge}</span>
+      <div className={styles.pillSlot}>
+        <AvailabilityPill />
+      </div>
       <p className={styles.eyebrow}>Formation IA · {t.nom}</p>
       <h1 className={styles.h1}>
         <TextReveal>{c.h1}</TextReveal>
