@@ -1,0 +1,47 @@
+/* StickyCallCTA.module.css — Mobile-only floating CTA */
+
+.wrap {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  transform: translate(-50%, 120%);
+  z-index: 60;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  width: min(92vw, 22rem);
+}
+
+.wrap.visible {
+  transform: translate(-50%, 0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.95rem 1.25rem;
+  border-radius: 999px;
+  background: var(--primary-500, #6366f1);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(99, 102, 241, 0.35);
+}
+
+.cta:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* Desktop: never show */
+@media (min-width: 768px) {
+  .wrap {
+    display: none;
+  }
+}
