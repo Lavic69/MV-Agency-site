@@ -2,7 +2,7 @@ import { formationIACommon } from "@/data/formation-ia-content";
 import styles from "./CaseStudyStory.module.css";
 
 /**
- * Case study — 2-column split layout.
+ * Case study: 2-column split layout.
  *
  * LEFT: a faux-screenshot of a Claude conversation, drawn purely in CSS
  * (no images). Decorative; conveys "this is what the client now does daily".

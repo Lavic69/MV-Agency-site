@@ -18,7 +18,7 @@ import {
 import styles from "./MiniAuditIA.module.css";
 
 /**
- * MiniAuditIA V2 — 5-question quiz mini-audit.
+ * MiniAuditIA V2: 5-question quiz mini-audit.
  *
  * Q1: dropdown (sector). Q2-Q5: button choices (team size, pain, level, goal).
  * Multi-step like DiagnosticIA: one question at a time with progress.
@@ -178,7 +178,7 @@ export function MiniAuditIA() {
 }
 
 /* ------------------------------------------------------------------------ */
-/*  ChoiceQuestion — shared button-list question for Q2-Q5                  */
+/*  ChoiceQuestion: shared button-list question for Q2-Q5                   */
 /* ------------------------------------------------------------------------ */
 
 interface ChoiceQuestionProps<T extends string> {
@@ -215,7 +215,7 @@ function ChoiceQuestion<T extends string>({
 }
 
 /* ------------------------------------------------------------------------ */
-/*  MiniAuditReport — final rendered card with profil/axes/outils/gain      */
+/*  MiniAuditReport: final rendered card with profil/axes/outils/gain       */
 /* ------------------------------------------------------------------------ */
 
 interface MiniAuditReportProps {

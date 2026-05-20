@@ -22,7 +22,7 @@ import { FormationCTA } from "@/components/formation-ia/FormationCTA";
 import sections from "@/components/formation-ia/formation-ia-sections.module.css";
 
 /* -------------------------------------------------------------------------- */
-/*  Client components — dynamically imported to defer their JS off the        */
+/*  Client components dynamically imported to defer their JS off the         */
 /*  critical path. Next 16 does NOT allow `ssr: false` from a Server          */
 /*  Component (docs: 01-app/02-guides/lazy-loading.md). Each target already   */
 /*  carries `"use client"`, so a plain `dynamic()` still code-splits the      */
@@ -126,7 +126,7 @@ export default function FormationIAReunionPage() {
       <main>
         <FormationHero territoire={TERRITOIRE} />
 
-        {/* Interactive: Diagnostic IA — title + intro live inside the card */}
+        {/* Interactive: Diagnostic IA, title + intro live inside the card */}
         <section className={sections.sectionNarrow}>
           <DiagnosticIA />
         </section>
@@ -135,7 +135,7 @@ export default function FormationIAReunionPage() {
 
         <MethodTimeline />
 
-        {/* Interactive: ROI calculator — component owns its title + intro */}
+        {/* Interactive: ROI calculator, component owns its title + intro */}
         <section className={sections.sectionWide}>
           <ROITimeCalculator />
         </section>
@@ -151,7 +151,7 @@ export default function FormationIAReunionPage() {
 
         <WhyUsPillars />
 
-        {/* Interactive: Mini audit IA — title + intro live inside the card */}
+        {/* Interactive: Mini audit IA, title + intro live inside the card */}
         <section className={sections.sectionNarrow}>
           <MiniAuditIA />
         </section>

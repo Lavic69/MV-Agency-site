@@ -309,11 +309,11 @@ export const formationIACommon: FormationIACommon = {
     eyebrow: "Cas client",
     title: "Un cas concret",
     avant:
-      "Un dirigeant de PME, déjà à l'aise avec l'IA, voulait passer à la vitesse supérieure et structurer l'usage de Claude pour lui et son équipe — suite au boom récent.",
+      "Un dirigeant de PME, déjà à l'aise avec l'IA, voulait passer à la vitesse supérieure et structurer l'usage de Claude pour lui et son équipe, suite au boom récent.",
     intervention:
       "Mini-audit léger (le niveau client était déjà bon), puis formation complète sur Claude : les bases (prompts, limites, fonctionnement), l'exploration de Claude Code (écarté pour leur cas), et surtout le branchement de Claude sur leur écosystème via plugins / MCP.",
     apres:
-      "Trois résultats mesurés :\n\n1. **Production documentaire accélérée** — Excel, Word, présentations : gain de temps massif et qualité supérieure.\n2. **Tracking digital intégré** — plugins/MCP connectés à Claude pour le suivi des stats web + réseaux et la production d'audits directement depuis l'IA.\n3. **Volet comptable partiellement automatisé** — réduction des frais d'expert-comptable.\n\nL'accompagnement s'est poursuivi sur plusieurs mois au-delà du suivi 3 mois inclus.",
+      "Trois résultats mesurés :\n\n1. **Production documentaire accélérée** : Excel, Word, présentations, gain de temps massif et qualité supérieure.\n2. **Tracking digital intégré** : plugins/MCP connectés à Claude pour le suivi des stats web + réseaux et la production d'audits directement depuis l'IA.\n3. **Volet comptable partiellement automatisé** : réduction des frais d'expert-comptable.\n\nL'accompagnement s'est poursuivi sur plusieurs mois au-delà du suivi 3 mois inclus.",
   },
   beforeAfter: {
     eyebrow: "Avant / après",
@@ -353,7 +353,7 @@ export const formationIACommon: FormationIACommon = {
       {
         icon: "MessageCircle",
         title: "Pédagogie sans jargon",
-        body: "On explique tout de A à Z. Les équipes non-tech sont les bienvenues — et souvent celles qui progressent le plus.",
+        body: "On explique tout de A à Z. Les équipes non-tech sont les bienvenues, et souvent celles qui progressent le plus.",
       },
     ],
   },
@@ -483,7 +483,7 @@ export const formationIACommon: FormationIACommon = {
       "Synthétiser et structurer vos documents (PDF, notes, comptes-rendus) en quelques secondes.",
       "Mettre en place une veille intelligente sur vos sujets clés, livrée en un brief par semaine.",
     ],
-    ctaAfter: { label: "Audit complet sur votre activité — RDV gratuit", href: CALENDLY_URL },
+    ctaAfter: { label: "Audit complet sur votre activité : RDV gratuit", href: CALENDLY_URL },
   },
   faq: {
     eyebrow: "Questions fréquentes",
@@ -507,7 +507,7 @@ export const formationIACommon: FormationIACommon = {
       },
       {
         question: "Où intervenez-vous ?",
-        // answer: "" sentinel — renderer substitutes territoires[t].faqZone
+        // answer: "" sentinel, renderer substitutes territoires[t].faqZone
         answer: "",
       },
       {
@@ -534,7 +534,7 @@ export const territoires: Record<Territoire, TerritoireContent> = {
     villes: ["Saint-Denis", "Saint-Pierre", "Saint-Paul", "Le Tampon", "Le Port"],
     faqZone:
       "Saint-Denis, Saint-Pierre, Saint-Paul, Le Tampon, et tout le reste de l'île. On se déplace partout à la Réunion.",
-    metaTitle: "Formation IA à la Réunion — Audit + formation sur-mesure | MV Agency",
+    metaTitle: "Formation IA à la Réunion : audit + formation sur-mesure | MV Agency",
     metaDescription:
       "Formation IA à la Réunion : audit de votre écosystème, sélection des outils, formation intra-entreprise en présentiel. RDV gratuit.",
     canonical: "/formation-ia-la-reunion",
@@ -546,7 +546,7 @@ export const territoires: Record<Territoire, TerritoireContent> = {
     villes: ["Bruxelles", "Liège", "Charleroi", "Namur", "Mons", "Anvers", "Gand"],
     faqZone:
       "Bruxelles, Wallonie (Liège, Charleroi, Namur, Mons…), Flandres. On se déplace partout en Belgique.",
-    metaTitle: "Formation IA en Belgique — Audit + formation sur-mesure | MV Agency",
+    metaTitle: "Formation IA en Belgique : audit + formation sur-mesure | MV Agency",
     metaDescription:
       "Formation IA en Belgique : audit de votre écosystème, sélection des outils, formation intra-entreprise en présentiel. RDV gratuit.",
     canonical: "/formation-ia-belgique",
@@ -554,7 +554,7 @@ export const territoires: Record<Territoire, TerritoireContent> = {
 };
 
 // ---------------------------------------------------------------------------
-// Pure helpers (no React) — used by interactive modules.
+// Pure helpers (no React) used by interactive modules.
 // ---------------------------------------------------------------------------
 
 /** Compute the diagnostic profile for a given score. */
@@ -600,7 +600,7 @@ export function detectSector(input: string): CannedSector | null {
 }
 
 // ---------------------------------------------------------------------------
-// MiniAudit V2 — multi-step quiz definitions + report generator.
+// MiniAudit V2: multi-step quiz definitions + report generator.
 // ---------------------------------------------------------------------------
 
 export type MiniAuditTeamSize = "solo" | "2-10" | "11-50" | "50+";
@@ -730,7 +730,7 @@ const levelAxis: Record<MiniAuditLevel, string> = {
 const gainByTeamSize: Record<MiniAuditTeamSize, string> = {
   solo: "~6 à 10 heures récupérées par semaine sur les tâches identifiées.",
   "2-10":
-    "~12 à 20 heures équipe récupérées par semaine — soit l'équivalent d'un mi-temps.",
+    "~12 à 20 heures équipe récupérées par semaine, soit l'équivalent d'un mi-temps.",
   "11-50":
     "~40 à 80 heures équipe récupérées par semaine selon le périmètre déployé.",
   "50+":
@@ -739,7 +739,7 @@ const gainByTeamSize: Record<MiniAuditTeamSize, string> = {
 
 /**
  * Build a tailored MiniAudit report from the 5-question quiz answers.
- * Pure: no React, no I/O — deterministic for a given input.
+ * Pure: no React, no I/O, deterministic for a given input.
  */
 export function generateMiniAuditReport(
   answers: MiniAuditAnswers
@@ -802,7 +802,7 @@ if (process.env.NODE_ENV !== "production") {
     // eslint-disable-next-line no-console
     console.warn("[formation-ia] CALENDLY_URL still placeholder (/contact). VICTOR TO FILL.");
   }
-  // MiniAudit report invariant — every field must be non-empty for the
+  // MiniAudit report invariant: every field must be non-empty for the
   // canned "pharmacie / 11-50 / recherche / régulier / temps" input.
   const cannedReport = generateMiniAuditReport({
     sectorId: "sante",

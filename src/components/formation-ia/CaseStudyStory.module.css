@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CaseStudyStory — 2-column split.
+   CaseStudyStory: 2-column split.
    LEFT: faux Claude conversation mockup (pure CSS).
    RIGHT: three numbered narrative blocks.
    ========================================================================== */
@@ -65,7 +65,7 @@
   position: relative;
 }
 
-/* Sticky desktop reveal — keep the mockup visible briefly while the user
+/* Sticky desktop reveal: keep the mockup visible briefly while the user
    scrolls past the 3 narrative blocks. Honors prefers-reduced-motion. */
 @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
   .mockupCol {

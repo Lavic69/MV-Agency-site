@@ -1,5 +1,5 @@
 /* ==========================================================================
-   WhyUsPillars — two stacked sub-sections inside one wide container:
+   WhyUsPillars: two stacked sub-sections inside one wide container:
    "Pour qui ?" (persona cards, auto-width flex-wrap) +
    "Pourquoi MV Agency" (pillar cards, 2×2 grid with hairline divider).
    ========================================================================== */
@@ -47,7 +47,7 @@
   margin: 0 auto 3rem;
 }
 
-/* ----- Pour qui ? — flex-wrap, auto-sized cards ----- */
+/* ----- Pour qui ? Flex-wrap, auto-sized cards ----- */
 
 .personaRow {
   display: flex;
@@ -96,7 +96,7 @@
   margin: 0;
 }
 
-/* ----- Pourquoi MV Agency — 2x2 grid ----- */
+/* ----- Pourquoi MV Agency : 2x2 grid ----- */
 
 .pillarGrid {
   display: grid;

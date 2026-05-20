@@ -1,5 +1,5 @@
 /* ==========================================================================
-   DifferentiationBlock — 3 cards stating what makes the formation IA
+   DifferentiationBlock: 3 cards stating what makes the formation IA
    distinct from a generic ChatGPT course.
    ========================================================================== */
 
@@ -73,7 +73,7 @@
     )
     1;
   /* Fallback border that mirrors the gradient feel on browsers without
-     border-image fade support — keep border-top brighter. */
+     border-image fade support (keep border-top brighter). */
   border-top: 1px solid rgba(var(--primary-500-rgb), 0.45);
   overflow: hidden;
   transition: background 0.25s ease, border-top-color 0.25s ease;

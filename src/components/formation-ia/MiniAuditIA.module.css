@@ -182,6 +182,7 @@
   );
   display: grid;
   gap: 1.5rem;
+  overflow: hidden;
 }
 
 .reportBlock {
@@ -273,13 +274,19 @@
   color: rgba(229, 231, 235, 0.6);
   font-size: 0.875rem;
   cursor: pointer;
-  padding: 0.5rem 0.75rem;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  flex: 0 0 auto;
 }
 
 .reset:hover {
   color: var(--text-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .reset:focus-visible {
