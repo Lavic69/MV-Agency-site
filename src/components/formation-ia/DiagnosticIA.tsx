@@ -6,6 +6,7 @@ import {
   diagnosticProfile,
   formationIACommon,
 } from "@/data/formation-ia-content";
+import { TextReveal } from "@/components/ui/TextReveal";
 import styles from "./DiagnosticIA.module.css";
 
 /**
@@ -37,7 +38,9 @@ export function DiagnosticIA() {
       <div className={styles.card}>
         <header className={styles.header}>
           <span className={styles.eyebrow}>{eyebrow}</span>
-          <h2 className={styles.title}>{title}</h2>
+          <h2 className={styles.title}>
+            <TextReveal>{title}</TextReveal>
+          </h2>
           <p className={styles.intro}>{intro}</p>
         </header>
 

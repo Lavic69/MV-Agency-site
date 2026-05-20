@@ -19,6 +19,8 @@ import { CaseStudyStory } from "@/components/formation-ia/CaseStudyStory";
 import { WhyUsPillars } from "@/components/formation-ia/WhyUsPillars";
 import { FormationFAQ } from "@/components/formation-ia/FormationFAQ";
 import { FormationCTA } from "@/components/formation-ia/FormationCTA";
+import { FadeIn } from "@/components/ui/FadeIn";
+import { TextReveal } from "@/components/ui/TextReveal";
 import sections from "@/components/formation-ia/formation-ia-sections.module.css";
 
 /* -------------------------------------------------------------------------- */
@@ -127,38 +129,60 @@ export default function FormationIAReunionPage() {
         <FormationHero territoire={TERRITOIRE} />
 
         {/* Interactive: Diagnostic IA, title + intro live inside the card */}
-        <section className={sections.sectionNarrow}>
-          <DiagnosticIA />
-        </section>
+        <FadeIn>
+          <section className={sections.sectionNarrow}>
+            <DiagnosticIA />
+          </section>
+        </FadeIn>
 
-        <DifferentiationBlock />
+        <FadeIn>
+          <DifferentiationBlock />
+        </FadeIn>
 
-        <MethodTimeline />
+        <FadeIn>
+          <MethodTimeline />
+        </FadeIn>
 
         {/* Interactive: ROI calculator, component owns its title + intro */}
-        <section className={sections.sectionWide}>
-          <ROITimeCalculator />
-        </section>
+        <FadeIn>
+          <section className={sections.sectionWide}>
+            <ROITimeCalculator />
+          </section>
+        </FadeIn>
 
-        <CaseStudyStory />
+        <FadeIn>
+          <CaseStudyStory />
+        </FadeIn>
 
         {/* Interactive: Before / after IA */}
-        <section className={sections.sectionWide}>
-          <span className={sections.eyebrow}>{c.beforeAfter.eyebrow}</span>
-          <h2 className={sections.title}>{c.beforeAfter.title}</h2>
-          <BeforeAfterIA />
-        </section>
+        <FadeIn>
+          <section className={sections.sectionWide}>
+            <span className={sections.eyebrow}>{c.beforeAfter.eyebrow}</span>
+            <h2 className={sections.title}>
+              <TextReveal>{c.beforeAfter.title}</TextReveal>
+            </h2>
+            <BeforeAfterIA />
+          </section>
+        </FadeIn>
 
-        <WhyUsPillars />
+        <FadeIn>
+          <WhyUsPillars />
+        </FadeIn>
 
         {/* Interactive: Mini audit IA, title + intro live inside the card */}
-        <section className={sections.sectionNarrow}>
-          <MiniAuditIA />
-        </section>
+        <FadeIn>
+          <section className={sections.sectionNarrow}>
+            <MiniAuditIA />
+          </section>
+        </FadeIn>
 
-        <FormationFAQ territoire={TERRITOIRE} />
+        <FadeIn>
+          <FormationFAQ territoire={TERRITOIRE} />
+        </FadeIn>
 
-        <FormationCTA />
+        <FadeIn>
+          <FormationCTA />
+        </FadeIn>
       </main>
 
       <StickyCallCTA />

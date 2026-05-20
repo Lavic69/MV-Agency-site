@@ -9,6 +9,7 @@ import {
   Rocket,
 } from "lucide-react";
 import { formationIACommon } from "@/data/formation-ia-content";
+import { TextReveal } from "@/components/ui/TextReveal";
 import styles from "./WhyUsPillars.module.css";
 
 const iconMap = {
@@ -37,7 +38,9 @@ export function WhyUsPillars() {
       {/* Pour qui ? */}
       <div className={`${styles.block} ${styles.blockForWhom}`}>
         <span className={styles.eyebrow}>{forWhom.eyebrow}</span>
-        <h2 className={styles.title}>{forWhom.title}</h2>
+        <h2 className={styles.title}>
+          <TextReveal>{forWhom.title}</TextReveal>
+        </h2>
         <div className={styles.personaRow}>
           {forWhom.personas.map((persona) => {
             const PersonaIcon =
@@ -61,7 +64,9 @@ export function WhyUsPillars() {
       {/* Pourquoi MV Agency */}
       <div className={`${styles.block} ${styles.blockWhyUs}`}>
         <span className={styles.eyebrow}>{pillars.eyebrow}</span>
-        <h2 className={styles.title}>{pillars.title}</h2>
+        <h2 className={styles.title}>
+          <TextReveal>{pillars.title}</TextReveal>
+        </h2>
         <p className={styles.intro}>{pillars.intro}</p>
         <div className={styles.pillarGrid}>
           {pillars.items.map((item) => {

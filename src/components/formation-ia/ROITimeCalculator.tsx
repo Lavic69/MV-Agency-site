@@ -6,6 +6,7 @@ import {
   computeROI,
   formationIACommon,
 } from "@/data/formation-ia-content";
+import { TextReveal } from "@/components/ui/TextReveal";
 import styles from "./ROITimeCalculator.module.css";
 
 /**
@@ -38,7 +39,9 @@ export function ROITimeCalculator() {
     <div className={styles.wrap}>
       <header className={styles.header}>
         <span className={styles.eyebrow}>{eyebrow}</span>
-        <h2 className={styles.title}>{title}</h2>
+        <h2 className={styles.title}>
+          <TextReveal>{title}</TextReveal>
+        </h2>
         <p className={styles.intro}>{intro}</p>
       </header>
 

@@ -1,4 +1,5 @@
 import { formationIACommon } from "@/data/formation-ia-content";
+import { TextReveal } from "@/components/ui/TextReveal";
 import styles from "./MethodTimeline.module.css";
 
 export function MethodTimeline() {
@@ -6,7 +7,9 @@ export function MethodTimeline() {
   return (
     <section id="methode" className={styles.section}>
       <span className={styles.eyebrow}>{c.eyebrow}</span>
-      <h2 className={styles.title}>{c.title}</h2>
+      <h2 className={styles.title}>
+        <TextReveal>{c.title}</TextReveal>
+      </h2>
       <p className={styles.intro}>{c.intro}</p>
       <ol className={styles.list}>
         {c.phases.map((p) => (

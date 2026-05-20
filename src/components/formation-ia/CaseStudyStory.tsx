@@ -1,4 +1,5 @@
 import { formationIACommon } from "@/data/formation-ia-content";
+import { TextReveal } from "@/components/ui/TextReveal";
 import styles from "./CaseStudyStory.module.css";
 
 /**
@@ -69,7 +70,9 @@ export function CaseStudyStory() {
     <section className={styles.section}>
       <header className={styles.header}>
         <span className={styles.eyebrow}>{c.eyebrow}</span>
-        <h2 className={styles.title}>{SECTION_TITLE}</h2>
+        <h2 className={styles.title}>
+          <TextReveal>{SECTION_TITLE}</TextReveal>
+        </h2>
         <p className={styles.intro}>{SECTION_INTRO}</p>
       </header>
 

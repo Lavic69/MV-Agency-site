@@ -15,6 +15,7 @@ import {
   type MiniAuditLevel,
   type MiniAuditGoal,
 } from "@/data/formation-ia-content";
+import { TextReveal } from "@/components/ui/TextReveal";
 import styles from "./MiniAuditIA.module.css";
 
 /**
@@ -81,7 +82,9 @@ export function MiniAuditIA() {
       <div className={styles.card}>
         <header className={styles.header}>
           <span className={styles.eyebrow}>{c.eyebrow}</span>
-          <h2 className={styles.title}>{c.title}</h2>
+          <h2 className={styles.title}>
+            <TextReveal>{c.title}</TextReveal>
+          </h2>
           <p className={styles.intro}>{c.intro}</p>
         </header>
 

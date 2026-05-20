@@ -1,4 +1,5 @@
 import { formationIACommon } from "@/data/formation-ia-content";
+import { TextReveal } from "@/components/ui/TextReveal";
 import styles from "./DifferentiationBlock.module.css";
 
 function renderBold(text: string) {
@@ -14,7 +15,9 @@ export function DifferentiationBlock() {
   return (
     <section className={styles.section}>
       <span className={styles.eyebrow}>{c.eyebrow}</span>
-      <h2 className={styles.title}>{c.title}</h2>
+      <h2 className={styles.title}>
+        <TextReveal>{c.title}</TextReveal>
+      </h2>
       <p className={styles.intro}>{c.intro}</p>
       <div className={styles.grid}>
         {c.cards.map((card, i) => {
