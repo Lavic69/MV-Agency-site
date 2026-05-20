@@ -135,9 +135,8 @@ export default function FormationIAReunionPage() {
 
         <MethodTimeline />
 
-        {/* Interactive: ROI calculator */}
-        <section className={sections.sectionNarrow}>
-          <h2 className={sections.title}>{c.roiCalculator.title}</h2>
+        {/* Interactive: ROI calculator — component owns its title + intro */}
+        <section className={sections.sectionWide}>
           <ROITimeCalculator />
         </section>
 
