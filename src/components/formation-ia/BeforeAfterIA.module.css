@@ -1,7 +1,8 @@
-/* BeforeAfterIA.module.css */
+/* BeforeAfterIA.module.css
+   Segmented toggle + single crossfading card. */
 
 .wrap {
-  max-width: 60rem;
+  max-width: 56rem;
   margin: 0 auto;
   padding: 1rem 0;
 }
@@ -10,7 +11,7 @@
   font-size: 0.8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--primary-400, #818cf8);
+  color: var(--primary-400);
   margin: 0 0 0.5rem;
   font-weight: 500;
   text-align: center;
@@ -18,82 +19,133 @@
 
 .workflowName {
   text-align: center;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(229, 231, 235, 0.9);
   font-size: clamp(1.125rem, 2vw, 1.375rem);
   margin: 0 0 2rem;
   font-weight: 500;
   line-height: 1.4;
 }
 
-.viewport {
+/* ----- Segmented toggle ----- */
+.toggle {
+  display: inline-flex;
+  gap: 0.5rem;
+  padding: 0.375rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.025);
+  margin: 0 auto 2rem;
+}
+
+.toggleBtn {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgba(229, 231, 235, 0.7);
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  font-family: inherit;
+}
+
+.toggleBtn:hover {
+  color: var(--text-light);
+}
+
+.toggleBtn:focus-visible {
+  outline: 2px solid var(--primary-400);
+  outline-offset: 2px;
+}
+
+.toggleBtnActive {
+  background: var(--primary-500);
+  color: var(--text-light);
+  border-color: var(--primary-500);
+  box-shadow: 0 4px 16px -4px rgba(var(--primary-500-rgb), 0.5);
+}
+
+.toggleBtnActive:hover {
+  color: var(--text-light);
+}
+
+/* Center the inline-flex toggle row inside the wrap */
+.wrap {
+  text-align: center;
+}
+
+/* ----- Card ----- */
+.card {
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1rem;
-  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 20px;
   background: rgba(255, 255, 255, 0.02);
-  cursor: ew-resize;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: none;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  text-align: left;
+  min-height: 320px;
+  transition: border-color 0.25s ease, background 0.25s ease;
 }
 
-.panes {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.cardBefore {
+  border-color: rgba(248, 113, 113, 0.30);
+  background: rgba(248, 113, 113, 0.04);
 }
 
-.pane {
-  padding: clamp(1.25rem, 3vw, 2rem);
-}
-
-.paneBefore {
-  background: rgba(239, 68, 68, 0.04);
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.paneAfter {
+.cardAfter {
+  border-color: rgba(var(--primary-500-rgb), 0.35);
   background: linear-gradient(
-    135deg,
-    rgba(99, 102, 241, 0.1) 0%,
-    rgba(255, 255, 255, 0.02) 100%
+    180deg,
+    rgba(var(--primary-500-rgb), 0.10) 0%,
+    rgba(var(--primary-500-rgb), 0.02) 100%
   );
+  box-shadow: 0 20px 50px -20px rgba(var(--primary-500-rgb), 0.30);
 }
 
-.paneLabel {
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.label {
   font-size: 0.75rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 600;
-  margin: 0 0 1rem;
+  margin: 0;
 }
 
-.paneLabelBefore {
+.labelBefore {
   color: rgba(248, 113, 113, 0.85);
 }
 
-.paneLabelAfter {
-  color: var(--primary-400, #818cf8);
+.labelAfter {
+  color: var(--primary-400);
 }
 
 .duree {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 700;
-  color: #fff;
-  margin: 0 0 1.25rem;
+  color: var(--text-light);
+  margin: 0;
   line-height: 1;
   font-variant-numeric: tabular-nums;
+  font-family: var(--font-heading), sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .metric {
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
 .metricLabel {
   font-size: 0.75rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  margin: 0 0 0.375rem;
+  color: rgba(229, 231, 235, 0.55);
+  margin: 0 0 0.5rem;
 }
 
 .outils {
@@ -107,60 +159,16 @@
 
 .outil {
   font-size: 0.8125rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(229, 231, 235, 0.9);
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.10);
   padding: 0.25rem 0.625rem;
   border-radius: 999px;
 }
 
 .quality {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  color: rgba(229, 231, 235, 0.78);
   line-height: 1.5;
   margin: 0;
-}
-
-.handle {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: rgba(255, 255, 255, 0.7);
-  transform: translateX(-50%);
-  pointer-events: none;
-  box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
-}
-
-.handleGrip {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 2.25rem;
-  height: 2.25rem;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  border-radius: 999px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary-500, #6366f1);
-  font-size: 0.875rem;
-  font-weight: 700;
-}
-
-@media (max-width: 640px) {
-  .panes {
-    grid-template-columns: 1fr;
-  }
-
-  .paneBefore {
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .handle {
-    display: none;
-  }
 }

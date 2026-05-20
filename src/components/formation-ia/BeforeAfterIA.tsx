@@ -1,57 +1,26 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { formationIACommon } from "@/data/formation-ia-content";
 import styles from "./BeforeAfterIA.module.css";
 
+type ViewState = "before" | "after";
+
 /**
- * Drag-to-compare before/after IA workflow card.
+ * Toggle-based before/after IA comparator.
  *
- * V0 behavior: both panes are visible side-by-side in a 2-column grid.
- * The vertical handle is a visual cue that the user can drag — it follows
- * the cursor / finger between 0% and 100% but does not clip the panes.
+ * Two pill buttons at the top ("Sans IA" / "Avec IA") switch the card
+ * below between two content states with a crossfade. Replaces the
+ * previous drag-slider interaction, which was fragile across browsers.
  */
 export function BeforeAfterIA() {
   const { workflowName, before, after } = formationIACommon.beforeAfter;
+  const reduced = useReducedMotion();
 
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const [pos, setPos] = useState(50);
-  const [dragging, setDragging] = useState(false);
-
-  function updateFromClientX(clientX: number) {
-    const el = viewportRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    if (rect.width <= 0) return;
-    const next = ((clientX - rect.left) / rect.width) * 100;
-    setPos(Math.max(0, Math.min(100, next)));
-  }
-
-  function onMouseDown(e: React.MouseEvent<HTMLDivElement>) {
-    setDragging(true);
-    updateFromClientX(e.clientX);
-  }
-
-  function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    if (!dragging) return;
-    updateFromClientX(e.clientX);
-  }
-
-  function stopDrag() {
-    setDragging(false);
-  }
-
-  function onTouchStart(e: React.TouchEvent<HTMLDivElement>) {
-    if (e.touches.length === 0) return;
-    setDragging(true);
-    updateFromClientX(e.touches[0].clientX);
-  }
-
-  function onTouchMove(e: React.TouchEvent<HTMLDivElement>) {
-    if (!dragging) return;
-    if (e.touches.length === 0) return;
-    updateFromClientX(e.touches[0].clientX);
-  }
+  const [view, setView] = useState<ViewState>("before");
+  const data = view === "before" ? before : after;
+  const isAfter = view === "after";
 
   return (
     <div className={styles.wrap}>
@@ -59,73 +28,69 @@ export function BeforeAfterIA() {
       <p className={styles.workflowName}>{workflowName}</p>
 
       <div
-        ref={viewportRef}
-        className={styles.viewport}
-        role="slider"
+        className={styles.toggle}
+        role="tablist"
         aria-label="Comparateur avant / après IA"
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-valuenow={Math.round(pos)}
-        tabIndex={0}
-        onMouseDown={onMouseDown}
-        onMouseMove={onMouseMove}
-        onMouseUp={stopDrag}
-        onMouseLeave={stopDrag}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={stopDrag}
       >
-        <div className={styles.panes}>
-          <div className={`${styles.pane} ${styles.paneBefore}`}>
-            <p className={`${styles.paneLabel} ${styles.paneLabelBefore}`}>
-              Avant
-            </p>
-            <p className={styles.duree}>{before.duree}</p>
-            <div className={styles.metric}>
-              <p className={styles.metricLabel}>Outils</p>
-              <ul className={styles.outils}>
-                {before.outils.map((o) => (
-                  <li key={o} className={styles.outil}>
-                    {o}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className={styles.metric}>
-              <p className={styles.metricLabel}>Qualité</p>
-              <p className={styles.quality}>{before.quality}</p>
-            </div>
-          </div>
-
-          <div className={`${styles.pane} ${styles.paneAfter}`}>
-            <p className={`${styles.paneLabel} ${styles.paneLabelAfter}`}>
-              Après IA
-            </p>
-            <p className={styles.duree}>{after.duree}</p>
-            <div className={styles.metric}>
-              <p className={styles.metricLabel}>Outils</p>
-              <ul className={styles.outils}>
-                {after.outils.map((o) => (
-                  <li key={o} className={styles.outil}>
-                    {o}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className={styles.metric}>
-              <p className={styles.metricLabel}>Qualité</p>
-              <p className={styles.quality}>{after.quality}</p>
-            </div>
-          </div>
-        </div>
-
-        <div
-          className={styles.handle}
-          style={{ left: `${pos}%` }}
-          aria-hidden="true"
+        <button
+          type="button"
+          role="tab"
+          aria-selected={!isAfter}
+          className={`${styles.toggleBtn} ${
+            !isAfter ? styles.toggleBtnActive : ""
+          }`}
+          onClick={() => setView("before")}
         >
-          <span className={styles.handleGrip}>⇄</span>
-        </div>
+          Sans IA
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={isAfter}
+          className={`${styles.toggleBtn} ${
+            isAfter ? styles.toggleBtnActive : ""
+          }`}
+          onClick={() => setView("after")}
+        >
+          Avec IA
+        </button>
+      </div>
+
+      <div
+        className={`${styles.card} ${isAfter ? styles.cardAfter : styles.cardBefore}`}
+        aria-live="polite"
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={view}
+            className={styles.cardInner}
+            initial={reduced ? { opacity: 1 } : { opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reduced ? { opacity: 1 } : { opacity: 0, y: -8 }}
+            transition={{ duration: reduced ? 0 : 0.4, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <p className={`${styles.label} ${isAfter ? styles.labelAfter : styles.labelBefore}`}>
+              {isAfter ? "Avec IA" : "Sans IA"}
+            </p>
+            <p className={styles.duree}>{data.duree}</p>
+
+            <div className={styles.metric}>
+              <p className={styles.metricLabel}>Outils</p>
+              <ul className={styles.outils}>
+                {data.outils.map((o) => (
+                  <li key={o} className={styles.outil}>
+                    {o}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.metric}>
+              <p className={styles.metricLabel}>Qualité</p>
+              <p className={styles.quality}>{data.quality}</p>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );
