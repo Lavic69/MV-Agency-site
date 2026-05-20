@@ -4,6 +4,7 @@ import {
   territoires,
   type Territoire,
 } from "@/data/formation-ia-content";
+import styles from "./FormationFAQ.module.css";
 
 interface Props {
   territoire: Territoire;
@@ -32,10 +33,8 @@ export function FormationFAQ({ territoire }: Props) {
   });
 
   return (
-    <section className="mx-auto max-w-3xl px-6 py-24">
-      <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
-        {c.title}
-      </h2>
+    <section className={styles.section}>
+      <h2 className={styles.title}>{c.title}</h2>
       <Accordion items={items} />
     </section>
   );
