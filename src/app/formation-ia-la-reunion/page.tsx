@@ -126,10 +126,8 @@ export default function FormationIAReunionPage() {
       <main>
         <FormationHero territoire={TERRITOIRE} />
 
-        {/* Interactive: Diagnostic IA */}
+        {/* Interactive: Diagnostic IA — title + intro live inside the card */}
         <section className={sections.sectionNarrow}>
-          <h2 className={sections.title}>{c.diagnostic.title}</h2>
-          <p className={sections.intro}>{c.diagnostic.intro}</p>
           <DiagnosticIA />
         </section>
 
