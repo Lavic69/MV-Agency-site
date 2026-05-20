@@ -358,13 +358,13 @@ export const formationIACommon: FormationIACommon = {
     ],
   },
   forWhom: {
-    eyebrow: "Pour qui",
+    eyebrow: "À destination de",
     title: "Pour qui ?",
     personas: [
       { label: "PME 10-50 salariés", body: "Dirigeants qui voient l'IA partout, sentent qu'ils ratent quelque chose, veulent une vraie stratégie.", icon: "Building2" },
-      { label: "Cabinets / professions libérales", body: "Avocats, experts-comptables, médecins, kinés. Gain de temps sur les tâches répétitives métier.", icon: "Briefcase" },
-      { label: "ETI / grands comptes", body: "Déploiement par département (marketing, RH, ops). Formation par batch.", icon: "Network" },
-      { label: "Indépendants en croissance", body: "Vous êtes seul·e ou en mini-équipe, l'IA peut multiplier votre capacité opérationnelle.", icon: "Sparkles" },
+      { label: "Cabinets / professions libérales", body: "Avocats, experts-comptables, médecins, kinés. Gain de temps sur les tâches répétitives métier.", icon: "Scale" },
+      { label: "ETI / grands comptes", body: "Déploiement par département (marketing, RH, ops). Formation par batch.", icon: "Landmark" },
+      { label: "Indépendants en croissance", body: "Vous êtes seul·e ou en mini-équipe, l'IA peut multiplier votre capacité opérationnelle.", icon: "Rocket" },
     ],
   },
   miniAudit: {

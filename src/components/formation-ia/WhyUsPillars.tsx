@@ -4,9 +4,9 @@ import {
   GraduationCap,
   MessageCircle,
   Building2,
-  Briefcase,
-  Network,
-  Sparkles,
+  Scale,
+  Landmark,
+  Rocket,
 } from "lucide-react";
 import { formationIACommon } from "@/data/formation-ia-content";
 import styles from "./WhyUsPillars.module.css";
@@ -20,9 +20,9 @@ const iconMap = {
 
 const personaIconMap = {
   Building2,
-  Briefcase,
-  Network,
-  Sparkles,
+  Scale,
+  Landmark,
+  Rocket,
 } as const;
 
 type IconKey = keyof typeof iconMap;
