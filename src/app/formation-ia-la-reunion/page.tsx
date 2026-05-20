@@ -151,11 +151,8 @@ export default function FormationIAReunionPage() {
 
         <WhyUsPillars />
 
-        {/* Interactive: Mini audit IA */}
+        {/* Interactive: Mini audit IA — title + intro live inside the card */}
         <section className={sections.sectionNarrow}>
-          <span className={sections.eyebrow}>{c.miniAudit.eyebrow}</span>
-          <h2 className={sections.title}>{c.miniAudit.title}</h2>
-          <p className={sections.intro}>{c.miniAudit.intro}</p>
           <MiniAuditIA />
         </section>
 

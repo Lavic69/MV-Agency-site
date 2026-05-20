@@ -1,158 +1,287 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import {
   formationIACommon,
-  detectSector,
+  generateMiniAuditReport,
+  miniAuditTeamSizes,
+  miniAuditPains,
+  miniAuditLevels,
+  miniAuditGoals,
+  type MiniAuditAnswers,
+  type MiniAuditTeamSize,
+  type MiniAuditPain,
+  type MiniAuditLevel,
+  type MiniAuditGoal,
 } from "@/data/formation-ia-content";
 import styles from "./MiniAuditIA.module.css";
 
 /**
- * MiniAuditIA — canned interactive "mini audit" module.
+ * MiniAuditIA V2 — 5-question quiz mini-audit.
  *
- * - User types a short description of their activity (max 80 chars).
- * - detectSector() matches keywords against the 10 canned sectors.
- *   If matched: returns 3 sector-specific actionable axes.
- *   If not matched: falls back to defaultAxes (generic but useful).
- * - Reveals the 3 axes with a typewriter animation (char-by-char,
- *   280ms pause between axes).
- * - Respects prefers-reduced-motion: reveals all 3 axes instantly.
- * - Honest disclaimer: this is a sample, the real audit goes deeper.
- *
- * Typewriter safety: a ref-based cancellation token (animationIdRef) is
- * bumped on each submit so any in-flight typewriter from a previous
- * submit stops before stepping again. This prevents two animations
- * fighting over `revealedAxes` if the user re-submits quickly.
+ * Q1: dropdown (sector). Q2-Q5: button choices (team size, pain, level, goal).
+ * Multi-step like DiagnosticIA: one question at a time with progress.
+ * On completion, generateMiniAuditReport() produces a tailored mini-report
+ * (profil, 3 axes, outils, gain). All client-side, no API calls.
  */
+
+type StepIndex = 0 | 1 | 2 | 3 | 4;
+
+interface PartialAnswers {
+  sectorId?: string;
+  teamSize?: MiniAuditTeamSize;
+  pain?: MiniAuditPain;
+  level?: MiniAuditLevel;
+  goal?: MiniAuditGoal;
+}
+
 export function MiniAuditIA() {
   const c = formationIACommon.miniAudit;
-  const [input, setInput] = useState("");
-  const [revealedAxes, setRevealedAxes] = useState<string[]>([]);
-  const [submitted, setSubmitted] = useState(false);
-  const prefersReducedMotion = useReducedMotion();
 
-  // Cancellation token for the typewriter so re-submits don't race.
-  const animationIdRef = useRef(0);
+  const [step, setStep] = useState<StepIndex>(0);
+  const [answers, setAnswers] = useState<PartialAnswers>({});
+  const [draftSector, setDraftSector] = useState<string>("");
 
-  // Cancel any in-flight animation on unmount.
-  useEffect(() => {
-    return () => {
-      animationIdRef.current += 1;
-    };
-  }, []);
+  const total = 5;
+  const done = step >= total;
+  const isComplete =
+    !!answers.sectorId &&
+    !!answers.teamSize &&
+    !!answers.pain &&
+    !!answers.level &&
+    !!answers.goal;
 
-  function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (input.trim().length < 5) return;
-    const sector = detectSector(input);
-    const axes = sector ? sector.axes : c.defaultAxes;
-    setSubmitted(true);
-
-    // Bump the animation token — any prior in-flight step() will bail.
-    animationIdRef.current += 1;
-    const myId = animationIdRef.current;
-
-    if (prefersReducedMotion) {
-      setRevealedAxes([...axes]);
-      return;
-    }
-    setRevealedAxes([]);
-    typewriter(axes, setRevealedAxes, () => animationIdRef.current === myId);
+  function advance() {
+    setStep((s) => (Math.min(s + 1, total) as StepIndex));
   }
 
-  const disabled = input.trim().length < 5;
+  function submitSector() {
+    if (!draftSector) return;
+    setAnswers((prev) => ({ ...prev, sectorId: draftSector }));
+    advance();
+  }
+
+  function choose<K extends keyof PartialAnswers>(
+    key: K,
+    value: NonNullable<PartialAnswers[K]>
+  ) {
+    setAnswers((prev) => ({ ...prev, [key]: value }));
+    advance();
+  }
+
+  function reset() {
+    setStep(0);
+    setAnswers({});
+    setDraftSector("");
+  }
 
   return (
-    <div className={styles.wrap}>
-      <form onSubmit={onSubmit}>
-        <textarea
-          className={styles.input}
-          rows={2}
-          placeholder={c.placeholder}
-          maxLength={80}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          aria-label="Décrivez votre activité"
-        />
-        <p className={styles.counter}>{input.length} / 80</p>
-        <div className={styles.submitRow}>
-          <Button type="submit" size="lg" disabled={disabled}>
-            Lancer le mini-audit
-          </Button>
-        </div>
-      </form>
+    <div className={styles.shell}>
+      <div className={styles.card}>
+        <header className={styles.header}>
+          <span className={styles.eyebrow}>{c.eyebrow}</span>
+          <h2 className={styles.title}>{c.title}</h2>
+          <p className={styles.intro}>{c.intro}</p>
+        </header>
 
-      {submitted && (
-        <div className={styles.result} aria-live="polite">
-          <p className={styles.resultLabel}>
-            3 axes IA actionnables pour vous
-          </p>
-          {revealedAxes.map((axe, i) => (
-            <p key={i} className={styles.axe}>
-              {axe}
-            </p>
-          ))}
-          <p className={styles.honesty}>
-            Ceci est un échantillon. L&apos;audit réel (gratuit, 30 min) va
-            beaucoup plus loin sur votre cas précis.
-          </p>
-          <div className={styles.ctaRow}>
-            <Button href={c.ctaAfter.href} size="lg">
-              {c.ctaAfter.label}
-            </Button>
-          </div>
-        </div>
-      )}
+        {done && isComplete ? (
+          <MiniAuditReport
+            answers={answers as MiniAuditAnswers}
+            ctaHref={c.ctaAfter.href}
+            ctaLabel={c.ctaAfter.label}
+            onReset={reset}
+          />
+        ) : (
+          <>
+            <div
+              className={styles.progress}
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              Question {step + 1} / {total}
+            </div>
+
+            {step === 0 && (
+              <>
+                <h3 className={styles.question}>
+                  Dans quel secteur évoluez-vous ?
+                </h3>
+                <label htmlFor="mini-audit-sector" className={styles.srOnly}>
+                  Secteur d&apos;activité
+                </label>
+                <select
+                  id="mini-audit-sector"
+                  className={styles.select}
+                  value={draftSector}
+                  onChange={(e) => setDraftSector(e.target.value)}
+                >
+                  <option value="" disabled>
+                    Choisir un secteur
+                  </option>
+                  {c.sectorOptions.map((opt) => (
+                    <option key={opt.id} value={opt.id}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+                <div className={styles.nextRow}>
+                  <Button
+                    type="button"
+                    onClick={submitSector}
+                    aria-disabled={!draftSector}
+                    disabled={!draftSector}
+                    size="lg"
+                  >
+                    Suivant
+                  </Button>
+                </div>
+              </>
+            )}
+
+            {step === 1 && (
+              <ChoiceQuestion
+                title="Combien de personnes dans votre équipe ?"
+                options={miniAuditTeamSizes}
+                onChoose={(v) => choose("teamSize", v)}
+              />
+            )}
+
+            {step === 2 && (
+              <ChoiceQuestion
+                title="Quelle tâche vous prend le plus de temps ?"
+                options={miniAuditPains}
+                onChoose={(v) => choose("pain", v)}
+              />
+            )}
+
+            {step === 3 && (
+              <ChoiceQuestion
+                title="Votre niveau actuel avec l'IA ?"
+                options={miniAuditLevels}
+                onChoose={(v) => choose("level", v)}
+              />
+            )}
+
+            {step === 4 && (
+              <ChoiceQuestion
+                title="Quel est votre objectif n°1 ?"
+                options={miniAuditGoals}
+                onChoose={(v) => choose("goal", v)}
+              />
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 }
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
+/* ------------------------------------------------------------------------ */
+/*  ChoiceQuestion — shared button-list question for Q2-Q5                  */
+/* ------------------------------------------------------------------------ */
 
-function useReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    if (typeof window === "undefined" || !window.matchMedia) return;
-    const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mql.matches);
-    const handler = () => setReduced(mql.matches);
-    mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
-  }, []);
-  return reduced;
+interface ChoiceQuestionProps<T extends string> {
+  title: string;
+  options: { value: T; label: string }[];
+  onChoose: (value: T) => void;
 }
 
-/**
- * Reveal `axes` char-by-char with 18ms per char and 280ms pause between
- * axes. `isAlive` is checked at the top of every step; when it returns
- * false (because the cancellation token advanced) the chain stops.
- */
-function typewriter(
-  axes: readonly string[],
-  setRevealed: (v: string[]) => void,
-  isAlive: () => boolean
-) {
-  let axeIdx = 0;
-  let charIdx = 0;
-  let buffer: string[] = [];
-  const step = () => {
-    if (!isAlive()) return;
-    if (axeIdx >= axes.length) return;
-    const target = axes[axeIdx];
-    if (charIdx === 0) buffer = [...buffer, ""];
-    buffer[axeIdx] = target.slice(0, charIdx + 1);
-    setRevealed([...buffer]);
-    charIdx++;
-    if (charIdx >= target.length) {
-      axeIdx++;
-      charIdx = 0;
-      setTimeout(step, 280);
-    } else {
-      setTimeout(step, 18);
-    }
-  };
-  step();
+function ChoiceQuestion<T extends string>({
+  title,
+  options,
+  onChoose,
+}: ChoiceQuestionProps<T>) {
+  return (
+    <>
+      <h3 className={styles.question}>{title}</h3>
+      <div className={styles.choices} role="radiogroup" aria-label={title}>
+        {options.map((opt) => (
+          <button
+            key={opt.value}
+            type="button"
+            role="radio"
+            aria-checked={false}
+            className={styles.choice}
+            onClick={() => onChoose(opt.value)}
+          >
+            <span className={styles.dot} aria-hidden="true" />
+            <span>{opt.label}</span>
+          </button>
+        ))}
+      </div>
+    </>
+  );
+}
+
+/* ------------------------------------------------------------------------ */
+/*  MiniAuditReport — final rendered card with profil/axes/outils/gain      */
+/* ------------------------------------------------------------------------ */
+
+interface MiniAuditReportProps {
+  answers: MiniAuditAnswers;
+  ctaHref: string;
+  ctaLabel: string;
+  onReset: () => void;
+}
+
+function MiniAuditReport({
+  answers,
+  ctaHref,
+  ctaLabel,
+  onReset,
+}: MiniAuditReportProps) {
+  const report = generateMiniAuditReport(answers);
+
+  return (
+    <div className={styles.report}>
+      <section className={styles.reportBlock}>
+        <p className={styles.reportLabel}>Profil détecté</p>
+        <p className={styles.reportProfil}>{report.profil}</p>
+      </section>
+
+      <section className={styles.reportBlock}>
+        <p className={styles.reportLabel}>3 axes prioritaires pour vous</p>
+        <ul className={styles.axesList}>
+          {report.axes.map((axe, i) => (
+            <li key={i} className={styles.axe}>
+              {axe}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className={styles.reportBlock}>
+        <p className={styles.reportLabel}>
+          Outils que nous activerions sur votre cas
+        </p>
+        <ul className={styles.tools}>
+          {report.outils.map((tool) => (
+            <li key={tool} className={styles.tool}>
+              {tool}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className={styles.reportBlock}>
+        <p className={styles.reportLabel}>Estimation de gain potentiel</p>
+        <p className={styles.gain}>{report.gain}</p>
+      </section>
+
+      <div className={styles.ctaRow}>
+        <Button href={ctaHref} size="lg">
+          {ctaLabel}
+        </Button>
+        <button type="button" onClick={onReset} className={styles.reset}>
+          Refaire l&apos;audit
+        </button>
+      </div>
+
+      <p className={styles.honesty}>
+        Ceci est un échantillon basé sur 5 questions. L&apos;audit complet
+        (gratuit, 30 min) ira beaucoup plus loin sur votre cas précis.
+      </p>
+    </div>
+  );
 }
