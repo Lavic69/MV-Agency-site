@@ -331,7 +331,7 @@ export const formationIACommon: FormationIACommon = {
     },
   },
   pillars: {
-    eyebrow: "Pourquoi MV Agency",
+    eyebrow: "Notre différence",
     title: "Pourquoi MV Agency",
     intro: "Quatre raisons concrètes de nous choisir pour votre formation IA.",
     items: [
