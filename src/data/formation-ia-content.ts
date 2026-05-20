@@ -65,6 +65,10 @@ export interface CannedSector {
 export interface FormationIACommon {
   hero: {
     h1: string;
+    /** Lead fragment of the H1 (no strikethrough). */
+    h1Main: string;
+    /** Trailing fragment of the H1 (rendered with animated strikethrough). */
+    h1Strike: string;
     sub: string;
     ctaPrimary: { label: string; href: string };
     ctaSecondary: { label: string; href: string };
@@ -140,7 +144,9 @@ const CALENDLY_URL = "/contact"; // VICTOR TO FILL: replace with Calendly link
 
 export const formationIACommon: FormationIACommon = {
   hero: {
-    h1: "Déployez l'IA dans votre équipe, avec une méthode — pas un cours ChatGPT.",
+    h1: "Déployez l'IA dans votre équipe, avec une méthode, pas un cours ChatGPT.",
+    h1Main: "Déployez l'IA dans votre équipe, avec une méthode,",
+    h1Strike: "pas un cours ChatGPT.",
     sub: "Audit de votre écosystème, sélection des bons outils, formation intra-entreprise en présentiel.",
     ctaPrimary: { label: "Réserver l'appel gratuit", href: CALENDLY_URL },
     ctaSecondary: { label: "Voir notre méthode", href: "#methode" },

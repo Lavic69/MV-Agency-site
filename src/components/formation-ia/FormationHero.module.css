@@ -26,7 +26,7 @@
 
 .h1 {
   font-size: clamp(2.25rem, 5vw, 4rem);
-  line-height: 1.05;
+  line-height: 1.1;
   font-weight: 700;
   max-width: 22ch;
   margin: 0 auto 1.5rem;
@@ -34,7 +34,7 @@
 
 .sub {
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(229, 231, 235, 0.75);
   max-width: 60ch;
   margin: 0 auto 2.5rem;
   line-height: 1.55;
@@ -47,3 +47,43 @@
   justify-content: center;
 }
 
+/* ----- Strikethrough fragment ----- */
+.strikeWrap {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  transform: rotate(-1.5deg);
+  transform-origin: center;
+  padding: 0 0.05em;
+}
+
+.strikeText {
+  position: relative;
+  z-index: 1;
+  color: rgba(229, 231, 235, 0.78);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.strikeSvg {
+  position: absolute;
+  top: 50%;
+  left: -2%;
+  width: 104%;
+  height: 0.55em;
+  transform: translateY(-46%);
+  pointer-events: none;
+  overflow: visible;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strikeSvg {
+    display: none;
+  }
+  .strikeText {
+    text-decoration: line-through;
+    text-decoration-color: var(--primary-400);
+    text-decoration-thickness: 3px;
+  }
+}
