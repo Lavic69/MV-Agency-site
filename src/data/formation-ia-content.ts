@@ -46,9 +46,13 @@ export interface Pillar {
   body: string;
 }
 
-export interface FaqItem {
-  q: string;
-  a: string;
+export interface FormationFaqItem {
+  question: string;
+  /**
+   * If empty string (""), the renderer MUST substitute `territoires[t].faqZone`
+   * for the active territory. Treat "" as a sentinel for territory-aware answers.
+   */
+  answer: string;
   territoireOverride?: Partial<Record<Territoire, string>>;
 }
 
@@ -121,7 +125,7 @@ export interface FormationIACommon {
   };
   faq: {
     title: string;
-    items: FaqItem[];
+    items: FormationFaqItem[];
   };
   ctaFinal: {
     title: string;
@@ -261,7 +265,7 @@ export const formationIACommon: FormationIACommon = {
     ],
     recuperablePct: 0.6,
     resultLabel:
-      "Avec une formation IA bien déployée, votre équipe pourrait récupérer **~{mensuel}** par personne et par mois.",
+      "Avec une formation IA bien déployée, votre équipe pourrait récupérer **~{mensuelLabel}** par personne et par mois.",
     subtext: "Sur un audit MV Agency, on identifie les automatisations qui réalisent ce gain. Ce qu'on ne peut pas automatiser, on le dit.",
     cta: { label: "Voir comment on y arrive", href: CALENDLY_URL },
   },
@@ -431,32 +435,29 @@ export const formationIACommon: FormationIACommon = {
     title: "Questions fréquentes",
     items: [
       {
-        q: "Combien ça coûte ?",
-        a: "Sur devis après l'appel découverte gratuit. On ne facture jamais à l'aveugle. Le périmètre dépend de la taille de votre équipe et des objectifs.",
+        question: "Combien ça coûte ?",
+        answer: "Sur devis après l'appel découverte gratuit. On ne facture jamais à l'aveugle. Le périmètre dépend de la taille de votre équipe et des objectifs.",
       },
       {
-        q: "Combien de temps dure une formation ?",
-        a: "Audit : 1 jour sur place. Formation : 1 à 3 jours selon le périmètre. Suivi : 3 mois inclus (1 session visio/mois).",
+        question: "Combien de temps dure une formation ?",
+        answer: "Audit : 1 jour sur place. Formation : 1 à 3 jours selon le périmètre. Suivi : 3 mois inclus (1 session visio/mois).",
       },
       {
-        q: "On part de zéro avec l'IA, c'est possible ?",
-        a: "Oui. Plus de 50 % de nos formations démarrent là. Notre méthode est calibrée pour les équipes non-tech.",
+        question: "On part de zéro avec l'IA, c'est possible ?",
+        answer: "Oui. Plus de 50 % de nos formations démarrent là. Notre méthode est calibrée pour les équipes non-tech.",
       },
       {
-        q: "Quels outils IA vous utilisez ?",
-        a: "Claude (Anthropic) en principal, ChatGPT, n8n, Make, MCP, Notion AI, Custom GPTs. On choisit selon votre stack existante, pas l'inverse.",
+        question: "Quels outils IA vous utilisez ?",
+        answer: "Claude (Anthropic) en principal, ChatGPT, n8n, Make, MCP, Notion AI, Custom GPTs. On choisit selon votre stack existante, pas l'inverse.",
       },
       {
-        q: "Où intervenez-vous ?",
-        a: "", // overridden per territoire
-        territoireOverride: {
-          reunion: "Saint-Denis, Saint-Pierre, Saint-Paul, Le Tampon, et tout le reste de l'île. On se déplace partout à la Réunion.",
-          belgique: "Bruxelles, Wallonie (Liège, Charleroi, Namur, Mons…), Flandres. On se déplace partout en Belgique.",
-        },
+        question: "Où intervenez-vous ?",
+        // answer: "" sentinel — renderer substitutes territoires[t].faqZone
+        answer: "",
       },
       {
-        q: "Présentiel uniquement ?",
-        a: "Le cœur de la formation est en présentiel chez vous. Le suivi mensuel est en visio. Des modules visio ponctuels sont possibles si pertinent.",
+        question: "Présentiel uniquement ?",
+        answer: "Le cœur de la formation est en présentiel chez vous. Le suivi mensuel est en visio. Des modules visio ponctuels sont possibles si pertinent.",
       },
       // VICTOR TO FILL: financement OPCO/CPF (Réunion) / Forem-Bruxelles Formation (Belgique).
     ],
@@ -502,6 +503,14 @@ export const territoires: Record<Territoire, TerritoireContent> = {
 
 /** Compute the diagnostic profile for a given score. */
 export function diagnosticProfile(score: number): DiagnosticProfile {
+  if (!Number.isFinite(score) || score < 0 || score > 16) {
+    if (process.env.NODE_ENV !== "production") {
+      // eslint-disable-next-line no-console
+      console.warn(`[formation-ia] diagnosticProfile received out-of-range score: ${score}`);
+    }
+    // Still return a sensible default for prod resilience, but log in dev.
+    return formationIACommon.diagnostic.profiles[0];
+  }
   for (const p of formationIACommon.diagnostic.profiles) {
     if (score >= p.scoreMin && score <= p.scoreMax) return p;
   }
@@ -514,7 +523,10 @@ export function computeROI(
   values: Record<string, number>,
   recuperablePct = formationIACommon.roiCalculator.recuperablePct
 ): { mensuelH: number; mensuelLabel: string } {
-  const totalHebdo = Object.values(values).reduce((a, b) => a + b, 0);
+  const safe = Object.values(values).filter(
+    (v) => Number.isFinite(v) && v >= 0
+  );
+  const totalHebdo = safe.reduce((a, b) => a + b, 0);
   const recuperableHebdo = totalHebdo * recuperablePct;
   const mensuelH = Math.round(recuperableHebdo * 4);
   const jours = Math.round((mensuelH / 7) * 10) / 10;
@@ -547,5 +559,10 @@ if (process.env.NODE_ENV !== "production") {
   if (roi.mensuelH <= 0) {
     // eslint-disable-next-line no-console
     console.warn(`[formation-ia] computeROI returned non-positive value`);
+  }
+  // Reminder: Calendly URL still placeholder.
+  if (CALENDLY_URL === "/contact") {
+    // eslint-disable-next-line no-console
+    console.warn("[formation-ia] CALENDLY_URL still placeholder (/contact). VICTOR TO FILL.");
   }
 }
