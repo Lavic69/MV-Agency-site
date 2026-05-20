@@ -82,7 +82,8 @@ export interface FormationIACommon {
   };
   differentiation: {
     title: string;
-    body: string;
+    intro: string;
+    cards: { title: string; body: string }[];
   };
   method: {
     title: string;
@@ -230,8 +231,21 @@ export const formationIACommon: FormationIACommon = {
   },
   differentiation: {
     title: "Pas une formation ChatGPT de plus.",
-    body:
-      "La plupart des formations IA aujourd'hui = un cours sur les prompts ChatGPT pendant 2h. Vous repartez avec quelques astuces. Au mois prochain, votre équipe ne s'en sert plus.\n\nNous : on commence par auditer **votre** écosystème, **vos** outils, **vos** process. Puis on choisit les bons outils — pas forcément ChatGPT, parfois Claude, n8n, Make, ou des assistants custom. Puis on forme votre équipe **sur vos cas d'usage réels**, pas sur des slides génériques.",
+    intro: "Trois choses qui changent tout.",
+    cards: [
+      {
+        title: "On commence par auditer",
+        body: "Avant de former, on regarde **votre** quotidien. Pas de cours générique, un plan calibré sur vos process.",
+      },
+      {
+        title: "On choisit VOS outils",
+        body: "Pas forcément ChatGPT. Claude, n8n, Make, MCP, Notion AI, selon ce que vous avez et ce que vous voulez.",
+      },
+      {
+        title: "On forme sur VOS cas réels",
+        body: "Vos vrais documents, vos vrais workflows. Pas de slides bidons, pas de jargon.",
+      },
+    ],
   },
   method: {
     title: "Notre méthode en 3 phases",
