@@ -267,6 +267,17 @@
   margin-top: 1rem;
 }
 
+/* The shared primary Button has an animated conic-gradient "rim" that
+   peeks through a 1.5px gap between its ::after overlay and the button
+   edge. On this dark report card, the bright white at the 12 o'clock
+   position reads as a stray line floating above the CTA. We extend the
+   ::after overlay to cover the rim entirely on this Button instance
+   only — the brand rim effect remains intact everywhere else. */
+.ctaRow a[class*="primary"]::after,
+.ctaRow button[class*="primary"]::after {
+  inset: 0;
+}
+
 .reset {
   background: transparent;
   border: none;
