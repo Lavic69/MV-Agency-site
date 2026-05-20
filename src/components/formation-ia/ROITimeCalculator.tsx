@@ -83,7 +83,7 @@ export function ROITimeCalculator() {
           </p>
           <p className={styles.subtext}>{subtext}</p>
           <div className={styles.cta}>
-            <Button href={cta.href} size="lg">
+            <Button href={cta.href}>
               {cta.label}
             </Button>
           </div>

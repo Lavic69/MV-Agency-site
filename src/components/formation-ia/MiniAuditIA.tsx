@@ -131,7 +131,6 @@ export function MiniAuditIA() {
                     onClick={submitSector}
                     aria-disabled={!draftSector}
                     disabled={!draftSector}
-                    size="lg"
                   >
                     Suivant
                   </Button>
@@ -270,7 +269,7 @@ function MiniAuditReport({
       </section>
 
       <div className={styles.ctaRow}>
-        <Button href={ctaHref} size="lg">
+        <Button href={ctaHref}>
           {ctaLabel}
         </Button>
         <button type="button" onClick={onReset} className={styles.reset}>
