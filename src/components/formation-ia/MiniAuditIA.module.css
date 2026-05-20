@@ -6,12 +6,15 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  /* Allow flex child to shrink below intrinsic content width on mobile */
+  min-width: 0;
 }
 
 .card {
   width: 100%;
   max-width: 760px;
-  padding: clamp(2rem, 5vw, 3.5rem);
+  /* Soften the floor on very small viewports so long words can wrap */
+  padding: clamp(1.5rem, 5vw, 3.5rem);
   border-radius: 28px;
   border: 1px solid rgba(var(--primary-500-rgb), 0.35);
   background: linear-gradient(
@@ -21,6 +24,11 @@
   );
   box-shadow: 0 24px 60px -20px rgba(var(--primary-500-rgb), 0.35);
   transition: border-color 0.25s ease;
+  /* min-width: 0 lets the flex child shrink so children with long text wrap.
+     Without this, grid descendants size to content and blow out the card. */
+  min-width: 0;
+  /* Hard clamp at edges as a safety net against any content overshoot. */
+  overflow-wrap: anywhere;
 }
 
 .card:hover,
@@ -82,6 +90,7 @@
 
 .choices {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.75rem;
 }
 
@@ -90,16 +99,21 @@
   align-items: center;
   gap: 0.75rem;
   width: 100%;
+  /* 44px touch target floor at mobile. */
+  min-height: 2.75rem;
   text-align: left;
-  padding: 1rem 1.25rem;
+  padding: 0.875rem 1.125rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 0.75rem;
   background: rgba(255, 255, 255, 0.02);
   color: rgba(229, 231, 235, 0.92);
   font-size: 0.975rem;
+  line-height: 1.4;
   cursor: pointer;
   transition: border-color 0.18s ease, background 0.18s ease,
     transform 0.18s ease;
+  /* Long choice labels (e.g. axes lists) must wrap inside narrow cards. */
+  word-break: break-word;
 }
 
 .choice:hover {
@@ -174,19 +188,30 @@
 .report {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 1rem;
-  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.5rem, 3vw, 2.25rem) clamp(2rem, 4vw, 2.75rem);
+  /* Slightly higher padding floor so small phones don't feel cramped. */
+  padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.5rem, 3vw, 2.25rem)
+    clamp(2.25rem, 5vw, 3rem);
   background: linear-gradient(
     135deg,
     rgba(var(--primary-500-rgb), 0.10) 0%,
     rgba(255, 255, 255, 0.02) 100%
   );
   display: grid;
-  gap: 1.5rem;
+  /* Force the grid track to honour the container width — without minmax,
+     intrinsic min-content of children can push the track wider than the
+     report card on narrow viewports. */
+  grid-template-columns: minmax(0, 1fr);
+  /* Rhythm scales with viewport so blocks feel less stacked on mobile. */
+  gap: clamp(1.5rem, 3vw, 2.25rem);
 }
 
 .reportBlock {
   display: grid;
-  gap: 0.5rem;
+  /* Same grid-min-content guard for nested grids. */
+  grid-template-columns: minmax(0, 1fr);
+  /* A touch more air between the label (eyebrow) and the content below. */
+  gap: 0.625rem;
+  min-width: 0;
 }
 
 .reportLabel {
@@ -196,6 +221,9 @@
   color: var(--primary-400);
   font-weight: 500;
   margin: 0;
+  /* Explicit margin atop the content; combined with grid gap this gives
+     a clearer "eyebrow → body" hierarchy without crowding adjacent blocks. */
+  margin-bottom: 0.125rem;
 }
 
 .reportProfil {
@@ -211,7 +239,9 @@
   padding: 0;
   margin: 0;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.75rem;
+  min-width: 0;
 }
 
 .axe {
@@ -236,7 +266,9 @@
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  /* Slightly more breathing room between chips. */
+  gap: 0.625rem;
+  min-width: 0;
 }
 
 .tool {
@@ -264,7 +296,8 @@
   flex-direction: column;
   align-items: center;
   gap: 1.25rem;
-  margin-top: 1rem;
+  /* Air above the CTA scales with viewport for better rhythm. */
+  margin-top: clamp(0.5rem, 2vw, 1.25rem);
 }
 
 /* The shared primary Button has an animated conic-gradient "rim" that
@@ -284,7 +317,12 @@
   color: rgba(229, 231, 235, 0.6);
   font-size: 0.875rem;
   cursor: pointer;
-  padding: 0.5rem 0.75rem;
+  /* 40px-ish tap target via min-height; padding remains generous-but-tight */
+  min-height: 2.5rem;
+  padding: 0.5rem 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   border-radius: 0.5rem;
   transition: color 200ms ease-out;

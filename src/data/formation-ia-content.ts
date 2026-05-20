@@ -483,7 +483,7 @@ export const formationIACommon: FormationIACommon = {
       "Synthétiser et structurer vos documents (PDF, notes, comptes-rendus) en quelques secondes.",
       "Mettre en place une veille intelligente sur vos sujets clés, livrée en un brief par semaine.",
     ],
-    ctaAfter: { label: "Audit complet sur votre activité : RDV gratuit", href: CALENDLY_URL },
+    ctaAfter: { label: "Réserver l'audit complet gratuit", href: CALENDLY_URL },
   },
   faq: {
     eyebrow: "Questions fréquentes",
