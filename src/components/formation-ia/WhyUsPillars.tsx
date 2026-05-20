@@ -1,4 +1,13 @@
-import { Wrench, MapPin, GraduationCap, MessageCircle } from "lucide-react";
+import {
+  Wrench,
+  MapPin,
+  GraduationCap,
+  MessageCircle,
+  Building2,
+  Briefcase,
+  Network,
+  Sparkles,
+} from "lucide-react";
 import { formationIACommon } from "@/data/formation-ia-content";
 import styles from "./WhyUsPillars.module.css";
 
@@ -9,7 +18,15 @@ const iconMap = {
   MessageCircle,
 } as const;
 
+const personaIconMap = {
+  Building2,
+  Briefcase,
+  Network,
+  Sparkles,
+} as const;
+
 type IconKey = keyof typeof iconMap;
+type PersonaIconKey = keyof typeof personaIconMap;
 
 export function WhyUsPillars() {
   const pillars = formationIACommon.pillars;
@@ -22,12 +39,22 @@ export function WhyUsPillars() {
         <span className={styles.eyebrow}>{forWhom.eyebrow}</span>
         <h2 className={styles.title}>{forWhom.title}</h2>
         <div className={styles.personaRow}>
-          {forWhom.personas.map((persona) => (
-            <article key={persona.label} className={styles.personaCard}>
-              <h3 className={styles.personaTitle}>{persona.label}</h3>
-              <p className={styles.personaBody}>{persona.body}</p>
-            </article>
-          ))}
+          {forWhom.personas.map((persona) => {
+            const PersonaIcon =
+              personaIconMap[persona.icon as PersonaIconKey] ?? Building2;
+            return (
+              <article key={persona.label} className={styles.personaCard}>
+                <PersonaIcon
+                  size={32}
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                  className={styles.personaIcon}
+                />
+                <h3 className={styles.personaTitle}>{persona.label}</h3>
+                <p className={styles.personaBody}>{persona.body}</p>
+              </article>
+            );
+          })}
         </div>
       </div>
 
