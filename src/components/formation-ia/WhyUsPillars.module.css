@@ -1,6 +1,7 @@
 /* ==========================================================================
    WhyUsPillars — two stacked sub-sections inside one wide container:
-   "Pour qui ?" (persona cards) + "Pourquoi MV Agency" (pillar cards).
+   "Pour qui ?" (persona cards, auto-width flex-wrap) +
+   "Pourquoi MV Agency" (pillar cards, 2×2 grid with hairline divider).
    ========================================================================== */
 
 .section {
@@ -11,8 +12,9 @@
   padding: clamp(3rem, 8vh, 6rem) clamp(1rem, 4vw, 1.5rem);
 }
 
+/* Extra vertical breathing room between the two sub-sections. */
 .block + .block {
-  margin-top: clamp(3rem, 8vh, 6rem);
+  margin-top: clamp(4rem, 10vh, 7rem);
 }
 
 .title {
@@ -34,42 +36,76 @@
   margin: 0 auto 3rem;
 }
 
-/* ----- Grid (mobile 1 col → tablet 2 cols → desktop 4 cols) ----- */
+/* ----- Pour qui ? — flex-wrap, auto-sized cards ----- */
 
-.grid {
+.personaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.personaCard {
+  flex: 1 1 240px;
+  max-width: 320px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  transition: background 0.2s ease-out, border-color 0.2s ease-out;
+}
+
+.personaCard:hover {
+  background: rgba(var(--primary-500-rgb), 0.05);
+  border-color: rgba(var(--primary-500-rgb), 0.4);
+}
+
+.personaTitle {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-light);
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+}
+
+.personaBody {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ----- Pourquoi MV Agency — 2x2 grid ----- */
+
+.pillarGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
-@media (min-width: 640px) {
-  .grid {
+@media (min-width: 768px) {
+  .pillarGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 }
 
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* ----- Card (shared by persona + pillar) ----- */
-
-.card {
+.pillarCard {
   background: var(--bg-card);
   border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: 18px;
-  padding: clamp(1.25rem, 2.5vw, 1.75rem);
-  transition: background 0.18s ease, border-color 0.18s ease;
+  padding: 1.75rem 2rem;
+  transition: background 0.2s ease-out, border-color 0.2s ease-out;
 }
 
-.card:hover {
+.pillarCard:hover {
   background: var(--bg-card-hover);
   border-color: rgba(var(--primary-500-rgb), 0.4);
 }
 
-.cardTitle {
+.pillarTitle {
   font-family: var(--font-heading), sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
@@ -78,23 +114,22 @@
   margin: 0 0 0.75rem;
 }
 
-.cardBody {
+.pillarBody {
   color: var(--text-muted);
   font-size: 0.9rem;
   line-height: 1.6;
   margin: 0;
 }
 
-/* ----- Pillar icon badge ----- */
+/* ----- Pillar icon badge with hairline divider ----- */
 
 .iconBadge {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 0.85rem;
-  background: rgba(var(--primary-500-rgb), 0.15);
-  color: var(--primary-400);
+  justify-content: flex-start;
+  width: 100%;
+  padding-bottom: 1rem;
   margin-bottom: 1rem;
+  color: var(--primary-400);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }

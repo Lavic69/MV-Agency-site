@@ -18,32 +18,32 @@ export function WhyUsPillars() {
   return (
     <section className={styles.section}>
       {/* Pour qui ? */}
-      <div className={styles.block}>
+      <div className={`${styles.block} ${styles.blockForWhom}`}>
         <h2 className={styles.title}>{forWhom.title}</h2>
-        <div className={styles.grid}>
+        <div className={styles.personaRow}>
           {forWhom.personas.map((persona) => (
-            <article key={persona.label} className={styles.card}>
-              <h3 className={styles.cardTitle}>{persona.label}</h3>
-              <p className={styles.cardBody}>{persona.body}</p>
+            <article key={persona.label} className={styles.personaCard}>
+              <h3 className={styles.personaTitle}>{persona.label}</h3>
+              <p className={styles.personaBody}>{persona.body}</p>
             </article>
           ))}
         </div>
       </div>
 
       {/* Pourquoi MV Agency */}
-      <div className={styles.block}>
+      <div className={`${styles.block} ${styles.blockWhyUs}`}>
         <h2 className={styles.title}>{pillars.title}</h2>
         <p className={styles.intro}>{pillars.intro}</p>
-        <div className={styles.grid}>
+        <div className={styles.pillarGrid}>
           {pillars.items.map((item) => {
             const Icon = iconMap[item.icon as IconKey] ?? Wrench;
             return (
-              <article key={item.title} className={styles.card}>
+              <article key={item.title} className={styles.pillarCard}>
                 <span className={styles.iconBadge}>
-                  <Icon size={22} strokeWidth={1.75} aria-hidden="true" />
+                  <Icon size={32} strokeWidth={1.5} aria-hidden="true" />
                 </span>
-                <h3 className={styles.cardTitle}>{item.title}</h3>
-                <p className={styles.cardBody}>{item.body}</p>
+                <h3 className={styles.pillarTitle}>{item.title}</h3>
+                <p className={styles.pillarBody}>{item.body}</p>
               </article>
             );
           })}
