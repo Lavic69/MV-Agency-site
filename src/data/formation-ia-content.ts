@@ -599,6 +599,187 @@ export function detectSector(input: string): CannedSector | null {
   return null;
 }
 
+// ---------------------------------------------------------------------------
+// MiniAudit V2 — multi-step quiz definitions + report generator.
+// ---------------------------------------------------------------------------
+
+export type MiniAuditTeamSize = "solo" | "2-10" | "11-50" | "50+";
+export type MiniAuditPain =
+  | "emails"
+  | "documents"
+  | "reporting"
+  | "recherche"
+  | "admin";
+export type MiniAuditLevel = "zero" | "tests" | "regulier" | "avance";
+export type MiniAuditGoal =
+  | "temps"
+  | "former"
+  | "services"
+  | "couts";
+
+export interface MiniAuditAnswers {
+  sectorId: string;
+  teamSize: MiniAuditTeamSize;
+  pain: MiniAuditPain;
+  level: MiniAuditLevel;
+  goal: MiniAuditGoal;
+}
+
+export interface MiniAuditReport {
+  profil: string;
+  axes: [string, string, string];
+  outils: string[];
+  gain: string;
+}
+
+interface QuizOption<T extends string> {
+  value: T;
+  label: string;
+}
+
+export const miniAuditTeamSizes: QuizOption<MiniAuditTeamSize>[] = [
+  { value: "solo", label: "Solo" },
+  { value: "2-10", label: "2 à 10" },
+  { value: "11-50", label: "11 à 50" },
+  { value: "50+", label: "50+" },
+];
+
+export const miniAuditPains: QuizOption<MiniAuditPain>[] = [
+  { value: "emails", label: "Emails / messages" },
+  { value: "documents", label: "Production de documents" },
+  { value: "reporting", label: "Reporting / synthèses" },
+  { value: "recherche", label: "Recherche d'information" },
+  { value: "admin", label: "Tâches administratives répétitives" },
+];
+
+export const miniAuditLevels: QuizOption<MiniAuditLevel>[] = [
+  { value: "zero", label: "Zéro, j'aimerais commencer" },
+  { value: "tests", label: "Quelques tests, sans méthode" },
+  { value: "regulier", label: "Régulier, mais en silos" },
+  { value: "avance", label: "Avancé, je veux pousser plus loin" },
+];
+
+export const miniAuditGoals: QuizOption<MiniAuditGoal>[] = [
+  { value: "temps", label: "Gagner du temps sur les tâches" },
+  { value: "former", label: "Former mon équipe à l'IA" },
+  { value: "services", label: "Créer de nouveaux services" },
+  { value: "couts", label: "Réduire les coûts opérationnels" },
+];
+
+// --- Internal text fragments used to build the profil sentence ----------
+
+const sectorPhrase: Record<string, string> = {
+  commerce: "Commerce / e-commerce",
+  sante: "Activité de santé",
+  juridique: "Cabinet juridique",
+  immobilier: "Activité immobilière",
+  "services-pro": "Services pro / conseil",
+  restauration: "Restauration / hôtellerie",
+  btp: "BTP / artisanat",
+  transport: "Transport / logistique",
+  tourisme: "Tourisme",
+  agro: "Agriculture / agroalimentaire",
+  default: "Activité",
+};
+
+const teamSizePhrase: Record<MiniAuditTeamSize, string> = {
+  solo: "en solo",
+  "2-10": "de 2 à 10 personnes",
+  "11-50": "de 11 à 50 personnes",
+  "50+": "de 50+ personnes",
+};
+
+const levelPhrase: Record<MiniAuditLevel, string> = {
+  zero: "exploration IA tout juste démarrée",
+  tests: "exploration IA en cours",
+  regulier: "usage IA régulier mais en silos",
+  avance: "usage IA avancé",
+};
+
+const goalPhrase: Record<MiniAuditGoal, string> = {
+  temps: "gagner du temps sur les tâches répétitives",
+  former: "former et structurer l'équipe sur l'IA",
+  services: "créer de nouveaux services basés sur l'IA",
+  couts: "réduire les coûts opérationnels",
+};
+
+const painAxis: Record<MiniAuditPain, string> = {
+  emails:
+    "Pré-tri et brouillons automatiques pour absorber le flot d'emails sans perdre la qualité du suivi.",
+  documents:
+    "Templates IA pour Word, Excel et présentations qui réduisent par 3 le temps de mise en forme.",
+  reporting:
+    "Synthèses hebdomadaires auto-générées à partir de vos données existantes.",
+  recherche:
+    "Assistant interne qui interroge vos documents et le web pour ramener l'info en 30 secondes.",
+  admin:
+    "Automatisations no-code (n8n, Make) sur les enchaînements administratifs qui se répètent chaque semaine.",
+};
+
+const levelAxis: Record<MiniAuditLevel, string> = {
+  zero:
+    "Formation socle : maîtriser Claude/ChatGPT en 2 jours et déployer 3 cas concrets dans votre équipe.",
+  tests:
+    "Formation socle : maîtriser Claude/ChatGPT en 2 jours et déployer 3 cas concrets dans votre équipe.",
+  regulier:
+    "Consolidation : passer des silos individuels à des process IA partagés dans l'équipe.",
+  avance:
+    "Automatisations sur-mesure : agents Claude + MCP + intégrations à votre stack pour les workflows à forte valeur.",
+};
+
+const gainByTeamSize: Record<MiniAuditTeamSize, string> = {
+  solo: "~6 à 10 heures récupérées par semaine sur les tâches identifiées.",
+  "2-10":
+    "~12 à 20 heures équipe récupérées par semaine — soit l'équivalent d'un mi-temps.",
+  "11-50":
+    "~40 à 80 heures équipe récupérées par semaine selon le périmètre déployé.",
+  "50+":
+    "Plusieurs ETP de temps récupéré par mois, à arbitrer par département.",
+};
+
+/**
+ * Build a tailored MiniAudit report from the 5-question quiz answers.
+ * Pure: no React, no I/O — deterministic for a given input.
+ */
+export function generateMiniAuditReport(
+  answers: MiniAuditAnswers
+): MiniAuditReport {
+  // ---- Profil sentence ----
+  const profil = `${sectorPhrase[answers.sectorId] ?? sectorPhrase.default} ${
+    teamSizePhrase[answers.teamSize]
+  }, ${levelPhrase[answers.level]}, objectif : ${
+    goalPhrase[answers.goal]
+  }.`;
+
+  // ---- 3 axes ----
+  const sector =
+    formationIACommon.miniAudit.sectors.find((s) => s.id === answers.sectorId) ??
+    null;
+  const axis1 = sector
+    ? sector.axes[0]
+    : formationIACommon.miniAudit.defaultAxes[0];
+  const axis2 = painAxis[answers.pain];
+  const axis3 = levelAxis[answers.level];
+
+  // ---- Outils ----
+  const outils: string[] = ["Claude"];
+  if (answers.teamSize !== "solo") outils.push("Notion AI");
+  if (answers.pain === "admin") outils.push("n8n", "Make");
+  if (answers.pain === "recherche") outils.push("MCP", "Perplexity");
+  if (answers.pain === "documents") outils.push("Custom GPTs", "Claude Artifacts");
+  if (answers.level === "avance") outils.push("Agents Claude", "MCP serveurs");
+
+  // ---- Gain ----
+  const gain = gainByTeamSize[answers.teamSize];
+
+  return {
+    profil,
+    axes: [axis1, axis2, axis3],
+    outils,
+    gain,
+  };
+}
+
 // Dev-mode invariant assertions (silent in production).
 if (process.env.NODE_ENV !== "production") {
   // Diagnostic profile bands must cover 0..16 exhaustively, no overlap.
@@ -620,5 +801,28 @@ if (process.env.NODE_ENV !== "production") {
   if (CALENDLY_URL === "/contact") {
     // eslint-disable-next-line no-console
     console.warn("[formation-ia] CALENDLY_URL still placeholder (/contact). VICTOR TO FILL.");
+  }
+  // MiniAudit report invariant — every field must be non-empty for the
+  // canned "pharmacie / 11-50 / recherche / régulier / temps" input.
+  const cannedReport = generateMiniAuditReport({
+    sectorId: "sante",
+    teamSize: "11-50",
+    pain: "recherche",
+    level: "regulier",
+    goal: "temps",
+  });
+  const cannedFields: Array<keyof typeof cannedReport> = [
+    "profil",
+    "gain",
+  ];
+  for (const k of cannedFields) {
+    if (!cannedReport[k]) {
+      // eslint-disable-next-line no-console
+      console.warn(`[formation-ia] generateMiniAuditReport produced empty ${k}`);
+    }
+  }
+  if (cannedReport.axes.some((a) => !a) || cannedReport.outils.length === 0) {
+    // eslint-disable-next-line no-console
+    console.warn("[formation-ia] generateMiniAuditReport returned empty axes or outils");
   }
 }
