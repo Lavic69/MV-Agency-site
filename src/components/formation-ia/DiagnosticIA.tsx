@@ -70,15 +70,13 @@ export function DiagnosticIA() {
             <h3 className={styles.question}>{current.question}</h3>
             <div
               className={styles.choices}
-              role="radiogroup"
+              role="group"
               aria-label={current.question}
             >
               {current.choices.map((c, i) => (
                 <button
                   key={i}
                   type="button"
-                  role="radio"
-                  aria-checked={false}
                   className={styles.choice}
                   onClick={() => choose(c.points)}
                 >

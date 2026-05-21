@@ -197,13 +197,11 @@ function ChoiceQuestion<T extends string>({
   return (
     <>
       <h3 className={styles.question}>{title}</h3>
-      <div className={styles.choices} role="radiogroup" aria-label={title}>
+      <div className={styles.choices} role="group" aria-label={title}>
         {options.map((opt) => (
           <button
             key={opt.value}
             type="button"
-            role="radio"
-            aria-checked={false}
             className={styles.choice}
             onClick={() => onChoose(opt.value)}
           >
