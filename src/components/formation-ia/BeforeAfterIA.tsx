@@ -29,13 +29,12 @@ export function BeforeAfterIA() {
 
       <div
         className={styles.toggle}
-        role="tablist"
-        aria-label="Comparateur avant / après IA"
+        role="group"
+        aria-label="Comparer avec ou sans IA"
       >
         <button
           type="button"
-          role="tab"
-          aria-selected={!isAfter}
+          aria-pressed={!isAfter}
           className={`${styles.toggleBtn} ${
             !isAfter ? styles.toggleBtnActive : ""
           }`}
@@ -45,8 +44,7 @@ export function BeforeAfterIA() {
         </button>
         <button
           type="button"
-          role="tab"
-          aria-selected={isAfter}
+          aria-pressed={isAfter}
           className={`${styles.toggleBtn} ${
             isAfter ? styles.toggleBtnActive : ""
           }`}
@@ -58,7 +56,6 @@ export function BeforeAfterIA() {
 
       <div
         className={`${styles.card} ${isAfter ? styles.cardAfter : styles.cardBefore}`}
-        aria-live="polite"
       >
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
