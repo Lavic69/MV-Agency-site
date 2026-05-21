@@ -12,32 +12,17 @@
 }
 
 .eyebrow {
-  display: block;
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--primary-400);
-  margin-bottom: 1rem;
-  text-align: center;
+  composes: eyebrow from "./formation-ia-sections.module.css";
 }
 
 .title {
-  font-family: var(--font-heading), sans-serif;
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--text-light);
-  text-align: center;
-  margin: 0 auto 1rem;
+  composes: title from "./formation-ia-sections.module.css";
 }
 
 .intro {
-  color: var(--text-muted);
-  text-align: center;
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
-  line-height: 1.65;
-  max-width: 56ch;
+  composes: intro from "./formation-ia-sections.module.css";
+  /* Wider spacing below intro before the numbered step badges (-1.25rem
+     top offset on .stepNum needs room above the first card). */
   margin: 0 auto 4rem;
 }
 
