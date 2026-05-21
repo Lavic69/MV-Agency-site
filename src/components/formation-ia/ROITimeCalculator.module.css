@@ -1,0 +1,214 @@
+/* ROITimeCalculator.module.css
+   Two-column split: sliders on the left, projection result on the right.
+   Below 768px the layout collapses to a single column with sliders on top
+   and the result block below. */
+
+.wrap {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  composes: eyebrow from "./formation-ia-sections.module.css";
+}
+
+.title {
+  composes: title from "./formation-ia-sections.module.css";
+  /* Cap the headline so it wraps cleanly above the 2-col grid. */
+  max-width: 22ch;
+}
+
+.intro {
+  composes: intro from "./formation-ia-sections.module.css";
+  /* The .header above already controls the spacing to the grid. */
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+}
+
+/* ----- Left column: sliders ----- */
+.leftCol {
+  width: 100%;
+}
+
+.sliders {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.slider {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.sliderHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.label {
+  color: rgba(229, 231, 235, 0.85);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.value {
+  font-variant-numeric: tabular-nums;
+  color: var(--primary-400);
+  font-weight: 600;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  /* Slightly thicker track so it reads as a real slider on mobile. */
+  height: 0.4375rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+  /* Touch target padding via vertical margins so adjacent sliders don't
+     overlap fingers. */
+  padding: 0.5rem 0;
+  /* When sliders sit inside the result column we still want generous space. */
+  box-sizing: content-box;
+}
+
+/* Thumb sizing: 1.5rem (24px) on desktop, 1.75rem (28px) on touch. The
+   ::-webkit-slider-thumb and ::-moz-range-thumb selectors must repeat
+   because browsers won't share rules across them. */
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  background: var(--primary-500);
+  border: 2px solid rgba(229, 231, 235, 0.95);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.range::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.range::-moz-range-thumb {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  background: var(--primary-500);
+  border: 2px solid rgba(229, 231, 235, 0.95);
+  cursor: pointer;
+}
+
+@media (pointer: coarse) {
+  .range::-webkit-slider-thumb {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  .range::-moz-range-thumb {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
+
+.range:focus-visible {
+  outline: 2px solid var(--primary-400);
+  outline-offset: 4px;
+}
+
+/* ----- Right column: result block ----- */
+.result {
+  border: 1px solid rgba(var(--primary-500-rgb), 0.35);
+  border-radius: 20px;
+  padding: clamp(2rem, 4vw, 2.75rem);
+  background: linear-gradient(
+    180deg,
+    rgba(var(--primary-500-rgb), 0.10) 0%,
+    rgba(var(--primary-500-rgb), 0.02) 100%
+  );
+  box-shadow: 0 24px 60px -20px rgba(var(--primary-500-rgb), 0.30);
+}
+
+.resultEyebrow {
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary-400);
+  margin: 0 0 0.75rem;
+  font-weight: 500;
+}
+
+.bigNumber {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  font-family: var(--font-heading), sans-serif;
+  line-height: 1;
+}
+
+.bigNumberValue {
+  font-size: clamp(3.5rem, 7vw, 5rem);
+  font-weight: 700;
+  color: var(--text-light);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.bigNumberUnit {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 500;
+  color: rgba(229, 231, 235, 0.7);
+}
+
+.resultLabel {
+  color: rgba(229, 231, 235, 0.9);
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  line-height: 1.55;
+  margin: 0 0 1rem;
+}
+
+.resultLabel strong {
+  color: var(--text-light);
+  font-weight: 700;
+}
+
+.subtext {
+  color: rgba(229, 231, 235, 0.65);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin: 0 0 1.75rem;
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}

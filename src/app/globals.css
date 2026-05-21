@@ -11,6 +11,7 @@
   /* === BLUE PALETTE (gradient documenté) === */
   --primary-400: #60a5fa;
   --primary-500: #3b82f6;
+  --primary-500-rgb: 59, 130, 246; /* RGB triplet of --primary-500 for rgba() consumption */
   --primary-600: #2563EB;
   --primary-700: #1e40af;
   --primary: var(--primary-600);

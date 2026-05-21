@@ -1,0 +1,107 @@
+/* FormationHero.module.css */
+.hero {
+  position: relative;
+  min-height: 88vh;
+  /* Side padding scales with viewport so narrow phones have a tighter
+     inset without crushing copy. Vertical padding floor reduced on
+     mobile so the CTA stack sits closer to the fold. */
+  padding: clamp(5rem, 12vh, 10rem) clamp(1rem, 4vw, 1.5rem) clamp(3rem, 8vh, 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  isolation: isolate;
+}
+
+.pillSlot {
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow {
+  font-size: 0.875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary-400);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.h1 {
+  font-size: clamp(1.85rem, 5vw, 4rem);
+  line-height: 1.1;
+  font-weight: 700;
+  max-width: 22ch;
+  margin: 0 auto 1.5rem;
+  /* Long French words ("ChatGPT", "intra-entreprise") can otherwise push
+     the H1 past the viewport at 320px. */
+  overflow-wrap: break-word;
+}
+
+.sub {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  color: rgba(229, 231, 235, 0.75);
+  max-width: 60ch;
+  margin: 0 auto 2.5rem;
+  line-height: 1.55;
+}
+
+.ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ----- Strikethrough fragment ----- */
+.strikeWrap {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  transform: rotate(-1.5deg);
+  transform-origin: center;
+  padding: 0 0.05em;
+  /* Cap the strike fragment to the H1 width so the rotated italic glyphs
+     never push past the title at very small viewports. */
+  max-width: 100%;
+}
+
+.strikeText {
+  position: relative;
+  z-index: 1;
+  color: rgba(229, 231, 235, 0.78);
+  font-style: italic;
+  font-weight: 600;
+  /* At <360px the italic "ChatGPT." word measures wider than the H1 line
+     once the -1.5deg rotation pushes its bounding box. Trim ~6% font-size
+     on micro phones so the whole strike fits. */
+}
+
+@media (max-width: 380px) {
+  .strikeText {
+    font-size: 0.94em;
+  }
+}
+
+.strikeSvg {
+  position: absolute;
+  top: 50%;
+  left: -2%;
+  width: 104%;
+  height: 0.55em;
+  transform: translateY(-46%);
+  pointer-events: none;
+  overflow: visible;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strikeSvg {
+    display: none;
+  }
+  .strikeText {
+    text-decoration: line-through;
+    text-decoration-color: var(--primary-400);
+    text-decoration-thickness: 3px;
+  }
+}

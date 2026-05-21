@@ -1,0 +1,111 @@
+/* ==========================================================================
+   DifferentiationBlock: 3 cards stating what makes the formation IA
+   distinct from a generic ChatGPT course.
+   ========================================================================== */
+
+.section {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(3rem, 8vh, 6rem) clamp(1rem, 4vw, 1.5rem);
+}
+
+.eyebrow {
+  composes: eyebrow from "./formation-ia-sections.module.css";
+}
+
+.title {
+  composes: title from "./formation-ia-sections.module.css";
+  /* Tighten the bottom margin and cap the line so the 3-card grid below
+     reads as part of the same block. */
+  margin: 0 auto 0.75rem;
+  max-width: 22ch;
+}
+
+.intro {
+  composes: intro from "./formation-ia-sections.module.css";
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.card {
+  position: relative;
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+  border-radius: 18px;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--primary-500-rgb), 0.04) 0%,
+      rgba(var(--primary-500-rgb), 0) 100%
+    );
+  border-image: linear-gradient(
+      180deg,
+      rgba(var(--primary-500-rgb), 0.45) 0%,
+      rgba(255, 255, 255, 0.05) 60%,
+      rgba(255, 255, 255, 0) 100%
+    )
+    1;
+  /* Fallback border that mirrors the gradient feel on browsers without
+     border-image fade support (keep border-top brighter). */
+  border-top: 1px solid rgba(var(--primary-500-rgb), 0.45);
+  overflow: hidden;
+  transition: background 0.25s ease, border-top-color 0.25s ease;
+}
+
+.card:hover {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--primary-500-rgb), 0.07) 0%,
+      rgba(var(--primary-500-rgb), 0) 100%
+    );
+  border-top-color: rgba(var(--primary-500-rgb), 0.65);
+}
+
+.num {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(3rem, 6vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+  letter-spacing: -0.02em;
+}
+
+.cardTitle {
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+  font-weight: 600;
+  color: var(--text-light);
+  line-height: 1.25;
+  margin: 0.5rem 3rem 0.75rem 0;
+}
+
+.cardBody {
+  color: rgba(229, 231, 235, 0.78);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cardBody strong {
+  color: var(--text-light);
+  font-weight: 700;
+}

@@ -1,0 +1,335 @@
+/* MiniAuditIA.module.css
+   Elevated CTA-style card matching DiagnosticIA. Wraps a 5-question
+   quiz that ends in a structured mini-report. */
+
+.shell {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* Allow flex child to shrink below intrinsic content width on mobile */
+  min-width: 0;
+}
+
+.card {
+  width: 100%;
+  max-width: 760px;
+  /* Soften the floor on very small viewports so long words can wrap */
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  border-radius: 28px;
+  border: 1px solid rgba(var(--primary-500-rgb), 0.35);
+  background: linear-gradient(
+    180deg,
+    rgba(var(--primary-500-rgb), 0.10) 0%,
+    rgba(var(--primary-500-rgb), 0.02) 100%
+  );
+  box-shadow: 0 24px 60px -20px rgba(var(--primary-500-rgb), 0.35);
+  transition: border-color 0.25s ease;
+  /* min-width: 0 lets the flex child shrink so children with long text wrap.
+     Without this, grid descendants size to content and blow out the card. */
+  min-width: 0;
+  /* Hard clamp at edges as a safety net against any content overshoot. */
+  overflow-wrap: anywhere;
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: rgba(var(--primary-500-rgb), 0.55);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  composes: eyebrow from "./formation-ia-sections.module.css";
+}
+
+/* The mini-audit card is its own enclosed CTA panel (matches DiagnosticIA),
+   so .title and .intro keep their card-internal typography (smaller than
+   the shared section title/intro that label full-width sections). */
+.title {
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-light);
+  margin: 0 0 0.75rem;
+}
+
+.intro {
+  color: var(--text-muted);
+  font-size: clamp(0.95rem, 1.4vw, 1.0625rem);
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 52ch;
+}
+
+.progress {
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary-400);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.question {
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  font-weight: 600;
+  color: var(--text-light);
+  margin: 0 0 1.5rem;
+  line-height: 1.3;
+}
+
+/* ---- Choice buttons (Q2-Q5) ---- */
+
+.choices {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  /* 44px touch target floor at mobile. */
+  min-height: 2.75rem;
+  text-align: left;
+  padding: 0.875rem 1.125rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  color: rgba(229, 231, 235, 0.92);
+  font-size: 0.975rem;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease,
+    transform 0.18s ease;
+  /* Long choice labels (e.g. axes lists) must wrap inside narrow cards. */
+  word-break: break-word;
+}
+
+.choice:hover {
+  border-color: var(--primary-500);
+  background: rgba(var(--primary-500-rgb), 0.08);
+  transform: translateY(-1px);
+}
+
+.choice:focus-visible {
+  outline: 2px solid var(--primary-400);
+  outline-offset: 2px;
+}
+
+.dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+}
+
+/* ---- Dropdown (Q1) ---- */
+
+.select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text-light);
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: inherit;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a8b0bd' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.75rem;
+  cursor: pointer;
+}
+
+.select:focus {
+  border-color: var(--primary-400);
+  outline: none;
+}
+
+.select:focus-visible {
+  outline: 2px solid var(--primary-400);
+  outline-offset: 2px;
+}
+
+.nextRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Report ---- */
+
+.report {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  /* Slightly higher padding floor so small phones don't feel cramped. */
+  padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.5rem, 3vw, 2.25rem)
+    clamp(2.25rem, 5vw, 3rem);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-500-rgb), 0.10) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  display: grid;
+  /* Force the grid track to honour the container width — without minmax,
+     intrinsic min-content of children can push the track wider than the
+     report card on narrow viewports. */
+  grid-template-columns: minmax(0, 1fr);
+  /* Rhythm scales with viewport so blocks feel less stacked on mobile. */
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.reportBlock {
+  display: grid;
+  /* Same grid-min-content guard for nested grids. */
+  grid-template-columns: minmax(0, 1fr);
+  /* A touch more air between the label (eyebrow) and the content below. */
+  gap: 0.625rem;
+  min-width: 0;
+}
+
+.reportLabel {
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary-400);
+  font-weight: 500;
+  margin: 0;
+  /* Explicit margin atop the content; combined with grid gap this gives
+     a clearer "eyebrow → body" hierarchy without crowding adjacent blocks. */
+  margin-bottom: 0.125rem;
+}
+
+.reportProfil {
+  font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
+  color: var(--text-light);
+  font-weight: 500;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.axesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.axe {
+  position: relative;
+  padding-left: 1.5rem;
+  color: rgba(229, 231, 235, 0.88);
+  font-size: 0.9625rem;
+  line-height: 1.55;
+}
+
+.axe::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--primary-400);
+  font-weight: 600;
+}
+
+.tools {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  /* Slightly more breathing room between chips. */
+  gap: 0.625rem;
+  min-width: 0;
+}
+
+.tool {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 0.875rem;
+  border-radius: 999px;
+  background: rgba(var(--primary-500-rgb), 0.12);
+  border: 1px solid rgba(var(--primary-500-rgb), 0.3);
+  color: var(--text-light);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.gain {
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  color: var(--text-light);
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ctaRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  /* Air above the CTA scales with viewport for better rhythm. */
+  margin-top: clamp(0.5rem, 2vw, 1.25rem);
+}
+
+.reset {
+  background: transparent;
+  border: none;
+  color: rgba(229, 231, 235, 0.6);
+  font-size: 0.875rem;
+  cursor: pointer;
+  /* 40px-ish tap target via min-height; padding remains generous-but-tight */
+  min-height: 2.5rem;
+  padding: 0.5rem 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: color 200ms ease-out;
+}
+
+.reset:hover {
+  color: var(--text-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.reset:focus-visible {
+  outline: 2px solid var(--primary-400);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+.honesty {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.5;
+  margin: 1.5rem auto 0;
+  max-width: 56ch;
+  text-align: center;
+}

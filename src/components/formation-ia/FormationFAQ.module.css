@@ -1,0 +1,19 @@
+/* ==========================================================================
+   FormationFAQ: FAQ accordion section, narrow centered column.
+   ========================================================================== */
+
+.section {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(3rem, 8vh, 6rem) clamp(1rem, 4vw, 1.5rem);
+}
+
+.eyebrow {
+  composes: eyebrow from "./formation-ia-sections.module.css";
+}
+
+.title {
+  composes: title from "./formation-ia-sections.module.css";
+}
