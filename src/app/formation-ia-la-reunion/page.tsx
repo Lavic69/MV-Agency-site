@@ -55,12 +55,6 @@ const MiniAuditIA = dynamic(() =>
   })),
 );
 
-const StickyCallCTA = dynamic(() =>
-  import("@/components/formation-ia/StickyCallCTA").then((m) => ({
-    default: m.StickyCallCTA,
-  })),
-);
-
 /* -------------------------------------------------------------------------- */
 /*  Constants                                                                 */
 /* -------------------------------------------------------------------------- */
@@ -184,8 +178,6 @@ export default function FormationIAReunionPage() {
           <FormationCTA />
         </FadeIn>
       </main>
-
-      <StickyCallCTA />
     </>
   );
 }
