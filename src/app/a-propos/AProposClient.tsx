@@ -400,7 +400,7 @@ export default function AProposClient() {
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <h3 className={styles.bentoActionTitle} style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", lineHeight: 1.15 }}>
                         <TextReveal delay={0.1} inline>Prêt à transformer</TextReveal><br/>
-                        <TextReveal delay={0.4} inline wordClassName="globalGradientWordItalic">votre présence ?</TextReveal>
+                        <TextReveal delay={0.4} inline wordClassName="globalGradientWordItalic">votre présence&nbsp;?</TextReveal>
                       </h3>
                       <p className={styles.bentoText}>Rejoignez les dizaines d'entreprises et d'indépendants locaux qui ont confié leur croissance à MV Agency.</p>
                     </div>

@@ -676,29 +676,36 @@ export const MobileEcosystemAnim = () => (
         white-space: nowrap;
         text-align: center;
       }
-      /* Top pillar : centré horizontalement, au-dessus du centre du card */
+      /* Les 4 nodes sont posés sur un rayon de 102px depuis le centre du cercle
+         (cercle r=78 + demi-icône 16 + 8px de marge) → l'icône est TOUJOURS
+         entièrement HORS du cercle. On ancre via translate depuis le centre
+         (left/top:50%) plutôt que depuis les bords du card : comme le cercle SVG
+         est centré et de taille fixe, les nodes restent à distance constante du
+         cercle quelle que soit la largeur du card (320 → 280px).
+         Le label est placé du côté EXTÉRIEUR (au-dessus pour le top via
+         column-reverse, dessous pour les 3 autres) afin de ne jamais empiéter
+         sur le tracé du cercle. Le +8px/+110px en Y compense le fait que le
+         centre de l'icône n'est pas le centre du pylône (icône + gap + label). */
       .msa-eco-pillar-top {
         top: 50%;
         left: 50%;
-        transform: translate(-50%, calc(-50% - 78px - 18px));
+        flex-direction: column-reverse;
+        transform: translate(-50%, calc(-50% - 110px));
       }
-      /* Bottom pillar : centré horizontalement, en bas */
       .msa-eco-pillar-bottom {
         top: 50%;
         left: 50%;
-        transform: translate(-50%, calc(-50% + 78px - 18px));
+        transform: translate(-50%, calc(-50% + 110px));
       }
-      /* Right pillar : à droite du cercle, centré verticalement */
       .msa-eco-pillar-right {
         top: 50%;
         left: 50%;
-        transform: translate(calc(-50% + 78px), calc(-50% - 18px));
+        transform: translate(calc(-50% + 102px), calc(-50% + 8px));
       }
-      /* Left pillar : à gauche du cercle, centré verticalement */
       .msa-eco-pillar-left {
         top: 50%;
         left: 50%;
-        transform: translate(calc(-50% - 78px), calc(-50% - 18px));
+        transform: translate(calc(-50% - 102px), calc(-50% + 8px));
       }
     `}</style>
   </div>

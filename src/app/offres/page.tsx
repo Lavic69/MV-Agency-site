@@ -302,7 +302,7 @@ export default function OffresPage() {
           <FadeIn direction="up">
             <h2 className={styles.sectionTitle} style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1, marginBottom: "1.5rem" }}>
               <TextReveal inline>Prêt à passer à</TextReveal>{' '}
-              <TextReveal delay={0.6} inline wordClassName="globalGradientWordItalic">l'étape supérieure ?</TextReveal>
+              <TextReveal delay={0.6} inline wordClassName="globalGradientWordItalic">l'étape supérieure&nbsp;?</TextReveal>
             </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
