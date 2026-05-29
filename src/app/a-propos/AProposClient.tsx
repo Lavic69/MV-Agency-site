@@ -128,7 +128,7 @@ export default function AProposClient() {
               <div className="heroReveal heroRevealDelay1" style={{ alignSelf: 'center', marginTop: '1rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
                   <Image
-                    src="/avatars/victor.jpg"
+                    src="/avatars/victor.webp"
                     alt="Victor Marchetti, Fondateur de MV Agency"
                     width={64}
                     height={64}
@@ -179,7 +179,7 @@ export default function AProposClient() {
                 {/* Photo Victor — LCP candidate sur /a-propos. `priority` pour précharger.
                     `fill` car le wrapper a aspect-ratio 4/5 défini en CSS. */}
                 <Image
-                  src="/avatars/victor.jpg"
+                  src="/avatars/victor.webp"
                   alt="Victor Marchetti, Fondateur de MV Agency"
                   fill
                   sizes="(max-width: 768px) 100vw, 480px"
