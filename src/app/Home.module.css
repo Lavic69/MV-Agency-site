@@ -458,6 +458,20 @@
   background-size: 100vw 100vh;
 }
 
+/* Variante inline du mot dégradé pour le H1 hero rendu en statique :
+   display:inline (pas inline-block) pour que la phrase wrappe mot par mot
+   sur mobile ; background-attachment:fixed garde le dégradé continu sur
+   plusieurs lignes (sinon -webkit-background-clip:text casse au retour ligne). */
+.heroGradientText {
+  background: linear-gradient(90deg, #60a5fa 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  background-attachment: fixed;
+  background-size: 100vw 100vh;
+}
+
 .ctaGradientWord {
   background: linear-gradient(90deg, #60a5fa 0%, #ffffff 100%);
   -webkit-background-clip: text;

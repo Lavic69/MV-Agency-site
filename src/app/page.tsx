@@ -201,12 +201,13 @@ export default function Home() {
             <div className="heroReveal">
               <AvailabilityPill />
             </div>
-            <h1 className={styles.heroTitle} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
-              <TextReveal inline>Un site qui convertit.</TextReveal>
-              {" "}
-              <TextReveal inline wordClassName={styles.heroGradientWord} delay={0.25}>
-                Une IA qui vous fait gagner du temps.
-              </TextReveal>
+            {/* Hero H1 = élément LCP mobile. Rendu STATIQUE (SSR, pleine opacité)
+                au lieu de TextReveal/framer-motion (qui le gardait en opacity:0
+                jusqu'à l'hydratation → LCP ~4,2s). On garde une entrée discrète
+                via heroReveal (CSS transform-only, opacity inchangée → LCP-safe). */}
+            <h1 className={`${styles.heroTitle} heroReveal heroRevealDelay1`} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+              Un site qui convertit.{" "}
+              <span className={styles.heroGradientText}>Une IA qui vous fait gagner du temps.</span>
             </h1>
             <p className={`${styles.heroSubtitle} heroReveal heroRevealDelay2`} style={{ textAlign: "center", maxWidth: "600px", margin: "1.5rem auto" }}>
               Agence web + IA pour les TPE, PME et indépendants qui veulent comprendre, pas juste déléguer. On conçoit, on explique, on propulse.
