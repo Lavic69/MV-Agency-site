@@ -23,10 +23,15 @@ export const FOUNDER_ROLE = "Fondateur";
 export const LOCALE = "fr_FR";
 
 /**
- * Image OG globale — référencée depuis tous les `metadata.openGraph.images`
- * pour garantir que chaque page sert le même visuel social.
- * (Le fichier `src/app/opengraph-image.tsx` n'est appliqué par Next que sur la
- * route `/`. Pour les sous-routes, il faut le référencer explicitement ici.)
+ * Image OG globale — PNG statique servi depuis `public/og/cover.png`, référencé
+ * depuis tous les `metadata.openGraph.images` (et les articles de blog) pour
+ * garantir que chaque page sert le même visuel social.
+ *
+ * Statique (plutôt qu'une route `opengraph-image.tsx` dynamique) : extension
+ * `.png` explicite + cache long immuable (cf. headers `/og/` dans `next.config.ts`),
+ * ce qui maximise la fiabilité des aperçus réseaux (Meta/Instagram, LinkedIn,
+ * WhatsApp…). Pour mettre à jour le visuel : remplacer le fichier ET versionner
+ * le nom (`cover-v2.png`) pour forcer le re-scrape des caches sociaux.
  */
 export const OG_IMAGE: {
   url: string;
@@ -34,10 +39,10 @@ export const OG_IMAGE: {
   height: number;
   alt: string;
 } = {
-  url: `${SITE_URL}/opengraph-image`,
+  url: `${SITE_URL}/og/cover.png`,
   width: 1200,
   height: 630,
-  alt: `${SITE_NAME} — Création de site web & IA pour TPE/PME`,
+  alt: `${SITE_NAME} — Sites web + IA pour PME, on te forme à les piloter`,
 };
 
 /**
@@ -147,7 +152,7 @@ export const localBusinessSchema = {
   name: SITE_NAME,
   url: SITE_URL,
   logo: `${SITE_URL}/Logo_Rond_MV_V2.svg`,
-  image: `${SITE_URL}/opengraph-image`,
+  image: `${SITE_URL}/og/cover.png`,
   description: SITE_DESCRIPTION,
   telephone: LEGAL.phone,
   email: CONTACT_EMAIL,

@@ -106,7 +106,7 @@ const articleSchema = buildArticleSchema({
   description: ARTICLE.description,
   publishedAt: ARTICLE.publishedAt,
   updatedAt: ARTICLE.updatedAt,
-  imageUrl: `${SITE_URL}/opengraph-image`,
+  imageUrl: `${SITE_URL}/og/cover.png`,
   keywords: [
     "agence référencement naturel",
     "SEO PME",

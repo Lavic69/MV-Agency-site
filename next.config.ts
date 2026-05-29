@@ -35,6 +35,27 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  /**
+   * Cache long immuable pour les visuels OG statiques (`public/og/*`).
+   * Par défaut Vercel sert les assets de `public/` en `max-age=0, must-revalidate`,
+   * ce qui fragilise la mise en cache côté proxies sociaux (Meta/Instagram).
+   * Un cache long fiabilise les aperçus de partage. Le cache-bust se fait en
+   * versionnant le nom de fichier (`cover-v2.png`).
+   */
+  async headers() {
+    return [
+      {
+        source: "/og/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
