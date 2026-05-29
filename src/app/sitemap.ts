@@ -33,6 +33,8 @@ const STATIC_ROUTES: ReadonlyArray<{
   { path: "/agence-web-belgique", changeFrequency: "monthly", priority: 0.9 },
   { path: "/agence-web-bruxelles", changeFrequency: "monthly", priority: 0.9 },
   { path: "/agence-web-france", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/formation-ia-la-reunion", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/formation-ia-belgique", changeFrequency: "monthly", priority: 0.9 },
   { path: "/plan-du-site", changeFrequency: "monthly", priority: 0.4 },
 ];
 

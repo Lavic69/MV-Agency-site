@@ -70,6 +70,21 @@ const sections: Section[] = [
     ],
   },
   {
+    title: "Formation IA",
+    links: [
+      {
+        href: "/formation-ia-la-reunion",
+        label: "Formation IA à La Réunion (974)",
+        description: "Audit + formation sur-mesure pour les entreprises réunionnaises",
+      },
+      {
+        href: "/formation-ia-belgique",
+        label: "Formation IA en Belgique",
+        description: "Audit + formation sur-mesure, à distance partout en Belgique",
+      },
+    ],
+  },
+  {
     title: "Légal",
     links: [
       { href: "/mentions-legales", label: "Mentions légales" },
