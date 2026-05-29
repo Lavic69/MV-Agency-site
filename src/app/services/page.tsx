@@ -60,12 +60,9 @@ export default function ServicesPage() {
         <div className={styles.container} style={{ position: 'relative', zIndex: 1, width: '100%' }}>
           <div className={styles.splitLayout} style={{ alignItems: 'center' }}>
             <div className={`${styles.col60} ${styles.heroTextCol}`}>
-              {/* H1 = élément LCP : rendu statique (opacité pleine) + reveal CSS
-                  heroReveal (transform only) au lieu de TextReveal/framer-motion
-                  qui le gardait en opacity:0 jusqu'à l'hydratation. */}
-              <h1 className={`${styles.headerTitle} heroReveal`} style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1 }}>
-                Les 4 leviers qui feront passer votre activité{' '}
-                <span className="globalGradientWordItalic" style={{ display: 'inline' }}>à la vitesse supérieure</span>
+              <h1 className={styles.headerTitle} style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1 }}>
+                <TextReveal inline>Les 4 leviers qui feront passer votre activité</TextReveal>{' '}
+                <TextReveal inline wordClassName="globalGradientWordItalic" delay={0.5}>à la vitesse supérieure</TextReveal>
               </h1>
               <p className={`${styles.headerDesc} heroReveal heroRevealDelay1`} style={{ margin: '1.5rem 0 0' }}>
                 Une agence qui conçoit, explique et propulse. Pour les professionnels qui veulent des résultats mesurables, pas des slides.
