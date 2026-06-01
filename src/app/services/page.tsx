@@ -373,7 +373,7 @@ export default function ServicesPage() {
             content:
               "MV a transformé notre idée en app qui convertit. On a pigé chaque ligne de code livrée.",
             rating: 5,
-            avatar: "/avatars/client-3.jpg",
+            avatar: "/avatars/johnny-app.webp",
           },
           {
             id: 2,
@@ -383,7 +383,7 @@ export default function ServicesPage() {
             content:
               "Un site refondu en 4 semaines. Aujourd'hui, on pilote notre visibilité locale sans dépendre de personne.",
             rating: 5,
-            avatar: "/avatars/client-1.jpg",
+            avatar: "/avatars/pharmacie-lataniers.webp",
           },
           {
             id: 3,
@@ -393,7 +393,7 @@ export default function ServicesPage() {
             content:
               "Intégration IA propre et documentée. L'équipe MV explique au lieu de jargonner.",
             rating: 5,
-            avatar: "/avatars/client-2.jpg",
+            avatar: "/avatars/stark-ai.webp",
           },
         ]}
       />

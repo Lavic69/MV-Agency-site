@@ -97,13 +97,13 @@ const expertises = [
 const testimonials = [
   {
     text: "Grâce à MV Agency, nos patients prennent rendez-vous et déposent leurs ordonnances en ligne en toute sécurité. Un gain de temps inestimable au comptoir.",
-    image: "/avatars/client-1.jpg",
-    name: "Olivier G.",
+    image: "/avatars/pharmacie-lataniers.webp",
+    name: "Christophe Marchetti",
     role: "Titulaire, Pharmacie Les Lataniers"
   },
   {
     text: "Une architecture sans faille. MV Agency a construit la structure technique de notre app de coaching sportif et notre magnifique site vitrine. Le rendu final est bluffant.",
-    image: "/avatars/client-2.jpg",
+    image: "/avatars/johnny-app.webp",
     name: "Johnny M.",
     role: "Fondateur, Johnny App"
   },
@@ -115,14 +115,14 @@ const testimonials = [
   },
   {
     text: "Nous perdions des heures en saisie manuelle. Ils ont automatisé toute la création de nos contrats et la synchronisation CRM. Mon équipe commerciale revit complètement !",
-    image: "/avatars/client-4.jpg",
+    image: "/avatars/client-9.jpg",
     name: "Thomas V.",
     role: "Directeur Commercial"
   },
   {
     text: "L'agent IA qu'ils ont entraîné sur nos données internes répond à 80% des requêtes clients, 24/7. Notre délai de réponse a fondu et la satisfaction client a explosé.",
     image: "/avatars/client-3.jpg",
-    name: "Camille P.",
+    name: "Maxime P.",
     role: "CEO E-commerce"
   },
   {
@@ -133,19 +133,19 @@ const testimonials = [
   },
   {
     text: "La solution de génération de contenu optimisée pour le SEO, que l'équipe a propulsée par IA pour notre blog, nous permet de ranker sans sacrifier notre temps.",
-    image: "/avatars/client-7.jpg",
+    image: "/avatars/client-8.jpg",
     name: "Sophie K.",
     role: "Responsable Marketing"
   },
   {
     text: "L'automatisation complète de notre process d'onboarding RH a éliminé toutes nos frictions. Du formulaire initial à la création des accès mails, l'IA pilote tout.",
-    image: "/avatars/client-8.jpg",
+    image: "/avatars/client-7.jpg",
     name: "Nicolas B.",
     role: "Directeur des Opérations"
   },
   {
     text: "Plus qu'une agence, de vrais architectes tech. Ils ont mis en place des automatisations complexes, tout en formant nos équipes pour nous rendre 100% autonomes.",
-    image: "/avatars/client-9.jpg",
+    image: "/avatars/client-4.jpg",
     name: "Élodie F.",
     role: "Fondatrice Cabinet Conseil"
   }
