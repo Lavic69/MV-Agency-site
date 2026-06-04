@@ -10,6 +10,24 @@ interface AccordionItemProps {
   onClick: () => void;
 }
 
+/**
+ * Rend le markdown gras inline (`**texte**`) en `<strong>` pour éviter
+ * d'afficher les astérisques en clair. Les réponses FAQ stockent du gras
+ * pour mettre en valeur les termes clés ; le JSON-LD le strippe de son côté
+ * via `stripMarkdown` (cf. buildFaqPageSchema).
+ */
+const renderAnswer = (answer: string) =>
+  answer.split(/(\*\*.+?\*\*)/g).map((part, i) => {
+    const bold = part.match(/^\*\*(.+?)\*\*$/);
+    return bold ? (
+      <strong key={i} style={{ color: "var(--text-light)", fontWeight: 600 }}>
+        {bold[1]}
+      </strong>
+    ) : (
+      part
+    );
+  });
+
 const AccordionItem = ({ question, answer, isOpen, onClick }: AccordionItemProps) => {
   return (
     <div style={{ borderBottom: "1px solid rgba(255,255,255,0.1)", overflow: "hidden" }}>
@@ -51,7 +69,7 @@ const AccordionItem = ({ question, answer, isOpen, onClick }: AccordionItemProps
             style={{ overflow: "hidden" }}
           >
             <div style={{ paddingBottom: "1.5rem", color: "var(--accent)", lineHeight: 1.6 }}>
-              {answer}
+              {renderAnswer(answer)}
             </div>
           </motion.div>
         )}
