@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
+import { ContactCTA } from "@/components/ui/ContactCTA";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { Accordion } from "@/components/ui/accordion";
@@ -281,9 +282,7 @@ export default function AgenceWebLaReunionPage() {
           réunionnaises. Intervention sur toute l'île, en présentiel ou en visio.
         </p>
         <div className={`${styles.heroCtas} heroReveal heroRevealDelay3`}>
-          <Link href="/contact" tabIndex={-1}>
-            <Button variant="primary">Réserver un appel offert</Button>
-          </Link>
+          <ContactCTA location="hero" variant="primary">Réserver un appel offert</ContactCTA>
           <Link href="/offres" tabIndex={-1}>
             <Button variant="outline">Voir nos packs</Button>
           </Link>
@@ -491,9 +490,7 @@ export default function AgenceWebLaReunionPage() {
                   Aucun frais de déplacement, on s'adapte à votre commune.
                 </span>
               </div>
-              <Link href="/contact" tabIndex={-1}>
-                <Button variant="primary">Parlons-en</Button>
-              </Link>
+              <ContactCTA location="mid" variant="primary">Parlons-en</ContactCTA>
             </div>
           </FadeIn>
         </div>
@@ -593,9 +590,7 @@ export default function AgenceWebLaReunionPage() {
                 Sans engagement, sans devis surprise.
               </p>
               <div className={styles.finalCtaButtons}>
-                <Link href="/contact" tabIndex={-1}>
-                  <Button variant="primary">Réserver un appel</Button>
-                </Link>
+                <ContactCTA location="final" variant="primary">Réserver un appel</ContactCTA>
                 <Link href="/cas-clients" tabIndex={-1}>
                   <Button variant="outline">Voir nos réalisations</Button>
                 </Link>

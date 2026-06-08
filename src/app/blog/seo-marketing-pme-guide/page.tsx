@@ -14,7 +14,9 @@ import {
   ComparisonTable,
   Callout,
 } from "@/components/blog";
-import { Button } from "@/components/ui/Button";
+import { ContactCTA } from "@/components/ui/ContactCTA";
+import { TrackedLink } from "@/components/ui/TrackedLink";
+import { EVENTS } from "@/lib/analytics";
 import {
   SITE_URL,
   buildArticleSchema,
@@ -438,7 +440,7 @@ export default function Page() {
 
             <p>
               Vous voulez piloter votre marketing digital avec cette rigueur ?{" "}
-              <a href="/contact">Réservez un appel découverte de 30 minutes</a>. On
+              <TrackedLink href="/contact" event={EVENTS.CONTACT_CTA_CLICKED} eventProps={{ location: "inline" }}>Réservez un appel découverte de 30 minutes</TrackedLink>. On
               regarde votre situation, on identifie les 2-3 leviers prioritaires, et
               vous repartez avec un plan d&apos;action — qu&apos;on travaille ensemble
               ou pas.
@@ -458,7 +460,7 @@ export default function Page() {
               les 2-3 leviers prioritaires. Sans engagement, sans pitch commercial.
             </p>
             <div className={styles.ctaFinalButtonWrap}>
-              <Button variant="primary" href="/contact">Réserver un appel offert</Button>
+              <ContactCTA location="final" variant="primary">Réserver un appel offert</ContactCTA>
             </div>
           </section>
         </div>

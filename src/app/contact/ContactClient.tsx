@@ -6,6 +6,8 @@ import { FadeIn } from '@/components/ui/FadeIn';
 import { TextReveal } from '@/components/ui/TextReveal';
 import { Mail, Zap } from 'lucide-react';
 import { CONTACT_EMAIL } from '@/lib/seo';
+import { trackEvent, EVENTS } from '@/lib/analytics';
+import { TrackedLink } from '@/components/ui/TrackedLink';
 import styles from './Contact.module.css';
 import { AvailabilityPill } from '@/components/ui/AvailabilityPill';
 
@@ -64,6 +66,32 @@ export default function ContactClient() {
       hideEventTypeDetails: false,
       layout: 'month_view',
     });
+
+    // Funnel : calendrier ouvert + réservation confirmée.
+    // NB : pour un embed *inline*, 'linkReady' ne se déclenche pas (réservé aux
+    // embeds popup). On écoute 'availabilityLoaded' = les créneaux sont affichés,
+    // donc le calendrier est réellement utilisable. Gardé "une seule fois" car
+    // l'event refire à chaque changement de mois.
+    let bookingOpenedTracked = false;
+    window.Cal.ns['30min']('on', {
+      action: 'availabilityLoaded',
+      callback: () => {
+        if (bookingOpenedTracked) return;
+        bookingOpenedTracked = true;
+        trackEvent(EVENTS.CAL_BOOKING_OPENED);
+      },
+    });
+    // Conversion : réservation confirmée. On écoute les deux noms d'event Cal
+    // (legacy + V2) par robustesse, gardé "une seule fois" pour ne compter
+    // qu'une conversion par réservation.
+    let bookingCompletedTracked = false;
+    const onBookingDone = () => {
+      if (bookingCompletedTracked) return;
+      bookingCompletedTracked = true;
+      trackEvent(EVENTS.CAL_BOOKING_COMPLETED);
+    };
+    window.Cal.ns['30min']('on', { action: 'bookingSuccessful', callback: onBookingDone });
+    window.Cal.ns['30min']('on', { action: 'bookingSuccessfulV2', callback: onBookingDone });
   }, []);
 
   return (
@@ -92,7 +120,7 @@ export default function ContactClient() {
                 </div>
                 <div className={styles.infoText}>
                   <span className={styles.infoTitle}>Email</span>
-                  <a href={`mailto:${CONTACT_EMAIL}`} className={styles.infoDetail} style={{ color: 'inherit', textDecoration: 'none' }}>{CONTACT_EMAIL}</a>
+                  <TrackedLink href={`mailto:${CONTACT_EMAIL}`} event={EVENTS.EMAIL_CLICKED} eventProps={{ location: 'contact_page' }} className={styles.infoDetail} style={{ color: 'inherit', textDecoration: 'none' }}>{CONTACT_EMAIL}</TrackedLink>
                 </div>
               </div>
             </FadeIn>

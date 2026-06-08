@@ -2,6 +2,8 @@
 
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
+import { TrackedLink } from "@/components/ui/TrackedLink";
+import { EVENTS } from "@/lib/analytics";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { CoverKeyword } from "@/components/blog";
 import type { CoverKeyword as CoverKeywordType } from "@/app/blog/_articles";
@@ -66,9 +68,9 @@ export const BlogClient: React.FC<BlogClientProps> = ({ posts }) => {
                 cas clients
               </Link>{" "}
               ou{" "}
-              <Link href="/contact" style={{ color: "var(--primary)" }}>
+              <TrackedLink href="/contact" event={EVENTS.CONTACT_CTA_CLICKED} eventProps={{ location: "inline" }} style={{ color: "var(--primary)" }}>
                 réservez un appel offert
-              </Link>
+              </TrackedLink>
               .
             </p>
           </div>

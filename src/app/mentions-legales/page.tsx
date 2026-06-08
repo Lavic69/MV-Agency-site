@@ -8,6 +8,8 @@ import {
   LEGAL_LAST_UPDATED,
 } from "@/lib/seo";
 import { TextReveal } from "@/components/ui/TextReveal";
+import { TrackedLink } from "@/components/ui/TrackedLink";
+import { EVENTS } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   title: "Mentions légales — MV Agency",
@@ -40,10 +42,10 @@ export default function MentionsLegalesPage() {
         <p><strong>Immatriculation :</strong> {LEGAL.rcs} — n° de gestion {LEGAL.rcsManagementNumber}</p>
         <p><strong>TVA :</strong> {LEGAL.vatNotice}</p>
         <p><strong>Siège social :</strong> {LEGAL.publicAddress}</p>
-        <p><strong>Téléphone :</strong> <a href={`tel:${LEGAL.phone}`}>{LEGAL.phoneDisplay}</a></p>
+        <p><strong>Téléphone :</strong> <TrackedLink href={`tel:${LEGAL.phone}`} event={EVENTS.PHONE_CLICKED} eventProps={{ location: 'mid' }}>{LEGAL.phoneDisplay}</TrackedLink></p>
         <p>
           <strong>Email :</strong>{" "}
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+          <TrackedLink href={`mailto:${CONTACT_EMAIL}`} event={EVENTS.EMAIL_CLICKED} eventProps={{ location: 'mid' }}>{CONTACT_EMAIL}</TrackedLink>
         </p>
         <p><strong>Directeur de la publication :</strong> {LEGAL.publicationDirector}</p>
       </section>

@@ -3,7 +3,9 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
-import { Button } from './ui/Button';
+import { ContactCTA } from './ui/ContactCTA';
+import { TrackedLink } from './ui/TrackedLink';
+import { EVENTS } from '@/lib/analytics';
 import styles from './Header.module.css';
 
 export const Header = () => {
@@ -51,9 +53,9 @@ export const Header = () => {
           <Link href="/contact" className={styles.navLink}>Contact</Link>
         </nav>
         <div className={styles.cta}>
-          <Link href="/contact" tabIndex={-1}>
-            <Button variant="magic" size="sm">Réserver un appel</Button>
-          </Link>
+          <ContactCTA location="header" variant="magic" size="sm">
+            Réserver un appel
+          </ContactCTA>
         </div>
 
         {/* Bouton Hamburger pour mobile */}
@@ -80,14 +82,24 @@ export const Header = () => {
         </nav>
         
         <div className={styles.mobileMenuFooter}>
-          <Link href="/contact" onClick={closeMenu} style={{ width: '100%', textDecoration: 'none' }}>
-            <Button variant="primary" style={{ width: '100%', padding: '1rem', fontSize: '1rem' }}>
-              Réserver un appel offert
-            </Button>
-          </Link>
-          <a href="mailto:contact@mv-agency.com" className={styles.contactEmail} style={{ marginTop: '1rem' }}>
+          <ContactCTA
+            location="mobile_menu"
+            variant="primary"
+            onClick={closeMenu}
+            wrapperStyle={{ width: '100%' }}
+            style={{ width: '100%', padding: '1rem', fontSize: '1rem' }}
+          >
+            Réserver un appel offert
+          </ContactCTA>
+          <TrackedLink
+            href="mailto:contact@mv-agency.com"
+            event={EVENTS.EMAIL_CLICKED}
+            eventProps={{ location: 'mobile_menu' }}
+            className={styles.contactEmail}
+            style={{ marginTop: '1rem' }}
+          >
             contact@mv-agency.com
-          </a>
+          </TrackedLink>
         </div>
       </div>
     </>

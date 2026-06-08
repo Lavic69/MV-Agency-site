@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
+import { ContactCTA } from "@/components/ui/ContactCTA";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { Accordion } from "@/components/ui/accordion";
@@ -237,9 +238,7 @@ export default function AgenceWebBruxellesPage() {
               desservies. Ancrage local, méthode async + visio, propriété 100 % client.
             </p>
             <div className={styles.heroCtas}>
-              <Link href="/contact">
-                <Button variant="primary">Réserver un appel découverte</Button>
-              </Link>
+              <ContactCTA location="hero" variant="primary">Réserver un appel découverte</ContactCTA>
               <Link href="/offres">
                 <Button variant="outline">Voir les offres</Button>
               </Link>
@@ -388,9 +387,7 @@ export default function AgenceWebBruxellesPage() {
                   disponibilités.
                 </span>
               </div>
-              <Link href="/contact" tabIndex={-1}>
-                <Button variant="primary">Parlons-en</Button>
-              </Link>
+              <ContactCTA location="mid" variant="primary">Parlons-en</ContactCTA>
             </div>
           </FadeIn>
         </div>
@@ -469,9 +466,7 @@ export default function AgenceWebBruxellesPage() {
                 budget et le rétroplanning. Sans engagement, sans pitch commercial.
               </p>
               <div className={styles.finalCtaButtons}>
-                <Link href="/contact">
-                  <Button variant="primary">Réserver un appel découverte</Button>
-                </Link>
+                <ContactCTA location="final" variant="primary">Réserver un appel découverte</ContactCTA>
                 <Link href="/agence-web-belgique">
                   <Button variant="outline">Voir la page Belgique</Button>
                 </Link>

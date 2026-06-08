@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { ContactCTA } from "@/components/ui/ContactCTA";
 import LogoLoop from "@/components/ui/LogoLoop";
 import { MockupHub } from "@/components/ui/mockups/MockupHub";
 
@@ -213,11 +214,9 @@ export default function Home() {
               Agence web + IA pour les TPE, PME et indépendants qui veulent comprendre, pas juste déléguer. On conçoit, on explique, on propulse.
             </p>
             <div className={`${styles.heroActions} heroReveal heroRevealDelay3`} style={{ justifyContent: 'center' }}>
-              <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none' }}>
-                <Button variant="primary">
-                  Réserver un appel offert
-                </Button>
-              </Link>
+              <ContactCTA location="hero" variant="primary">
+                Réserver un appel offert
+              </ContactCTA>
               <Link href="/offres" tabIndex={-1} style={{ textDecoration: 'none' }}>
                 <Button variant="outline">
                   Voir nos packs
@@ -554,11 +553,9 @@ export default function Home() {
           </FadeIn>
           <FadeIn direction="up" delay={0.4}>
             <div style={{ marginTop: '3rem' }}>
-              <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none' }}>
-                <Button variant="primary" style={{ boxShadow: '0 0 30px rgba(37,99,235,0.4)' }}>
-                  Réserver un appel offert
-                </Button>
-              </Link>
+              <ContactCTA location="final" variant="primary" style={{ boxShadow: '0 0 30px rgba(37,99,235,0.4)' }}>
+                Réserver un appel offert
+              </ContactCTA>
             </div>
           </FadeIn>
         </div>

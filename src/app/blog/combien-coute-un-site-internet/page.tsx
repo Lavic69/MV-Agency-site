@@ -15,7 +15,7 @@ import {
   Callout,
   Diagram,
 } from "@/components/blog";
-import { Button } from "@/components/ui/Button";
+import { ContactCTA } from "@/components/ui/ContactCTA";
 import { SITE_URL, buildArticleSchema, buildFaqPageSchema, buildBreadcrumbSchema, type FaqItem, OG_IMAGE } from "@/lib/seo";
 import { getArticleBySlug, getArticleNumber, PILLAR_LABEL } from "@/app/blog/_articles";
 import styles from "@/components/blog/Article.module.css";
@@ -434,7 +434,7 @@ export default function Page() {
               de prix précise. Sans engagement, sans devis surprise.
             </p>
             <div className={styles.ctaFinalButtonWrap}>
-              <Button variant="primary" href="/contact">Réserver un appel offert</Button>
+              <ContactCTA location="final" variant="primary">Réserver un appel offert</ContactCTA>
             </div>
           </section>
         </div>

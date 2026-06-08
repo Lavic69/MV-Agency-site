@@ -13,7 +13,7 @@ import {
   ComparisonTable,
   Callout,
 } from "@/components/blog";
-import { Button } from "@/components/ui/Button";
+import { ContactCTA } from "@/components/ui/ContactCTA";
 import {
   SITE_URL,
   buildArticleSchema,
@@ -422,7 +422,7 @@ export default function Page() {
               choisir le bon mix no-code / code. Sans engagement, sans pitch.
             </p>
             <div className={styles.ctaFinalButtonWrap}>
-              <Button variant="primary" href="/contact">Réserver un appel offert</Button>
+              <ContactCTA location="final" variant="primary">Réserver un appel offert</ContactCTA>
             </div>
           </section>
         </div>

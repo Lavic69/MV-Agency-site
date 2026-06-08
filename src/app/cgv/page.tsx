@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { SITE_NAME, CONTACT_EMAIL, LEGAL, LEGAL_LAST_UPDATED } from "@/lib/seo";
 import { TextReveal } from "@/components/ui/TextReveal";
+import { TrackedLink } from "@/components/ui/TrackedLink";
+import { EVENTS } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   title: "Conditions Générales de Vente — MV Agency",
@@ -154,7 +156,7 @@ export default function CgvPage() {
         <h2 style={{ fontSize: "1.4rem", marginBottom: "1rem" }}>Article 12 — Contact</h2>
         <p>
           Pour toute question relative aux présentes CGV :{" "}
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+          <TrackedLink href={`mailto:${CONTACT_EMAIL}`} event={EVENTS.EMAIL_CLICKED} eventProps={{ location: 'mid' }}>{CONTACT_EMAIL}</TrackedLink>
         </p>
       </section>
 

@@ -7,8 +7,7 @@ import { TextReveal } from '@/components/ui/TextReveal';
 import { Timeline, TimelineStep } from '@/components/ui/Timeline';
 import { Eye, Sparkles, Users, Award, ArrowRight, RefreshCcw, Quote, TrendingUp, Link2, Gift, FolderOpen, Receipt, ShieldCheck } from 'lucide-react';
 import { MockupHub } from '@/components/ui/mockups/MockupHub';
-import Link from 'next/link';
-import { Button } from '@/components/ui/Button';
+import { ContactCTA } from '@/components/ui/ContactCTA';
 import styles from './APropos.module.css';
 
 const aproposSteps: TimelineStep[] = [
@@ -404,11 +403,9 @@ export default function AProposClient() {
                       </h3>
                       <p className={styles.bentoText}>Rejoignez les dizaines d'entreprises et d'indépendants locaux qui ont confié leur croissance à MV Agency.</p>
                     </div>
-                    <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none' }}>
-                      <Button variant="primary" style={{ fontWeight: 600 }}>
-                        Prendre rendez-vous
-                      </Button>
-                    </Link>
+                    <ContactCTA location="final" variant="primary" style={{ fontWeight: 600 }}>
+                      Prendre rendez-vous
+                    </ContactCTA>
                   </div>
                 </div>
 
