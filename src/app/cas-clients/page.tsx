@@ -4,6 +4,7 @@ import { FadeIn } from '@/components/ui/FadeIn';
 import { TextReveal } from '@/components/ui/TextReveal';
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
 import { Button } from '@/components/ui/Button';
+import { ContactCTA } from '@/components/ui/ContactCTA';
 import { ArrowRight } from 'lucide-react';
 import { realizations } from '@/data/projects';
 import { ProjectMockup } from './ProjectMockup';
@@ -122,9 +123,7 @@ export default function CasClientsPage() {
           <p style={{ color: 'var(--text-secondary)', margin: '0 auto 2rem auto', maxWidth: '500px', lineHeight: 1.6, fontSize: '1.1rem' }}>
             Découverte stratégique, maquettage haute-fidélité, développement next-gen et intégration IA. Lancez votre propre plateforme dès aujourd'hui.
           </p>
-          <a href="/contact" style={{ textDecoration: 'none' }}>
-            <Button variant="primary">Discuter de votre projet</Button>
-          </a>
+          <ContactCTA location="final" variant="primary">Discuter de votre projet</ContactCTA>
         </FadeIn>
       </section>
 
