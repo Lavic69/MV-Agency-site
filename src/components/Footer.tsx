@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Footer.module.css';
 import { CONTACT_EMAIL } from '@/lib/seo';
+import { TrackedLink } from './ui/TrackedLink';
+import { EVENTS } from '@/lib/analytics';
 
 export const Footer = () => {
   return (
@@ -16,7 +18,13 @@ export const Footer = () => {
             </Link>
             <p className={styles.slogan}>Concevoir, expliquer, propulser votre présence digitale.<br /><strong>L'IA en plus.</strong></p>
             <div className={styles.contactInfo}>
-              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+              <TrackedLink
+                href={`mailto:${CONTACT_EMAIL}`}
+                event={EVENTS.EMAIL_CLICKED}
+                eventProps={{ location: 'footer' }}
+              >
+                {CONTACT_EMAIL}
+              </TrackedLink>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Basé à La Réunion · Intervention France &amp; Belgique</p>
             </div>
           </div>
@@ -27,7 +35,14 @@ export const Footer = () => {
               <Link href="/services" className={styles.link}>Services</Link>
               <Link href="/offres" className={styles.link}>Offres &amp; Packs</Link>
               <Link href="/a-propos" className={styles.link}>À propos</Link>
-              <Link href="/contact" className={styles.link}>Contact</Link>
+              <TrackedLink
+                href="/contact"
+                event={EVENTS.CONTACT_CTA_CLICKED}
+                eventProps={{ location: 'footer' }}
+                className={styles.link}
+              >
+                Contact
+              </TrackedLink>
             </div>
             <div className={styles.column}>
               <h3 className={styles.colTitle}>Ressources</h3>
