@@ -67,10 +67,19 @@ export default function ContactClient() {
       layout: 'month_view',
     });
 
-    // Funnel : calendrier prêt + réservation confirmée
+    // Funnel : calendrier ouvert + réservation confirmée.
+    // NB : pour un embed *inline*, 'linkReady' ne se déclenche pas (réservé aux
+    // embeds popup). On écoute 'availabilityLoaded' = les créneaux sont affichés,
+    // donc le calendrier est réellement utilisable. Gardé "une seule fois" car
+    // l'event refire à chaque changement de mois.
+    let bookingOpenedTracked = false;
     window.Cal.ns['30min']('on', {
-      action: 'linkReady',
-      callback: () => trackEvent(EVENTS.CAL_BOOKING_OPENED),
+      action: 'availabilityLoaded',
+      callback: () => {
+        if (bookingOpenedTracked) return;
+        bookingOpenedTracked = true;
+        trackEvent(EVENTS.CAL_BOOKING_OPENED);
+      },
     });
     window.Cal.ns['30min']('on', {
       action: 'bookingSuccessful',
