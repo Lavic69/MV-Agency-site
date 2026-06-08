@@ -81,10 +81,17 @@ export default function ContactClient() {
         trackEvent(EVENTS.CAL_BOOKING_OPENED);
       },
     });
-    window.Cal.ns['30min']('on', {
-      action: 'bookingSuccessful',
-      callback: () => trackEvent(EVENTS.CAL_BOOKING_COMPLETED),
-    });
+    // Conversion : réservation confirmée. On écoute les deux noms d'event Cal
+    // (legacy + V2) par robustesse, gardé "une seule fois" pour ne compter
+    // qu'une conversion par réservation.
+    let bookingCompletedTracked = false;
+    const onBookingDone = () => {
+      if (bookingCompletedTracked) return;
+      bookingCompletedTracked = true;
+      trackEvent(EVENTS.CAL_BOOKING_COMPLETED);
+    };
+    window.Cal.ns['30min']('on', { action: 'bookingSuccessful', callback: onBookingDone });
+    window.Cal.ns['30min']('on', { action: 'bookingSuccessfulV2', callback: onBookingDone });
   }, []);
 
   return (
