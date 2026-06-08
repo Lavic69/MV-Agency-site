@@ -9,7 +9,10 @@ import { trackEvent, EVENTS, type CtaLocation } from "@/lib/analytics";
 type ContactCTAProps = {
   /** Position du CTA sur la page (la page vient de usePathname). */
   location: CtaLocation;
-  /** Destination — /contact par défaut. */
+  /**
+   * Destination — /contact par défaut. Si le lien pointe ailleurs, fournir
+   * `onTrack` pour éviter d'émettre `contact_cta_clicked` à tort.
+   */
   href?: string;
   variant?: "primary" | "outline" | "magic";
   size?: "sm" | "md" | "lg";
@@ -18,6 +21,7 @@ type ContactCTAProps = {
   style?: React.CSSProperties;
   /** Style appliqué au Link wrapper (textDecoration:'none' déjà inclus). */
   wrapperStyle?: React.CSSProperties;
+  /** className appliqué au Button interne (pas au Link wrapper). Pour le layout de l'élément externe, utiliser `wrapperStyle`. */
   className?: string;
   /** Action additionnelle au clic (ex: fermer le menu mobile). */
   onClick?: () => void;
