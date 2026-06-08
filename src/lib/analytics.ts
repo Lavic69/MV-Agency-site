@@ -58,6 +58,23 @@ export const EVENTS = {
   PACK_SELECTED: "pack_selected",
   PHONE_CLICKED: "phone_clicked",
   EMAIL_CLICKED: "email_clicked",
-  BLOG_ARTICLE_OPENED: "blog_article_opened",
-  GEO_PAGE_CTA_CLICKED: "geo_page_cta_clicked",
+} as const;
+
+/**
+ * Position d'un CTA sur la page (la page elle-même vient de `usePathname()`).
+ */
+export type CtaLocation =
+  | "header"
+  | "mobile_menu"
+  | "hero"
+  | "mid"
+  | "final"
+  | "footer"
+  | "inline";
+
+/** Identifiants stables des 3 packs (propriété `pack` de `pack_selected`). */
+export const PACKS = {
+  FONDATION: "fondation",
+  CROISSANCE: "croissance",
+  PERFORMANCE_IA: "performance_ia",
 } as const;
