@@ -14,7 +14,7 @@ import {
   ComparisonTable,
   Callout,
 } from "@/components/blog";
-import { Button } from "@/components/ui/Button";
+import { ContactCTA } from "@/components/ui/ContactCTA";
 import {
   SITE_URL,
   buildArticleSchema,
@@ -461,7 +461,7 @@ export default function Page() {
               estimer le ROI. Sans engagement, sans pitch commercial.
             </p>
             <div className={styles.ctaFinalButtonWrap}>
-              <Button variant="primary" href="/contact">Réserver un appel offert</Button>
+              <ContactCTA location="final" variant="primary">Réserver un appel offert</ContactCTA>
             </div>
           </section>
         </div>
