@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { ContactCTA } from '@/components/ui/ContactCTA';
-import { trackEvent, EVENTS, PACKS } from '@/lib/analytics';
+import { EVENTS, PACKS } from '@/lib/analytics';
 import styles from './Offres.module.css';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { TextReveal } from '@/components/ui/TextReveal';
@@ -130,7 +130,8 @@ export default function OffresPage() {
                   variant="outline"
                   wrapperStyle={{ width: '100%' }}
                   style={{ width: '100%' }}
-                  onTrack={() => trackEvent(EVENTS.PACK_SELECTED, { pack: PACKS.FONDATION })}
+                  eventName={EVENTS.PACK_SELECTED}
+                  eventProps={{ pack: PACKS.FONDATION }}
                 >
                   Choisir ce pack
                 </ContactCTA>
@@ -160,7 +161,8 @@ export default function OffresPage() {
                   variant="primary"
                   wrapperStyle={{ width: '100%' }}
                   style={{ width: '100%' }}
-                  onTrack={() => trackEvent(EVENTS.PACK_SELECTED, { pack: PACKS.CROISSANCE })}
+                  eventName={EVENTS.PACK_SELECTED}
+                  eventProps={{ pack: PACKS.CROISSANCE }}
                 >
                   Choisir ce pack
                 </ContactCTA>
@@ -191,7 +193,8 @@ export default function OffresPage() {
                   variant="outline"
                   wrapperStyle={{ width: '100%' }}
                   style={{ width: '100%' }}
-                  onTrack={() => trackEvent(EVENTS.PACK_SELECTED, { pack: PACKS.PERFORMANCE_IA })}
+                  eventName={EVENTS.PACK_SELECTED}
+                  eventProps={{ pack: PACKS.PERFORMANCE_IA }}
                 >
                   Choisir ce pack
                 </ContactCTA>
