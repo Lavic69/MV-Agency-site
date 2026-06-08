@@ -7,6 +7,7 @@ import { TextReveal } from '@/components/ui/TextReveal';
 import { Mail, Zap } from 'lucide-react';
 import { CONTACT_EMAIL } from '@/lib/seo';
 import { trackEvent, EVENTS } from '@/lib/analytics';
+import { TrackedLink } from '@/components/ui/TrackedLink';
 import styles from './Contact.module.css';
 import { AvailabilityPill } from '@/components/ui/AvailabilityPill';
 
@@ -103,7 +104,7 @@ export default function ContactClient() {
                 </div>
                 <div className={styles.infoText}>
                   <span className={styles.infoTitle}>Email</span>
-                  <a href={`mailto:${CONTACT_EMAIL}`} className={styles.infoDetail} style={{ color: 'inherit', textDecoration: 'none' }}>{CONTACT_EMAIL}</a>
+                  <TrackedLink href={`mailto:${CONTACT_EMAIL}`} event={EVENTS.EMAIL_CLICKED} eventProps={{ location: 'contact_page' }} className={styles.infoDetail} style={{ color: 'inherit', textDecoration: 'none' }}>{CONTACT_EMAIL}</TrackedLink>
                 </div>
               </div>
             </FadeIn>

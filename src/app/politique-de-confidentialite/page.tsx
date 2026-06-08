@@ -7,6 +7,8 @@ import {
   LEGAL_LAST_UPDATED,
 } from "@/lib/seo";
 import { TextReveal } from "@/components/ui/TextReveal";
+import { TrackedLink } from "@/components/ui/TrackedLink";
+import { EVENTS } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité — MV Agency",
@@ -44,9 +46,9 @@ export default function PolitiqueConfidentialitePage() {
         <p style={{ marginTop: "0.5rem" }}>
           Siège : {LEGAL.publicAddress}
           <br />
-          Contact RGPD : <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+          Contact RGPD : <TrackedLink href={`mailto:${CONTACT_EMAIL}`} event={EVENTS.EMAIL_CLICKED} eventProps={{ location: 'mid' }}>{CONTACT_EMAIL}</TrackedLink>
           <br />
-          Téléphone : <a href={`tel:${LEGAL.phone}`}>{LEGAL.phoneDisplay}</a>
+          Téléphone : <TrackedLink href={`tel:${LEGAL.phone}`} event={EVENTS.PHONE_CLICKED} eventProps={{ location: 'mid' }}>{LEGAL.phoneDisplay}</TrackedLink>
         </p>
         <p style={{ marginTop: "0.5rem", fontSize: "0.9rem", fontStyle: "italic" }}>
           Aucun délégué à la protection des données (DPO) n'est désigné, le traitement ne le rendant
@@ -133,7 +135,7 @@ export default function PolitiqueConfidentialitePage() {
         </ul>
         <p style={{ marginTop: "0.5rem" }}>
           Pour exercer ces droits, contactez-nous à{" "}
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Réponse sous 30 jours maximum.
+          <TrackedLink href={`mailto:${CONTACT_EMAIL}`} event={EVENTS.EMAIL_CLICKED} eventProps={{ location: 'mid' }}>{CONTACT_EMAIL}</TrackedLink>. Réponse sous 30 jours maximum.
         </p>
       </section>
 
