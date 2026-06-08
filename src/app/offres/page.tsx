@@ -1,7 +1,7 @@
 import React from 'react';
-import Link from 'next/link';
 import { Metadata } from 'next';
-import { Button } from '@/components/ui/Button';
+import { ContactCTA } from '@/components/ui/ContactCTA';
+import { trackEvent, EVENTS, PACKS } from '@/lib/analytics';
 import styles from './Offres.module.css';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { TextReveal } from '@/components/ui/TextReveal';
@@ -125,9 +125,15 @@ export default function OffresPage() {
                   <li><FaCheckCircle className={styles.checkIcon} /> Formation à l'utilisation du site</li>
                   <li><FaCheckCircle className={styles.checkIcon} /> Support technique de lancement</li>
                 </ul>
-                <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none', width: '100%' }}>
-                  <Button variant="outline" style={{ width: '100%' }}>Choisir ce pack</Button>
-                </Link>
+                <ContactCTA
+                  location="mid"
+                  variant="outline"
+                  wrapperStyle={{ width: '100%' }}
+                  style={{ width: '100%' }}
+                  onTrack={() => trackEvent(EVENTS.PACK_SELECTED, { pack: PACKS.FONDATION })}
+                >
+                  Choisir ce pack
+                </ContactCTA>
               </div>
             </FadeIn>
 
@@ -149,9 +155,15 @@ export default function OffresPage() {
                   <li><FaCheckCircle className={styles.checkIcon} /> Formation marketing digital</li>
                   <li><FaCheckCircle className={styles.checkIcon} /> 1 session de suivi stratégique</li>
                 </ul>
-                <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none', width: '100%' }}>
-                  <Button variant="primary" style={{ width: '100%' }}>Choisir ce pack</Button>
-                </Link>
+                <ContactCTA
+                  location="mid"
+                  variant="primary"
+                  wrapperStyle={{ width: '100%' }}
+                  style={{ width: '100%' }}
+                  onTrack={() => trackEvent(EVENTS.PACK_SELECTED, { pack: PACKS.CROISSANCE })}
+                >
+                  Choisir ce pack
+                </ContactCTA>
                 <p style={{ textAlign: "center", fontSize: "0.8rem", color: "rgba(255,255,255,0.6)", marginTop: "1rem", marginBottom: 0 }}>
                   Le choix idéal pour générer vos premiers clients
                 </p>
@@ -174,9 +186,15 @@ export default function OffresPage() {
                   <li><FaCheckCircle className={styles.checkIcon} /> Formation IA poussée pour l'équipe</li>
                   <li><FaCheckCircle className={styles.checkIcon} /> Accompagnement Premium sur 3 mois</li>
                 </ul>
-                <Link href="/contact" tabIndex={-1} style={{ textDecoration: 'none', width: '100%' }}>
-                  <Button variant="outline" style={{ width: '100%' }}>Choisir ce pack</Button>
-                </Link>
+                <ContactCTA
+                  location="mid"
+                  variant="outline"
+                  wrapperStyle={{ width: '100%' }}
+                  style={{ width: '100%' }}
+                  onTrack={() => trackEvent(EVENTS.PACK_SELECTED, { pack: PACKS.PERFORMANCE_IA })}
+                >
+                  Choisir ce pack
+                </ContactCTA>
               </div>
             </FadeIn>
 
@@ -312,9 +330,9 @@ export default function OffresPage() {
           </FadeIn>
           <FadeIn direction="up" delay={0.3}>
             <div className={styles.ctaActions}>
-              <Link href="/contact" tabIndex={-1}>
-                <Button variant="primary">Réserver un appel</Button>
-              </Link>
+              <ContactCTA location="final" variant="primary">
+                Réserver un appel
+              </ContactCTA>
             </div>
           </FadeIn>
         </div>
