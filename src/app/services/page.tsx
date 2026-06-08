@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
+import { ContactCTA } from '@/components/ui/ContactCTA';
 import { Metadata } from 'next';
 import { FaCheck } from 'react-icons/fa';
 import styles from './Services.module.css';
@@ -68,9 +69,7 @@ export default function ServicesPage() {
                 Une agence qui conçoit, explique et propulse. Pour les professionnels qui veulent des résultats mesurables, pas des slides.
               </p>
               <div className={`${styles.ctaActions} heroReveal heroRevealDelay2`} style={{ marginTop: '3rem' }}>
-                <Link href="/contact" tabIndex={-1}>
-                  <Button variant="primary">Réserver un appel offert</Button>
-                </Link>
+                <ContactCTA location="hero" variant="primary">Réserver un appel offert</ContactCTA>
                 <Link href="/offres" tabIndex={-1}>
                   <Button variant="outline">Voir nos packs</Button>
                 </Link>
@@ -429,9 +428,7 @@ export default function ServicesPage() {
           </FadeIn>
           <FadeIn direction="up" delay={0.3}>
             <div className={styles.ctaActions}>
-              <Link href="/contact" tabIndex={-1}>
-                <Button variant="primary">Réserver un appel offert</Button>
-              </Link>
+              <ContactCTA location="final" variant="primary">Réserver un appel offert</ContactCTA>
               <Link href="/offres" tabIndex={-1}>
                 <Button variant="outline">Voir nos packs</Button>
               </Link>
