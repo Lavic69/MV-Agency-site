@@ -1,6 +1,7 @@
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import styles from "./Article.module.css";
+import { TrackedLink } from "@/components/ui/TrackedLink";
+import { EVENTS } from "@/lib/analytics";
 
 type InlineCTAProps = {
   /** Titre du bloc — court, accrocheur */
@@ -22,10 +23,15 @@ export function InlineCTA({ title, text, ctaLabel, href }: InlineCTAProps) {
     <aside className={styles.inlineCta}>
       <h3 className={styles.inlineCtaTitle}>{title}</h3>
       <p className={styles.inlineCtaText}>{text}</p>
-      <Link href={href} className={styles.inlineCtaLink}>
+      <TrackedLink
+        href={href}
+        event={EVENTS.CONTACT_CTA_CLICKED}
+        eventProps={{ location: "inline" }}
+        className={styles.inlineCtaLink}
+      >
         {ctaLabel}
         <ArrowRight size={16} aria-hidden="true" />
-      </Link>
+      </TrackedLink>
     </aside>
   );
 }
