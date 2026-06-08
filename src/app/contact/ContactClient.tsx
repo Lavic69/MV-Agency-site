@@ -6,6 +6,7 @@ import { FadeIn } from '@/components/ui/FadeIn';
 import { TextReveal } from '@/components/ui/TextReveal';
 import { Mail, Zap } from 'lucide-react';
 import { CONTACT_EMAIL } from '@/lib/seo';
+import { trackEvent, EVENTS } from '@/lib/analytics';
 import styles from './Contact.module.css';
 import { AvailabilityPill } from '@/components/ui/AvailabilityPill';
 
@@ -63,6 +64,16 @@ export default function ContactClient() {
       },
       hideEventTypeDetails: false,
       layout: 'month_view',
+    });
+
+    // Funnel : calendrier prêt + réservation confirmée
+    window.Cal.ns['30min']('on', {
+      action: 'linkReady',
+      callback: () => trackEvent(EVENTS.CAL_BOOKING_OPENED),
+    });
+    window.Cal.ns['30min']('on', {
+      action: 'bookingSuccessful',
+      callback: () => trackEvent(EVENTS.CAL_BOOKING_COMPLETED),
     });
   }, []);
 
