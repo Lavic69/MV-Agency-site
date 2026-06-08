@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
+import { ContactCTA } from "@/components/ui/ContactCTA";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { Accordion } from "@/components/ui/accordion";
@@ -239,9 +240,7 @@ export default function AgenceWebFrancePage() {
               ajustés vs Paris. Propriété 100&nbsp;% client à la livraison.
             </p>
             <div className={styles.heroCtas}>
-              <Link href="/contact">
-                <Button variant="primary">Réserver un appel découverte</Button>
-              </Link>
+              <ContactCTA location="hero" variant="primary">Réserver un appel découverte</ContactCTA>
               <Link href="/offres">
                 <Button variant="outline">Voir les offres</Button>
               </Link>
@@ -582,9 +581,7 @@ export default function AgenceWebFrancePage() {
                 Sans engagement, sans pitch commercial — uniquement du concret.
               </p>
               <div className={styles.finalCtaButtons}>
-                <Link href="/contact">
-                  <Button variant="primary">Réserver un appel découverte</Button>
-                </Link>
+                <ContactCTA location="final" variant="primary">Réserver un appel découverte</ContactCTA>
                 <Link href="/cas-clients">
                   <Button variant="outline">Voir les cas clients</Button>
                 </Link>
