@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 /**
- * Wrapper qui sort Vercel Analytics + Speed Insights du critical path JS.
+ * Wrapper qui sort Vercel Analytics + Speed Insights + GA4 du critical path JS.
  *
  * Les composants natifs (`<Analytics />`, `<SpeedInsights />`) sont chargés
  * pendant l'hydratation initiale, ce qui pénalise le Script Evaluation
@@ -56,6 +57,9 @@ export function DeferredAnalytics() {
     <>
       <Analytics />
       <SpeedInsights />
+      {/* GA4 partage le même mount différé : gtag.js (~70 KB) reste hors du
+          critical path. No-op si NEXT_PUBLIC_GA_ID absent. */}
+      <GoogleAnalytics />
     </>
   );
 }

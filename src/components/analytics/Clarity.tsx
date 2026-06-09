@@ -22,17 +22,7 @@
 
 import Script from "next/script";
 import { useEffect, useState } from "react";
-
-const CONSENT_STORAGE_KEY = "mv-analytics-consent";
-
-function hasAnalyticsConsent(): boolean {
-  if (typeof window === "undefined") return false;
-  try {
-    return window.localStorage.getItem(CONSENT_STORAGE_KEY) === "granted";
-  } catch {
-    return false;
-  }
-}
+import { CONSENT_CHANGE_EVENT, hasAnalyticsConsent } from "@/lib/consent";
 
 export function Clarity() {
   const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
@@ -42,8 +32,8 @@ export function Clarity() {
     setConsented(hasAnalyticsConsent());
     // Réagit aux changements de consentement (ConsentBanner émet un CustomEvent).
     const handler = () => setConsented(hasAnalyticsConsent());
-    window.addEventListener("mv-consent-change", handler);
-    return () => window.removeEventListener("mv-consent-change", handler);
+    window.addEventListener(CONSENT_CHANGE_EVENT, handler);
+    return () => window.removeEventListener(CONSENT_CHANGE_EVENT, handler);
   }, []);
 
   if (!clarityId || !consented) return null;
