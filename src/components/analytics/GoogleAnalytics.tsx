@@ -35,9 +35,11 @@ export function GoogleAnalytics() {
     if (!GA_ID) return;
 
     const syncConsent = () => {
-      if (hasAnalyticsConsent()) {
-        window.gtag?.("consent", "update", { analytics_storage: "granted" });
-      }
+      // Pousse l'état réel (granted OU denied) : un retrait de consentement
+      // doit repasser GA4 en mode sans cookies immédiatement.
+      window.gtag?.("consent", "update", {
+        analytics_storage: hasAnalyticsConsent() ? "granted" : "denied",
+      });
     };
 
     syncConsent();
@@ -67,7 +69,7 @@ export function GoogleAnalytics() {
               analytics_storage: 'denied'
             });
             gtag('js', new Date());
-            gtag('config', '${GA_ID}');
+            gtag('config', '${GA_ID}', { cookie_expires: 33696000 }); /* 13 mois — plafond CNIL */
           `,
         }}
       />

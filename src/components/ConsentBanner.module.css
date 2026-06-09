@@ -1,0 +1,100 @@
+.banner {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  z-index: 90; /* sous le header (z-index 100) mais au-dessus du contenu */
+  max-width: 400px;
+  padding: 20px;
+  background: rgba(10, 14, 28, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  font-family: var(--font-body);
+  animation: consentSlideIn 0.35s ease-out both;
+}
+
+@keyframes consentSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner {
+    animation: none;
+  }
+}
+
+.text {
+  margin: 0 0 14px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-light);
+}
+
+.link {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.link:hover {
+  color: var(--text-light);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* CNIL : refuser doit être aussi simple qu'accepter — deux boutons de même
+   taille, même rangée, un seul clic chacun. */
+.refuse,
+.accept {
+  flex: 1;
+  padding: 10px 16px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.refuse {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-light);
+}
+
+.refuse:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: var(--bg-card-hover);
+}
+
+.accept {
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  color: #fff;
+  box-shadow: var(--glow-primary-soft);
+}
+
+.accept:hover {
+  filter: brightness(1.1);
+}
+
+@media (max-width: 480px) {
+  .banner {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    max-width: none;
+  }
+}

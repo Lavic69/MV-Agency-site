@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styles from './Footer.module.css';
 import { CONTACT_EMAIL } from '@/lib/seo';
 import { TrackedLink } from './ui/TrackedLink';
+import { ManageCookiesButton } from './ConsentBanner';
 import { EVENTS } from '@/lib/analytics';
 
 export const Footer = () => {
@@ -55,6 +56,7 @@ export const Footer = () => {
               <Link href="/mentions-legales" className={styles.link}>Mentions Légales</Link>
               <Link href="/politique-de-confidentialite" className={styles.link}>Confidentialité</Link>
               <Link href="/cgv" className={styles.link}>CGV</Link>
+              <ManageCookiesButton className={styles.link} />
             </div>
           </div>
         </div>
