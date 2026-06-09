@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
 
 /**
  * Wrapper qui sort Vercel Analytics + Speed Insights + GA4 du critical path JS.
@@ -57,9 +58,13 @@ export function DeferredAnalytics() {
     <>
       <Analytics />
       <SpeedInsights />
-      {/* GA4 partage le même mount différé : gtag.js (~70 KB) reste hors du
-          critical path. No-op si NEXT_PUBLIC_GA_ID absent. */}
+      {/* GA4 et GTM partagent le même mount différé : gtag.js (~70 KB) et
+          gtm.js (~300 KB) restent hors du critical path. La file d'attente et
+          le consent default sont déjà en place depuis le parse
+          (AnalyticsBootstrap dans layout.tsx) — les libs rejouent la file à
+          leur chargement, aucun event précoce n'est perdu. */}
       <GoogleAnalytics />
+      <GoogleTagManager />
     </>
   );
 }

@@ -23,6 +23,7 @@ declare global {
   interface Window {
     clarity?: (action: "event" | "set" | "identify" | "consent", ...args: unknown[]) => void;
     gtag?: (command: "event" | "config" | "consent" | "js" | "set", ...args: unknown[]) => void;
+    dataLayer?: unknown[];
   }
 }
 
@@ -50,6 +51,15 @@ export function trackEvent(name: string, props?: EventProps): void {
   // 3. Google Analytics 4 (uniquement si gtag.js chargé — cf. GoogleAnalytics.tsx)
   try {
     window.gtag?.("event", name, props);
+  } catch {
+    // idem
+  }
+
+  // 4. Google Tag Manager — push au format message, lisible comme déclencheur
+  //    « Custom Event » par les tags du conteneur. Ignoré par gtag.js (qui ne
+  //    lit que les commandes ci-dessus), donc pas de doublon GA4.
+  try {
+    window.dataLayer?.push({ event: name, ...props });
   } catch {
     // idem
   }

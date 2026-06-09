@@ -47,6 +47,16 @@ export function setAnalyticsConsent(choice: ConsentChoice): void {
     // persistera pas, mais l'event permet quand même d'agir sur la session.
   }
   if (choice === "denied") purgeAnalyticsCookies();
+  // Bascule du Consent Mode Google directement ici : le stub gtag existe dès
+  // le parse (AnalyticsBootstrap), donc l'update est mis en file même si le
+  // choix intervient avant le chargement différé de gtag.js/gtm.js.
+  try {
+    window.gtag?.("consent", "update", {
+      analytics_storage: choice === "granted" ? "granted" : "denied",
+    });
+  } catch {
+    // l'analytics ne doit jamais casser l'app
+  }
   window.dispatchEvent(new CustomEvent(CONSENT_CHANGE_EVENT));
 }
 
