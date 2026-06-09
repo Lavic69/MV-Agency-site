@@ -1,8 +1,10 @@
 /**
  * Google Analytics 4 — mesure d'audience complémentaire à Vercel Analytics.
  *
- * État : DORMANT tant que `NEXT_PUBLIC_GA_ID` n'est pas défini (le composant
- * retourne `null`, aucun script injecté, zéro impact perf).
+ * État : ACTIF en production (propriété GA4 « MV Agency » — G-Q3D2LHMFJ0).
+ * En dev, dormant sauf si `NEXT_PUBLIC_GA_ID` est défini (le composant retourne
+ * `null`, aucun script injecté) — évite de polluer les stats avec le trafic local.
+ * `NEXT_PUBLIC_GA_ID` (Vercel ou .env.local) reste prioritaire sur le fallback.
  *
  * RGPD / Consent Mode v2 :
  *   - gtag.js démarre avec `analytics_storage: denied` → AUCUN cookie posé.
@@ -10,12 +12,8 @@
  *   - Si l'utilisateur accepte via le futur ConsentBanner (cf. src/lib/consent.ts),
  *     on passe à `granted` → mesure complète avec cookies.
  *
- * Pour activer :
- *   1. Créer une propriété GA4 sur https://analytics.google.com/ (flux Web).
- *   2. Copier le Measurement ID (`G-XXXXXXXXXX`) dans `NEXT_PUBLIC_GA_ID`
- *      côté Vercel (+ `.env.local` pour le dev).
- *   3. Vérifier que la mesure améliorée « Changements de page (historique) »
- *      est activée dans GA4 — c'est elle qui tracke les navigations SPA.
+ * Côté GA4, vérifier que la mesure améliorée « Changements de page (historique) »
+ * est activée — c'est elle qui tracke les navigations SPA.
  *
  * Les custom events (contact_cta_clicked, cal_booking_opened, …) sont routés
  * vers GA4 par `trackEvent` (src/lib/analytics.ts) — rien à faire par page.
@@ -27,7 +25,9 @@ import Script from "next/script";
 import { useEffect } from "react";
 import { CONSENT_CHANGE_EVENT, hasAnalyticsConsent } from "@/lib/consent";
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const GA_ID =
+  process.env.NEXT_PUBLIC_GA_ID ??
+  (process.env.NODE_ENV === "production" ? "G-Q3D2LHMFJ0" : undefined);
 
 export function GoogleAnalytics() {
   // Upgrade Consent Mode → granted dès que le consentement est (ou devient) accordé.
