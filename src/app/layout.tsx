@@ -3,6 +3,7 @@ import { Darker_Grotesque, DM_Sans } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import { AnalyticsBootstrap } from "@/components/analytics/AnalyticsBootstrap";
 import { Clarity } from "@/components/analytics/Clarity";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { DeferredAnalytics } from "@/components/analytics/DeferredAnalytics";
@@ -143,6 +144,11 @@ export default function RootLayout({
         style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
         suppressHydrationWarning
       >
+        {/* File d'attente analytics + consent default — synchrone, AVANT toute
+            interaction possible (les libs lourdes restent différées, cf.
+            DeferredAnalytics). */}
+        <AnalyticsBootstrap />
+
         {/* JSON-LD global : identité Organization + présence LocalBusiness */}
         <JsonLd data={organizationSchema} />
         <JsonLd data={localBusinessSchema} />
