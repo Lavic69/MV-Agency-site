@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { Clarity } from "@/components/analytics/Clarity";
+import { ConsentBanner } from "@/components/ConsentBanner";
 import { DeferredAnalytics } from "@/components/analytics/DeferredAnalytics";
 import LiquidEther from "@/components/ui/LiquidEtherDesktopOnly";
 import {
@@ -177,9 +178,12 @@ export default function RootLayout({
         <DeferredAnalytics />
 
         {/* Microsoft Clarity — chargé uniquement si NEXT_PUBLIC_CLARITY_ID est défini
-            ET si l'utilisateur a accepté les cookies (cf. ConsentBanner). Désactivé
-            par défaut tant qu'aucun bandeau de consentement n'est en place. */}
+            ET si l'utilisateur a accepté les cookies via le ConsentBanner. */}
         <Clarity />
+
+        {/* Bandeau de consentement analytics : pilote GA4 (Consent Mode) et Clarity.
+            Invisible une fois le choix fait ; réouvrable via « Gérer les cookies ». */}
+        <ConsentBanner />
       </body>
     </html>
   );

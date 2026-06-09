@@ -66,6 +66,8 @@ export const EVENTS = {
   PACK_SELECTED: "pack_selected",
   PHONE_CLICKED: "phone_clicked",
   EMAIL_CLICKED: "email_clicked",
+  CONSENT_GRANTED: "consent_granted",
+  CONSENT_DENIED: "consent_denied",
 } as const;
 
 /**
