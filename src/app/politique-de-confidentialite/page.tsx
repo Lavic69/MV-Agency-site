@@ -92,6 +92,7 @@ export default function PolitiqueConfidentialitePage() {
         <ul style={{ marginLeft: "1.5rem", marginTop: "0.5rem" }}>
           <li><strong>Vercel Inc.</strong> (hébergement du site, USA — garanties : Data Processing Addendum + SCCs européennes).</li>
           <li><strong>Vercel Web Analytics & Speed Insights</strong> (mesure d'audience anonymisée et performance — sans cookies, hashage IP côté serveur, conservation 90 jours, conforme RGPD sans consentement requis).</li>
+          <li><strong>Google Ireland Ltd</strong> (Google Analytics 4 — mesure d’audience ; cookies déposés uniquement après votre consentement, cf. section 6).</li>
           <li><strong>Cloudflare, Inc.</strong> (DNS, domaine).</li>
           <li><strong>Infomaniak SA</strong> (email professionnel, Suisse — pays à protection adéquate).</li>
           <li><strong>Cal.com</strong> (prise de rendez-vous — si intégré).</li>
@@ -108,18 +109,32 @@ export default function PolitiqueConfidentialitePage() {
           cookie publicitaire ou de tracking tiers n'est déposé sans votre consentement explicite.
         </p>
         <p style={{ marginTop: "0.5rem" }}>
-          La mesure d'audience est assurée par <strong>Vercel Web Analytics</strong> et{" "}
+          Une première mesure d’audience est assurée par <strong>Vercel Web Analytics</strong> et{" "}
           <strong>Vercel Speed Insights</strong>, qui fonctionnent <strong>sans cookies</strong> :
-          aucun identifiant n'est stocké côté navigateur, l'adresse IP est anonymisée par hashage
+          aucun identifiant n’est stocké côté navigateur, l’adresse IP est anonymisée par hashage
           côté serveur, et seuls des indicateurs agrégés (pages vues, sources, temps de chargement)
           sont conservés pendant 90 jours. Cette configuration est exemptée de consentement au sens
-          de la délibération CNIL 2020-091 (mesure d'audience anonymisée à finalité unique).
+          de la délibération CNIL 2020-091 (mesure d’audience anonymisée à finalité unique).
         </p>
         <p style={{ marginTop: "0.5rem" }}>
-          Si une solution de mesure plus complète (Google Analytics, heatmap Microsoft Clarity ou
-          équivalent) est ajoutée ultérieurement, un bandeau de consentement sera posé conformément
-          à la recommandation CNIL « cookies et autres traceurs » et la liste exacte des traceurs
-          sera mise à jour ici.
+          Le site utilise également <strong>Google Analytics 4</strong> (Google Ireland Ltd),
+          soumis à votre consentement via le bandeau affiché lors de votre première visite :
+        </p>
+        <ul style={{ marginLeft: "1.5rem", marginTop: "0.5rem" }}>
+          <li>
+            <strong>Si vous acceptez</strong> : des cookies de mesure d’audience (préfixe{" "}
+            <code>_ga</code>) sont déposés pour une durée maximale de 13 mois, conformément à la
+            recommandation CNIL « cookies et autres traceurs ».
+          </li>
+          <li>
+            <strong>Si vous refusez (ou en l’absence de choix)</strong> : aucun cookie n’est
+            déposé. Google Analytics fonctionne alors en « Consent Mode » : seuls des signaux
+            anonymes et non rattachables à votre navigateur sont transmis.
+          </li>
+        </ul>
+        <p style={{ marginTop: "0.5rem" }}>
+          Vous pouvez modifier votre choix à tout moment via le lien{" "}
+          <strong>« Gérer les cookies »</strong> en pied de page.
         </p>
       </section>
 

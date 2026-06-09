@@ -90,7 +90,7 @@ export const HOST = {
  * Date de la dernière révision des documents légaux affichée en pied de page.
  * Format ISO ; affichage formaté côté composant.
  */
-export const LEGAL_LAST_UPDATED = "2026-05-08";
+export const LEGAL_LAST_UPDATED = "2026-06-10";
 
 // Zones d'activité pour LocalBusiness / Service.areaServed
 export const AREAS_SERVED = [
