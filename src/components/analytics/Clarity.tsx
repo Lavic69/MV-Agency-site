@@ -21,20 +21,27 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { CONSENT_CHANGE_EVENT, hasAnalyticsConsent } from "@/lib/consent";
+
+// Déclaré hors composant : référence stable, sinon useSyncExternalStore se
+// désabonne/réabonne à chaque rendu.
+function subscribeToConsent(onStoreChange: () => void) {
+  // Réagit aux changements de consentement (ConsentBanner émet un CustomEvent).
+  window.addEventListener(CONSENT_CHANGE_EVENT, onStoreChange);
+  return () => window.removeEventListener(CONSENT_CHANGE_EVENT, onStoreChange);
+}
+
+// Rendu serveur : pas de consentement → le composant retourne `null` en SSR.
+const getConsentServerSnapshot = () => false;
 
 export function Clarity() {
   const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
-  const [consented, setConsented] = useState(false);
-
-  useEffect(() => {
-    setConsented(hasAnalyticsConsent());
-    // Réagit aux changements de consentement (ConsentBanner émet un CustomEvent).
-    const handler = () => setConsented(hasAnalyticsConsent());
-    window.addEventListener(CONSENT_CHANGE_EVENT, handler);
-    return () => window.removeEventListener(CONSENT_CHANGE_EVENT, handler);
-  }, []);
+  const consented = useSyncExternalStore(
+    subscribeToConsent,
+    hasAnalyticsConsent,
+    getConsentServerSnapshot,
+  );
 
   if (!clarityId || !consented) return null;
 
