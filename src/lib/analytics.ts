@@ -4,8 +4,8 @@
  * Routage :
  *  - Vercel Web Analytics (sans cookies, gratuit) — toujours actif.
  *  - Microsoft Clarity (heatmap) — si chargé ET consentement donné.
- *  - Google Analytics 4 — non câblé pour l'instant (ajouter ici quand le bandeau
- *    de consentement RGPD sera prêt et que `NEXT_PUBLIC_GA_ID` sera défini).
+ *  - Google Analytics 4 — si `NEXT_PUBLIC_GA_ID` est défini (cf. GoogleAnalytics.tsx).
+ *    Consent Mode v2 : sans consentement, events envoyés en pings anonymes sans cookies.
  *
  * Convention de nommage des events : `snake_case`, verbe au passé.
  *   ex : `cal_booking_opened`, `pack_selected`, `contact_form_submitted`.
@@ -22,6 +22,7 @@ type EventProps = Record<string, string | number | boolean | null | undefined>;
 declare global {
   interface Window {
     clarity?: (action: "event" | "set" | "identify" | "consent", ...args: unknown[]) => void;
+    gtag?: (command: "event" | "config" | "consent" | "js" | "set", ...args: unknown[]) => void;
   }
 }
 
@@ -42,6 +43,13 @@ export function trackEvent(name: string, props?: EventProps): void {
   // 2. Microsoft Clarity (uniquement si chargé)
   try {
     window.clarity?.("event", name);
+  } catch {
+    // idem
+  }
+
+  // 3. Google Analytics 4 (uniquement si gtag.js chargé — cf. GoogleAnalytics.tsx)
+  try {
+    window.gtag?.("event", name, props);
   } catch {
     // idem
   }
